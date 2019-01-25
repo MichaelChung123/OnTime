@@ -1,70 +1,34 @@
-import React from 'react'
+// sidebar.js
 
-export default class Sidebar extends React.Component {
-    render() {
-        return (
-            <div class="wrapper">
+import React from 'react';
+import { slide as Menu } from 'react-burger-menu';
 
-                <nav id="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Bootstrap Sidebar</h3>
-                    </div>
+export default props => {
+  return (
+    <Menu>
+      <a className="menu-item" href="/">
+        Home
+      </a>
 
-                    <ul class="list-unstyled components">
-                        <p>Dummy Heading</p>
-                        <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="#">Home 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#">Page 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                    </ul>
+      <a className="menu-item" href="/laravel">
+        Laravel
+      </a>
 
-                </nav>
-                <div id="content">
+      <a className="menu-item" href="/angular">
+        Angular
+      </a>
 
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="container-fluid">
+      <a className="menu-item" href="/react">
+        React
+      </a>
 
-                            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                                <i class="fas fa-align-left"></i>
-                                <span>Toggle Sidebar</span>
-                            </button>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        )
-    }
-}
+      <a className="menu-item" href="/vue">
+        Vue
+      </a>
+
+      <a className="menu-item" href="/node">
+        Node
+      </a>
+    </Menu>
+  );
+};
