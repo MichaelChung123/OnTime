@@ -1,0 +1,32 @@
+talk about the process interviewing mentors to get the feed back and implement it in the app
+
+
+do you seperate shifts based off of job title
+
+excel sheet?
+
+check wireframes and see what he would change
+
+what kind of struggles do you face with scheduling
+-templating spreadsheet -> publishes to finalized version
+-only davey sees the template only
+-posts final version to a link
+
+slack teacher's chanel 
+
+budget analysis: shows who is under/over scheduled
+
+-wants to get shift changes apporved throguh davey first, make it public to other mentors, once chosen it goes back to davey for approval
+
+-if shifts were presented to davey (based off of current students in cohort) then he assigns it to people from there
+
+-calendar with color
+
+-different views day week month
+
+-import availability of mentors and chose best mentor for the 
+
+what would be best way of sending the schedule to mentors
+-email the mentors a list of their shifts for the week
+
+
