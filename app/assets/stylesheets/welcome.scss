@@ -1,3 +1,57 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-light {
+  background: url(https://www.alux.com/wp-content/uploads/2014/04/most-expensive-sailboat-in-the-world-top-5-and-how-much-do-they-cost-each-article-with-prices.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.h1 {
+  font-size: 400px  ;
+}
+.display-4 {
+  font-size: 100px;
+}
+
+html {
+  background: url(https://www.alux.com/wp-content/uploads/2014/04/most-expensive-sailboat-in-the-world-top-5-and-how-much-do-they-cost-each-article-with-prices.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-opacity: 0.2;
+
+}
+
+.home-content {
+  position: relative;
+  margin-top: 150px;
+  background-color: none;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
