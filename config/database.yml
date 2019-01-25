@@ -17,7 +17,7 @@ default: &default
 
 development:
     adapter: postgresql
-    database: [final_project]
+    database: final_project
     host: localhost
 
 
