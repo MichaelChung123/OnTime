@@ -1,10 +1,11 @@
 import React from 'react'
-import Sidebar from '../components/sidebar'
+import SideBar from './sides/sidebar'
+import SideEmployee from './sides/sideEmployee'
 
 export default class App extends React.Component {
     render(){
         return(
-
+            <SideBar />
         )
     }
 }
