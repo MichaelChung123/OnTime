@@ -5,7 +5,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/app'
-import SideBar from '../components/sidebar'
 
 
 document.addEventListener('DOMContentLoaded', () => {
