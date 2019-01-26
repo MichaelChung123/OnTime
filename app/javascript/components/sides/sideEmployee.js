@@ -13,7 +13,11 @@ export default class SideEmployee extends React.Component {
             >
                 <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="add-shift">
-                <h3>Employee</h3>
+                <NavItem eventKey="employee-label">
+                    <NavText>
+                        Employee
+                    </NavText>
+                </NavItem>
                 <label>Name: </label>
                 <textarea></textarea>
                 <br />
