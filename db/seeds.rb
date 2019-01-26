@@ -8,6 +8,7 @@ lighthouse_employer = User.find_or_create_by!(
     password: "123"
 )
 
+Availability.destroy_all
 Shift.destroy_all
 Employee.destroy_all
 
@@ -149,6 +150,36 @@ Employee.find(5).shifts.create!({
     start_time: 9,
     end_time: 11,
     duration: 2
+})
+
+Employee.first.availabilities.create!({
+    day: "Monday",
+    start_time: 9,
+    end_time: 17
+})
+
+Employee.first.availabilities.create!({
+    day: "Tuesday",
+    start_time: 14,
+    end_time: 21
+})
+
+Employee.first.availabilities.create!({
+    day: "Monday",
+    start_time: 12,
+    end_time: 17
+})
+
+Employee.first.availabilities.create!({
+    day: "Friday",
+    start_time: 13,
+    end_time: 21
+})
+
+Employee.first.availabilities.create!({
+    day: "Thursday",
+    start_time: 9,
+    end_time: 17
 })
 
 puts "Done!"
