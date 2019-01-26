@@ -5,7 +5,7 @@ import SideEmployee from './sides/sideEmployee'
 export default class App extends React.Component {
     render(){
         return(
-            <SideEmployee />
+            <SideBar />
         )
     }
 }
