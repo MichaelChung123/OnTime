@@ -8,7 +8,9 @@ lighthouse_employer = User.find_or_create_by!(
     password: "123"
 )
 
+Shift.destroy_all
 Employee.destroy_all
+
 
 lighthouse_employer.employees.create!({
     first_name: "Don",
@@ -112,6 +114,41 @@ lighthouse_employer.employees.create!({
     email: "Mario@lighthouselabs.ca",
     occupation: "Mentor",
     phone_number: "604-123-1234"
+})
+
+Employee.first.shifts.create!({
+    day: "Monday",
+    start_time: 9,
+    end_time: 14,
+    duration: 5
+})
+
+Employee.find(2).shifts.create!({
+    day: "Tuesday",
+    start_time: 14,
+    end_time: 21,
+    duration: 7
+})
+
+Employee.find(3).shifts.create!({
+    day: "Monday",
+    start_time: 12,
+    end_time: 17,
+    duration: 5
+})
+
+Employee.find(4).shifts.create!({
+    day: "Friday",
+    start_time: 15,
+    end_time: 21,
+    duration: 6
+})
+
+Employee.find(5).shifts.create!({
+    day: "Thursday",
+    start_time: 9,
+    end_time: 11,
+    duration: 2
 })
 
 puts "Done!"

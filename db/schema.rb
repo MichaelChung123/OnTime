@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_01_26_001804) do
   create_table "shifts", force: :cascade do |t|
     t.bigint "employee_id"
     t.string "day"
-    t.integer "stat_time"
+    t.integer "start_time"
     t.integer "end_time"
     t.integer "duration"
     t.datetime "created_at", null: false
