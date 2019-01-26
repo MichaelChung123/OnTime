@@ -2,8 +2,23 @@ import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 
 export default class SideBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          employees: []
+        };
+      }
+      componentDidMount(){
+        fetch('/api/employees')
+          .then((response) => {return response.json()})
+          .then((data) => {this.setState({ employees: data }) });
+      }
 
+      
     render() {
+        let employees = this.state.employees.map(e => {
+            return <li>{e.first_name}  {e.last_name}</li>
+        })
         return (
             <SideNav
                 onSelect={(selected) => {
@@ -25,7 +40,7 @@ export default class SideBar extends React.Component {
                             <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} onSelect={("add-employee", event)} />
                         </NavIcon>
                         <NavText>
-                            + Add Employee
+                            + Add Employee 
                         </NavText>
                         <NavItem eventKey="employee/subitem1">
                             <NavText>
@@ -38,7 +53,15 @@ export default class SideBar extends React.Component {
                             </NavText>
                         </NavItem>
                     </NavItem>
+                    <NavItem>
+                        <NavIcon>
 
+                        </NavIcon>
+                        <NavText>
+                            {employees}
+                        </NavText>
+                     </NavItem>
+                    
                 </SideNav.Nav>
             </SideNav>
         )
