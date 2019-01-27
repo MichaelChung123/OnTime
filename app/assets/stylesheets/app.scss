@@ -1,3 +1,4 @@
+//----------------Add Shift Popup Css---------------------//
 .popup {
     position: fixed;
     width: 100%;
@@ -25,20 +26,22 @@
       color: black;
   }
 
-  .example-enter {
+  .popup_css-enter {
     opacity: 0.01;
   }
   
-  .example-enter.example-enter-active {
+  .popup_css-enter.popup_css-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
   
-  .example-leave {
+  .popup_css-leave {
     opacity: 1;
   }
   
-  .example-leave.example-leave-active {
+  .popup_css-leave.popup_css-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
   }
+
+  //----------------Add Shift Popup Css---------------------//

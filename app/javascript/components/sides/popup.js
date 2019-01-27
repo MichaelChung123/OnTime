@@ -10,7 +10,10 @@ export default class Popup extends React.Component {
                 <div className="popup_inner">
                     <div className="popup_form">
                         <input />
-                        <button onClick={() => this.props.closePopup}>close</button>
+                        <input />
+                        <input />
+                        <button onClick={() => this.props.closePopup()}>close</button>
+
                     </div>
                 </div>
             </div> 

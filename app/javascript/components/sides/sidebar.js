@@ -39,15 +39,7 @@ export default class SideBar extends React.Component {
             >
                 <SideNav.Toggle />
                 <SideNav.Nav>
-                    <NavItem eventKey="add-shift" onClick={() => this.handleClick()}>
-                        <ReactCSSTransitionGroup
-                         transitionName="example"
-                         transitionEnterTimeout={500}
-                         transitionLeaveTimeout={300}
-                        >
-                            {this.state.clicked ? <Popup closePopup={this.handleClick}/> : null}            
-                        </ReactCSSTransitionGroup>
-                        
+                    <NavItem eventKey="add-shift" onSelect={() => this.handleClick()}>
                         <NavIcon>
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
@@ -55,6 +47,15 @@ export default class SideBar extends React.Component {
                             + Add Shift
                         </NavText>
                     </NavItem>
+
+                    <ReactCSSTransitionGroup
+                         transitionName="popup_css"
+                         transitionEnterTimeout={500}
+                         transitionLeaveTimeout={300}
+                        >
+                            {this.state.clicked ? <Popup closePopup={this.handleClick} listOfemployees={employees}/> : null}            
+                    </ReactCSSTransitionGroup>
+
                     <NavItem eventKey="add-employee">
                         <NavIcon>
                             <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} onSelect={("add-employee", event)} />
