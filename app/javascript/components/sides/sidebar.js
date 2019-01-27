@@ -1,33 +1,56 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import Popup from './popup'
 
 export default class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          employees: []
+          employees: [],
+          clicked: false
         };
+        this.handleClick = this.handleClick.bind(this);
+        this.closeForm   = this.closeForm.bind(this);
       }
+
       componentDidMount(){
         fetch('/api/employees')
           .then((response) => {return response.json()})
           .then((data) => {this.setState({ employees: data }) });
       }
 
+      handleClick() {
+        this.setState({
+            clicked: true
+        })
+      };
+
+      closeForm(closeButton) {
+        
+        this.setState({
+            clicked: closeButton
+        })
+        console.log(this.state)
+      }
+
       
     render() {
+        
         let employees = this.state.employees.map(e => {
             return <li>{e.first_name}  {e.last_name}</li>
         })
+
         return (
+            
             <SideNav
                 onSelect={(selected) => {
-                    // Add your code here
+                    
                 }}
             >
                 <SideNav.Toggle />
-                <SideNav.Nav defaultSelected="add-shift">
-                    <NavItem eventKey="add-shift">
+                <SideNav.Nav>
+                    <NavItem eventKey="add-shift" onClick={() => this.handleClick()}>
+                    {this.state.clicked ? <Popup closeForm={this.closeForm}/> : null}
                         <NavIcon>
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
