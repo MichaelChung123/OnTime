@@ -1,6 +1,8 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import Popup from './popup'
+// import ReactTransitionGroup from 'react-addons-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class SideBar extends React.Component {
     constructor(props) {
@@ -10,7 +12,6 @@ export default class SideBar extends React.Component {
           clicked: false,
         };
         this.handleClick = this.handleClick.bind(this);
-        // this.x = this.x.bind(this);
       }
 
       componentDidMount(){
@@ -20,19 +21,15 @@ export default class SideBar extends React.Component {
       }
 
       handleClick() {
-        console.log(this.state.clicked)
         this.setState({
             clicked: !this.state.clicked
         })
       };
 
-    //   x() {
-    //     const click = true;
-    //   }
-      
     render() {
-        let employees = this.state.employees.map(e => {
-            return <li>{e.first_name}  {e.last_name}</li>
+        let employees = this.state.employees.map((e, i) => {
+            return <li key={i}>{e.first_name}  {e.last_name}</li>
+            
         });
         return ( 
             <SideNav
@@ -43,7 +40,14 @@ export default class SideBar extends React.Component {
                 <SideNav.Toggle />
                 <SideNav.Nav>
                     <NavItem eventKey="add-shift" onClick={() => this.handleClick()}>
-                    {this.state.clicked ? <Popup closePopup={this.handleClick}/> : null}
+                        <ReactCSSTransitionGroup
+                         transitionName="example"
+                         transitionEnterTimeout={500}
+                         transitionLeaveTimeout={300}
+                        >
+                            {this.state.clicked ? <Popup closePopup={this.handleClick}/> : null}            
+                        </ReactCSSTransitionGroup>
+                        
                         <NavIcon>
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>

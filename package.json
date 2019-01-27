@@ -5,8 +5,12 @@
     "@rails/webpacker": "3.5",
     "@trendmicro/react-sidenav": "^0.4.5",
     "babel-preset-react": "^6.24.1",
+    "install": "^0.12.2",
+    "npm": "^6.7.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-addons-transition-group": "^15.6.2",
     "react-burger-menu": "^2.6.1",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.4.0-beta.6"
