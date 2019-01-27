@@ -7,10 +7,10 @@ export default class SideBar extends React.Component {
         super(props);
         this.state = {
           employees: [],
-          clicked: false
+          clicked: false,
         };
         this.handleClick = this.handleClick.bind(this);
-        this.closeForm   = this.closeForm.bind(this);
+        // this.x = this.x.bind(this);
       }
 
       componentDidMount(){
@@ -20,19 +20,21 @@ export default class SideBar extends React.Component {
       }
 
       handleClick() {
+        console.log(this.state.clicked)
         this.setState({
-            clicked: true
+            clicked: !this.state.clicked
         })
       };
+
+    //   x() {
+    //     const click = true;
+    //   }
       
     render() {
-        
         let employees = this.state.employees.map(e => {
             return <li>{e.first_name}  {e.last_name}</li>
-        })
-
-        return (
-            
+        });
+        return ( 
             <SideNav
                 onSelect={(selected) => {
                     
@@ -41,7 +43,7 @@ export default class SideBar extends React.Component {
                 <SideNav.Toggle />
                 <SideNav.Nav>
                     <NavItem eventKey="add-shift" onClick={() => this.handleClick()}>
-                    {this.state.clicked ? <Popup /> : null}
+                    {this.state.clicked ? <Popup closePopup={this.handleClick}/> : null}
                         <NavIcon>
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
