@@ -24,15 +24,6 @@ export default class SideBar extends React.Component {
             clicked: true
         })
       };
-
-      closeForm(closeButton) {
-        
-        this.setState({
-            clicked: closeButton
-        })
-        console.log(this.state)
-      }
-
       
     render() {
         
@@ -50,7 +41,7 @@ export default class SideBar extends React.Component {
                 <SideNav.Toggle />
                 <SideNav.Nav>
                     <NavItem eventKey="add-shift" onClick={() => this.handleClick()}>
-                    {this.state.clicked ? <Popup closeForm={this.closeForm}/> : null}
+                    {this.state.clicked ? <Popup /> : null}
                         <NavIcon>
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
