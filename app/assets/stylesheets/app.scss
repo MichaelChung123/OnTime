@@ -11,37 +11,76 @@
     background-color: rgba(0,0,0, 0.5);
   }
 
-  .popup_inner {
+.form_container {
     position: absolute;
-    left: 25%;
     right: 25%;
     top: 25%;
     bottom: 25%;
+    width: 40%;
+    height: 350px;
     margin: auto;
+    text-align: center;
     background: white;
     border-radius: 10px;
+    background: #000046;  
+    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  
+    background: linear-gradient(to right, #1CB5E0, #000046); 
+
   } 
 
-  .popup_form {
-      color: black;
-  }
-
-  .popup_css-enter {
+.popup_css-enter {
     opacity: 0.01;
   }
   
-  .popup_css-enter.popup_css-enter-active {
+.popup_css-enter.popup_css-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
   
-  .popup_css-leave {
+.popup_css-leave {
     opacity: 1;
   }
   
-  .popup_css-leave.popup_css-leave-active {
+.popup_css-leave.popup_css-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
   }
 
+
+.popup_form {
+    width: 50%;
+    font-size: large;
+    background-color: lightgrey;
+    margin: 1em;
+    text-align: center
+}
+
+.form_button {
+    display: inline-block;
+    padding: 1em 2em;
+    margin: 3em;
+    border: 0.3em solid white;
+    border-radius: 0.3em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.form_button:hover {
+    border-color: skyblue;
+}
+
+
+
+
+
+
+
   //----------------Add Shift Popup Css---------------------//
+
+
+

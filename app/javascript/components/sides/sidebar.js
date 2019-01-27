@@ -28,7 +28,7 @@ export default class SideBar extends React.Component {
 
     render() {
         let employees = this.state.employees.map((e, i) => {
-            return <li key={i}>{e.first_name}  {e.last_name}</li>
+            return <li key={i}>{e.first_name} {e.last_name}</li>
             
         });
         return ( 
@@ -53,7 +53,7 @@ export default class SideBar extends React.Component {
                          transitionEnterTimeout={500}
                          transitionLeaveTimeout={300}
                         >
-                            {this.state.clicked ? <Popup closePopup={this.handleClick} listOfemployees={employees}/> : null}            
+                            {this.state.clicked ? <Popup closePopup={this.handleClick} listOfemployees={this.state.employees}/> : null}            
                     </ReactCSSTransitionGroup>
 
                     <NavItem eventKey="add-employee">
