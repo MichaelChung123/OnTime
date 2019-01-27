@@ -15,8 +15,7 @@ export default class SideBar extends React.Component {
         // bind function in order to use "this" in the function
         this.selectEmployee = this.selectEmployee.bind(this);
 
-        this.back = this.back.bind(this);
-
+        this.back = this.selectEmployee.bind(this);
     }
 
     componentDidMount() {
