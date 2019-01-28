@@ -18,6 +18,8 @@ export default class SideBar extends React.Component {
         fetch('/api/employees')
           .then((response) => {return response.json()})
           .then((data) => {this.setState({ employees: data }) });
+
+        
       }
 
       addShiftHandleClick() {
@@ -28,7 +30,7 @@ export default class SideBar extends React.Component {
 
     render() {
         let employees = this.state.employees.map((e, i) => {
-            return <li key={i}>{e.first_name} {e.last_name}</li>
+            return <li key={i + 1}>{e.first_name} {e.last_name}</li>
             
         });
         return ( 

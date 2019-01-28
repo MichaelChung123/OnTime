@@ -8,14 +8,15 @@ export default class Popup extends React.Component {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
             const employee = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].value;
+            const employeeId = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].getAttribute('data-key');
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
-
-            console.log(day, employee, startTime, endTime);
+            const duration = endTime - startTime;
+            
         }
         
         const employees = this.props.listOfEmployees.map((e, i) => {
-            return <option key={i}>{e.first_name} {e.last_name} ({e.occupation})</option>
+            return <option key={i + 1} data-key={i + 1}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
 
         return (
