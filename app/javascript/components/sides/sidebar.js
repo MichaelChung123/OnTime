@@ -2,6 +2,7 @@ import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import { Transition } from 'react-transition-group';
 
 export default class SideBar extends React.Component {
     constructor(props) {
@@ -46,6 +47,17 @@ export default class SideBar extends React.Component {
         })
 
         return (
+            // <Transition timeout={400} in={true} appear>
+            //     {(status) => (
+            //         <ul className={`box box-${status}`}>
+            //             <li>one</li>
+            //             <li>two</li>
+            //             <li>three</li>
+            //             <li>four</li>
+            //         </ul>
+            //     )}
+            // </Transition>
+
             <SideNav
                 onSelect={(selected) => {
                     // Add your code here
@@ -54,7 +66,7 @@ export default class SideBar extends React.Component {
                 <SideNav.Toggle />
                 {/* if showInfo is false, then show the following code */}
                 {!this.state.showInfo &&
-                
+
                     <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                         <SideNav.Nav defaultSelected="add-shift">
                             <NavItem eventKey="add-shift">
