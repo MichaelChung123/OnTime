@@ -5,6 +5,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import { Transition } from 'react-transition-group';
 import Popup from './popup'
 
+
 export default class SideBar extends React.Component {
     constructor(props) {
         super(props);

@@ -11,6 +11,8 @@ class ApiController < ApplicationController
         render json: Availability.all
     end
     def shift_create
+        puts params;
+        
         Shift.create!(
             employee_id: params[:employee_id],
             day: params[:day],
