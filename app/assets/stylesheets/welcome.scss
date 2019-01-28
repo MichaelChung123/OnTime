@@ -42,7 +42,7 @@ body {
 /*! react-sidenav v0.4.5 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-sidenav */
 .sidenav---sidenav---_2tBP {
   position: absolute;
-  top: 0;
+  top: 60px;
   bottom: 0;
   left: 0;
   z-index: 1006;
@@ -385,10 +385,21 @@ body {
   height: 60px;
 }
 
+.navbar_navigation {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
 .navbar_logo a {
   color: white;
   text-decoration: none;
   font-size: 1.5em;
+}
+
+.spacer {
+  flex: 1;
 }
 
 .navbar_navigation-items ul {
@@ -396,6 +407,10 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+}
+
+.navbar_navigation-items li {
+  padding: 0 0.5rem;
 }
 
 .navbar_navigation-items a {
