@@ -1,5 +1,6 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import ScheduleLayout from './mainbody/scheduleLayout'
 import Popup from './popup'
 // import ReactTransitionGroup from 'react-addons-transition-group'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
