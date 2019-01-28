@@ -11,13 +11,11 @@ export default class SideBar extends React.Component {
         this.state = {
             employees: [],
             shifts: [],
-            // state property to show info. toggle on and off
             showInfo: false,
             clicked: false
         };
 
 
-        // bind function in order to use "this" in the function
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
@@ -29,7 +27,6 @@ export default class SideBar extends React.Component {
             .then((data) => { this.setState({ employees: data }) });
     }
 
-    // function created to call in onClick
     selectEmployee(employee) {
         this.setState({
             showInfo: true,
@@ -52,7 +49,6 @@ export default class SideBar extends React.Component {
 
     render() {
         let employees = this.state.employees.map((e, index) => {
-            // Use () => in order to use a function to call selectEmployee function or else it will call automatically
             return <li onClick={() => this.selectEmployee(e)} key={index + 1} >{e.first_name}  {e.last_name}</li>
         })
 
@@ -70,7 +66,7 @@ export default class SideBar extends React.Component {
 
             <SideNav
                 onSelect={(selected) => {
-
+                    
                 }}
             >
                 <SideNav.Toggle />
@@ -95,7 +91,7 @@ export default class SideBar extends React.Component {
 
                         <NavItem eventKey="add-employee">
                             <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} onSelect={("add-employee", event)} />
+                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
                                 + Add Employee
