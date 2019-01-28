@@ -16,17 +16,23 @@ export default class SideBar extends React.Component {
 
       componentDidMount(){
         fetch('/api/employees')
-          .then((response) => {return response.json()})
-          .then((data) => {this.setState({ employees: data }) });
-
-        
+            .then((response) => {return response.json()})
+            .then((data) => {this.setState({ employees: data }) });
       }
+
+    //   componentWillUpdate(){
+    //     fetch('/api/shifts', addShift)
+    //         .then(response =>  response.json())
+    //         .catch(error => console.log(error))
+    //   }
 
       addShiftHandleClick() {
         this.setState({
             clicked: !this.state.clicked
         })
       };
+
+
 
     render() {
         let employees = this.state.employees.map((e, i) => {

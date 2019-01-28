@@ -12,7 +12,21 @@ export default class Popup extends React.Component {
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const duration = endTime - startTime;
-            
+
+            let data = {
+                employee_id: employeeId,
+                day: day,
+                start_time: startTime,
+                end_time: endTime,
+                duration: duration
+            }
+
+            fetch('/api/shifts', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then((res) => res.json())
+            .catch(error => console.log(error))
         }
         
         const employees = this.props.listOfEmployees.map((e, i) => {
@@ -29,13 +43,13 @@ export default class Popup extends React.Component {
 
                     <label for="day">Day</label>
                         <select id="day" className="popup_form">
-                            <option value="mon">Monday</option>
-                            <option value="tues">Tuesday</option>
-                            <option value="wed">Wednesday</option>
-                            <option value="thurs">Thursday</option>
-                            <option value="fri">Friday</option>
-                            <option value="sat">Saturday</option>
-                            <option value="sun">Sunday</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
                         </select><br/>
 
                     <label for="start_time">Star Time</label>
