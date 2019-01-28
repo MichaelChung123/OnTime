@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
    get '/', to: 'welcome#index'
    get 'app/index', to: 'app#index'
-   get 'api/employees', to: 'api#index'
+   get 'api/employees', to: 'api#employee'
+   get 'api/shifts', to: 'api#shift'
+   get 'api/availability', to: 'api#availability'
 end
