@@ -1,6 +1,9 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import SideEmployee from './sideEmployee'
+import Popup from './popup'
+// import ReactTransitionGroup from 'react-addons-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class SideBar extends React.Component {
     constructor(props) {
@@ -9,8 +12,12 @@ export default class SideBar extends React.Component {
             employees: [],
             shifts: [],
             // state property to show info. toggle on and off
-            showInfo: false
+            showInfo: false,
+            clicked: false,
+
         };
+
+        this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
 
         // bind function in order to use "this" in the function
         this.selectEmployee = this.selectEmployee.bind(this);
@@ -38,23 +45,31 @@ export default class SideBar extends React.Component {
         });
     }
 
+    addShiftHandleClick() {
+        this.setState({
+            clicked: !this.state.clicked
+        })
+    };
+
     render() {
         let employees = this.state.employees.map((e, index) => {
             // Use () => in order to use a function to call selectEmployee function or else it will call automatically
-            return <li onClick={() => this.selectEmployee(e)} key={ index } >{ e.first_name }  { e.last_name }</li>
+            return <li onClick={() => this.selectEmployee(e)} key={index + 1} >{e.first_name}  {e.last_name}</li>
         })
+
 
         return (
             <SideNav
                 onSelect={(selected) => {
-                    // Add your code here
+
                 }}
             >
                 <SideNav.Toggle />
                 {/* if showInfo is false, then show the following code */}
-                {!this.state.showInfo &&
-                    <SideNav.Nav defaultSelected="add-shift">
-                        <NavItem eventKey="add-shift">
+                {
+                    !this.state.showInfo &&
+                    <SideNav.Nav>
+                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
@@ -62,6 +77,15 @@ export default class SideBar extends React.Component {
                                 + Add Shift
                         </NavText>
                         </NavItem>
+
+                        <ReactCSSTransitionGroup
+                            transitionName="popup_css"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                        >
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
+                        </ReactCSSTransitionGroup>
+
                         <NavItem eventKey="add-employee">
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
@@ -92,8 +116,8 @@ export default class SideBar extends React.Component {
                     </SideNav.Nav>
                 }
 
-                { this.state.showInfo &&
-                    <SideEmployee employee={ this.state.employee } back={this.back}/>
+                {this.state.showInfo &&
+                    <SideEmployee employee={this.state.employee} back={this.back} />
                 }
             </SideNav>
         )

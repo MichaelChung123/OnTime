@@ -1,3 +1,84 @@
-// Place all the styles related to the App controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//----------------Add Shift Popup Css---------------------//
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+  }
+
+.form_container {
+    position: absolute;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    width: 40%;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  } 
+
+.popup_css-enter {
+    opacity: 0.01;
+  }
+  
+.popup_css-enter.popup_css-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  
+.popup_css-leave {
+    opacity: 1;
+  }
+  
+.popup_css-leave.popup_css-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+
+
+.popup_form {
+    width: 50%;
+    font-size: large;
+    background-color: lightgrey;
+    margin: 1em;
+    text-align: center
+}
+
+.form_button {
+    display: inline-block;
+    border: 0.1em solid #3369ff;
+    border-radius: 0.3em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: #3369ff;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: 1.2em;
+    margin: 0 3em 0 3em;
+    padding: 0.5em;
+}
+
+.form_button:hover {
+    border-color: #FFFFFF
+}
+
+
+
+
+
+
+
+  //----------------Add Shift Popup Css---------------------//
+
+
+
