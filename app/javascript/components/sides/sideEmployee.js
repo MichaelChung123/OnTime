@@ -20,13 +20,15 @@ export default class SideEmployee extends React.Component {
                         Employee Info
                     </NavText>
                 </NavItem>
-                <ul>
-                    Name <li>{this.props.employee.first_name} {this.props.employee.last_name} </li>
-                    Email <li> {this.props.employee.email} </li>
-                    Occupation <li> {this.props.employee.occupation} </li>
-                    Phone Number <li> {this.props.employee.phone_number} </li>
-                </ul>
- 
+                {this.props.employee &&
+                    <ul>
+                        Name <li>{this.props.employee.first_name} {this.props.employee.last_name} </li>
+                        Email <li> {this.props.employee.email} </li>
+                        Occupation <li> {this.props.employee.occupation} </li>
+                        Phone Number <li> {this.props.employee.phone_number} </li>
+                    </ul>
+                }
+
                 <NavItem>
                     <NavText>
                         Scheduled Shifts
