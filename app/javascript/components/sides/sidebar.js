@@ -54,6 +54,7 @@ export default class SideBar extends React.Component {
                 <SideNav.Toggle />
                 {/* if showInfo is false, then show the following code */}
                 {!this.state.showInfo &&
+                
                     <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                         <SideNav.Nav defaultSelected="add-shift">
                             <NavItem eventKey="add-shift">
