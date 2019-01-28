@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "@trendmicro/react-navbar": "^0.3.0",
+    "@trendmicro/react-navs": "^0.11.6",
     "@trendmicro/react-sidenav": "^0.4.5",
     "babel-preset-react": "^6.24.1",
     "install": "^0.12.2",
@@ -13,7 +15,8 @@
     "react-addons-transition-group": "^15.6.2",
     "react-burger-menu": "^2.6.1",
     "react-dom": "^16.7.0",
-    "react-router-dom": "^4.4.0-beta.6"
+    "react-router-dom": "^4.4.0-beta.6",
+    "react-sticky": "^5.0.8"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",
