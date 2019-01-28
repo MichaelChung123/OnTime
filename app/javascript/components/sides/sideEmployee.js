@@ -45,6 +45,11 @@ export default class SideEmployee extends React.Component {
                                             <i className="glyphicon glyphicon-user"></i>
                                             Account Settings </a>
                                         </li>
+                                        <li>
+                                            <a href="#">
+                                            <i className="glyphicon glyphicon-user"></i>
+                                            Contact </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 
