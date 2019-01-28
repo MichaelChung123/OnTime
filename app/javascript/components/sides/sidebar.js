@@ -20,12 +20,6 @@ export default class SideBar extends React.Component {
             .then((data) => {this.setState({ employees: data }) });
       }
 
-    //   componentWillUpdate(){
-    //     fetch('/api/shifts', addShift)
-    //         .then(response =>  response.json())
-    //         .catch(error => console.log(error))
-    //   }
-
       addShiftHandleClick() {
         this.setState({
             clicked: !this.state.clicked

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default class Popup extends React.Component {
 
- 
+
     render() {
         function values(event) {
             event.preventDefault();
@@ -20,13 +20,18 @@ export default class Popup extends React.Component {
                 end_time: endTime,
                 duration: duration
             }
-
+            
+            if (duration > 0) {
             fetch('/api/shifts', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
-            }).then((res) => res.json())
-            .catch(error => console.log(error))
+            })
+            } else {
+                alert(`Please double check scheduling time`)
+            }
+            
+
         }
         
         const employees = this.props.listOfEmployees.map((e, i) => {
@@ -87,7 +92,7 @@ export default class Popup extends React.Component {
                             <option value="22">10:00 PM</option>
                         </select><br/>
 
-                    <button className="form_button" onClick={() => values(event)}>Schedule!</button>
+                    <button className="form_button" onClick={(event) => {values(event); this.props.closePopup()}}>Schedule!</button>
                     <button className="form_button" onClick={() => this.props.closePopup()}>Close</button>
                 </div>
             </div> 

@@ -11,10 +11,12 @@ class ApiController < ApplicationController
         render json: Availability.all
     end
     def shift_create
-        puts params[:employee_id]
-        puts params[:day]
-        puts params[:start_time]
-        puts params[:end_time]
-        puts params[:duration]
+        Shift.create!(
+            employee_id: params[:employee_id],
+            day: params[:day],
+            start_time: params[:start_time],
+            end_time: params[:end_time],
+            duration: params[:duration]
+        )
     end
 end
