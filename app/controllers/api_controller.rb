@@ -13,12 +13,12 @@ class ApiController < ApplicationController
     def shift_create
         puts params;
         
-        # Shift.create!(
-        #     employee_id: params[:employee_id],
-        #     day: params[:day],
-        #     start_time: params[:start_time],
-        #     end_time: params[:end_time],
-        #     duration: params[:duration]
-        # )
+        Shift.create!(
+            employee_id: params[:employee_id],
+            day: params[:day],
+            start_time: params[:start_time],
+            end_time: params[:end_time],
+            duration: params[:duration]
+        )
     end
 end
