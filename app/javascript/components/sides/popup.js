@@ -4,7 +4,7 @@ export default class Popup extends React.Component {
 
 
     render() {
-        function values(event) {
+        function values(event, cb) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
             const employee = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].value;
@@ -27,6 +27,7 @@ export default class Popup extends React.Component {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
             })
+            cb()
             } else {
                 alert(`Please double check scheduling time`)
             }
@@ -35,7 +36,7 @@ export default class Popup extends React.Component {
         }
         
         const employees = this.props.listOfEmployees.map((e, i) => {
-            return <option key={i + 1} data-key={i + 1}>{e.first_name} {e.last_name} ({e.occupation})</option>
+            return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
 
         return (
@@ -92,7 +93,7 @@ export default class Popup extends React.Component {
                             <option value="22">10:00 PM</option>
                         </select><br/>
 
-                    <button className="form_button" onClick={(event) => {values(event); this.props.closePopup()}}>Schedule!</button>
+                    <button className="form_button" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule!</button>
                     <button className="form_button" onClick={() => this.props.closePopup()}>Close</button>
                 </div>
             </div> 

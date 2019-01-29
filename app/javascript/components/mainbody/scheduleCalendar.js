@@ -21,15 +21,12 @@ export default class Calendar extends React.Component {
                     <div className="col col-center">
                         <span>
                             {dateFns.format(this.state.currentMonth, dateFormat)}
-                        <div id="logo">
-                            <span className="icon">date_range</span>
-                        </div>
                         </span>
                     </div>
                     <div className="col col-end" onClick={this.nextMonth}>
                         <div className="icon">chevron_right</div>
-                        </div>
                     </div>
+                </div>
             );
     }
     
@@ -74,6 +71,7 @@ export default class Calendar extends React.Component {
                     onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
                 >
                     <span className="number">{formattedDate}</span>
+                    <span className="bg">{formattedDate}</span>
                 </div>
             );
             day = dateFns.addDays(day, 1);

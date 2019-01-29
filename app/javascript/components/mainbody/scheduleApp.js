@@ -1,6 +1,6 @@
 import React from 'react'
 import Calendar from './scheduleCalendar'
-// import './scheduleApp.css'
+
 
 
 export default class ScheduleApp extends React.Component {
