@@ -26,12 +26,16 @@ export default class SideBar extends React.Component {
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employees: data }) });
+
+        fetch('/api/shifts')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ shifts: data }) });
     }
 
     selectEmployee(employee) {
         this.setState({
             showInfo: true,
-            employee: employee
+            employee: employee,
         });
     }
 
@@ -50,24 +54,24 @@ export default class SideBar extends React.Component {
 
     render() {
         let employees = this.state.employees.map((e, index) => {
-            return <li onClick={() => this.selectEmployee(e)} key={index + 1} >{e.first_name}  {e.last_name}</li>
+            return (
+                <NavItem key={index + 1}>
+                    <NavIcon>
+
+                    </NavIcon>
+                    <NavText>
+                        <li onClick={() => this.selectEmployee(e)}>{e.first_name}  {e.last_name}</li>
+                    </NavText>
+                </NavItem>
+            );
         })
 
-        return (
-            // <Transition timeout={400} in={true} appear>
-            //     {(status) => (
-            //         <ul className={`box box-${status}`}>
-            //             <li>one</li>
-            //             <li>two</li>
-            //             <li>three</li>
-            //             <li>four</li>
-            //         </ul>
-            //     )}
-            // </Transition>
+        const shifts = this.state.shifts;
 
+        return (
             <SideNav
                 onSelect={(selected) => {
-                    
+
                 }}
             >
                 <SideNav.Toggle />
@@ -109,20 +113,19 @@ export default class SideBar extends React.Component {
                             </NavItem>
                         </NavItem>
                         <NavItem>
-                            <NavIcon>
-
-                            </NavIcon>
                             <NavText>
-                                {employees}
+                                Employees
                             </NavText>
                         </NavItem>
+                        {employees}
 
                     </SideNav.Nav>
                 }
                 {this.state.showInfo &&
-                    <SideEmployee employee={this.state.employee} back={this.back} />
+                    <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
                 }
             </SideNav>
+
         )
     }
 }
