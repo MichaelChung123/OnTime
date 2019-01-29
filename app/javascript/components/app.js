@@ -3,14 +3,14 @@ import NavBar from './nav/navbar'
 import SideBar from './sides/sidebar'
 import Footer from './footer/footer'
 import SideEmployee from './sides/sideEmployee'
-import ScheduleLayout from './sides/mainbody/scheduleLayout';
+import ScheduleApp from './mainbody/scheduleApp';
 
 export default class App extends React.Component {
     render(){
         return(
             <div>
                 <NavBar />
-                <ScheduleLayout />,
+                <ScheduleApp />,
                 <SideBar />
                 <Footer />
             </div>
