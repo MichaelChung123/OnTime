@@ -28,7 +28,7 @@
     min-width: 240px;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
-    display: inline-block;
+    display: flex;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---expandable---3_dr7 > .sidenav---navitem---9uL5T {
     cursor: pointer;
@@ -101,7 +101,7 @@
   }
   .sidenav---sidenav-toggle---1KRjR {
     position: relative;
-    float: left;
+    float: right;
     width: 64px;
     height: 64px;
     padding: 0;
@@ -309,6 +309,8 @@
   .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
     display: block;
     text-decoration: none;
+
+
     color: #222;
     font-size: 13px;
     line-height: 30px;

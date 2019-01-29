@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
