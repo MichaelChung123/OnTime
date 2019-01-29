@@ -123,7 +123,7 @@ body {
 .profile-userbuttons .btn:last-child {
   margin-right: 0px;
 }
-    
+
 .profile-usermenu {
   margin-top: 30px;
 }
@@ -197,9 +197,10 @@ body {
 /*! react-sidenav v0.4.5 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-sidenav */
 .sidenav---sidenav---_2tBP {
   position: absolute;
-  top: 0;
+  top: 60px;
   bottom: 0;
-  left: 0;
+
+  right: 0;
   z-index: 1006;
   min-width: 64px;
   background: #db3d44;
@@ -292,7 +293,7 @@ body {
 }
 .sidenav---sidenav-toggle---1KRjR {
   position: relative;
-  float: left;
+  float: right;
   width: 64px;
   height: 64px;
   padding: 0;
@@ -527,3 +528,51 @@ body {
 }
 
 /*# sourceMappingURL=react-sidenav.css.map*/
+
+//topnav styling
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #5072DE;
+  height: 60px;
+}
+
+.navbar_navigation {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.navbar_logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.navbar_navigation-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar_navigation-items li {
+  padding: 0 0.5rem;
+}
+
+.navbar_navigation-items a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar_navigation-items a:hover,
+.navbar_navigation-items a:active {
+  color: #3454BA;
+}
