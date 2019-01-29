@@ -116,9 +116,12 @@ export default class SideBar extends React.Component {
                                 </NavItem>
                             </NavItem>
                             <NavItem>
+                                <NavIcon>
+                                    
+                                </NavIcon>
                                 <NavText>
                                     Employees
-                            </NavText>
+                                </NavText>
                             </NavItem>
                             {employees}
 
