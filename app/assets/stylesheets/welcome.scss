@@ -22,14 +22,6 @@ body {
   font-size: 100px;
 }
 
-// html {
-//   background: url(https://www.alux.com/wp-content/uploads/2014/04/most-expensive-sailboat-in-the-world-top-5-and-how-much-do-they-cost-each-article-with-prices.jpg) no-repeat center center fixed;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-//   background-opacity: 0.2;
-// }
 
 .home-content {
   position: relative;
@@ -529,112 +521,6 @@ body {
 
 /*# sourceMappingURL=react-sidenav.css.map*/
 
-//topnav styling
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #2e86c1;
-  height: 60px;
-}
-
-.navbar_navigation {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-.navbar_logo a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5em;
-}
-
-.spacer {
-  flex: 1;
-}
-
-.navbar_navigation-items ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.navbar_navigation-items li {
-  padding: 0 0.5rem;
-}
-
-.navbar_navigation-items a {
-  color: white;
-  text-decoration: none;
-}
-
-.navbar_navigation-items a:hover,
-.navbar_navigation-items a:active {
-  color: #fafcfd;
-}
-
-//footer logistics styling
-.logistics_footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #2e86c1;
-  height: 200px;
-}
-
-.footer_navigation {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-.footer_logo a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5em;
-}
-
-.spacer {
-  flex: 1;
-}
-
-.footer_navigation-items ul {
-  position: absolute;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.footer_navigation-items li {
-  position: absolute;
-  padding: 0 3.5rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-
-}
-
-.footer_navigation-items a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer_navigation-items a:hover,
-.footer_navigation-items a:active {
-  color: #fafcfd;
-}
-
-.mentor_calculator {
-  color: #fafcfd;
-}
 
 
 

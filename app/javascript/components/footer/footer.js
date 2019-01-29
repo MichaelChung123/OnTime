@@ -5,7 +5,6 @@ const Footer = props => (
       <div className="footer_navigation-items">
         <ul>
           <li><a href="/">Number of Students: </a></li>
-          <spacer />
           <li><a href="/">Number of Mentors Needed: </a></li>
         </ul>
       </div>
