@@ -52,6 +52,7 @@ export default class SideBar extends React.Component {
         })
     };
 
+
     render() {
         let employees = this.state.employees.map((e, index) => {
             return (
