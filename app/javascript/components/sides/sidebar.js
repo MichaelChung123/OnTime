@@ -4,6 +4,9 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import { Transition } from 'react-transition-group';
 import Popup from './popup'
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+
 
 
 export default class SideBar extends React.Component {
@@ -56,6 +59,9 @@ export default class SideBar extends React.Component {
         let employees = this.state.employees.map((e, index) => {
             return (
                 <NavItem key={index + 1}>
+                    <NavIcon>
+
+                    </NavIcon>
                     <NavText>
                         <li onClick={() => this.selectEmployee(e)}>{e.first_name}  {e.last_name}</li>
                     </NavText>
@@ -66,7 +72,6 @@ export default class SideBar extends React.Component {
         const shifts = this.state.shifts;
 
         return (
-
             <SideNav
                 onSelect={(selected) => {
 
@@ -74,51 +79,60 @@ export default class SideBar extends React.Component {
             >
                 <SideNav.Toggle />
                 {!this.state.showInfo &&
-                    <SideNav.Nav>
-                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
-                            <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                + Add Shift
-                        </NavText>
-                        </NavItem>
-
-                        <ReactCSSTransitionGroup
-                            transitionName="popup_css"
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={300}
-                        >
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
-                        </ReactCSSTransitionGroup>
-
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                + Add Employee
-                        </NavText>
-                            <NavItem eventKey="employee/subitem1">
+                    <PerfectScrollbar>
+                        <SideNav.Nav>
+                            <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
                                 <NavText>
-                                    Test Sub Item 1
+                                    + Add Shift
+                        </NavText>
+                            </NavItem>
+
+                            <ReactCSSTransitionGroup
+                                transitionName="popup_css"
+                                transitionEnterTimeout={500}
+                                transitionLeaveTimeout={300}
+                            >
+                                {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
+                            </ReactCSSTransitionGroup>
+
+                            <NavItem eventKey="add-employee">
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    + Add Employee
+                        </NavText>
+                                <NavItem eventKey="employee/subitem1">
+                                    <NavText>
+                                        Test Sub Item 1
+                            </NavText>
+                                </NavItem>
+                                <NavItem eventKey="employee/subitem2">
+                                    <NavText>
+                                        Test Sub Item 2
+                            </NavText>
+                                </NavItem>
+                            </NavItem>
+                            <NavItem>
+                                <NavText>
+                                    Employees
                             </NavText>
                             </NavItem>
-                            <NavItem eventKey="employee/subitem2">
-                                <NavText>
-                                    Test Sub Item 2
-                            </NavText>
-                            </NavItem>
-                        </NavItem>
+                            {employees}
 
-                        {employees}
-
-                    </SideNav.Nav>
+                        </SideNav.Nav>
+                    </PerfectScrollbar>
                 }
                 {this.state.showInfo &&
-                    <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+                    <PerfectScrollbar>
+                        <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+                    </PerfectScrollbar>
                 }
             </SideNav>
+
         )
     }
 }
