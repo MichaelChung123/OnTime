@@ -62,7 +62,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "contact") {
             return (
-                <Contact back={this.back} employee={this.props.employee} />
+                <Contact back={this.back}  employee={this.props.employee} />
             );
         }
 
