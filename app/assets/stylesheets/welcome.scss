@@ -74,7 +74,7 @@ body {
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
-  background: #db3d44;
+  background: #2e86c1;
 }
 
 .profile-userpic img {
@@ -159,7 +159,7 @@ body {
 
 .profile-usermenu ul li.active a {
   color: #fafcfd;
-  background-color: #db3d44;
+  background-color: #2e86c1;
   border-left: 2px solid #fafcfd;;
   margin-left: -2px;
   text-decoration: none;
@@ -203,7 +203,7 @@ body {
   right: 0;
   z-index: 1006;
   min-width: 64px;
-  background: #db3d44;
+  background: #2e86c1;
   -webkit-transition: min-width 0.15s;
   -moz-transition: min-width 0.15s;
   -o-transition: min-width 0.15s;
@@ -287,7 +287,7 @@ body {
   color: #fff;
 }
 .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
-  color: #f9dcdd;
+  color: #d6eaf8;
   padding: 0 14px 0 20px;
   line-height: 28px;
 }
@@ -438,11 +438,11 @@ body {
 }
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo,
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
-  color: #f9dcdd;
+  color: #d6eaf8;
 }
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *,
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
-  color: #f9dcdd;
+  color: #d6eaf8;
 }
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo {
   display: block;
@@ -490,7 +490,7 @@ body {
   margin-bottom: 8px;
 }
 .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47.sidenav---selected---1EK3y > .sidenav---navitem---9uL5T {
-  color: #db3d44;
+  color: #2e86c1;
   font-weight: bold;
   background: none;
   cursor: default;
@@ -535,7 +535,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: #5072DE;
+  background: #2e86c1;
   height: 60px;
 }
 
@@ -574,5 +574,71 @@ body {
 
 .navbar_navigation-items a:hover,
 .navbar_navigation-items a:active {
-  color: #3454BA;
+  color: #fafcfd;
 }
+
+//footer logistics styling
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #2e86c1;
+  height: 200px;
+}
+
+.footer_navigation {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.footer_logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.footer_navigation-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.footer_navigation-items li {
+  padding: 0 0.5rem;
+}
+
+.footer_navigation-items a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer_navigation-items a:hover,
+.footer_navigation-items a:active {
+  color: #fafcfd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
