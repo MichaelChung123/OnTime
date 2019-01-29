@@ -7,7 +7,6 @@ export default class Popup extends React.Component {
         function values(event, cb) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
-            const employee = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].value;
             const employeeId = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].getAttribute('data-key');
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
