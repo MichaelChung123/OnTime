@@ -3,9 +3,9 @@
 /*! react-sidenav v0.4.5 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-sidenav */
 .sidenav---sidenav---_2tBP {
     position: absolute;
-    top: 0;
+    top: 60px;
     bottom: 0;
-    left: 0;
+    right: 0;
     z-index: 1006;
     min-width: 64px;
     background: #db3d44;
@@ -28,7 +28,7 @@
     min-width: 240px;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
-    display: inline-block;
+    display: flex;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---expandable---3_dr7 > .sidenav---navitem---9uL5T {
     cursor: pointer;
@@ -36,7 +36,7 @@
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 {
     position: static;
     border: none;
-    float: left;
+    float: right;
     clear: both;
     width: 100%;
     background: transparent;
@@ -101,7 +101,7 @@
   }
   .sidenav---sidenav-toggle---1KRjR {
     position: relative;
-    float: left;
+    float: right;
     width: 64px;
     height: 64px;
     padding: 0;
@@ -209,6 +209,7 @@
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
+
     color: #fff;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *,
@@ -237,7 +238,7 @@
     width: 100%;
     top: 0;
     bottom: 0;
-    left: 0;
+
     background: #fff;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -269,7 +270,12 @@
     text-align: center;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+    position: relative;
     display: none;
+  }
+  .sidenav---navtext---1AE_f {
+    position: center;
+    // background-color: blue;
   }
   .sidenav---sidenav-subnav---1EN61 {
     min-width: 200px;
@@ -309,6 +315,8 @@
   .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
     display: block;
     text-decoration: none;
+
+
     color: #222;
     font-size: 13px;
     line-height: 30px;
@@ -333,10 +341,9 @@
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;
-    
+
   }
 
-  
-  
+
+
   /*# sourceMappingURL=react-sidenav.css.map*/
-  
