@@ -1,11 +1,14 @@
 //topnav styling
+
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #2e86c1;
-  height: 45px;
+  background: #86A4D5;
+  height: 60px;
+  font-family: 'Pacifico', cursive;
 }
 
 .navbar_navigation {
@@ -19,6 +22,7 @@
   color: white;
   text-decoration: none;
   font-size: 1.5em;
+  font-family: 'Pacifico', cursive;
 }
 
 .spacer {
