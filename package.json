@@ -2,6 +2,7 @@
   "name": "react-app",
   "private": true,
   "dependencies": {
+    "@material/layout-grid": "^0.41.0",
     "@rails/webpacker": "3.5",
     "@trendmicro/react-sidenav": "^0.4.5",
     "babel-preset-react": "^6.24.1",
