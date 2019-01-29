@@ -5,7 +5,6 @@ export default class SideEmployee extends React.Component {
 
     constructor(props) {
         super(props);
-
     }
 
     render() {

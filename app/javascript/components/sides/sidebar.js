@@ -4,9 +4,6 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import { Transition } from 'react-transition-group';
 import Popup from './popup'
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar'
-
 
 
 export default class SideBar extends React.Component {
@@ -79,57 +76,53 @@ export default class SideBar extends React.Component {
             >
                 <SideNav.Toggle />
                 {!this.state.showInfo &&
-                    <PerfectScrollbar>
-                        <SideNav.Nav>
-                            <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    + Add Shift
+                    <SideNav.Nav>
+                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
+                            <NavIcon>
+                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                + Add Shift
                         </NavText>
-                            </NavItem>
+                        </NavItem>
 
-                            <ReactCSSTransitionGroup
-                                transitionName="popup_css"
-                                transitionEnterTimeout={500}
-                                transitionLeaveTimeout={300}
-                            >
-                                {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
-                            </ReactCSSTransitionGroup>
+                        <ReactCSSTransitionGroup
+                            transitionName="popup_css"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                        >
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
+                        </ReactCSSTransitionGroup>
 
-                            <NavItem eventKey="add-employee">
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    + Add Employee
+                        <NavItem eventKey="add-employee">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                + Add Employee
                         </NavText>
-                                <NavItem eventKey="employee/subitem1">
-                                    <NavText>
-                                        Test Sub Item 1
-                            </NavText>
-                                </NavItem>
-                                <NavItem eventKey="employee/subitem2">
-                                    <NavText>
-                                        Test Sub Item 2
-                            </NavText>
-                                </NavItem>
-                            </NavItem>
-                            <NavItem>
+                            <NavItem eventKey="employee/subitem1">
                                 <NavText>
-                                    Employees
+                                    Test Sub Item 1
                             </NavText>
                             </NavItem>
-                            {employees}
+                            <NavItem eventKey="employee/subitem2">
+                                <NavText>
+                                    Test Sub Item 2
+                            </NavText>
+                            </NavItem>
+                        </NavItem>
+                        <NavItem>
+                            <NavText>
+                                Employees
+                            </NavText>
+                        </NavItem>
+                        {employees}
 
-                        </SideNav.Nav>
-                    </PerfectScrollbar>
+                    </SideNav.Nav>
                 }
                 {this.state.showInfo &&
-                    <PerfectScrollbar>
-                        <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
-                    </PerfectScrollbar>
+                    <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
                 }
             </SideNav>
 
