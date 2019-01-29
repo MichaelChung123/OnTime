@@ -578,7 +578,7 @@ body {
 }
 
 //footer logistics styling
-.footer {
+.logistics_footer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -605,14 +605,21 @@ body {
 }
 
 .footer_navigation-items ul {
+  position: absolute;
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
+
 }
 
 .footer_navigation-items li {
-  padding: 0 0.5rem;
+  position: absolute;
+  padding: 0 3.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
 }
 
 .footer_navigation-items a {
@@ -622,6 +629,10 @@ body {
 
 .footer_navigation-items a:hover,
 .footer_navigation-items a:active {
+  color: #fafcfd;
+}
+
+.mentor_calculator {
   color: #fafcfd;
 }
 
