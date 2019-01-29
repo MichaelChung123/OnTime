@@ -3,6 +3,7 @@ class ApiController < ApplicationController
     def employee
         render json: Employee.all
     end
+
     def shift
         render json: Shift.all
     end
@@ -10,6 +11,7 @@ class ApiController < ApplicationController
     def availability
         render json: Availability.all
     end
+    
     def shift_create
         puts params;
         
