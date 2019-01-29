@@ -1,11 +1,13 @@
 import React from 'react'
 import dateFns from "date-fns";
+import Schedule from './schedule';
 
-
+//chevron-right has little bug
 export default class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
-        selectedDate: new Date()
+        selectedDate: new Date(),
+        showSchedule: false
     };
 
     renderHeader() {
@@ -88,7 +90,8 @@ export default class Calendar extends React.Component {
 
     onDateClick = day => {
         this.setState({
-            selectedDate: day
+            selectedDate: day,
+            showSchedule: true
         });
     }
     nextMonth = () => {
@@ -102,13 +105,23 @@ export default class Calendar extends React.Component {
         });
     }
     
+    backClick = () => {
+        this.setState({
+            showSchedule: false
+        })
+    }
     
     render() {
         return(
-            <div className="calendar">
-                <div>{this.renderHeader()}</div>
-                <div>{this.renderDays()}</div>
-                <div>{this.renderCells()}</div>
+            <div>
+            {this.state.showSchedule ? 
+            <Schedule backClick={this.backClick}/> :
+                <div className="calendar">
+                    <div>{this.renderHeader()}</div>
+                    <div>{this.renderDays()}</div>
+                    <div>{this.renderCells()}</div>
+                </div>
+            }
             </div>
         )
     }
