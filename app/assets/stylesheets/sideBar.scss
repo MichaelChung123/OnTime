@@ -3,9 +3,9 @@
 /*! react-sidenav v0.4.5 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-sidenav */
 .sidenav---sidenav---_2tBP {
     position: absolute;
-    top: 0;
+    top: 60px;
     bottom: 0;
-    left: 0;
+    right: 0;
     z-index: 1006;
     min-width: 64px;
     background: #db3d44;
@@ -36,7 +36,7 @@
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 {
     position: static;
     border: none;
-    float: left;
+    float: right;
     clear: both;
     width: 100%;
     background: transparent;
@@ -333,10 +333,9 @@
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;
-    
+
   }
 
-  
-  
+
+
   /*# sourceMappingURL=react-sidenav.css.map*/
-  
