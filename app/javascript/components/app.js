@@ -8,22 +8,41 @@ import MentorCalculator from './logistics/mentorcalculator'
 // import AvailableEmployees from './logistics/availableEmployees'
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            clickedDate: "today"
+        }
+
+        this.getDate = this.getDate.bind(this);
+    }
+
+    getDate = (date) => {
+        this.setState({
+            clickedDate: date
+        })
+    }
+
     render(){
+
         return(
             <div>
                 <NavBar />
 
                 <SideBar />
-                <ScheduleApp />
-                <br></br>
-                <br></br>
+
                 <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
                 <MentorCalculator />
 
+                <ScheduleApp getDate={this.getDate} />
+                <SideBar getDate={this.state.clickedDate}/>
+                <Footer />
+
             </div>
         )
     }
 }
+

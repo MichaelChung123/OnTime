@@ -1,7 +1,9 @@
 import React from 'react'
 
 export default class Popup extends React.Component {
-
+    state = {
+        getDate: this.props.getDate
+    }
 
     render() {
         function values(event, cb) {
@@ -34,10 +36,11 @@ export default class Popup extends React.Component {
 
         }
 
+        console.log(this.state.getDate)
+
         const employees = this.props.listOfEmployees.map((e, i) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
-
         return (
             <div className="popup">
                 <div className="form_container">

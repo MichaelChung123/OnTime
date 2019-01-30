@@ -1,21 +1,38 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import EditEmployee from './editEmployee'
+import Contact from './contact'
 
 export default class SideEmployee extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            editSelected: false,
+            renderChild: false,
             expanded: true
         }
+
         this.editEmployee = this.editEmployee.bind(this);
+        this.showContact = this.showContact.bind(this);
+
+        this.back = this.back.bind(this);
     }
 
     editEmployee() {
         this.setState({
-            editSelected: true
+            renderChild: "edit"
+        });
+    }
+
+    showContact() {
+        this.setState({
+            renderChild: "contact"
+        });
+    }
+
+    back() {
+        this.setState({
+            renderChild: false
         });
     }
 
@@ -35,73 +52,81 @@ export default class SideEmployee extends React.Component {
             }
         });
 
+        const render = this.state.renderChild;
+
+        if (render === "edit") {
+            return (
+                <EditEmployee back={this.back} employee={this.props.employee} />
+            );
+        }
+
+        if (render === "contact") {
+            return (
+                <Contact back={this.back} employee={this.props.employee} />
+            );
+        }
+
         return (
             <div>
-                {!this.state.editSelected &&
-                    <SideNav expanded={this.state.expanded}
-                        onToggle={(expanded) => {
-                            this.setState({ expanded: !this.state.expanded });
-                        }}
-                    >
-                        <SideNav.Toggle />
-                        <SideNav.Nav>
-                            <NavItem eventKey="add-shift">
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText onClick={() => this.props.back()}>
-                                    Back
+                <SideNav expanded={this.state.expanded}
+                    onToggle={(expanded) => {
+                        this.setState({ expanded: !this.state.expanded });
+                    }}
+                >
+                    <SideNav.Toggle />
+                    <SideNav.Nav>
+                        <NavItem eventKey="add-shift">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText onClick={() => this.props.back()}>
+                                Back
                             </NavText>
-                            </NavItem>
+                        </NavItem>
 
-                            <div className="container">
-                                <div className="row profile">
-                                    <div className="col-md-3">
-                                        <div className="profile-sidebar">
+                        <div className="container">
+                            <div className="row profile">
+                                <div className="col-md-3">
+                                    <div className="profile-sidebar">
 
-                                            <div className="profile-userpic">
-                                                {/* <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" className="img-responsive" alt=""> */}
-                                            </div>
-
-                                            <div className="profile-usertitle">
-                                                <div className="profile-usertitle-name">
-                                                    {this.props.employee.first_name} {this.props.employee.last_name}
-                                                </div>
-                                                <div className="profile-usertitle-job">
-                                                    {this.props.employee.occupation}
-                                                </div>
-                                            </div>
-
-                                            <div className="profile-userbuttons">
-                                                <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
-                                                <button type="button" className="btn btn-danger btn-sm">Contact</button>
-                                            </div>
-
+                                        <div className="profile-userpic">
+                                            {/* <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" className="img-responsive" alt=""> */}
                                         </div>
+
+                                        <div className="profile-usertitle">
+                                            <div className="profile-usertitle-name">
+                                                {this.props.employee.first_name} {this.props.employee.last_name}
+                                            </div>
+                                            <div className="profile-usertitle-job">
+                                                {this.props.employee.occupation}
+                                            </div>
+                                        </div>
+
+                                        <div className="profile-userbuttons">
+                                            <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
+                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.showContact}>Contact</button>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <NavItem>
-                                <NavIcon>
+                        <NavItem>
+                            <NavIcon>
 
-                                </NavIcon>
-                                <NavText>
-                                    Scheduled Shifts
+                            </NavIcon>
+                            <NavText>
+                                Scheduled Shifts
                                 </NavText>
-                            </NavItem>
+                        </NavItem>
 
-                            {shifts}
+                        {shifts}
 
-                        </SideNav.Nav>
-                    </SideNav>
-
-                }
-                {this.state.editSelected &&
-                    <EditEmployee back={this.props.back} employee={this.props.employee} />
-                }
+                    </SideNav.Nav>
+                </SideNav>
             </div>
-        )
+        );
     }
 }

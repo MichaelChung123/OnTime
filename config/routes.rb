@@ -7,4 +7,5 @@ Rails.application.routes.draw do
    get 'api/shifts', to: 'api#shift'
    get 'api/availability', to: 'api#availability'
    post 'api/shifts', to: 'api#shift_create'
+   get 'api/employeeshifts', to: 'api#employee_shifts'
 end
