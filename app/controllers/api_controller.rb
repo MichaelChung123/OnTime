@@ -24,12 +24,26 @@ class ApiController < ApplicationController
         )
     end
 
+    def employee_create
+        puts params;
+
+        Employee.create!(
+            user_id: params[:user_id],
+            first_name: params[:first_name],
+            last_name: params[:last_name],
+            email: params[:email],
+            occupation: params[:occupation],
+            phone_number: params[:phone_number]
+        )
+    end
+
     def employee_edit
         puts params;
         
         current_employee = Employee.find(params[:id])
 
         current_employee.update!(
+            user_id: params[:user_id],
             first_name: params[:first_name],
             last_name: params[:last_name],
             email: params[:email],

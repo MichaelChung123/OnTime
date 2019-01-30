@@ -9,6 +9,7 @@ export default class EditEmployee extends React.Component {
 
         this.state = {
             expanded: true,
+            user_id: 1,
             fname: emp.first_name,
             lname: emp.last_name,
             email: emp.email,
@@ -39,15 +40,16 @@ export default class EditEmployee extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const state = this.state;
 
         let data = {
+            //user_id is hard coded to 1 since demo is only meant for one admin user
+            user_id: this.state.user_id,
             id: this.props.employee.id,
-            first_name: state.fname,
-            last_name: state.lname,
-            email: state.email,
-            occupation: state.occupation,
-            phone_number: state.phone
+            first_name: this.state.fname,
+            last_name: this.state.lname,
+            email: this.state.email,
+            occupation: this.state.occupation,
+            phone_number: this.state.phone
         }
 
         fetch('/api/employees', {
