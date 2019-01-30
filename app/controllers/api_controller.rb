@@ -23,4 +23,21 @@ class ApiController < ApplicationController
             duration: params[:duration]
         )
     end
+
+    def employee_edit
+        puts params;
+        
+        current_employee = Employee.find(params[:id])
+
+        current_employee.update!(
+            first_name: params[:first_name],
+            last_name: params[:last_name],
+            email: params[:email],
+            occupation: params[:occupation],
+            phone_number: params[:phone_number]
+        )
+    end
+
+        
+
 end
