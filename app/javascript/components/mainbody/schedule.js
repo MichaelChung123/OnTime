@@ -14,7 +14,12 @@ export default class Schedule extends React.Component {
         return(
             <div className="day_schedule"><br/><br/>
                 <h1>this is new schedule platform</h1>
-                <button className="daily_back_button" onClick={() => this.props.backClick()}>back</button>
+
+                <div className="daily_back_button" onClick={() => this.props.backClick()}>
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                    <a href  >Back</a>
+                </div>
+
                 <div className="schedule-weekly-container">
                     <nav className="schedule-weekly-nav">
                         <h1>Schedule of: {formatDate}</h1>
@@ -25,3 +30,6 @@ export default class Schedule extends React.Component {
         )
     }
 }
+
+
+

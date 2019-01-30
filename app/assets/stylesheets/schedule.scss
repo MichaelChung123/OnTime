@@ -56,7 +56,7 @@
 }
 
 .daily_back_button {
-  background-color: #4CAF50; /* Green */
+  background-color: #86A4D5; /* main-theme purple/blue */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -64,7 +64,14 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  border-radius: 25px;
+  i {
+    margin-right: 5px;
+    font-size: 20px;
+  }
 }
+
+
 
 // .mon-emp-2 {
 //     width: 71%;
