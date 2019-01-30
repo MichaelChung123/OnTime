@@ -4,6 +4,7 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Transition } from 'react-transition-group';
 import Popup from './popup'
+import AddEmployee from './addEmployee'
 
 
 export default class SideBar extends React.Component {
@@ -12,7 +13,7 @@ export default class SideBar extends React.Component {
         this.state = {
             employees: [],
             shifts: [],
-            showInfo: false,
+            renderChild: false,
             clicked: false,
             expanded: true
         };
@@ -34,14 +35,14 @@ export default class SideBar extends React.Component {
 
     selectEmployee(employee) {
         this.setState({
-            showInfo: true,
+            renderChild: "employee",
             employee: employee,
         });
     }
 
     back() {
         this.setState({
-            showInfo: false
+            renderChild: false
         });
 
     }
@@ -51,6 +52,12 @@ export default class SideBar extends React.Component {
             clicked: !this.state.clicked
         })
     };
+
+    addEmployee() {
+        this.setState({
+            renderChild: "addEmployee"
+        });
+    }
 
 
     render() {
@@ -69,13 +76,19 @@ export default class SideBar extends React.Component {
 
         const shifts = this.state.shifts;
 
-        const render = this.state.showInfo;
+        const render = this.state.renderChild;
 
 
 
-        if (render === true) {
+        if (render === "employee") {
             return (
                 <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+            );
+        }
+        
+        if (render === "addEmployee") {
+            return (
+                <AddEmployee back={this.back} />
             );
         }
 
@@ -109,19 +122,9 @@ export default class SideBar extends React.Component {
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
-                            <NavText>
+                            <NavText onClick={() => this.addEmployee()}>
                                 + Add Employee
-                        </NavText>
-                            <NavItem eventKey="employee/subitem1">
-                                <NavText>
-                                    Test Sub Item 1
                             </NavText>
-                            </NavItem>
-                            <NavItem eventKey="employee/subitem2">
-                                <NavText>
-                                    Test Sub Item 2
-                            </NavText>
-                            </NavItem>
                         </NavItem>
                         <NavItem>
                             <NavIcon>

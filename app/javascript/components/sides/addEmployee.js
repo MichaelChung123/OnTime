@@ -1,41 +1,32 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 
-export default class EditEmployee extends React.Component {
+export default class AddEmployee extends React.Component {
     constructor(props) {
         super(props)
 
-        const emp = this.props.employee;
-
         this.state = {
             expanded: true,
-            fname: emp.first_name,
-            lname: emp.last_name,
-            email: emp.email,
-            occupation: emp.occupation,
-            phone: emp.phone_number
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        const value = event.target.value;
-        const name = event.target.name;
-
-        if (name === "fname") {
-            this.setState({ fname: value });
-        } else if (name === "lname") {
-            this.setState({ lname: value });
-        } else if (name === "email") {
-            this.setState({ email: value });
-        } else if (name === "occupation") {
-            this.setState({ occupation: value });
-        } else if (name === "phone") {
-            this.setState({ phone: value });
+            renderChild: false
         }
     }
+
+    // handleChange(event) {
+    //     const value = event.target.value;
+    //     const name = event.target.name;
+
+    //     if (name === "fname") {
+    //         this.setState({ fname: value });
+    //     } else if (name === "lname") {
+    //         this.setState({ lname: value });
+    //     } else if (name === "email") {
+    //         this.setState({ email: value });
+    //     } else if (name === "occupation") {
+    //         this.setState({ occupation: value });
+    //     } else if (name === "phone") {
+    //         this.setState({ phone: value });
+    //     }
+    // }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -51,7 +42,7 @@ export default class EditEmployee extends React.Component {
         }
 
         fetch('/api/employees', {
-            method: "PUT",
+            method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
@@ -60,6 +51,10 @@ export default class EditEmployee extends React.Component {
     }
 
     render() {
+
+        const render = this.state.renderChild;
+        
+
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
@@ -84,11 +79,11 @@ export default class EditEmployee extends React.Component {
                             <NavText>
                                 <div className="editEmployeeForm">
                                     <form onSubmit={this.handleSubmit}>
-                                        First name: <input type="text" name="fname" value={this.state.fname} onChange={this.handleChange} /><br />
-                                        Last name: <input type="text" name="lname" value={this.state.lname} onChange={this.handleChange} /><br />
-                                        Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} /><br />
-                                        Occupation: <input type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} /><br />
-                                        Phone Number: <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} /><br />
+                                        First name: <input type="text" name="fname"/><br />
+                                        Last name: <input type="text" name="lname"/><br />
+                                        Email: <input type="text" name="email"/><br />
+                                        Occupation: <input type="text" name="occupation" /><br />
+                                        Phone Number: <input type="text" name="phone" /><br />
                                         <input type="submit" value="Submit" />
                                     </form>
                                 </div>
