@@ -15,9 +15,9 @@ export default class SideBar extends React.Component {
             shifts: [],
             renderChild: false,
             clicked: false,
-            expanded: true
+            expanded: false
         };
-        
+
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
@@ -85,7 +85,7 @@ export default class SideBar extends React.Component {
                 <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
-        
+
         if (render === "addEmployee") {
             return (
                 <AddEmployee back={this.back} />
@@ -97,6 +97,7 @@ export default class SideBar extends React.Component {
                 <SideNav expanded={this.state.expanded}
                     onToggle={(expanded) => {
                         this.setState({ expanded: !this.state.expanded });
+                        console.log(this.state.expanded)
                     }}
                 >
                     <SideNav.Toggle />

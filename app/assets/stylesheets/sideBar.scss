@@ -3,12 +3,12 @@
 /*! react-sidenav v0.4.5 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-sidenav */
 .sidenav---sidenav---_2tBP {
     position: absolute;
-    top: 60px;
+    top: 0px;
     bottom: 0;
     right: 0;
     z-index: 1006;
     min-width: 64px;
-    background: #db3d44;
+    background: #86A4D5;
     -webkit-transition: min-width 0.15s;
     -moz-transition: min-width 0.15s;
     -o-transition: min-width 0.15s;
@@ -16,7 +16,7 @@
     transition: min-width 0.15s;
     // height: fit-content;
     overflow: scroll;
-    
+
   }
   .sidenav---sidenav---_2tBP.sidenav---collapsed---LQDEv .sidenav---sidenav-nav---3tvij .sidenav---sidenav-navitem---uwIJ- .sidenav---sidenav-subnav---1EN61 {
     display: none;
@@ -29,6 +29,7 @@
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
     display: flex;
+
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---expandable---3_dr7 > .sidenav---navitem---9uL5T {
     cursor: pointer;
@@ -95,7 +96,7 @@
     color: #fff;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
-    color: #f9dcdd;
+    color: #fafcfd;
     padding: 0 14px 0 20px;
     line-height: 28px;
   }
@@ -247,11 +248,11 @@
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
-    color: #f9dcdd;
+    color: #fafcfd;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
-    color: #f9dcdd;
+    color: #fafcfd;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo {
     display: block;
@@ -304,7 +305,7 @@
     margin-bottom: 8px;
   }
   .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47.sidenav---selected---1EK3y > .sidenav---navitem---9uL5T {
-    color: #db3d44;
+    color: #86A4D5;
     font-weight: bold;
     background: none;
     cursor: default;
