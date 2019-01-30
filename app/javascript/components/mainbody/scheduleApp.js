@@ -16,10 +16,11 @@ export default class ScheduleApp extends React.Component {
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
     }
+    
     render() {
         return(
             <div>
-                <Calendar employees={this.state.employees} shifts={this.state.shifts}/>
+                <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate}/>
                 <hr/>
             </div>
         )
