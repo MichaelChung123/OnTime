@@ -40,11 +40,9 @@ export default class ScheduleTable extends React.Component {
                         <th>10:00PM</th>
                     </tr>
                         <tr className="test">
-                            <th className='day' >Clicked Day</th>
+                            <th className='day' >{this.props.dayClicked}</th>
                             <td colspan="14"><span className="mon-emp-1">bar</span></td>
                         </tr>
-                        
-
                 </table>
                 
             </div>
