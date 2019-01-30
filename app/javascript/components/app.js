@@ -4,15 +4,22 @@ import SideBar from './sides/sidebar'
 import Footer from './footer/footer'
 import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
+import MentorCalculator from './logistics/mentorcalculator'
 
 export default class App extends React.Component {
     render(){
         return(
             <div>
                 <NavBar />
-                <ScheduleApp />,
-                <SideBar />
 
+                <SideBar />
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <MentorCalculator />
             </div>
         )
     }
