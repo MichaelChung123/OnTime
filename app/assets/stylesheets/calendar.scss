@@ -61,10 +61,10 @@ header #logo .icon {
   padding-right: .25em;
 }
 
-main {
-  margin: 0 auto;
-  max-width: 50em;
-}
+// .calendar-container {
+//   margin: 0 auto;
+//   max-width: 50em;
+// }
 
 
 /* GRID */
@@ -109,7 +109,7 @@ main {
 .calendar {
   display: block;
   position: relative;
-  width: 100%;
+  width: 70%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
   --main-color: #1a8fff;

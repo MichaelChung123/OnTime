@@ -93,6 +93,7 @@ export default class Calendar extends React.Component {
             selectedDate: day,
             showSchedule: true
         });
+        this.props.getDate(day)
     }
     nextMonth = () => {
         this.setState({
@@ -115,7 +116,7 @@ export default class Calendar extends React.Component {
         return(
             <div className="schedule-app-container">
             {this.state.showSchedule ? 
-            <Schedule backClick={this.backClick}/> :
+            <Schedule backClick={this.backClick} employees={this.props.employees} shifts={this.props.shifts} currentDay={this.state.selectedDate} /> :
                 <div className="calendar">
                     <div>{this.renderHeader()}</div>
                     <div>{this.renderDays()}</div>

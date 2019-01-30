@@ -17,7 +17,10 @@ export default class SideBar extends React.Component {
             clicked: false,
             expanded: true
         };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 30c279f312425517c74e10c7f297e595045386fc
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
@@ -100,6 +103,7 @@ export default class SideBar extends React.Component {
                     }}
                 >
                     <SideNav.Toggle />
+<<<<<<< HEAD
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
@@ -107,6 +111,32 @@ export default class SideBar extends React.Component {
                             </NavIcon>
                             <NavText>
                                 + Add Shift
+=======
+                        <SideNav.Nav>
+                            <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()} >
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    + Add Shift
+                        </NavText>
+                            </NavItem>
+
+                            <ReactCSSTransitionGroup
+                                transitionName="popup_css"
+                                transitionEnterTimeout={500}
+                                transitionLeaveTimeout={300}
+                            >
+                                {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
+                            </ReactCSSTransitionGroup>
+
+                            <NavItem eventKey="add-employee">
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    + Add Employee
+>>>>>>> 30c279f312425517c74e10c7f297e595045386fc
                         </NavText>
                         </NavItem>
 
