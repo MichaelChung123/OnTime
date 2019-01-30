@@ -25,7 +25,7 @@ export default class MentorCalculator extends React.Component {
           Number:
             <input type="number" value={this.state.value} onChange={this.handleChange}></input>
         </label>
-        <div>You need {this.state.value/7} mentors</div>
+        <div>You need {Math.round(this.state.value/7)} mentors</div>
       </form>
       )
   }

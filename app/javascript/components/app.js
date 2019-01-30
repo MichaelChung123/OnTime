@@ -5,6 +5,7 @@ import Footer from './footer/footer'
 import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
 import MentorCalculator from './logistics/mentorcalculator'
+import AvailableEmployees from './logistics/availableEmployees'
 
 export default class App extends React.Component {
     render(){
@@ -20,6 +21,7 @@ export default class App extends React.Component {
                 <br></br>
                 <br></br>
                 <MentorCalculator />
+                <AvailableEmployees />
             </div>
         )
     }
