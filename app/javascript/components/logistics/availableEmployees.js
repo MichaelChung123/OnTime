@@ -1,51 +1,36 @@
 import React from 'react';
 
 export default class MentorCalculator extends React.Component {
-  state = {}
-
-    componentDidMount () {
-    fetch('/api/employees')
-      .then(res => res.json())
-      .then(this.onLoad);
-  }
-
-  parseData (response) {
-    return response.e;
-  }
-
-  onLoad = (employees) => {
-    this.setState({
-      es: this.parseData(e)
-    });
-  }
-
-  render () {
-    const { e } = this.state;
-
-    return e ?
-      this.renderData(e) :
-      this.renderLoading()
-  }
-
-  renderData (employees) {
-    if (e && e.length) {
-      return (
-        <div>
-          {
-            e.map(item => (
-              <div key={e.name}>
-                <a href={`mailto:${e.email}`}>{e.firstname}</a> {e.lastname}
-              </div>
-            ))
-          }
-        </div>
-      );
-    } else {
-      return <div>No items found</div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            employees: [],
+            shifts: [],
+            showInfo: false,
+            clicked: false,
+            expanded: true
+        };
     }
-  }
 
-  renderLoading () {
-    return <div>Loading...</div>
-  }
+    componentDidMount() {
+        fetch('/api/employees')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ employees: data }) });
+
+    }
+
+    render() {
+        let employees = this.state.employees.map((e, index) => {
+            return (
+                <div className={index + 1}>
+                    <div>
+
+                    </div>
+                    <div>
+                        <li onClick={() => this.selectEmployee(e)}>{e.first_name}  {e.last_name}</li>
+                    </div>
+                </div>
+            )
+        }
+    }
 }

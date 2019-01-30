@@ -113,7 +113,7 @@ main {
   width: 100%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
-  --main-color: #1a8fff;
+  --main-color: #EC7063;
   --text-color: #777;
   --text-color-light: #ccc;
   --border-color: #eee;
@@ -174,7 +174,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, #EC7063 0%,#F5B7B1 40%);
   border-image-slice: 1;
 }
 

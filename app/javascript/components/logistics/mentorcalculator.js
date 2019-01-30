@@ -21,11 +21,11 @@ export default class MentorCalculator extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Number:
+        <label className="student-input">
+          Number of Students:
             <input type="number" value={this.state.value} onChange={this.handleChange}></input>
         </label>
-        <div>You need {Math.round(this.state.value/7)} mentors</div>
+        <div className="mentor-number">You need {Math.round(this.state.value/7)} mentors</div>
       </form>
       )
   }

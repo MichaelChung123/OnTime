@@ -22,21 +22,21 @@
     text-align: center;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  } 
+  }
 
 .popup_css-enter {
     opacity: 0.01;
   }
-  
+
 .popup_css-enter.popup_css-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
-  
+
 .popup_css-leave {
     opacity: 1;
   }
-  
+
 .popup_css-leave.popup_css-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
@@ -70,4 +70,13 @@
 
 .form_button:hover {
     border-color: #FFFFFF
+}
+
+
+
+
+///chagn3es
+label {
+    position: relative;
+    left: 30px;
 }
