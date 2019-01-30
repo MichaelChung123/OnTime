@@ -28,9 +28,9 @@ export default class App extends React.Component {
                 <NavBar />
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate}/>
+                <Footer />
             </div>
         )
     }
 }
 
-{/* <Footer / */}
