@@ -6,7 +6,7 @@ export default class ScheduleApp extends React.Component {
         employees: [],
         shifts: []
     }
-    
+
     componentDidMount() {
         fetch('/api/employees')
             .then((response) => { return response.json() })
@@ -16,12 +16,12 @@ export default class ScheduleApp extends React.Component {
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
     }
-    
+
     render() {
         return(
             <div>
                 <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate}/>
-                <hr/>
+
             </div>
         )
     }

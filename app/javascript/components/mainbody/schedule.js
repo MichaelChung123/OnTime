@@ -10,11 +10,11 @@ export default class Schedule extends React.Component {
         const year = clickedDay.getFullYear();
         const date = new Date(year, month, numDay);
         const formatDate = dateFns.format(date, 'dddd, MMMM Do, YYYY');
-        
+
         return(
-            <div><br/><br/>
+            <div className="day_schedule"><br/><br/>
                 <h1>this is new schedule platform</h1>
-                <button onClick={() => this.props.backClick()}>back</button>
+                <button className="daily_back_button" onClick={() => this.props.backClick()}>back</button>
                 <div className="schedule-weekly-container">
                     <nav className="schedule-weekly-nav">
                         <h1>Schedule of: {formatDate}</h1>
