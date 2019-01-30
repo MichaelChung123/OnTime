@@ -6,9 +6,12 @@
 }
 
 .schedule-container {
-    overflow: scroll;
+    overflow: auto;
     height: 400px;
-    table-layout: fixed
+    width: 70%;
+    padding: 0.5em;
+    border: solid 1px;
+    border-radius: 10px;
 }
 
 .schedule-weekly-table {
@@ -21,6 +24,7 @@
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
+    min-width: 75px;
 
 }
 
