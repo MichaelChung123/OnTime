@@ -9,7 +9,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clickedDate: "today"
+            clickedDate: new Date()
         }
 
         this.getDate = this.getDate.bind(this);
@@ -28,9 +28,11 @@ export default class App extends React.Component {
                 <NavBar />
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate}/>
-                <Footer />
+                
             </div>
         )
     }
 }
+
+{/* <Footer /> */}
 

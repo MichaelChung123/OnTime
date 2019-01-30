@@ -1,4 +1,5 @@
 import React from 'react'
+import dateFns from 'date-fns'
 
 export default class Popup extends React.Component {
     state = {
@@ -6,6 +7,13 @@ export default class Popup extends React.Component {
     }
 
     render() {
+        const getDate = dateFns.format(this.state.getDate, 'dddd MMMM Do');
+        const clickedDay = getDate.replace(/ .*/,'');
+        const calValueMon = this.state.getDate.getDate();
+        const employees = this.props.listOfEmployees.map((e, i) => {
+            return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
+        });
+
         function values(event, cb) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
@@ -32,13 +40,16 @@ export default class Popup extends React.Component {
             } else {
                 alert(`Please double check scheduling time`)
             }
-            
-
         }
-        console.log(this.state.getDate)
-        const employees = this.props.listOfEmployees.map((e, i) => {
-            return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
-        });
+        
+        function setValueMon(clickedDay) {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            let position = 0; 
+            days.forEach((day, i) => { if(clickedDay == day) position = i });
+            return calValueMon - position;
+        }
+
+
         return (
             <div className="popup">
                 <div className="form_container">
@@ -46,16 +57,15 @@ export default class Popup extends React.Component {
                         <select id="employee" className="popup_form">
                             {employees}
                         </select><br/>
-
                     <label for="day">Day</label>
                         <select id="day" className="popup_form">
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
+                            <option value="Monday">Monday {setValueMon(clickedDay)}</option>
+                            <option value="Tuesday">Tuesday {setValueMon(clickedDay) + 1}</option>
+                            <option value="Wednesday">Wednesday {setValueMon(clickedDay) + 2}</option>
+                            <option value="Thursday">Thursday {setValueMon(clickedDay) + 3}</option>
+                            <option value="Friday">Friday {setValueMon(clickedDay) +4}</option>
+                            <option value="Saturday">Saturday {setValueMon(clickedDay + 5)}</option>
+                            <option value="Sunday">Sunday{setValueMon(clickedDay) + 6}</option>
                         </select><br/>
 
                     <label for="start_time">Star Time</label>
