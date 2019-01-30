@@ -24,9 +24,6 @@ export default class AddEmployee extends React.Component {
         const value = event.target.value;
         const name = event.target.name;
 
-        console.log("value: ", value);
-        console.log("name: ", name);
-
         if (name === "fname") {
             this.setState({ fname: value });
         } else if (name === "lname") {
