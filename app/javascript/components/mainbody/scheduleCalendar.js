@@ -115,7 +115,7 @@ export default class Calendar extends React.Component {
         return(
             <div className="schedule-app-container">
             {this.state.showSchedule ? 
-            <Schedule backClick={this.backClick}/> :
+            <Schedule backClick={this.backClick} employees={this.props.employees}/> :
                 <div className="calendar">
                     <div>{this.renderHeader()}</div>
                     <div>{this.renderDays()}</div>

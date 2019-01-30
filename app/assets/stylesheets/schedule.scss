@@ -1,0 +1,37 @@
+.schedule-container {
+    overflow: scroll;
+    height: 400px;
+}
+
+.schedule-weekly-table {
+    border-collapse: collapse;
+    font-size: small;
+    
+}
+
+.schedule-weekly-table th {
+    border: solid 1px;
+    padding: 0.5em;
+}
+
+.schedule-weekly-table td {
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+
+    
+}
+
+
+
+.schedule-weekly-table .day {
+    padding: 0.5em;
+    height: 120px;
+}
+
+
+// .span {
+//     height: 20px;
+//     color: black;
+//     border: solid 2px;
+//     display: block;
+// }

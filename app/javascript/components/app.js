@@ -10,10 +10,11 @@ export default class App extends React.Component {
         return(
             <div>
                 <NavBar />
-                <ScheduleApp />,
-                <SideBar />
-                <Footer />
+                <ScheduleApp />
+
             </div>
         )
     }
 }
+/* <SideBar />
+<Footer /> */
