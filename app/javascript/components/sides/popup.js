@@ -23,12 +23,12 @@ export default class Popup extends React.Component {
             }
 
             if (duration > 0) {
-            fetch('/api/shifts', {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            })
-            cb()
+                fetch('/api/shifts', {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                cb()
             } else {
                 alert(`Please double check scheduling time`)
             }
@@ -36,7 +36,6 @@ export default class Popup extends React.Component {
 
         }
 
-        console.log(this.state.getDate)
 
         const employees = this.props.listOfEmployees.map((e, i) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
@@ -45,6 +44,7 @@ export default class Popup extends React.Component {
             <div className="popup">
                 <div className="form_container">
                     <label for="employee">Employee</label>
+
                         <br></br>
                         <select id="employee" className="popup_form">
                             {employees}
@@ -102,10 +102,11 @@ export default class Popup extends React.Component {
                     <button className="form_button_schedule" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule</button>
                     <br></br>
                     <button className="form_button_close" onClick={() => this.props.closePopup()}>Close</button>
+
                 </div>
             </div>
         )
     }
-  }
+}
 
 

@@ -1,20 +1,19 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 
-export default class EditEmployee extends React.Component {
+export default class AddEmployee extends React.Component {
     constructor(props) {
         super(props)
 
-        const emp = this.props.employee;
-
         this.state = {
             expanded: true,
+            renderChild: false,
             user_id: 1,
-            fname: emp.first_name,
-            lname: emp.last_name,
-            email: emp.email,
-            occupation: emp.occupation,
-            phone: emp.phone_number
+            fname: "test",
+            lname: "",
+            email: "",
+            occupation: "",
+            phone: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -24,6 +23,9 @@ export default class EditEmployee extends React.Component {
     handleChange(event) {
         const value = event.target.value;
         const name = event.target.name;
+
+        console.log("value: ", value);
+        console.log("name: ", name);
 
         if (name === "fname") {
             this.setState({ fname: value });
@@ -44,7 +46,6 @@ export default class EditEmployee extends React.Component {
         let data = {
             //user_id is hard coded to 1 since demo is only meant for one admin user
             user_id: this.state.user_id,
-            id: this.props.employee.id,
             first_name: this.state.fname,
             last_name: this.state.lname,
             email: this.state.email,
@@ -52,16 +53,19 @@ export default class EditEmployee extends React.Component {
             phone_number: this.state.phone
         }
 
+        alert('Added Employee: ' + data.first_name + " " + data.last_name);
+
         fetch('/api/employees', {
-            method: "PUT",
+            method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-
-        alert('Updated Employee: ' + this.props.first_name + " " + this.props.last_name);
     }
 
     render() {
+
+        const render = this.state.renderChild;
+
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
@@ -86,12 +90,12 @@ export default class EditEmployee extends React.Component {
                             <NavText>
                                 <div className="editEmployeeForm">
                                     <form onSubmit={this.handleSubmit}>
-                                        First name: <input type="text" name="fname" value={this.state.fname} onChange={this.handleChange} /><br />
-                                        Last name: <input type="text" name="lname" value={this.state.lname} onChange={this.handleChange} /><br />
-                                        Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} /><br />
-                                        Occupation: <input type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} /><br />
-                                        Phone Number: <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} /><br />
-                                        <input type="submit" value="Submit" />
+                                        First name: <input type="text" name="fname" onChange={this.handleChange} /><br />
+                                        Last name: <input type="text" name="lname" onChange={this.handleChange} /><br />
+                                        Email: <input type="text" name="email" onChange={this.handleChange} /><br />
+                                        Occupation: <input type="text" name="occupation" onChange={this.handleChange} /><br />
+                                        Phone Number: <input type="text" name="phone" onChange={this.handleChange} /><br />
+                                        <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
                                     </form>
                                 </div>
                             </NavText>

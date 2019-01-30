@@ -4,6 +4,7 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Transition } from 'react-transition-group';
 import Popup from './popup'
+import AddEmployee from './addEmployee'
 
 
 export default class SideBar extends React.Component {
@@ -12,10 +13,11 @@ export default class SideBar extends React.Component {
         this.state = {
             employees: [],
             shifts: [],
-            showInfo: false,
+            renderChild: false,
             clicked: false,
-            expanded: true
+            expanded: false
         };
+
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
@@ -33,14 +35,14 @@ export default class SideBar extends React.Component {
 
     selectEmployee(employee) {
         this.setState({
-            showInfo: true,
+            renderChild: "employee",
             employee: employee,
         });
     }
 
     back() {
         this.setState({
-            showInfo: false
+            renderChild: false
         });
 
     }
@@ -50,6 +52,12 @@ export default class SideBar extends React.Component {
             clicked: !this.state.clicked
         })
     };
+
+    addEmployee() {
+        this.setState({
+            renderChild: "addEmployee"
+        });
+    }
 
 
     render() {
@@ -68,69 +76,69 @@ export default class SideBar extends React.Component {
 
         const shifts = this.state.shifts;
 
+        const render = this.state.renderChild;
+
+
+
+        if (render === "employee") {
+            return (
+                <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+            );
+        }
+
+        if (render === "addEmployee") {
+            return (
+                <AddEmployee back={this.back} />
+            );
+        }
+
         return (
             <div>
-                {!this.state.showInfo &&
-                    <SideNav expanded={this.state.expanded}
-                        onToggle={(expanded) => {
-                            this.setState({ expanded: !this.state.expanded });
-                        }}
-                    >                        
+                <SideNav expanded={this.state.expanded}
+                    onToggle={(expanded) => {
+                        this.setState({ expanded: !this.state.expanded });
+                        console.log(this.state.expanded)
+                    }}
+                >
                     <SideNav.Toggle />
-                        <SideNav.Nav>
-                            <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()} >
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    + Add Shift
+                    <SideNav.Nav>
+                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
+                            <NavIcon>
+                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                + Add Shift
                         </NavText>
-                            </NavItem>
+                        </NavItem>
 
-                            <ReactCSSTransitionGroup
-                                transitionName="popup_css"
-                                transitionEnterTimeout={500}
-                                transitionLeaveTimeout={300}
-                            >
-                                {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
-                            </ReactCSSTransitionGroup>
+                        <ReactCSSTransitionGroup
+                            transitionName="popup_css"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                        >
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
+                        </ReactCSSTransitionGroup>
 
-                            <NavItem eventKey="add-employee">
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    + Add Employee
-                        </NavText>
-                                <NavItem eventKey="employee/subitem1">
-                                    <NavText>
-                                        Test Sub Item 1
+                        <NavItem eventKey="add-employee">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText onClick={() => this.addEmployee()}>
+                                + Add Employee
                             </NavText>
-                                </NavItem>
-                                <NavItem eventKey="employee/subitem2">
-                                    <NavText>
-                                        Test Sub Item 2
-                            </NavText>
-                                </NavItem>
-                            </NavItem>
-                            <NavItem>
-                                <NavIcon>
+                        </NavItem>
+                        <NavItem>
+                            <NavIcon>
 
-                                </NavIcon>
-                                <NavText>
-                                    Employees
+                            </NavIcon>
+                            <NavText>
+                                Employees
                                 </NavText>
-                            </NavItem>
-                            {employees}
-
-                        </SideNav.Nav>
-                    </SideNav>
-
-                }
-                {this.state.showInfo &&
-                    <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
-                }
+                        </NavItem>
+                        {employees}
+                    </SideNav.Nav>
+                </SideNav>
             </div>
-        )
+        );
     }
 }

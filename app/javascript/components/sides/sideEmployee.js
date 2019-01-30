@@ -62,7 +62,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "contact") {
             return (
-                <Contact back={this.back} employee={this.props.employee} />
+                <Contact back={this.back}  employee={this.props.employee} />
             );
         }
 
@@ -112,7 +112,6 @@ export default class SideEmployee extends React.Component {
                             </div>
                         </div>
 
-
                         <NavItem>
                             <NavIcon>
 
@@ -121,9 +120,7 @@ export default class SideEmployee extends React.Component {
                                 Scheduled Shifts
                                 </NavText>
                         </NavItem>
-
                         {shifts}
-
                     </SideNav.Nav>
                 </SideNav>
             </div>

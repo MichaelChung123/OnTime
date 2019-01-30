@@ -35,11 +35,12 @@ export default class App extends React.Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <MentorCalculator />
+
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate}/>
-                <Footer />
+                <MentorCalculator />
+
 
             </div>
         )
