@@ -57,3 +57,71 @@
                         // <td value="21"></td>
                         // <td value="21.5"></td>
                         // <td value="22"></td>
+
+
+
+
+
+
+
+                    //     <tr className="test">
+                    //     <th className='day' rowspan="4">Monday</th>
+                    //     <td colspan="14"><span className="mon-emp-1">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="mon-emp-2">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="mon-emp-3">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="mon-emp-4">bar</span></td></tr>
+                        
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Tuesday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>
+
+                    
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Wednesday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>
+
+                    
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Thursday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>
+
+
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Friday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>
+
+
+
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Saturday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>
+
+
+                    // <tr className="test">
+                    //     <th className='day' rowspan="4">Sunday</th>
+                    //     <td colspan="14"><span className="percentage">bar</span></td>
+                    // </tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td colspan="14"><span className="percentage">bar</span></td></tr>
+                    // <tr><td className="last-row" colspan="14"><span className="percentage">bar</span></td></tr>

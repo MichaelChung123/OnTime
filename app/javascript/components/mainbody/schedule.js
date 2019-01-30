@@ -13,7 +13,7 @@ export default class Schedule extends React.Component {
                     this is where values from clicked calendar will go
                     </nav><br/>
                 </div>
-                <ScheduleTable employees={this.props.employees}/>
+                <ScheduleTable employees={this.props.employees} shifts={this.props.shifts}/>
             </div>
         )
     }

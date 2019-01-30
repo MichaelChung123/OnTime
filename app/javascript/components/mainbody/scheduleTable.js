@@ -5,6 +5,7 @@ export default class ScheduleTable extends React.Component {
     
     render() {
         console.log(this.props.employees)
+        console.log(this.props.shifts)
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
@@ -39,65 +40,10 @@ export default class ScheduleTable extends React.Component {
                         <th>10:00PM</th>
                     </tr>
                         <tr className="test">
-                            <th className='day' rowspan="4">Monday</th>
-                            <td colspan="14">hi</td>
+                            <th className='day' >Clicked Day</th>
+                            <td colspan="14"><span className="mon-emp-1">bar</span></td>
                         </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                            
-                        <tr className="test">
-                            <th className='day' rowspan="4">Tuesday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-
                         
-                        <tr className="test">
-                            <th className='day' rowspan="4">Wednesday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-
-                        
-                        <tr className="test">
-                            <th className='day' rowspan="4">Thursday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-
-
-                        <tr className="test">
-                            <th className='day' rowspan="4">Friday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-
-
-                        <tr className="test">
-                            <th className='day' rowspan="4">Saturday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-
-
-                        <tr className="test">
-                            <th className='day' rowspan="4">Sunday</th>
-                            <td colspan="14">hi</td>
-                        </tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
-                        <tr><td colspan="14">hi</td></tr>
 
                 </table>
                 

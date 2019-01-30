@@ -3,7 +3,8 @@ import Calendar from './scheduleCalendar'
 
 export default class ScheduleApp extends React.Component {
     state = {
-        employees: []
+        employees: [],
+        shifts: []
     }
     
     componentDidMount() {
@@ -18,7 +19,7 @@ export default class ScheduleApp extends React.Component {
     render() {
         return(
             <div>
-                <Calendar employees={this.state.employees}/>
+                <Calendar employees={this.state.employees} shifts={this.state.shifts}/>
                 <hr/>
             </div>
         )

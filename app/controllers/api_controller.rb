@@ -3,6 +3,12 @@ class ApiController < ApplicationController
     def employee
         render json: Employee.all
     end
+    
+    def employee_shifts
+        @employee = Employee.all
+        render json: Employee.all.to_json(:include => :shifts)
+
+    end
 
     def shift
         render json: Shift.all

@@ -1,37 +1,71 @@
+%basic-setting {
+    display: block;
+
+    font-display: none;
+    text-indent: -9999px
+}
+
 .schedule-container {
     overflow: scroll;
     height: 400px;
+    table-layout: fixed
 }
 
 .schedule-weekly-table {
     border-collapse: collapse;
     font-size: small;
+    border: solid 1px;
     
 }
 
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
+
 }
 
 .schedule-weekly-table td {
-    border-bottom: solid 1px;
     border-right: solid 1px;
-
     
 }
 
-
+.last-row {
+    border-bottom: solid 1px
+}
 
 .schedule-weekly-table .day {
     padding: 0.5em;
     height: 120px;
 }
+// Employee bar properties//
+.mon-emp-1 {
+    width: 51%;
+    display: block;
+    background-color: green;
+    font-display: none;
+    text-indent: -9999px
+}
 
-
-// .span {
-//     height: 20px;
-//     color: black;
-//     border: solid 2px;
+// .mon-emp-2 {
+//     width: 71%;
 //     display: block;
+//     background-color: skyblue;
+//     font-display: none;
+//     text-indent: -9999px
+// }
+
+// .mon-emp-3 {
+//     width: 50%;
+//     display: block;
+//     background-color: black;
+//     font-display: none;
+//     text-indent: -9999px
+// }
+
+// .mon-emp-4 {
+//     width: 50%;
+//     display: block;
+//     background-color: peachpuff;
+//     font-display: none;
+//     text-indent: -9999px
 // }
