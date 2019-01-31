@@ -36,7 +36,7 @@ export default class SideBar extends React.Component {
     selectEmployee(employee) {
         this.setState({
             renderChild: "employee",
-            employee: employee,
+            employee: employee
         });
     }
 
@@ -59,28 +59,27 @@ export default class SideBar extends React.Component {
         });
     }
 
-
     render() {
-        let employees = this.state.employees.map((e, index) => {
-            return (
-                <NavItem key={index + 1}>
-                    <NavIcon>
-
-                    </NavIcon>
-                    <NavText>
-                        <li onClick={() => this.selectEmployee(e)}>{e.first_name}  {e.last_name}</li>
-                    </NavText>
-                </NavItem>
-            );
-        })
 
         const shifts = this.state.shifts;
 
         const render = this.state.renderChild;
+        // const x = 0;
+        // const x2 = -220;
 
+        // let drawerClasses = 'sidenav---sidenav---_2tBP';
 
+        // const slideIn = {
+        //     transform: `translateX(${x}px)`
+        // }
+
+        // const slideOut = {
+        //     transform: `translateX(${x2}px)`
+        // }
 
         if (render === "employee") {
+            // drawerClasses = 'sidenav---sidenav---_2tBP open';
+
             return (
                 <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
             );
@@ -92,12 +91,24 @@ export default class SideBar extends React.Component {
             );
         }
 
+        let employees = this.state.employees.map((e, index) => {
+            return (
+                <NavItem key={index + 1}>
+                    <NavIcon>
+
+                    </NavIcon>
+                    <NavText>
+                        <li onClick={() => this.selectEmployee(e)} >{e.first_name}  {e.last_name}</li>
+                    </NavText>
+                </NavItem>
+            );
+        })
+
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
                     onToggle={(expanded) => {
                         this.setState({ expanded: !this.state.expanded });
-                        console.log(this.state.expanded)
                     }}
                 >
                     <SideNav.Toggle />
