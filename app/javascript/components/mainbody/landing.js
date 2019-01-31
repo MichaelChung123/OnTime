@@ -1,86 +1,88 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, UpdateBlocker } from 'react-router-dom'
 
 export default class Landing extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            email: "",
-            password: "",
-            redirect: false
-        };
+    this.state = {
+      email: "",
+      password: "",
+      redirect: false
+    };
 
-        // this.validateForm = this.validateForm.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.renderRedirect = this.renderRedirect.bind(this);
-        this.setRedirect = this.setRedirect.bind(this);
+    // this.validateForm = this.validateForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.renderRedirect = this.renderRedirect.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
 
-    }
+  }
 
-    renderRedirect() {
+  renderRedirect() {
 
-        // if (this.state.email === "davey@lighthouselabs.ca" && this.state.password === "123") {
-        //     console.log("Authentication Successful!");
-        //     <Redirect to="app/index" />
-        // }
-        // else if (this.state.email !== "davey@lighthouselabs.ca" || this.state.password !== "123") {
-        //     console.log("Authentication Failed!");
-        // }
+    // if (this.state.email === "davey@lighthouselabs.ca" && this.state.password === "123") {
+    //     console.log("Authentication Successful!");
+    //     <Redirect to="app/index" />
+    // }
+    // else if (this.state.email !== "davey@lighthouselabs.ca" || this.state.password !== "123") {
+    //     console.log("Authentication Failed!");
+    // }
 
-        if (this.state.redirect) {
-            return <Redirect to='/app/index' />
-        }
+    // if (this.state.redirect) {
+    //   return <Redirect to='/app/index' />
+    // }
 
-    }
+  }
 
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        });
-    }
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  }
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
 
-    handleSubmit = event => {
-        event.preventDefault();
-    }
+  handleSubmit = event => {
+    event.preventDefault();
+  }
 
-    render() {
-        console.log("In render");
+  render() {
+    console.log("In render");
 
-        if (this.state.redirect) {
-            return (
-                <Router>
-                    {/* <Route path="/app/index" component={Index} /> */}
-                    <Redirect to='/app/index' />
-                </Router>
-            );
-        }
+    if (this.state.redirect) {
         return (
             <Router>
-                <Route>
-                    <div>
-                        <br /><br /><br /><br /><br /><br />
-                        <div className="Login">
-                            <form onSubmit={this.handleSubmit}>
-                                <label>Email</label><br />
-                                <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
-
-                                <label>Password</label><br />
-                                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
-
-                                <button type="submit" onClick={this.setRedirect}>Login</button>
-                            </form>
-                        </div>
-                    </div>
-                </Route>
+                <UpdateBlocker location={"/app/index"} />
+                <Redirect to="/app/index" />
             </Router>
-        )
+        );
     }
+
+    return (
+      <Router>
+        <Route>
+          <div>
+            <br /><br /><br /><br /><br /><br />
+            <div className="Login">
+              <form onSubmit={this.handleSubmit}>
+                <label>Email</label><br />
+                <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
+
+                <label>Password</label><br />
+                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
+              </form>
+              
+              <button type="submit" onClick={this.setRedirect}>Login</button>
+
+            </div>
+          </div>
+        </Route>
+      </Router>
+    )
+  }
 }
