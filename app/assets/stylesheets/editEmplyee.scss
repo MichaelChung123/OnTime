@@ -14,6 +14,41 @@
   font-family: inherit;
 }
 
+
+
+.edit_back_button {
+  background-color: #86A4D5; /* main-theme purple/blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: justify;
+  text-decoration: none;
+  display: inline-block;
+  padding-left: 24px;
+
+  font-size: 13px;
+  border-radius: 25px;
+  height: 45px;
+  width: 120px;
+
+  i {
+    margin-right: 5px;
+    font-size: 13px;
+
+  }
+}
+
 .edit_employee_submit_button {
-  padding-top: 10px;
+  margin: 20px 0;
+  height: 35px;
+  border: black;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background: #727272;
+}
+
+.edit_employee_submit_button:hover {
+  background-color: #C6C6C6;
+  cursor: select;
 }

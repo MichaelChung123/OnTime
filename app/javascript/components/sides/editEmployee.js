@@ -73,7 +73,7 @@ export default class EditEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
 
-                        <div className="daily_back_button" onClick={() => this.props.backClick()}>
+                        <div className="edit_back_button" onClick={() => this.props.backClick()}>
                             <i class="fas fa-arrow-alt-circle-left"></i>
                             Back
                         </div>
@@ -102,7 +102,7 @@ export default class EditEmployee extends React.Component {
                                         Phone Number:
                                         <input className="edit_employee_input" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
 
-                                        <br></br>
+
                                         <input className="edit_employee_submit_button" type="submit" value="Submit" />
                                     </form>
                                 </div>
