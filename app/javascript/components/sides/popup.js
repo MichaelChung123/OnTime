@@ -23,13 +23,15 @@ export default class Popup extends React.Component {
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const duration = endTime - startTime;
-            console.log(day)
+            const notes = document.getElementById("notes").value
+
             let data = {
                 employee_id: employeeId,
                 day: day,
                 start_time: startTime,
                 end_time: endTime,
-                duration: duration
+                duration: duration,
+                note: notes
             }
             
             if (duration > 0) {
@@ -118,6 +120,8 @@ export default class Popup extends React.Component {
                             <option value="21">9:00 PM</option>
                             <option value="22">10:00 PM</option>
                         </select><br/>
+                    
+                    <textarea id="notes"></textarea>
 
                     <button className="form_button" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule!</button>
                     <button className="form_button" onClick={() => this.props.closePopup()}>Close</button>

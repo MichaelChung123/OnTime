@@ -24,7 +24,8 @@ class ApiController < ApplicationController
             day: params[:day],
             start_time: params[:start_time],
             end_time: params[:end_time],
-            duration: params[:duration]
+            duration: params[:duration],
+            note: params[:note]
         )
     end
 end

@@ -38,7 +38,7 @@ export default class ScheduleTable extends React.Component {
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80})
+                    shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80, note: shift.note})
                 }
             });
         });
@@ -56,6 +56,9 @@ export default class ScheduleTable extends React.Component {
         function checkStartExist() {
             return shiftInfo[0] ? shiftInfo[0].start : [];
         }
+        function checkNoteExist() {
+            return shiftInfo[0] ? shiftInfo[0].note : [];
+        }
 
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
@@ -69,18 +72,16 @@ export default class ScheduleTable extends React.Component {
                         marginLeft: shiftInfo[i + 1].start, 
                         backgroundColor: randomColor()}}>
                         {name}<br/><hr/>
-                        This is the notes for the employee
+                        {shiftInfo[i + 1].note}
                         </span>
                     </td>
                 </tr>
             )
         })
-
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
                     <tr className="weekly-time">
-                        <td></td>
                         <th>9:00AM</th>
                         <th>10:00AM</th>
                         <th>11:00AM</th>
@@ -98,17 +99,18 @@ export default class ScheduleTable extends React.Component {
                     </tr>
 
                         <tr className="test" >
-                            <th className='day' rowSpan={employeeNames.length}>{currentDate}</th>
+                            
                             <td colSpan="14">
                                 <span 
                                 key={0}
                                 style={{
                                 width: checkLengthExist(), marginLeft: checkStartExist(),
                                 backgroundColor: randomColor()}}>
-                                {firstEmployee}
+                                {firstEmployee}<br/><hr/>
+                                {checkNoteExist()}
                                 </span>
                             </td>
-                        </tr>
+                        </tr> 
                         {listOfEmployees}
                 </table>
                 
