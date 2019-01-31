@@ -1,120 +1,86 @@
-import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./Login.css";
+import React from 'react'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
-export default class Landing extends Component {
-  constructor(props) {
-    super(props);
+export default class Landing extends React.Component {
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
+        this.state = {
+            email: "",
+            password: "",
+            redirect: false
+        };
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
+        // this.validateForm = this.validateForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
+        this.setRedirect = this.setRedirect.bind(this);
 
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  }
+    renderRedirect() {
 
-  render() {
-    return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
-    );
-  }
+        // if (this.state.email === "davey@lighthouselabs.ca" && this.state.password === "123") {
+        //     console.log("Authentication Successful!");
+        //     <Redirect to="app/index" />
+        // }
+        // else if (this.state.email !== "davey@lighthouselabs.ca" || this.state.password !== "123") {
+        //     console.log("Authentication Failed!");
+        // }
+
+        if (this.state.redirect) {
+            return <Redirect to='/app/index' />
+        }
+
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        });
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+    }
+
+    render() {
+        console.log("In render");
+
+        if (this.state.redirect) {
+            return (
+                <Router>
+                    {/* <Route path="/app/index" component={Index} /> */}
+                    <Redirect to='/app/index' />
+                </Router>
+            );
+        }
+        return (
+            <Router>
+                <Route>
+                    <div>
+                        <br /><br /><br /><br /><br /><br />
+                        <div className="Login">
+                            <form onSubmit={this.handleSubmit}>
+                                <label>Email</label><br />
+                                <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
+
+                                <label>Password</label><br />
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
+
+                                <button type="submit" onClick={this.setRedirect}>Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </Route>
+            </Router>
+        )
+    }
 }
-
-
-// import React from 'react'
-
-
-// export default class Landing extends React.Component {
-    
-//     constructor(props) {
-
-//     }
-
-
-//     render() {
-//         return (
-//             <div>
-//                 <br /><br /><br /><br /><br /><br />
-                
-//             </div>
-//         )
-//     }
-// }
-
-// export default class Landing extends React.Component {
-//     render() {
-
-//         return (
-//             <div>
-//                 <br /><br /><br /><br /><br /><br />
-//                 <form action="action_page.php">
-//                     <div className="imgcontainer">
-//                         {/* <img src="img_avatar2.png" alt="Avatar" className="avatar"> */}
-//                     </div>
-//                     <br /><br />
-//                     <div className="container">
-//                         <label htmlFor="uname"><b>Username</b></label>
-//                         <input type="text" placeholder="Enter Username" name="uname" required />
-//                         <br /><br />
-//                         <label htmlFor="psw"><b>Password</b></label>
-//                         <input type="password" placeholder="Enter Password" name="psw" required />
-//                         <br /><br />
-//                         <button type="submit">Login</button>
-//                         <br /><br />
-//                         <label>
-//                         <input type="checkbox" name="remember" /> Remember me
-//                         </label>
-//                     </div>
-//                     <br /><br />
-//                     <div className="container">
-//                         <button type="button" className="cancelbtn">Cancel</button>
-//                         <br /><br />
-//                         <span className="psw">Forgot <a href="#">password?</a></span>
-//                     </div>
-//                 </form>
-
-//             </div>
-//         )
-//     }
-// }
