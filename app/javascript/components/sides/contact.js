@@ -28,59 +28,35 @@ export default class Contact extends React.Component {
                                 Back
                         </NavText>
                         </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
 
-                            <NavText>
-                                <h1 className="contact_title">Contact</h1>
-                            </NavText>
+                        <div className="container">
+                            <div className="col-md-3">
+                                <div className="contact-sidebar">
 
-                        </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
+                                    <div className="profile-contacts">
+                                        <div className="contact-title">
 
-                            <NavText className="contact-categorie">
+                                            {this.props.employee.first_name} {this.props.employee.last_name}
+                                        </div>
+                                        <div className="contact-phone-title">
+                                            <i class="fas fa-phone-square"></i>
+                                            <div className="phone-number-text">Phone number</div>
+                                        </div>
+                                        <div className="contact-phone">
+                                            {this.props.employee.phone_number}
+                                        </div>
+                                        <div className="contact-phone-title">
+                                            <i class="fas fa-envelope-square"></i>
+                                            <div className="phone-number-text">Email</div>
+                                        </div>
+                                        <div className="contact-phone">
+                                            {this.props.employee.email}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                <p>Phone</p>
-
-
-                            </NavText>
-
-                        </NavItem>
-
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-
-                            <NavText className="contact-categorie">
-                                <p>{this.props.employee.phone_number}</p>
-
-                            </NavText>
-
-                        </NavItem>
-
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <p>Email </p>
-                            </NavText>
-                        </NavItem>
-
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <p>{this.props.employee.email}</p>
-                            </NavText>
-                        </NavItem>
                     </SideNav.Nav>
                 </SideNav>
             </div>
