@@ -58,8 +58,6 @@ export default class Contact extends React.Component {
                             </NavIcon>
 
                             <NavText className="contact-categorie">
-
-
                                 <p>{this.props.employee.phone_number}</p>
 
                             </NavText>

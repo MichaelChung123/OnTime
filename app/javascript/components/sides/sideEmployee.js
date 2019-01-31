@@ -42,10 +42,10 @@ export default class SideEmployee extends React.Component {
                 return (
                     <NavItem key={index}>
                         <NavIcon>
-                            <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+
                         </NavIcon>
                         <NavText>
-                            <li> {e.day} at {e.start_time} - {e.end_time} </li>
+                            <li>{e.day} from {e.start_time} - {e.end_time}</li>
                         </NavText>
                     </NavItem>
                 );
@@ -107,20 +107,21 @@ export default class SideEmployee extends React.Component {
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                         </div>
 
+                                        <div className="profile-shifts">
+                                            <div className="profile-shift-title">
+                                                Scheduled Shifts
+                                            </div>
+                                            <div className="list-of-shifts">
+                                                {shifts}
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <NavItem>
-                            <NavIcon>
 
-                            </NavIcon>
-                            <NavText>
-                                Scheduled Shifts
-                                </NavText>
-                        </NavItem>
-                        {shifts}
                     </SideNav.Nav>
                 </SideNav>
             </div>
