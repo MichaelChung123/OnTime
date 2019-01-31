@@ -343,8 +343,12 @@
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 
-  }
 
+      display: flex;
+  flex-direction: column;
+
+  }
+//the flex is new - currently messes up the exit button
 
 
   /*# sourceMappingURL=react-sidenav.css.map*/

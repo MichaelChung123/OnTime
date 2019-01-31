@@ -104,7 +104,7 @@ export default class SideEmployee extends React.Component {
 
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
-                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.showContact}>Contact</button>
+                                            <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                         </div>
 
                                     </div>

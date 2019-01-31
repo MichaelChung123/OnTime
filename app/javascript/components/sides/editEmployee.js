@@ -72,18 +72,20 @@ export default class EditEmployee extends React.Component {
                     <SideNav.Toggle />
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
+                            <NavIcon>
+                                <i class="fas fa-arrow-alt-circle-left"></i>
 
-                        <div className="edit_back_button" onClick={() => this.props.backClick()}>
-                            <i class="fas fa-arrow-alt-circle-left"></i>
-                            Back
-                        </div>
+                            </NavIcon>
+                            <NavText onClick={() => this.props.back()}>
+                                Back
+                        </NavText>
                         </NavItem>
-
-
                         <NavItem eventKey="add-employee">
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
+
+
                             <NavText>
                                 <div className="editEmployeeForm">
                                     <form className="editEmployeeForm" onSubmit={this.handleSubmit}>
@@ -107,6 +109,8 @@ export default class EditEmployee extends React.Component {
                                     </form>
                                 </div>
                             </NavText>
+
+
                         </NavItem>
                     </SideNav.Nav>
                 </SideNav>

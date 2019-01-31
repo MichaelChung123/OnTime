@@ -32,24 +32,55 @@ export default class Contact extends React.Component {
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
+
                             <NavText>
-                                <h1>Contact</h1>
+                                <h1 className="contact_title">Contact</h1>
                             </NavText>
+
                         </NavItem>
                         <NavItem eventKey="add-employee">
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
-                            <NavText>
-                                <h3>Phone: {this.props.employee.phone_number}</h3>
+
+                            <NavText className="contact-categorie">
+
+                                <p>Phone</p>
+
+
                             </NavText>
+
                         </NavItem>
+
+                        <NavItem eventKey="add-employee">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+
+                            <NavText className="contact-categorie">
+
+
+                                <p>{this.props.employee.phone_number}</p>
+
+                            </NavText>
+
+                        </NavItem>
+
                         <NavItem eventKey="add-employee">
                             <NavIcon>
                                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
-                                <h3>Email: {this.props.employee.email}</h3>
+                                <p>Email </p>
+                            </NavText>
+                        </NavItem>
+
+                        <NavItem eventKey="add-employee">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                <p>{this.props.employee.email}</p>
                             </NavText>
                         </NavItem>
                     </SideNav.Nav>
