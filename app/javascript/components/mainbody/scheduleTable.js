@@ -4,8 +4,39 @@ import React from 'react'
 export default class ScheduleTable extends React.Component {
     
     render() {
-        console.log(this.props.employees)
-        console.log(this.props.shifts)
+        const data = this.props.employeeShifts;
+        const currentDate = this.props.currentDate;
+        const employeeId = [];
+        const employeeNames = [];
+        const randomColor = () => {
+            var max = 0xffffff;
+            return '#' + Math.round( Math.random() * max ).toString( 16 )
+        };
+
+        data.forEach(function(employee){
+            employee.shifts.forEach(function(shiftDay){
+                if(shiftDay.day === currentDate) {
+                    employeeId.push(shiftDay.employee_id);
+                }
+            });
+        });
+        employeeId.forEach(function(employeeId){
+            data.forEach(function(employee){
+                if (employee.id === employeeId) {
+                    employeeNames.push(employee.first_name + ` `+ employee.last_name)
+                }
+            })
+        })
+        const totalEmployeesScheduled = employeeNames.length;
+        const firstEmployee = employeeNames[0];
+        const listOfEmployees = employeeNames.slice(1).map(function(name ,i) {
+            return (
+                <tr>
+                    <td colSpan="14"><span style={{display: 'block', width: "200px", backgroundColor: randomColor()}}>{name}</span></td>
+                </tr>
+            )
+        })
+
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
@@ -39,10 +70,11 @@ export default class ScheduleTable extends React.Component {
 
                         <th>10:00PM</th>
                     </tr>
-                        <tr className="test">
-                            <th className='day' >{this.props.dayClicked}</th>
-                            <td colspan="14"><span className="mon-emp-1">bar</span></td>
+                        <tr className="test" >
+                            <th className='day' rowSpan={totalEmployeesScheduled}>{currentDate}</th>
+                            <td colSpan="14"><span style={{display: 'block', width: "200px", backgroundColor: randomColor()}}>{firstEmployee}</span></td>
                         </tr>
+                        {listOfEmployees}
                 </table>
                 
             </div>

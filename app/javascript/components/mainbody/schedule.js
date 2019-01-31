@@ -9,7 +9,7 @@ export default class Schedule extends React.Component {
         const month = clickedDay.getMonth();
         const year = clickedDay.getFullYear();
         const date = new Date(year, month, numDay);
-        const formatDate = dateFns.format(date, 'dddd, MMMM Do');
+        const formatDate = dateFns.format(date, 'dddd MMMM Do');
 
         return(
             <div><br/><br/><br/><br/>
@@ -19,7 +19,7 @@ export default class Schedule extends React.Component {
                         <h1>Schedule of: {formatDate}, {year}</h1>
                     </nav><br/>
                 </div>
-                <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} dayClicked={dateFns.format(date, 'dddd')}/>
+                <ScheduleTable employeeShifts={this.props.employeeShifts} currentDate={formatDate}/>
             </div>
         )
     }

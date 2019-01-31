@@ -3,25 +3,26 @@ import Calendar from './scheduleCalendar'
 
 export default class ScheduleApp extends React.Component {
     state = {
-        employees: [],
-        shifts: []
+        employeeShifts: []
     }
     
     componentDidMount() {
-        fetch('/api/employees')
-            .then((response) => { return response.json() })
-            .then((data) => { this.setState({ employees: data }) });
+        // fetch('/api/employees')
+        //     .then((response) => { return response.json() })
+        //     .then((data) => { this.setState({ employees: data }) });
 
-        fetch('/api/shifts')
+        // fetch('/api/shifts')
+        //     .then((response) => { return response.json() })
+        //     .then((data) => { this.setState({ shifts: data }) });
+        fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
-            .then((data) => { this.setState({ shifts: data }) });
+            .then((data) => { this.setState({ employeeShifts: data }) });
     }
     
     render() {
         return(
             <div>
-                <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate}/>
-                
+                <Calendar employeeShifts={this.state.employeeShifts} getDate={this.props.getDate}/>
             </div>
         )
     }

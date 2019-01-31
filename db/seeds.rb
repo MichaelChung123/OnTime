@@ -118,35 +118,35 @@ lighthouse_employer.employees.create!({
 })
 
 Employee.first.shifts.create!({
-    day: "Monday",
+    day: "Friday February 1st",
     start_time: 9,
     end_time: 14,
     duration: 5
 })
 
 Employee.find(2).shifts.create!({
-    day: "Tuesday",
+    day: "Friday February 1st",
     start_time: 14,
     end_time: 21,
     duration: 7
 })
 
 Employee.find(3).shifts.create!({
-    day: "Monday",
+    day: "Friday February 1st",
     start_time: 12,
     end_time: 17,
     duration: 5
 })
 
 Employee.find(4).shifts.create!({
-    day: "Friday",
+    day: "Thursday January 31st",
     start_time: 15,
     end_time: 21,
     duration: 6
 })
 
 Employee.find(5).shifts.create!({
-    day: "Thursday",
+    day: "Thursday January 31st",
     start_time: 9,
     end_time: 11,
     duration: 2

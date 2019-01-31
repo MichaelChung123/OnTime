@@ -1,9 +1,3 @@
-%basic-setting {
-    display: block;
-
-    font-display: none;
-    text-indent: -9999px
-}
 
 .schedule-container {
     overflow: auto;
@@ -43,20 +37,20 @@
 }
 // Employee bar properties//
 .mon-emp-1 {
-    width: 51%;
+    width: 300px;
     display: block;
     background-color: green;
     font-display: none;
-    text-indent: -9999px
+    // text-indent: -9999px
 }
 
-// .mon-emp-2 {
-//     width: 71%;
-//     display: block;
-//     background-color: skyblue;
-//     font-display: none;
-//     text-indent: -9999px
-// }
+.mon-emp-2 {
+    width: 71%;
+    display: block;
+    background-color: skyblue;
+    font-display: none;
+    // text-indent: -9999px
+}
 
 // .mon-emp-3 {
 //     width: 50%;
