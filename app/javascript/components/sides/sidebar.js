@@ -97,7 +97,6 @@ export default class SideBar extends React.Component {
                 <SideNav expanded={this.state.expanded}
                     onToggle={(expanded) => {
                         this.setState({ expanded: !this.state.expanded });
-                        console.log(this.state.expanded)
                     }}
                 >
                     <SideNav.Toggle />

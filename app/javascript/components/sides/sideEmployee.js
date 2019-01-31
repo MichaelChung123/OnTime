@@ -36,6 +36,18 @@ export default class SideEmployee extends React.Component {
         });
     }
 
+    timeFormat(time) {
+        if (time > 12) {
+            time -= 12;
+            time = time + ":00 PM";
+        } else {
+            time = time + ":00 AM";
+        }
+        
+        return time;
+
+    }
+
     render() {
         let shifts = this.props.shifts.map((e, index) => {
             if (e.employee_id === this.props.employee.id) {
@@ -45,7 +57,7 @@ export default class SideEmployee extends React.Component {
                             <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
                         <NavText>
-                            <li> {e.day} at {e.start_time} - {e.end_time} </li>
+                            <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
                         </NavText>
                     </NavItem>
                 );
@@ -62,7 +74,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "contact") {
             return (
-                <Contact back={this.back}  employee={this.props.employee} />
+                <Contact back={this.back} employee={this.props.employee} />
             );
         }
 
