@@ -1,6 +1,7 @@
 .editEmployeeForm {
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
 
 }
 
@@ -12,6 +13,7 @@
   border-radius: 4px;
   border: black;
   font-family: inherit;
+    height: 35px;
 }
 
 
@@ -46,6 +48,9 @@
   font-family: 'Montserrat', sans-serif;
   color: white;
   background: #727272;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit_employee_submit_button:hover {

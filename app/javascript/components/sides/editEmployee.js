@@ -89,19 +89,19 @@ export default class EditEmployee extends React.Component {
                             <NavText>
                                 <div className="editEmployeeForm">
                                     <form className="editEmployeeForm" onSubmit={this.handleSubmit}>
-                                        First name:
+                                        First name
                                         <input className="edit_employee_input" type="text" name="fname" value={this.state.fname} onChange={this.handleChange} />
 
-                                        Last name:
+                                        Last name
                                         <input className="edit_employee_input" type="text" name="lname" value={this.state.lname} onChange={this.handleChange} />
 
-                                        Email:
+                                        Email
                                         <input className="edit_employee_input" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 
-                                        Occupation:
+                                        Occupation
                                         <input className="edit_employee_input" type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} />
 
-                                        Phone Number:
+                                        Phone Number
                                         <input className="edit_employee_input" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
 
 

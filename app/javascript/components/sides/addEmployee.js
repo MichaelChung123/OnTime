@@ -87,12 +87,17 @@ export default class AddEmployee extends React.Component {
                             <NavText>
                                 <div className="editEmployeeForm">
                                     <form onSubmit={this.handleSubmit}>
-                                        First name: <input type="text" name="fname" onChange={this.handleChange} /><br />
-                                        Last name: <input type="text" name="lname" onChange={this.handleChange} /><br />
-                                        Email: <input type="text" name="email" onChange={this.handleChange} /><br />
-                                        Occupation: <input type="text" name="occupation" onChange={this.handleChange} /><br />
-                                        Phone Number: <input type="text" name="phone" onChange={this.handleChange} /><br />
-                                        <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
+                                        First name
+                                        <input className="edit_employee_input" type="text" name="fname" onChange={this.handleChange} />
+                                        Last name
+                                        <input className="edit_employee_input" type="text" name="lname" onChange={this.handleChange} />
+                                        Email
+                                        <input className="edit_employee_input" type="text" name="email" onChange={this.handleChange} />
+                                        Occupation
+                                        <input className="edit_employee_input" type="text" name="occupation" onChange={this.handleChange} />
+                                        Phone Number
+                                        <input className="edit_employee_input" type="text" name="phone" onChange={this.handleChange} />
+                                        <input className="edit_employee_submit_button" type="submit" value="Submit" onSubmit={this.handleSubmit} />
                                     </form>
                                 </div>
                             </NavText>
