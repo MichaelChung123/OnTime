@@ -13,13 +13,13 @@ export default class Schedule extends React.Component {
 
         return(
             <div><br/><br/><br/><br/>
-                <button onClick={() => this.props.backClick()}>back</button>
                 <div className="schedule-weekly-container">
                     <nav className="schedule-weekly-nav">
-                        <h1>Schedule of: {formatDate}, {year}</h1>
+                        <h1>{formatDate}, {year}</h1>
                     </nav><br/>
                 </div>
                 <ScheduleTable employeeShifts={this.props.employeeShifts} currentDate={formatDate}/>
+                <button onClick={() => this.props.backClick()}>back</button>
             </div>
         )
     }

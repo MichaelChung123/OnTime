@@ -12,13 +12,14 @@
     border-collapse: collapse;
     font-size: small;
     border: solid 1px;
+    background-color: blanchedalmond
     
 }
 
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
-    min-width: 75px;
+    min-width: 80px;
 
 }
 
@@ -36,34 +37,13 @@
     height: 120px;
 }
 // Employee bar properties//
-.mon-emp-1 {
-    width: 300px;
+
+
+.schedule-container span {
     display: block;
-    background-color: green;
-    font-display: none;
-    // text-indent: -9999px
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 7px;
+    margin-bottom: 7px
+
 }
-
-.mon-emp-2 {
-    width: 71%;
-    display: block;
-    background-color: skyblue;
-    font-display: none;
-    // text-indent: -9999px
-}
-
-// .mon-emp-3 {
-//     width: 50%;
-//     display: block;
-//     background-color: black;
-//     font-display: none;
-//     text-indent: -9999px
-// }
-
-// .mon-emp-4 {
-//     width: 50%;
-//     display: block;
-//     background-color: peachpuff;
-//     font-display: none;
-//     text-indent: -9999px
-// }

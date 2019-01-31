@@ -7,13 +7,6 @@ export default class ScheduleApp extends React.Component {
     }
     
     componentDidMount() {
-        // fetch('/api/employees')
-        //     .then((response) => { return response.json() })
-        //     .then((data) => { this.setState({ employees: data }) });
-
-        // fetch('/api/shifts')
-        //     .then((response) => { return response.json() })
-        //     .then((data) => { this.setState({ shifts: data }) });
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });

@@ -1,5 +1,6 @@
 import React from 'react'
 import dateFns from 'date-fns'
+import ScheduleTable from '../mainbody/scheduleTable'
 
 export default class Popup extends React.Component {
     state = {
@@ -36,7 +37,7 @@ export default class Popup extends React.Component {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
-            })
+            });
             cb()
             } else {
                 alert(`Please double check scheduling time`)
