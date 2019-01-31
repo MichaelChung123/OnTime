@@ -101,8 +101,11 @@
     line-height: 28px;
   }
   .sidenav---sidenav-toggle---1KRjR {
-    position: relative;
-    float: right;
+   float: right;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
     width: 64px;
     height: 64px;
     padding: 0;
