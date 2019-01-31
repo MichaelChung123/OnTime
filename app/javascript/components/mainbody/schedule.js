@@ -16,7 +16,7 @@ export default class Schedule extends React.Component {
                 <h1>this is new schedule platform</h1>
 
                 <div className="daily_back_button" onClick={() => this.props.backClick()}>
-                    <i class="fas fa-long-arrow-alt-left"></i>
+                    <i class="fas fa-arrow-alt-circle-left"></i>
                     <a href  >Back</a>
                 </div>
 
