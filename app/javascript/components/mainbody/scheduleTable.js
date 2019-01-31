@@ -2,21 +2,25 @@ import React from 'react'
 
 
 export default class ScheduleTable extends React.Component {
-    
+    state = {
+        data: this.props.employeeShifts
+    }
     render() {
         const data = this.props.employeeShifts;
         const currentDate = this.props.currentDate;
         const employeeId = [];
         const employeeNames = [];
+        const shiftInfo = [];
         const randomColor = () => {
             var max = 0xffffff;
             return '#' + Math.round( Math.random() * max ).toString( 16 )
         };
 
         data.forEach(function(employee){
-            employee.shifts.forEach(function(shiftDay){
-                if(shiftDay.day === currentDate) {
-                    employeeId.push(shiftDay.employee_id);
+            employee.shifts.forEach(function(shift){
+                if(shift.day === currentDate) {
+                    employeeId.push(shift.employee_id);
+                    shiftInfo.push({start: (shift.start_time - 9) * 75, length: shift.duration * 75})
                 }
             });
         });
@@ -27,12 +31,18 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
-        const totalEmployeesScheduled = employeeNames.length;
+        function checkLengthExist() {
+            return shiftInfo[0] ? shiftInfo[0].length : [];
+            
+        }
+        function checkStartExist() {
+            return shiftInfo[0] ? shiftInfo[0].start : [];
+        }
         const firstEmployee = employeeNames[0];
-        const listOfEmployees = employeeNames.slice(1).map(function(name ,i) {
+        const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
                 <tr>
-                    <td colSpan="14"><span style={{display: 'block', width: "200px", backgroundColor: randomColor()}}>{name}</span></td>
+                    <td colSpan="14"><span style={{display: 'block', width: shiftInfo[i + 1].length, marginLeft: shiftInfo[i + 1].start, backgroundColor: randomColor()}}>{name}</span></td>
                 </tr>
             )
         })
@@ -70,9 +80,13 @@ export default class ScheduleTable extends React.Component {
 
                         <th>10:00PM</th>
                     </tr>
+
                         <tr className="test" >
-                            <th className='day' rowSpan={totalEmployeesScheduled}>{currentDate}</th>
-                            <td colSpan="14"><span style={{display: 'block', width: "200px", backgroundColor: randomColor()}}>{firstEmployee}</span></td>
+                            <th className='day' rowSpan={employeeNames.length}>{currentDate}</th>
+                            <td colSpan="14"><span style={{display: 'block', 
+                            width: checkLengthExist(), marginLeft: checkStartExist(),
+                            backgroundColor: randomColor()}}>
+                            {firstEmployee}</span></td>
                         </tr>
                         {listOfEmployees}
                 </table>
