@@ -66,7 +66,7 @@ export default class ScheduleTable extends React.Component {
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
                 <tr key={i + 1}>
-                    <td key={i + 1} colSpan="14">
+                    <td key={i + 1} colSpan="13">
                         <span
                         key={i + 1} 
                         style={{
@@ -102,11 +102,10 @@ export default class ScheduleTable extends React.Component {
                         <th>7:00PM</th>
                         <th>8:00PM</th>
                         <th>9:00PM</th>
-                        <th>10:00PM</th>
                     </tr>
 
                         <tr className="test" >
-                            <td colSpan="14">
+                            <td colSpan="13">
                                 <span 
                                 key={0}
                                 style={{

@@ -1,8 +1,6 @@
 .day_schedule {
     background: white;
-    width: 80%;
-
-    margin: auto;
+    width: 100%;
     padding-left: 5%;
     height: 450px;
 }
@@ -48,6 +46,10 @@
 
 .schedule-weekly-table td {
     border-right: solid 1px;
+}
+
+.schedule-weekly-table td :hover {
+    opacity: 0.5;
 }
 
 .schedule-weekly-table span {
