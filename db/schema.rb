@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_01_26_001804) do
     t.integer "start_time"
     t.integer "end_time"
     t.integer "duration"
+    t.string "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_shifts_on_employee_id"

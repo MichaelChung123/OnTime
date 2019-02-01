@@ -1,7 +1,8 @@
 import React from 'react'
 import dateFns from "date-fns";
 import Schedule from './schedule';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Transition } from 'react-transition-group';
 //chevron-right has little bug
 export default class Calendar extends React.Component {
     state = {
@@ -91,8 +92,8 @@ export default class Calendar extends React.Component {
     onDateClick = day => {
         this.setState({
             selectedDate: day,
-            showSchedule: true
-        });
+            showSchedule: !this.state.showSchedule
+        })
         this.props.getDate(day)
     }
     nextMonth = () => {
@@ -113,15 +114,18 @@ export default class Calendar extends React.Component {
     }
     
     render() {
-        return(
+        return(    
+            <div>
+            {this.state.showSchedule ?
+                <Schedule backClick={this.backClick} currentDay={this.state.selectedDate} />
+            :
             <div className="schedule-app-container">
-            {this.state.showSchedule ? 
-            <Schedule backClick={this.backClick} employees={this.props.employees} shifts={this.props.shifts} currentDay={this.state.selectedDate} /> :
                 <div className="calendar">
                     <div>{this.renderHeader()}</div>
                     <div>{this.renderDays()}</div>
                     <div>{this.renderCells()}</div>
                 </div>
+            </div>
             }
             </div>
         )

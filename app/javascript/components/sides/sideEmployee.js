@@ -2,6 +2,9 @@ import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import EditEmployee from './editEmployee'
 import Contact from './contact'
+import DeletePopup from './deletePopup'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { throws } from 'assert';
 
 export default class SideEmployee extends React.Component {
 
@@ -14,6 +17,7 @@ export default class SideEmployee extends React.Component {
 
         this.editEmployee = this.editEmployee.bind(this);
         this.showContact = this.showContact.bind(this);
+        this.deleteEmployee = this.deleteEmployee.bind(this);
 
         this.back = this.back.bind(this);
     }
@@ -30,10 +34,17 @@ export default class SideEmployee extends React.Component {
         });
     }
 
+    deleteEmployee() {
+        this.setState({
+            renderChild: "delete"
+        });
+    }
+
     back() {
         this.setState({
             renderChild: false
         });
+        
     }
 
     timeFormat(time) {
@@ -45,7 +56,6 @@ export default class SideEmployee extends React.Component {
         }
         
         return time;
-
     }
 
     render() {
@@ -54,7 +64,7 @@ export default class SideEmployee extends React.Component {
                 return (
                     <NavItem key={index}>
                         <NavIcon>
-                            <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+
                         </NavIcon>
                         <NavText>
                             <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
@@ -68,13 +78,25 @@ export default class SideEmployee extends React.Component {
 
         if (render === "edit") {
             return (
-                <EditEmployee back={this.back} employee={this.props.employee} />
+                <EditEmployee refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
             );
         }
 
         if (render === "contact") {
             return (
                 <Contact back={this.back} employee={this.props.employee} />
+            );
+        }
+
+        if (render === "delete") {
+            return (
+                <ReactCSSTransitionGroup
+                    transitionName="popup_css"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                >
+                    <DeletePopup refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} back={this.props.back} employee={this.props.employee}/>
+                </ReactCSSTransitionGroup>
             );
         }
 
@@ -89,11 +111,11 @@ export default class SideEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
-                            </NavText>
+                        </NavText>
                         </NavItem>
 
                         <div className="container">
@@ -116,7 +138,17 @@ export default class SideEmployee extends React.Component {
 
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
-                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.showContact}>Contact</button>
+                                            <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
+                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
+                                        </div>
+
+                                        <div className="profile-shifts">
+                                            <div className="profile-shift-title">
+                                                Scheduled Shifts
+                                            </div>
+                                            <div className="list-of-shifts">
+                                                {shifts}
+                                            </div>
                                         </div>
 
                                     </div>
@@ -124,15 +156,7 @@ export default class SideEmployee extends React.Component {
                             </div>
                         </div>
 
-                        <NavItem>
-                            <NavIcon>
 
-                            </NavIcon>
-                            <NavText>
-                                Scheduled Shifts
-                                </NavText>
-                        </NavItem>
-                        {shifts}
                     </SideNav.Nav>
                 </SideNav>
             </div>

@@ -15,15 +15,20 @@ export default class SideBar extends React.Component {
             shifts: [],
             renderChild: false,
             clicked: false,
-            expanded: false
+            expanded: false,
+            refresh: false,
+            selectedEmployee: null
         };
 
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
+        
+        this.getEmpShift = this.getEmpShift.bind(this);
+        this.refreshComponent = this.refreshComponent.bind(this);
     }
 
-    componentDidMount() {
+    getEmpShift() {
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employees: data }) });
@@ -31,6 +36,28 @@ export default class SideBar extends React.Component {
         fetch('/api/shifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
+    }
+
+    refreshComponent(data){
+        
+        var employee = {
+            id: data.id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            occupation: data.occupation,
+            phone_number: data.phone_number
+        };
+        
+        this.setState({
+            renderChild: "employee",
+            employee: employee
+        });
+    }
+
+    componentDidMount() {
+       
+        this.getEmpShift();
     }
 
     selectEmployee(employee) {
@@ -44,6 +71,7 @@ export default class SideBar extends React.Component {
         this.setState({
             renderChild: false
         });
+        this.getEmpShift();
 
     }
 
@@ -78,17 +106,15 @@ export default class SideBar extends React.Component {
 
         const render = this.state.renderChild;
 
-
-
         if (render === "employee") {
             return (
-                <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
         if (render === "addEmployee") {
             return (
-                <AddEmployee back={this.back} />
+                <AddEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} back={this.back} />
             );
         }
 
@@ -101,7 +127,7 @@ export default class SideBar extends React.Component {
                 >
                     <SideNav.Toggle />
                     <SideNav.Nav>
-                        {/* <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
+                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
@@ -115,8 +141,8 @@ export default class SideBar extends React.Component {
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                         >
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
-                        </ReactCSSTransitionGroup> */}
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
+                        </ReactCSSTransitionGroup> 
 
                         <NavItem eventKey="add-employee">
                             <NavIcon>
@@ -131,7 +157,11 @@ export default class SideBar extends React.Component {
 
                             </NavIcon>
                             <NavText>
-                                Employees
+                                <div className="employees-title">
+                                <i className="fas fa-users"></i>
+
+                                    <div className="employee-text">Employees</div>
+                                </div>
                             </NavText>
                         </NavItem>
                         {employees}

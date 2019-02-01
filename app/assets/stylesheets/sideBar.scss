@@ -29,6 +29,8 @@
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
     display: flex;
+    flex-direction: row;
+    align-items: center;
 
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---expandable---3_dr7 > .sidenav---navitem---9uL5T {
@@ -101,8 +103,11 @@
     line-height: 28px;
   }
   .sidenav---sidenav-toggle---1KRjR {
-    position: relative;
-    float: right;
+   float: right;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
     width: 64px;
     height: 64px;
     padding: 0;
@@ -343,8 +348,26 @@
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 
+
+      display: flex;
+  flex-direction: column;
+
   }
 
+.employees-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: -20px;
+
+}
+
+.employee-text {
+  padding-left: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+//the flex is new - currently messes up the exit button
 
 
   /*# sourceMappingURL=react-sidenav.css.map*/

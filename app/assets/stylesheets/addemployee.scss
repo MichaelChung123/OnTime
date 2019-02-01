@@ -1,0 +1,29 @@
+.edit-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addEmployeeForm {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-top: 40px;
+  color: white;
+  font-size: 14px;
+}
+
+.add_employee_input {
+  width: 100%;
+  padding: 10px 10px;
+  margin: -12px 0;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: black;
+  font-family: inherit;
+  height: 35px;
+  margin-top: 3px;
+  margin-bottom: 25px;
+}
+
