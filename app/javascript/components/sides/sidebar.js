@@ -55,7 +55,6 @@ export default class SideBar extends React.Component {
     }
 
     componentDidMount() {
-       
         this.getEmpShift();
     }
 
@@ -71,7 +70,6 @@ export default class SideBar extends React.Component {
             renderChild: false
         });
         this.getEmpShift();
-
     }
 
     addShiftHandleClick() {

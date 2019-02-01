@@ -67,7 +67,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "edit") {
             return (
-                <EditEmployee refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
+                <EditEmployee refreshComponent={this.props.refreshComponent} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
             );
         }
 
@@ -84,7 +84,7 @@ export default class SideEmployee extends React.Component {
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                 >
-                    <DeletePopup refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} back={this.props.back} employee={this.props.employee}/>
+                    <DeletePopup refreshComponent={this.props.refreshComponent} back={this.props.back} employee={this.props.employee}/>
                 </ReactCSSTransitionGroup>
             );
         }
