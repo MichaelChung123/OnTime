@@ -14,8 +14,6 @@ export default class Popup extends React.Component {
         });
         
         
-
-
         function values(event, cb) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;

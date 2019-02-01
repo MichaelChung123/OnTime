@@ -31,7 +31,7 @@ export default class App extends React.Component {
     
 
     render(){
-        console.log(`i'm at app`, this.state.clickedDate)
+
         return(
             <div>
                 <NavBar />
