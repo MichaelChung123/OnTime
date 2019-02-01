@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
    
    get '/', to: 'welcome#index'
+   get '/employee', to: 'employee#index'
    get 'app/index', to: 'app#index'
    get 'api/employees', to: 'api#employee'
    get 'api/shifts', to: 'api#shift'

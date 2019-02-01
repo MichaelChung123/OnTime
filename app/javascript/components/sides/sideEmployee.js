@@ -47,6 +47,17 @@ export default class SideEmployee extends React.Component {
         
     }
 
+    timeFormat(time) {
+        if (time > 12) {
+            time -= 12;
+            time = time + ":00 PM";
+        } else {
+            time = time + ":00 AM";
+        }
+        
+        return time;
+    }
+
     render() {
         let shifts = this.props.shifts.map((e, index) => {
             if (e.employee_id === this.props.employee.id) {
@@ -56,7 +67,22 @@ export default class SideEmployee extends React.Component {
 
                         </NavIcon>
                         <NavText>
-                            <li>{e.day} from {e.start_time} - {e.end_time}</li>
+                            <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
+                        </NavText>
+                    </NavItem>
+                );
+            }
+        });
+
+        let availabilities = this.props.availabilities.map((e, index) => {
+            if (e.id === this.props.employee.id) {
+                return (
+                    <NavItem key={index}>
+                        <NavIcon>
+
+                        </NavIcon>
+                        <NavText>
+                            <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
                         </NavText>
                     </NavItem>
                 );
@@ -73,7 +99,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "contact") {
             return (
-                <Contact back={this.back}  employee={this.props.employee} />
+                <Contact back={this.back} employee={this.props.employee} />
             );
         }
 
@@ -129,6 +155,15 @@ export default class SideEmployee extends React.Component {
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
+                                        </div>
+
+                                        <div className="profile-shifts">
+                                            <div className="profile-shift-title">
+                                                Availabilities
+                                            </div>
+                                            <div className="list-of-shifts">
+                                                {availabilities}
+                                            </div>
                                         </div>
 
                                         <div className="profile-shifts">
