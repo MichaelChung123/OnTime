@@ -77,11 +77,11 @@ export default class SideEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                <i class="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
-                            </NavText>
+                        </NavText>
                         </NavItem>
 
                         <div className="container">

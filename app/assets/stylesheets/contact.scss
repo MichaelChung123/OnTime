@@ -28,20 +28,22 @@
 
 
 .contact-phone {
+  margin-left: 10px;
+
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
   font-size: 17px;
   background: #AFC5E9;
-  width: 100%;
+  width: 92%;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-
   border-radius: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-right: 10px
+}
 
-
+.contact-phone:hover {
+  overflow: scroll;
 }
