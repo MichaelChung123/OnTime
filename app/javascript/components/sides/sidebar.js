@@ -88,7 +88,7 @@ export default class SideBar extends React.Component {
 
         if (render === "employee") {
             return (
-                <SideEmployee shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
