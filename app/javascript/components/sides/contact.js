@@ -22,7 +22,7 @@ export default class Contact extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i class="fas fa-arrow-alt-circle-left"></i>
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
@@ -39,14 +39,14 @@ export default class Contact extends React.Component {
                                             {this.props.employee.first_name} {this.props.employee.last_name}
                                         </div>
                                         <div className="contact-phone-title">
-                                            <i class="fas fa-phone-square"></i>
+                                            <i className="fas fa-phone-square"></i>
                                             <div className="phone-number-text">Phone number</div>
                                         </div>
                                         <div className="contact-phone">
                                             {this.props.employee.phone_number}
                                         </div>
                                         <div className="contact-phone-title">
-                                            <i class="fas fa-envelope-square"></i>
+                                            <i className="fas fa-envelope-square"></i>
                                             <div className="phone-number-text">Email</div>
                                         </div>
                                         <div className="contact-phone">

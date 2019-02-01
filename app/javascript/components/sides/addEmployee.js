@@ -74,7 +74,7 @@ export default class AddEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i class="fas fa-arrow-alt-circle-left"></i>
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back

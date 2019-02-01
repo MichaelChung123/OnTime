@@ -58,7 +58,9 @@ export default class EditEmployee extends React.Component {
             body: JSON.stringify(data)
         });
 
-        alert('Updated Employee: ' + this.props.first_name + " " + this.props.last_name);
+        this.props.setEmployee(data);
+
+        alert('Updated Employee');
     }
 
     render() {
@@ -73,7 +75,7 @@ export default class EditEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i class="fas fa-arrow-alt-circle-left"></i>
+                                <i className="fas fa-arrow-alt-circle-left"></i>
 
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>

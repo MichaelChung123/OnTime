@@ -77,7 +77,7 @@ export default class SideEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i class="fas fa-arrow-alt-circle-left"></i>
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
@@ -105,6 +105,7 @@ export default class SideEmployee extends React.Component {
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
+                                            <button type="button" className="btn btn-success btn-sm" onClick={this.deleteEmployee}>Delete</button>
                                         </div>
 
                                         <div className="profile-shifts">

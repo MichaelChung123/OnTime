@@ -58,6 +58,14 @@ class ApiController < ApplicationController
         )
     end
 
+    def employee_delete
+
+        current_employee = Employee.find(params[:id])
+
+        current_employee.destroy
+    
+    end
+
         
 
 end
