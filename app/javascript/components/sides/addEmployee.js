@@ -57,6 +57,9 @@ export default class AddEmployee extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
+
+        this.props.refreshComponent(data);
+
     }
 
     render() {

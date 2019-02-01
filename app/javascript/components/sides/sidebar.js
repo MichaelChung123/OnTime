@@ -43,40 +43,15 @@ export default class SideBar extends React.Component {
             id: data.id,
             first_name: data.first_name,
             last_name: data.last_name,
-            email: data.email
-          
+            email: data.email,
+            occupation: data.occupation,
+            phone_number: data.phone_number
         };
         
         this.setState({
             renderChild: "employee",
             employee: employee
         });
-       
-
-       
-    
-        // console.log("we are in the main component", data);
-
-        // let data = {
-        //     //user_id is hard coded to 1 since demo is only meant for one admin user
-        //     user_id: this.state.user_id,
-        //     id: this.props.employee.id,
-        //     first_name: this.state.fname,
-        //     last_name: this.state.lname,
-        //     email: this.state.email,
-        //     occupation: this.state.occupation,
-        //     phone_number: this.state.phone
-        // }
-
-        // fetch('/api/employees', {
-        //     method: "PUT",
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // });
-        // this.setState({
-        //     refresh: true
-        // });
-
     }
 
     componentDidMount() {
@@ -138,7 +113,7 @@ export default class SideBar extends React.Component {
 
         if (render === "addEmployee") {
             return (
-                <AddEmployee getEmpShift={this.getEmpShift} back={this.back} />
+                <AddEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} back={this.back} />
             );
         }
 
