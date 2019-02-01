@@ -77,29 +77,40 @@ export default class AddEmployee extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
                         </NavText>
                         </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <div className="editEmployeeForm">
+
+                        <div className="container">
+                            <div className="col-md-3">
+                                <div className="edit-sidebar">
+
+                                    <div className="addEmployeeForm">
                                     <form onSubmit={this.handleSubmit}>
-                                        First name: <input type="text" name="fname" onChange={this.handleChange} /><br />
-                                        Last name: <input type="text" name="lname" onChange={this.handleChange} /><br />
-                                        Email: <input type="text" name="email" onChange={this.handleChange} /><br />
-                                        Occupation: <input type="text" name="occupation" onChange={this.handleChange} /><br />
-                                        Phone Number: <input type="text" name="phone" onChange={this.handleChange} /><br />
-                                        <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
+                                        First name
+                                        <input className="add_employee_input" type="text" name="fname" onChange={this.handleChange} />
+
+                                        Last name
+                                        <input className="add_employee_input" type="text" name="lname" onChange={this.handleChange} />
+
+                                        Email
+                                        <input className="add_employee_input" type="text" name="email" onChange={this.handleChange} />
+
+                                        Occupation
+                                        <input className="add_employee_input" type="text" name="occupation" onChange={this.handleChange} />
+
+                                        Phone Number
+                                        <input className="add_employee_input" type="text" name="phone" onChange={this.handleChange} />
+                                        <input className="edit_employee_submit_button" type="submit" value="Submit" onSubmit={this.handleSubmit} />
                                     </form>
+                                    </div>
                                 </div>
-                            </NavText>
-                        </NavItem>
+                            </div>
+                        </div>
+
                     </SideNav.Nav>
                 </SideNav>
             </div>

@@ -1,3 +1,9 @@
+//for the dropdown menus
+select {
+    border: none;
+    background-color: #E9EEF5;
+}
+
 
 .popup {
     position: fixed;
@@ -10,6 +16,8 @@
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
   }
+
+
 
 .form_container {
     position: sticky;
@@ -126,8 +134,3 @@ label {
   background-color: #4368A5
 }
 
-//for the dropdown menus
-select {
-    border: none;
-    background-color: #E9EEF5;
-}
