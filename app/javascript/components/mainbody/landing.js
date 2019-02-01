@@ -14,7 +14,7 @@ export default class Landing extends React.Component {
     // this.validateForm = this.validateForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.renderRedirect = this.renderRedirect.bind(this);
+    // this.renderRedirect = this.renderRedirect.bind(this);
     this.setRedirect = this.setRedirect.bind(this);
 
   }
