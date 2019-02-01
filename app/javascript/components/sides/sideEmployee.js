@@ -17,7 +17,6 @@ export default class SideEmployee extends React.Component {
         this.editEmployee = this.editEmployee.bind(this);
         this.showContact = this.showContact.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
-        this.setEmployee = this.setEmployee.bind(this);
 
         this.back = this.back.bind(this);
     }
@@ -41,6 +40,8 @@ export default class SideEmployee extends React.Component {
     }
 
     back() {
+        this.props.getEmpShift();
+
         this.setState({
             renderChild: false
         });

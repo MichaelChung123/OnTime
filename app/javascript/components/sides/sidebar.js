@@ -47,6 +47,8 @@ export default class SideBar extends React.Component {
     }
 
     back() {
+        this.getEmpShift();
+
         this.setState({
             renderChild: false
         });
@@ -84,8 +86,6 @@ export default class SideBar extends React.Component {
 
         const render = this.state.renderChild;
 
-
-
         if (render === "employee") {
             return (
                 <SideEmployee getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
@@ -94,7 +94,7 @@ export default class SideBar extends React.Component {
 
         if (render === "addEmployee") {
             return (
-                <AddEmployee back={this.back} />
+                <AddEmployee getEmpShift={this.getEmpShift} back={this.back} />
             );
         }
 
@@ -103,7 +103,6 @@ export default class SideBar extends React.Component {
                 <SideNav expanded={this.state.expanded}
                     onToggle={(expanded) => {
                         this.setState({ expanded: !this.state.expanded });
-                        console.log(this.state.expanded)
                     }}
                 >
                     <SideNav.Toggle />

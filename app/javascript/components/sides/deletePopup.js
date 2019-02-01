@@ -17,7 +17,7 @@ export default class DeletePopup extends React.Component {
         fetch('/api/employees/' + data.id, {
             method: "DELETE",
         });
-        
+
         this.props.back();
     }
 

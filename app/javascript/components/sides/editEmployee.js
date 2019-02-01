@@ -57,9 +57,7 @@ export default class EditEmployee extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-
-        this.props.setEmployee(data);
-
+        
         alert('Updated Employee');
     }
 
