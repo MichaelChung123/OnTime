@@ -56,19 +56,29 @@ export default class Landing extends React.Component {
       <Router>
         <Route>
           <div>
-            <br /><br /><br /><br /><br /><br />
-            <div className="Login">
-              <form onSubmit={this.handleSubmit}>
-                <label>Email</label><br />
-                <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
 
-                <label>Password</label><br />
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
-              </form>
+            <div className="welcome-card">
+              <div className="left-card-section">
+              </div>
 
-              <button type="submit" onClick={this.setRedirect}>Login</button>
+              <div className="right-card-section">
+                <div className="logo-section">
+                </div>
+                <div className="Login">
+                  <form onSubmit={this.handleSubmit}>
 
+                    Email
+                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
+
+                    Password
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                  </form>
+                  <button type="submit" onClick={this.setRedirect}>Login</button>
+                </div>
+              </div>
             </div>
+
+
           </div>
         </Route>
       </Router>
