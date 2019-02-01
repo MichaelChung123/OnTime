@@ -31,12 +31,11 @@ export default class App extends React.Component {
     
 
     render(){
-        
+        console.log(`i'm at app`, this.state.clickedDate)
         return(
             <div>
                 <NavBar />
 
-                <SideBar />
 
                 <br></br>
                 <br></br>
@@ -46,8 +45,7 @@ export default class App extends React.Component {
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
-                
-                <SideBar getDate={this.state.clickedDate}/>
+
                 <MentorCalculator />
                 
 

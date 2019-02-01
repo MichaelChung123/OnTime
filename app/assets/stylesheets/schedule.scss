@@ -16,12 +16,6 @@
 
 }
 
-%basic-setting {
-    display: block;
-
-    font-display: none;
-    text-indent: -9999px
-}
 
 .schedule-container {
     overflow: auto;
@@ -40,7 +34,7 @@
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
-    min-width: 80px;
+    min-width: 85px;
 
 }
 

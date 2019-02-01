@@ -4,12 +4,12 @@ import dateFns from 'date-fns'
 
 export default class Popup extends React.Component {
     state = {
-        getDate: this.props.getDate
+        clickedDate: this.props.getDate
     }
-
     render() {
-        console.log(this.state.getDate)
-        const getDate = this.state.getDate;
+
+        const getDate = this.state.clickedDate;
+        console.log(this.state.clickedDate)
         const clickedDay = dateFns.format(this.state.getDate, 'dddd MMMM Do').replace(/ .*/,'');
         // const clickedMonth = dateFns.format(this.state.getDate, 'MMM');
         // const positionMon = this.state.getDate.getDate();
@@ -54,7 +54,7 @@ export default class Popup extends React.Component {
             days.forEach((day, position) => { if (clickedDay == day) clickedPosition = position });
             return clickedPosition
         }
-        
+
         getDate.setDate(getDate.getDate() - setValueMon(clickedDay));
         const monday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
@@ -69,6 +69,7 @@ export default class Popup extends React.Component {
         const saturday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
         const sunday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
+        getDate.setDate(getDate.getDate() - 6);
 
 
         
