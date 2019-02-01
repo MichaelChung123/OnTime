@@ -8,7 +8,7 @@ export default class ScheduleTable extends React.Component {
     
     componentDidMount() {
         this.fetchData();
-        this.interval = setInterval(() => this.refresh(), 1000);
+        this.interval = setInterval(() => this.refresh(), 300);
     }
     fetchData() {
         fetch('/api/employeeshifts')
@@ -78,9 +78,9 @@ export default class ScheduleTable extends React.Component {
             return shiftInfo[0] ? shiftInfo[0].note : null;
         }
 
-        // function checkShiftExist() {
-        //     return shiftInfo[-] (<button onClick={() => deleteShift()} className="delete-shift">delete</button>)
-        // }
+        function checkShiftExist() {
+            return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete</button>) : null;
+        }
 
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
@@ -95,7 +95,7 @@ export default class ScheduleTable extends React.Component {
                         width: shiftInfo[i + 1].length, 
                         marginLeft: shiftInfo[i + 1].start, 
                         backgroundColor: randomColor()}}>
-                        {name} <br/><hr/>
+                        {name} {checkShiftExist()}<br/><hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
@@ -130,7 +130,7 @@ export default class ScheduleTable extends React.Component {
                                 display: 'block',
                                 width: checkLengthExist(), marginLeft: checkStartExist(),
                                 backgroundColor: randomColor()}}>
-                                {firstEmployee} <br/><hr/>
+                                {firstEmployee} {checkShiftExist()}<br/><hr/>
                                 {checkNoteExist()}
                                 </span>
                             </td>

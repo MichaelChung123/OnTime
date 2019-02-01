@@ -8,14 +8,12 @@ export default class Popup extends React.Component {
     }
     render() {
 
-        const getDate = this.state.clickedDate;
-        console.log(this.state.clickedDate)
-        const clickedDay = dateFns.format(this.state.getDate, 'dddd MMMM Do').replace(/ .*/,'');
-        // const clickedMonth = dateFns.format(this.state.getDate, 'MMM');
-        // const positionMon = this.state.getDate.getDate();
+        const getDate = this.props.getDate;
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
+        
+        
 
 
         function values(event, cb) {
@@ -48,14 +46,7 @@ export default class Popup extends React.Component {
             }
         }
         
-        function setValueMon(clickedDay) {
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-            let clickedPosition = 0; 
-            days.forEach((day, position) => { if (clickedDay == day) clickedPosition = position });
-            return clickedPosition
-        }
-
-        getDate.setDate(getDate.getDate() - setValueMon(clickedDay));
+        getDate.setDate(getDate.getDate());
         const monday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
         const tuesday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
@@ -70,9 +61,6 @@ export default class Popup extends React.Component {
         getDate.setDate(getDate.getDate() + 1);
         const sunday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() - 6);
-
-
-        
 
         return (
             <div className="popup">
