@@ -9,4 +9,6 @@ Rails.application.routes.draw do
    post 'api/employees', to: 'api#employee_create'
    put 'api/employees', to: 'api#employee_edit'
    get 'api/employeeshifts', to: 'api#employee_shifts'
+   delete 'api/employees/:id', to: 'api#employee_delete'
+
 end

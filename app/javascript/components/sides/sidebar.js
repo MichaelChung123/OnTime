@@ -21,9 +21,11 @@ export default class SideBar extends React.Component {
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
+        this.getEmpShift = this.getEmpShift.bind(this);
+
     }
 
-    componentDidMount() {
+    getEmpShift() {
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employees: data }) });
@@ -31,6 +33,10 @@ export default class SideBar extends React.Component {
         fetch('/api/shifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
+    }
+
+    componentDidMount() {
+        this.getEmpShift();
     }
 
     selectEmployee(employee) {
