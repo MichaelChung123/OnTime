@@ -2,6 +2,8 @@ import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import EditEmployee from './editEmployee'
 import Contact from './contact'
+import DeletePopup from './deletePopup'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class SideEmployee extends React.Component {
 
@@ -14,6 +16,7 @@ export default class SideEmployee extends React.Component {
 
         this.editEmployee = this.editEmployee.bind(this);
         this.showContact = this.showContact.bind(this);
+        this.deleteEmployee = this.deleteEmployee.bind(this);
 
         this.back = this.back.bind(this);
     }
@@ -27,6 +30,12 @@ export default class SideEmployee extends React.Component {
     showContact() {
         this.setState({
             renderChild: "contact"
+        });
+    }
+
+    deleteEmployee() {
+        this.setState({
+            renderChild: "delete"
         });
     }
 
@@ -56,13 +65,25 @@ export default class SideEmployee extends React.Component {
 
         if (render === "edit") {
             return (
-                <EditEmployee back={this.back} employee={this.props.employee} />
+                <EditEmployee  back={this.back} employee={this.props.employee} />
             );
         }
 
         if (render === "contact") {
             return (
                 <Contact back={this.back}  employee={this.props.employee} />
+            );
+        }
+
+        if (render === "delete") {
+            return (
+                <ReactCSSTransitionGroup
+                    transitionName="popup_css"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                >
+                    <DeletePopup back={this.back} employee={this.props.employee}/>
+                </ReactCSSTransitionGroup>
             );
         }
 
@@ -105,7 +126,7 @@ export default class SideEmployee extends React.Component {
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
-                                            <button type="button" className="btn btn-success btn-sm" onClick={this.deleteEmployee}>Delete</button>
+                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
                                         </div>
 
                                         <div className="profile-shifts">
