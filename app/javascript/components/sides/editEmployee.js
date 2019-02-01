@@ -80,38 +80,34 @@ export default class EditEmployee extends React.Component {
                                 Back
                         </NavText>
                         </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
 
+                            <div className="container">
+                                <div className="col-md-3">
+                                    <div className="edit-sidebar">
 
-                            <NavText>
-                                <div className="editEmployeeForm">
-                                    <form className="editEmployeeForm" onSubmit={this.handleSubmit}>
-                                        First name
-                                        <input className="edit_employee_input" type="text" name="fname" value={this.state.fname} onChange={this.handleChange} />
+                                        <div className="addEmployeeForm">
+                                        <form onSubmit={this.handleSubmit}>
+                                            First name
+                                            <input className="add_employee_input" type="text" name="fname" value={this.state.fname} onChange={this.handleChange} />
 
-                                        Last name
-                                        <input className="edit_employee_input" type="text" name="lname" value={this.state.lname} onChange={this.handleChange} />
+                                            Last name
+                                            <input className="add_employee_input" type="text" name="lname" value={this.state.lname} onChange={this.handleChange} />
 
-                                        Email
-                                        <input className="edit_employee_input" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                                            Email
+                                            <input className="add_employee_input" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 
-                                        Occupation
-                                        <input className="edit_employee_input" type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} />
+                                            Occupation
+                                            <input className="add_employee_input" type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} />
 
-                                        Phone Number
-                                        <input className="edit_employee_input" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
-
-
-                                        <input className="edit_employee_submit_button" type="submit" value="Submit" />
-                                    </form>
+                                            Phone Number
+                                            <input className="add_employee_input" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                                            <input className="edit_employee_submit_button" type="submit" value="Submit" />
+                                        </form>
+                                        </div>
+                                    </div>
                                 </div>
-                            </NavText>
+                            </div>
 
-
-                        </NavItem>
                     </SideNav.Nav>
                 </SideNav>
             </div>
