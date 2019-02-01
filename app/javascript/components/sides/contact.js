@@ -22,36 +22,41 @@ export default class Contact extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift">
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                <i className="fas fa-arrow-alt-circle-left"></i>
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
                         </NavText>
                         </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <h1>Contact</h1>
-                            </NavText>
-                        </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <h3>Phone: {this.props.employee.phone_number}</h3>
-                            </NavText>
-                        </NavItem>
-                        <NavItem eventKey="add-employee">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                <h3>Email: {this.props.employee.email}</h3>
-                            </NavText>
-                        </NavItem>
+
+                        <div className="container">
+                            <div className="col-md-3">
+                                <div className="contact-sidebar">
+
+                                    <div className="profile-contacts">
+                                        <div className="contact-title">
+
+                                            {this.props.employee.first_name} {this.props.employee.last_name}
+                                        </div>
+                                        <div className="contact-phone-title">
+                                            <i className="fas fa-phone-square"></i>
+                                            <div className="phone-number-text">Phone number</div>
+                                        </div>
+                                        <div className="contact-phone">
+                                            {this.props.employee.phone_number}
+                                        </div>
+                                        <div className="contact-phone-title">
+                                            <i className="fas fa-envelope-square"></i>
+                                            <div className="phone-number-text">Email</div>
+                                        </div>
+                                        <div className="contact-phone">
+                                            {this.props.employee.email}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </SideNav.Nav>
                 </SideNav>
             </div>
