@@ -59,6 +59,9 @@ export default class EditEmployee extends React.Component {
         });
         
         alert('Updated Employee');
+
+        this.props.refreshComponent(data);
+        // this.props.getEmpShift();
     }
 
     render() {

@@ -15,14 +15,16 @@ export default class SideBar extends React.Component {
             shifts: [],
             renderChild: false,
             clicked: false,
-            expanded: false
+            expanded: false,
+            refresh: false,
+            selectedEmployee: null
         };
 
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
         this.getEmpShift = this.getEmpShift.bind(this);
-
+        this.refreshComponent = this.refreshComponent.bind(this);
     }
 
     getEmpShift() {
@@ -35,7 +37,50 @@ export default class SideBar extends React.Component {
             .then((data) => { this.setState({ shifts: data }) });
     }
 
+    refreshComponent(data){
+        
+        var employee = {
+            id: data.id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email
+          
+        };
+        
+        this.setState({
+            renderChild: "employee",
+            employee: employee
+        });
+       
+
+       
+    
+        // console.log("we are in the main component", data);
+
+        // let data = {
+        //     //user_id is hard coded to 1 since demo is only meant for one admin user
+        //     user_id: this.state.user_id,
+        //     id: this.props.employee.id,
+        //     first_name: this.state.fname,
+        //     last_name: this.state.lname,
+        //     email: this.state.email,
+        //     occupation: this.state.occupation,
+        //     phone_number: this.state.phone
+        // }
+
+        // fetch('/api/employees', {
+        //     method: "PUT",
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data)
+        // });
+        // this.setState({
+        //     refresh: true
+        // });
+
+    }
+
     componentDidMount() {
+       
         this.getEmpShift();
     }
 
@@ -47,11 +92,10 @@ export default class SideBar extends React.Component {
     }
 
     back() {
-        this.getEmpShift();
-
         this.setState({
             renderChild: false
         });
+        this.getEmpShift();
 
     }
 
@@ -88,7 +132,7 @@ export default class SideBar extends React.Component {
 
         if (render === "employee") {
             return (
-                <SideEmployee getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 

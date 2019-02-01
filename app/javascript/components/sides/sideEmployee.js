@@ -4,6 +4,7 @@ import EditEmployee from './editEmployee'
 import Contact from './contact'
 import DeletePopup from './deletePopup'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { throws } from 'assert';
 
 export default class SideEmployee extends React.Component {
 
@@ -40,11 +41,10 @@ export default class SideEmployee extends React.Component {
     }
 
     back() {
-        this.props.getEmpShift();
-
         this.setState({
             renderChild: false
         });
+        
     }
 
     render() {
@@ -67,7 +67,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "edit") {
             return (
-                <EditEmployee setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
+                <EditEmployee refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
             );
         }
 
@@ -84,7 +84,7 @@ export default class SideEmployee extends React.Component {
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                 >
-                    <DeletePopup back={this.back} employee={this.props.employee}/>
+                    <DeletePopup refreshComponent={this.refreshComponent} getEmpShift={this.props.getEmpShift} back={this.back} employee={this.props.employee}/>
                 </ReactCSSTransitionGroup>
             );
         }
