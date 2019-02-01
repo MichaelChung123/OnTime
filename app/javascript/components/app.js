@@ -11,20 +11,27 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clickedDate: "today"
+            clickedDate: new Date(),
+            employeeShifts: []
         }
 
         this.getDate = this.getDate.bind(this);
     }
-
+    componentDidMount() {
+        fetch('/api/employeeshifts')
+        .then((response) => { return response.json() })
+        .then((data) => { this.setState({ employeeShifts: data }) });
+    }
+    
     getDate = (date) => {
         this.setState({
             clickedDate: date
         })
     }
+    
 
     render(){
-
+        
         return(
             <div>
                 <NavBar />
@@ -38,12 +45,16 @@ export default class App extends React.Component {
 
 
                 <ScheduleApp getDate={this.getDate} />
+                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
+                
                 <SideBar getDate={this.state.clickedDate}/>
                 <MentorCalculator />
-
+                
 
             </div>
         )
     }
 }
+{/* <Footer /> */}
+
 

@@ -5,9 +5,7 @@ class ApiController < ApplicationController
     end
     
     def employee_shifts
-        @employee = Employee.all
         render json: Employee.all.to_json(:include => :shifts)
-
     end
 
     def shift
@@ -26,7 +24,8 @@ class ApiController < ApplicationController
             day: params[:day],
             start_time: params[:start_time],
             end_time: params[:end_time],
-            duration: params[:duration]
+            duration: params[:duration],
+            note: params[:note]
         )
     end
 
