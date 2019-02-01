@@ -1,0 +1,68 @@
+.delete-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+    z-index: 10000;
+  }
+
+.delete-form-container {
+    border-radius: 4px;
+    position: sticky;
+    right: 25%;
+    top: 15%;
+    width: 30%;
+    height: 40%;
+    margin: auto;
+    padding: 40px 0;
+    text-align: center;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+.delete-popup-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+      padding-left: 15%;
+  padding-right: 15%;
+}
+
+.delete-popup-button-yes {
+  height: 35px;
+   width: 45%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background: #A9CCE3;
+  font-size: 14px
+
+}
+
+.delete-popup-button-no {
+  height: 35px;
+   width: 45%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #EC7063;
+  color: white;
+  border: none;
+  font-size: 14px
+
+}
+
+.delete-form-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
