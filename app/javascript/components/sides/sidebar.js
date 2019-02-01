@@ -38,7 +38,7 @@ export default class SideBar extends React.Component {
     }
 
     refreshComponent(data){
-        
+
         var employee = {
             id: data.id,
             first_name: data.first_name,
@@ -47,7 +47,7 @@ export default class SideBar extends React.Component {
             occupation: data.occupation,
             phone_number: data.phone_number
         };
-        
+
         this.setState({
             renderChild: "employee",
             employee: employee
@@ -55,7 +55,7 @@ export default class SideBar extends React.Component {
     }
 
     componentDidMount() {
-       
+
         this.getEmpShift();
     }
 
