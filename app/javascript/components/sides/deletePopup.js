@@ -18,6 +18,8 @@ export default class DeletePopup extends React.Component {
             method: "DELETE",
         });
 
+        this.props.refreshComponent(data);
+
         this.props.back();
     }
 

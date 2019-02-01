@@ -19,26 +19,16 @@ export default class Landing extends React.Component {
 
   }
 
-  renderRedirect() {
-
-    // if (this.state.email === "davey@lighthouselabs.ca" && this.state.password === "123") {
-    //     console.log("Authentication Successful!");
-    //     <Redirect to="app/index" />
-    // }
-    // else if (this.state.email !== "davey@lighthouselabs.ca" || this.state.password !== "123") {
-    //     console.log("Authentication Failed!");
-    // }
-
-    // if (this.state.redirect) {
-    //   return <Redirect to='/app/index' />
-    // }
-
-  }
-
   setRedirect = () => {
-    this.setState({
-      redirect: true
-    });
+    if (this.state.redirect && this.state.email === "davey@lighthouselabs.ca" && this.state.password === "123") {
+      console.log("Authentication Successful!");
+      setRedirect = () => {
+        window.location = "http://0.0.0.0:3000/app/index";
+      }
+    }
+    else if (this.state.email !== "davey@lighthouselabs.ca" || this.state.password !== "123") {
+      alert("Authentication Failed");
+    }
   }
 
   handleChange = (event) => {
@@ -55,11 +45,11 @@ export default class Landing extends React.Component {
     console.log("In render");
 
     if (this.state.redirect) {
-        return (
-            <Router>
-                <Redirect to="/app/index" />
-            </Router>
-        );
+      return (
+        <Router>
+          <Redirect to="/app/index" />
+        </Router>
+      );
     }
 
     return (
@@ -75,7 +65,7 @@ export default class Landing extends React.Component {
                 <label>Password</label><br />
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
               </form>
-              
+
               <button type="submit" onClick={this.setRedirect}>Login</button>
 
             </div>

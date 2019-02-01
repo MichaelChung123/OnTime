@@ -15,14 +15,16 @@ export default class SideBar extends React.Component {
             shifts: [],
             renderChild: false,
             clicked: false,
-            expanded: false
+            expanded: false,
+            refresh: false,
+            selectedEmployee: null
         };
 
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
         this.getEmpShift = this.getEmpShift.bind(this);
-
+        this.refreshComponent = this.refreshComponent.bind(this);
     }
 
     getEmpShift() {
@@ -35,7 +37,25 @@ export default class SideBar extends React.Component {
             .then((data) => { this.setState({ shifts: data }) });
     }
 
+    refreshComponent(data){
+        
+        var employee = {
+            id: data.id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            occupation: data.occupation,
+            phone_number: data.phone_number
+        };
+        
+        this.setState({
+            renderChild: "employee",
+            employee: employee
+        });
+    }
+
     componentDidMount() {
+       
         this.getEmpShift();
     }
 
@@ -50,6 +70,7 @@ export default class SideBar extends React.Component {
         this.setState({
             renderChild: false
         });
+        this.getEmpShift();
 
     }
 
@@ -84,17 +105,15 @@ export default class SideBar extends React.Component {
 
         const render = this.state.renderChild;
 
-
-
         if (render === "employee") {
             return (
-                <SideEmployee getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
         if (render === "addEmployee") {
             return (
-                <AddEmployee back={this.back} />
+                <AddEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} back={this.back} />
             );
         }
 
@@ -103,7 +122,6 @@ export default class SideBar extends React.Component {
                 <SideNav expanded={this.state.expanded}
                     onToggle={(expanded) => {
                         this.setState({ expanded: !this.state.expanded });
-                        console.log(this.state.expanded)
                     }}
                 >
                     <SideNav.Toggle />
