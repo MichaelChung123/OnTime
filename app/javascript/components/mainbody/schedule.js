@@ -9,18 +9,28 @@ export default class Schedule extends React.Component {
         const month = clickedDay.getMonth();
         const year = clickedDay.getFullYear();
         const date = new Date(year, month, numDay);
-        const formatDate = dateFns.format(date, 'dddd MMMM Do');
+        const formatDate = dateFns.format(date, 'dddd, MMMM Do, YYYY');
 
         return(
-            <div><br/><br/><br/><br/>
-                <div className="schedule-weekly-container">
-                    <nav className="schedule-weekly-nav">
-                        <h1>{formatDate}, {year}</h1>
-                    </nav><br/>
+            <div className="day_schedule"><br/><br/>
+                <div className="date-header-container">
+
+                        <h2>{formatDate}</h2>
+                        <div className="daily_back_button" onClick={() => this.props.backClick()}>
+                            <i class="fas fa-arrow-alt-circle-left"></i>
+                            Back
+                        </div>
+
+                        <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} currentDay={this.props.currentDay}/>
+
+
+
                 </div>
-                <ScheduleTable currentDate={formatDate}/>
-                <button onClick={() => this.props.backClick()}>back</button>
+
             </div>
         )
     }
 }
+
+
+

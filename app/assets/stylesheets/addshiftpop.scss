@@ -1,3 +1,9 @@
+//for the dropdown menus
+select {
+    border: none;
+    background-color: #E9EEF5;
+}
+
 
 .popup {
     position: fixed;
@@ -11,32 +17,36 @@
     background-color: rgba(0,0,0, 0.5);
   }
 
+
+
 .form_container {
-    position: absolute;
+    position: sticky;
     right: 25%;
-    top: 25%;
-    bottom: 25%;
-    width: 40%;
-    height: 350px;
+    top: 10%;
+
+
+    width: 30%;
+    height: 500px;
     margin: auto;
+    padding: 40px 0;
     text-align: center;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  } 
+  }
 
 .popup_css-enter {
     opacity: 0.01;
   }
-  
+
 .popup_css-enter.popup_css-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
-  
+
 .popup_css-leave {
     opacity: 1;
   }
-  
+
 .popup_css-leave.popup_css-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
@@ -44,11 +54,14 @@
 
 
 .popup_form {
-    width: 50%;
-    font-size: large;
-    background-color: lightgrey;
-    margin: 1em;
-    text-align: center
+  width: 80%;
+  height: 25px;
+  font-size: inherit;
+  font: inherit;
+  background-color: white;
+  margin: 0.8em;
+  text-align: left;
+  border-radius: 25px;
 }
 
 .form_button {
@@ -71,3 +84,53 @@
 .form_button:hover {
     border-color: #FFFFFF
 }
+
+///chagn3es -Need to ask how to target the labels in the popup!
+label {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    left: 10%;
+    font-size: inherit;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+.form_button_schedule {
+    width: 80%;
+    height: 35px;
+    background-color: #86A4D5;
+    color: white;
+    border-radius: 25px;
+    font: inherit;
+    font-size: inherit;
+}
+
+.form_button_close {
+    width: 80%;
+    height: 35px;
+    margin-top: 15px;
+    background-color: #EC7063;
+    color: white;
+    border-radius: 25px;
+    font: inherit;
+    font-size: inherit;
+}
+
+.form_button_close:hover {
+  background-color: #C0392B
+}
+
+.form_button_schedule:hover {
+  background-color: #4368A5
+}
+

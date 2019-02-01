@@ -1,20 +1,19 @@
 import React from 'react'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 
-export default class EditEmployee extends React.Component {
+export default class AddEmployee extends React.Component {
     constructor(props) {
         super(props)
 
-        const emp = this.props.employee;
-
         this.state = {
             expanded: true,
+            renderChild: false,
             user_id: 1,
-            fname: emp.first_name,
-            lname: emp.last_name,
-            email: emp.email,
-            occupation: emp.occupation,
-            phone: emp.phone_number
+            fname: "test",
+            lname: "",
+            email: "",
+            occupation: "",
+            phone: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -44,7 +43,6 @@ export default class EditEmployee extends React.Component {
         let data = {
             //user_id is hard coded to 1 since demo is only meant for one admin user
             user_id: this.state.user_id,
-            id: this.props.employee.id,
             first_name: this.state.fname,
             last_name: this.state.lname,
             email: this.state.email,
@@ -52,18 +50,22 @@ export default class EditEmployee extends React.Component {
             phone_number: this.state.phone
         }
 
+        alert('Added Employee: ' + data.first_name + " " + data.last_name);
+
         fetch('/api/employees', {
-            method: "PUT",
+            method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        
-        alert('Updated Employee');
 
         this.props.refreshComponent(data);
+
     }
 
     render() {
+
+        const render = this.state.renderChild;
+
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
@@ -76,39 +78,38 @@ export default class EditEmployee extends React.Component {
                         <NavItem eventKey="add-shift">
                             <NavIcon>
                                 <i className="fas fa-arrow-alt-circle-left"></i>
-
                             </NavIcon>
                             <NavText onClick={() => this.props.back()}>
                                 Back
                         </NavText>
                         </NavItem>
 
-                            <div className="container">
-                                <div className="col-md-3">
-                                    <div className="edit-sidebar">
+                        <div className="container">
+                            <div className="col-md-3">
+                                <div className="edit-sidebar">
 
-                                        <div className="addEmployeeForm">
-                                        <form onSubmit={this.handleSubmit}>
-                                            First name
-                                            <input className="add_employee_input" type="text" name="fname" value={this.state.fname} onChange={this.handleChange} />
+                                    <div className="addEmployeeForm">
+                                    <form onSubmit={this.handleSubmit}>
+                                        First name
+                                        <input className="add_employee_input" type="text" name="fname" onChange={this.handleChange} />
 
-                                            Last name
-                                            <input className="add_employee_input" type="text" name="lname" value={this.state.lname} onChange={this.handleChange} />
+                                        Last name
+                                        <input className="add_employee_input" type="text" name="lname" onChange={this.handleChange} />
 
-                                            Email
-                                            <input className="add_employee_input" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                                        Email
+                                        <input className="add_employee_input" type="text" name="email" onChange={this.handleChange} />
 
-                                            Occupation
-                                            <input className="add_employee_input" type="text" name="occupation" value={this.state.occupation} onChange={this.handleChange} />
+                                        Occupation
+                                        <input className="add_employee_input" type="text" name="occupation" onChange={this.handleChange} />
 
-                                            Phone Number
-                                            <input className="add_employee_input" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
-                                            <input className="edit_employee_submit_button" type="submit" value="Submit" />
-                                        </form>
-                                        </div>
+                                        Phone Number
+                                        <input className="add_employee_input" type="text" name="phone" onChange={this.handleChange} />
+                                        <input className="edit_employee_submit_button" type="submit" value="Submit" onSubmit={this.handleSubmit} />
+                                    </form>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                     </SideNav.Nav>
                 </SideNav>

@@ -1,19 +1,42 @@
+.day_schedule {
+    background: white;
+    width: 80%;
+
+    margin: auto;
+    padding-left: 5%;
+    height: 450px;
+}
+
+.date-header-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  height: 400px;
+  padding-right: 8%;
+
+}
+
+%basic-setting {
+    display: block;
+
+    font-display: none;
+    text-indent: -9999px
+}
 
 .schedule-container {
     overflow: auto;
     height: 400px;
-    width: 70%;
-    padding: 0.5em;
-    border: solid 1px;
-    border-radius: 10px;
+    table-layout: fixed;
+
 }
 
 .schedule-weekly-table {
     border-collapse: collapse;
     font-size: small;
-    border: solid 1px;
-    background-color: blanchedalmond
-    
+    border: 0.5px solid #AFAFAF;
+
 }
 
 .schedule-weekly-table th {
@@ -25,25 +48,53 @@
 
 .schedule-weekly-table td {
     border-right: solid 1px;
-    
 }
 
+.schedule-weekly-table span {
+    border-radius: 10px;
+    padding: 10px
+}
+ 
 .last-row {
     border-bottom: solid 1px
 }
 
-.schedule-weekly-table .day {
-    padding: 0.5em;
-    height: 120px;
+
+.daily_back_button {
+
+  background-color: #86A4D5; /* main-theme purple/blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: justify;
+  text-decoration: none;
+  display: inline-block;
+
+  font-size: 13px;
+  border-radius: 25px;
+  height: 45px;
+  width: 120px;
+
+  i {
+    margin-right: 5px;
+    font-size: 13px;
+
+  }
 }
-// Employee bar properties//
 
-
-.schedule-container span {
-    display: block;
-    border-radius: 10px;
-    margin-top: 10px;
-    padding: 7px;
-    margin-bottom: 7px
-
+.daily_back_button:hover {
+  background-color: #4368A5;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+
+
+
+
+
+
+
+
+
+
+

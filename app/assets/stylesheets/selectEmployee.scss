@@ -4,18 +4,18 @@
 body {
     background: #F1F3FA;
   }
-  
+
   /* Profile container */
   .profile {
     margin: 20px 0;
   }
-  
+
   /* Profile sidebar */
   .profile-sidebar {
     padding: 20px 0 10px 0;
-    background: #db3d44;
+    background: #86A4D5;
   }
-  
+
   .profile-userpic img {
     float: none;
     margin: 0 auto;
@@ -25,87 +25,130 @@ body {
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
   }
-  
+
   .profile-usertitle {
     text-align: center;
     margin-top: 20px;
   }
-  
+
   .profile-usertitle-name {
     color: #fafcfd;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 30px;
     margin-bottom: 7px;
   }
-  
+
   .profile-usertitle-job {
-    text-transform: uppercase;
+
     color: #fafcfd;;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px;
+
     margin-bottom: 15px;
   }
-  
+
   .profile-userbuttons {
     text-align: center;
     margin-top: 10px;
+
+      padding-left: 10%;
+  padding-right: 10%;
   }
-  
+
   .profile-userbuttons .btn {
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
+
+  font-size: 13px;
+  font-weight: 400;
+
     padding: 6px 15px;
-    margin-right: 5px;
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 4px;
+    color: #fafcfd;
+    background: #727272;
+    border: none;
+
   }
-  
+
   .profile-userbuttons .btn:last-child {
     margin-right: 0px;
   }
-      
+
   .profile-usermenu {
     margin-top: 30px;
   }
-  
+
   .profile-usermenu ul li {
-    border-bottom: 1px solid #db3d44;
+    border-bottom: 1px solid #3498d8;
   }
-  
+
   .profile-usermenu ul li:last-child {
     border-bottom: none;
   }
-  
+
   .profile-usermenu ul li a {
     color: #fafcfd;;
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
   }
-  
+
   .profile-usermenu ul li a i {
     margin-right: 8px;
     font-size: 14px;
   }
-  
+
   .profile-usermenu ul li a:hover {
     background-color: #fafcfd;
     color: #fafcfd;;
   }
-  
+
   .profile-usermenu ul li.active {
     border-bottom: none;
   }
-  
+
   .profile-usermenu ul li.active a {
     color: #fafcfd;
-    background-color: #db3d44;
+    background-color: #3498d8;
     border-left: 2px solid #fafcfd;;
     margin-left: -2px;
     text-decoration: none;
   }
-  
+
   .profile-content {
     padding: 20px;
     background: #fff;
     min-height: 460px;
   }
+
+
+
+  //contact info page
+
+.profile-shifts {
+  color: white;
+  margin-top: 40px;
+
+  font-size: 16px;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+
+.list-of-shifts {
+  margin-top: 10px;
+  width: 80%;
+  background: #AFC5E9;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+
+
+

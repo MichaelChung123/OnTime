@@ -1,6 +1,6 @@
 import React from 'react'
 import dateFns from 'date-fns'
-import ScheduleTable from '../mainbody/scheduleTable'
+
 
 export default class Popup extends React.Component {
     state = {
@@ -15,7 +15,7 @@ export default class Popup extends React.Component {
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
-        const addShift = this.props.addShift;
+
 
         function values(event, cb) {
             event.preventDefault();
@@ -34,7 +34,7 @@ export default class Popup extends React.Component {
                 duration: duration,
                 note: notes
             }
-            
+
             if (duration > 0) {
             fetch('/api/shifts', {
                 method: "POST",
@@ -69,14 +69,20 @@ export default class Popup extends React.Component {
         getDate.setDate(getDate.getDate() + 1);
         const sunday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
 
+
+        
+
         return (
             <div className="popup">
                 <div className="form_container">
                     <label for="employee">Employee</label>
+
+                        <br></br>
                         <select id="employee" className="popup_form">
                             {employees}
                         </select><br/>
                     <label for="day">Day</label>
+                        <br></br>
                         <select id="day" className="popup_form">
                             <option value={monday}>{monday}</option>
                             <option value={tuesday}>{tuesday}</option>
@@ -87,7 +93,8 @@ export default class Popup extends React.Component {
                             <option value={sunday}>{sunday}</option>
                         </select><br/>
 
-                    <label for="start_time">Star Time</label>
+                    <label for="start_time">Start Time</label>
+                        <br></br>
                         <select id="start_time" className="popup_form">
                             <option value="9">9:00 AM</option>
                             <option value="10">10:00 AM</option>
@@ -106,6 +113,7 @@ export default class Popup extends React.Component {
                         </select><br/>
 
                     <label for="end_time">End Time</label>
+                        <br></br>
                         <select id="end_time" className="popup_form">
                             <option value="10">10:00 AM</option>
                             <option value="11">11:00 AM</option>
@@ -123,13 +131,15 @@ export default class Popup extends React.Component {
                         </select><br/>
                     
                     <textarea id="notes"></textarea>
+                    <br></br>
+                    <button className="form_button_schedule" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule</button>
+                    <br></br>
+                    <button className="form_button_close" onClick={() => this.props.closePopup()}>Close</button>
 
-                    <button className="form_button" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule!</button>
-                    <button className="form_button" onClick={() => this.props.closePopup()}>Close</button>
                 </div>
-            </div> 
-        ) 
+            </div>
+        )
     }
-  }
+}
 
 

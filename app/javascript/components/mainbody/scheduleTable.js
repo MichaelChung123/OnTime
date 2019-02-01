@@ -1,5 +1,5 @@
 import React from 'react'
-
+import dateFns from 'date-fns'
 
 export default class ScheduleTable extends React.Component {
     state = {
@@ -8,35 +8,37 @@ export default class ScheduleTable extends React.Component {
 
     componentDidMount() {
         this.fetchData();
-        this.interval = setInterval(() => this.refresh(), 500);
+        // this.interval = setInterval(() => this.refresh(), 500);
     }
     fetchData() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
-    refresh() {
-        this.fetchData();
-    }
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
 
     render() {
         const data = this.state.employeeShifts;
-        const currentDate = this.props.currentDate;
+        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
         const employeeId = [];
         const employeeNames = [];
         const shiftInfo = [];
         const randomColor = () => {
             // var max = 0xffffff;
             // return '#' + Math.round( Math.random() * max ).toString( 16 )
-            return '#ffff'
+            return 'blanchedalmond'
         };
 
         data.forEach(function(employee){
             employee.shifts.forEach(function(shift){
+                console.log(shift)
+                console.log(currentDate)
                 if(shift.day === currentDate) {
+                    console.log(currentDate)
+                    console.log(shift)
                     employeeId.push(shift.employee_id);
                     shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80, note: shift.note})
                 }
@@ -68,6 +70,7 @@ export default class ScheduleTable extends React.Component {
                         <span
                         key={i + 1} 
                         style={{
+                        display: 'block',
                         width: shiftInfo[i + 1].length, 
                         marginLeft: shiftInfo[i + 1].start, 
                         backgroundColor: randomColor()}}>
@@ -78,6 +81,10 @@ export default class ScheduleTable extends React.Component {
                 </tr>
             )
         })
+        // console.log(employeeNames)
+        // console.log(shiftInfo)
+        // console.log(this.state.employeeShifts)
+
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
@@ -103,6 +110,7 @@ export default class ScheduleTable extends React.Component {
                                 <span 
                                 key={0}
                                 style={{
+                                display: 'block',
                                 width: checkLengthExist(), marginLeft: checkStartExist(),
                                 backgroundColor: randomColor()}}>
                                 {firstEmployee}<br/><hr/>
