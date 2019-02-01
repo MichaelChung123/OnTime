@@ -63,6 +63,21 @@ export default class SideEmployee extends React.Component {
             }
         });
 
+        let availabilities = this.props.availabilities.map((e, index) => {
+            if (e.id === this.props.employee.id) {
+                return (
+                    <NavItem key={index}>
+                        <NavIcon>
+
+                        </NavIcon>
+                        <NavText>
+                            <li>{e.day} between {e.start_time} to {e.end_time}</li>
+                        </NavText>
+                    </NavItem>
+                );
+            }
+        });
+
         const render = this.state.renderChild;
 
         if (render === "edit") {
@@ -129,6 +144,15 @@ export default class SideEmployee extends React.Component {
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
+                                        </div>
+
+                                        <div className="profile-shifts">
+                                            <div className="profile-shift-title">
+                                                Availabilities
+                                            </div>
+                                            <div className="list-of-shifts">
+                                                {availabilities}
+                                            </div>
                                         </div>
 
                                         <div className="profile-shifts">

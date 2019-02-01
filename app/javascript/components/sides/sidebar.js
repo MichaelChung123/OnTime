@@ -13,6 +13,7 @@ export default class SideBar extends React.Component {
         this.state = {
             employees: [],
             shifts: [],
+            availabilities: [],
             renderChild: false,
             clicked: false,
             expanded: false,
@@ -35,6 +36,10 @@ export default class SideBar extends React.Component {
         fetch('/api/shifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
+
+        fetch('/api/availability')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ availabilities: data }) });
     }
 
     refreshComponent(data){
@@ -55,7 +60,6 @@ export default class SideBar extends React.Component {
     }
 
     componentDidMount() {
-       
         this.getEmpShift();
     }
 
@@ -102,12 +106,13 @@ export default class SideBar extends React.Component {
         })
 
         const shifts = this.state.shifts;
+        const availabilities = this.state.availabilities;
 
         const render = this.state.renderChild;
 
         if (render === "employee") {
             return (
-                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
