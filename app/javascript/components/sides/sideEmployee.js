@@ -82,7 +82,7 @@ export default class SideEmployee extends React.Component {
 
                         </NavIcon>
                         <NavText>
-                            <li>{e.day} between {this.timeFormat(e.start_time)} to {this.timeFormat(e.end_time)}</li>
+                            <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
                         </NavText>
                     </NavItem>
                 );
