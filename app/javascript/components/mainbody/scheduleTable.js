@@ -16,6 +16,10 @@ export default class ScheduleTable extends React.Component {
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
+    // refresh() {
+    //     this.fetchData();
+    // }
+    
     // componentWillUnmount() {
     //     clearInterval(this.interval);
     // }
@@ -34,11 +38,7 @@ export default class ScheduleTable extends React.Component {
 
         data.forEach(function(employee){
             employee.shifts.forEach(function(shift){
-                console.log(shift)
-                console.log(currentDate)
                 if(shift.day === currentDate) {
-                    console.log(currentDate)
-                    console.log(shift)
                     employeeId.push(shift.employee_id);
                     shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80, note: shift.note})
                 }

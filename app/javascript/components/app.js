@@ -49,12 +49,12 @@ export default class App extends React.Component {
                 
                 <SideBar getDate={this.state.clickedDate}/>
                 <MentorCalculator />
-                <Footer />
+                
 
             </div>
         )
     }
 }
-
+{/* <Footer /> */}
 
 

@@ -8,6 +8,7 @@ export default class Popup extends React.Component {
     }
 
     render() {
+        console.log(this.state.getDate)
         const getDate = this.state.getDate;
         const clickedDay = dateFns.format(this.state.getDate, 'dddd MMMM Do').replace(/ .*/,'');
         // const clickedMonth = dateFns.format(this.state.getDate, 'MMM');

@@ -23,10 +23,7 @@ export default class Schedule extends React.Component {
 
                         <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} currentDay={this.props.currentDay}/>
 
-
-
                 </div>
-
             </div>
         )
     }
