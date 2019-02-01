@@ -13,6 +13,7 @@ export default class SideBar extends React.Component {
         this.state = {
             employees: [],
             shifts: [],
+            availabilities: [],
             renderChild: false,
             clicked: false,
             expanded: false,
@@ -23,6 +24,7 @@ export default class SideBar extends React.Component {
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
+
         this.getEmpShift = this.getEmpShift.bind(this);
         this.refreshComponent = this.refreshComponent.bind(this);
     }
@@ -35,6 +37,10 @@ export default class SideBar extends React.Component {
         fetch('/api/shifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
+
+        fetch('/api/availability')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ availabilities: data }) });
     }
 
     refreshComponent(data){
@@ -55,7 +61,6 @@ export default class SideBar extends React.Component {
     }
 
     componentDidMount() {
-
         this.getEmpShift();
     }
 
@@ -102,12 +107,13 @@ export default class SideBar extends React.Component {
         })
 
         const shifts = this.state.shifts;
+        const availabilities = this.state.availabilities;
 
         const render = this.state.renderChild;
 
         if (render === "employee") {
             return (
-                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
@@ -126,7 +132,7 @@ export default class SideBar extends React.Component {
                 >
                     <SideNav.Toggle />
                     <SideNav.Nav>
-                        {/* <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
+                        <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
@@ -140,8 +146,8 @@ export default class SideBar extends React.Component {
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                         >
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} /> : null}
-                        </ReactCSSTransitionGroup> */}
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
+                        </ReactCSSTransitionGroup>
 
                         <NavItem eventKey="add-employee">
                             <NavIcon>

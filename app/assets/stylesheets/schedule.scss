@@ -1,8 +1,6 @@
 .day_schedule {
     background: white;
-    width: 80%;
-
-    margin: auto;
+    width: 100%;
     padding-left: 5%;
     height: 450px;
 }
@@ -26,7 +24,7 @@
 }
 
 .schedule-container {
-    overflow: scroll;
+    overflow: auto;
     height: 400px;
     table-layout: fixed;
 
@@ -42,26 +40,27 @@
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
+    min-width: 80px;
 
 }
 
 .schedule-weekly-table td {
     border-right: solid 1px;
-
 }
 
+.schedule-weekly-table td :hover {
+    opacity: 0.5;
+}
+
+.schedule-weekly-table span {
+    border-radius: 10px;
+    padding: 10px
+}
+ 
 .last-row {
     border-bottom: solid 1px
 }
 
-// Employee bar properties//
-.mon-emp-1 {
-    width: 51%;
-    display: block;
-    background-color: green;
-    font-display: none;
-    text-indent: -9999px
-}
 
 .daily_back_button {
 
@@ -89,16 +88,6 @@
   background-color: #4368A5;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
