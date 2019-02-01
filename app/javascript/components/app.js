@@ -9,25 +9,32 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clickedDate: new Date()
+            clickedDate: new Date(),
+            employeeShifts: []
         }
 
         this.getDate = this.getDate.bind(this);
     }
-
+    componentDidMount() {
+        fetch('/api/employeeshifts')
+        .then((response) => { return response.json() })
+        .then((data) => { this.setState({ employeeShifts: data }) });
+    }
+    
     getDate = (date) => {
         this.setState({
             clickedDate: date
         })
     }
     
-    render(){
 
+    render(){
+        
         return(
             <div>
                 <NavBar />
                 <ScheduleApp getDate={this.getDate} />
-                <SideBar getDate={this.state.clickedDate}/>
+                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
                 
             </div>
         )

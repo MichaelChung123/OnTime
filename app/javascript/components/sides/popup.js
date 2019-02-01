@@ -15,6 +15,7 @@ export default class Popup extends React.Component {
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
+        const addShift = this.props.addShift;
 
         function values(event, cb) {
             event.preventDefault();
@@ -24,7 +25,7 @@ export default class Popup extends React.Component {
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const duration = endTime - startTime;
             const notes = document.getElementById("notes").value
-
+            
             let data = {
                 employee_id: employeeId,
                 day: day,
@@ -40,7 +41,7 @@ export default class Popup extends React.Component {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
             });
-            cb()
+            cb();
             } else {
                 alert(`Please double check scheduling time`)
             }

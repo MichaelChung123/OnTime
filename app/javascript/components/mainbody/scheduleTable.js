@@ -50,14 +50,14 @@ export default class ScheduleTable extends React.Component {
             })
         })
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : [];
+            return shiftInfo[0] ? shiftInfo[0].length : 0;
             
         }
         function checkStartExist() {
-            return shiftInfo[0] ? shiftInfo[0].start : [];
+            return shiftInfo[0] ? shiftInfo[0].start : 0;
         }
         function checkNoteExist() {
-            return shiftInfo[0] ? shiftInfo[0].note : [];
+            return shiftInfo[0] ? shiftInfo[0].note : null;
         }
 
         const firstEmployee = employeeNames[0];
@@ -99,7 +99,6 @@ export default class ScheduleTable extends React.Component {
                     </tr>
 
                         <tr className="test" >
-                            
                             <td colSpan="14">
                                 <span 
                                 key={0}

@@ -19,6 +19,7 @@ export default class SideBar extends React.Component {
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
+        
     }
 
     componentDidMount() {

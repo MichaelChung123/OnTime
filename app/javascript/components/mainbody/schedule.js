@@ -18,7 +18,7 @@ export default class Schedule extends React.Component {
                         <h1>{formatDate}, {year}</h1>
                     </nav><br/>
                 </div>
-                <ScheduleTable employeeShifts={this.props.employeeShifts} currentDate={formatDate}/>
+                <ScheduleTable currentDate={formatDate}/>
                 <button onClick={() => this.props.backClick()}>back</button>
             </div>
         )
