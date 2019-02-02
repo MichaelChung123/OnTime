@@ -44,7 +44,7 @@ export default class SideEmployee extends React.Component {
         this.setState({
             renderChild: false
         });
-        
+
     }
 
     timeFormat(time) {
@@ -54,7 +54,7 @@ export default class SideEmployee extends React.Component {
         } else {
             time = time + ":00 AM";
         }
-        
+
         return time;
     }
 
@@ -66,9 +66,9 @@ export default class SideEmployee extends React.Component {
                         <NavIcon>
 
                         </NavIcon>
-                        <NavText>
+                        <div id="shift-list">
                             <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
-                        </NavText>
+                        </div>
                     </NavItem>
                 );
             }
@@ -157,21 +157,24 @@ export default class SideEmployee extends React.Component {
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
                                         </div>
 
-                                        <div className="profile-shifts">
-                                            <div className="profile-shift-title">
-                                                Availabilities
-                                            </div>
-                                            <div className="list-of-shifts">
-                                                {availabilities}
-                                            </div>
-                                        </div>
+                                        <div className="try-div">
 
-                                        <div className="profile-shifts">
-                                            <div className="profile-shift-title">
-                                                Scheduled Shifts
+                                            <div className="profile-shifts">
+                                                <div className="profile-shift-title">
+                                                    Availabilities
+                                                </div>
+                                                <div className="list-of-shifts">
+                                                    {availabilities}
+                                                </div>
                                             </div>
-                                            <div className="list-of-shifts">
-                                                {shifts}
+
+                                            <div className="profile-shifts">
+                                                <div className="profile-shift-title">
+                                                    Scheduled Shifts
+                                                </div>
+                                                <div className="list-of-shifts">
+                                                    {shifts}
+                                                </div>
                                             </div>
                                         </div>
 
