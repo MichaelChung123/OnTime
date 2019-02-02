@@ -122,7 +122,9 @@ export default class ScheduleTable extends React.Component {
                     </tr>
 
                         <tr>
+                             
                             <td colSpan="13">
+                            {(shiftId.length !== 0) ?
                                 <span 
                                 key={1}
                                 shift-key={shiftId[0]}
@@ -133,6 +135,8 @@ export default class ScheduleTable extends React.Component {
                                 {firstEmployee} {checkShiftExist()}<br/><hr/>
                                 {checkNoteExist()}
                                 </span>
+                            : <h1>This day is does not have any Shifts!</h1>
+                            }
                             </td>
                         </tr> 
                         {listOfEmployees}
