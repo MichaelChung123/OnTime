@@ -146,7 +146,7 @@ export default class SideBar extends React.Component {
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                         >
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate} shifts={this.state.shifts} /> : null}
                         </ReactCSSTransitionGroup> 
 
                         <NavItem eventKey="add-employee">

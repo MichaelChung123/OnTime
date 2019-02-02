@@ -4,10 +4,10 @@ import dateFns from 'date-fns'
 
 export default class Popup extends React.Component {
     state = {
-        clickedDate: this.props.getDate
+        clickedDate: this.props.getDate,
     }
     render() {
-
+        const shifts = this.props.shifts;
         const getDate = this.props.getDate;
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
@@ -21,8 +21,9 @@ export default class Popup extends React.Component {
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const duration = endTime - startTime;
-            const notes = document.getElementById("notes").value
-            
+            const notes = document.getElementById("notes").value;
+            let shiftExist = false;
+
             let data = {
                 employee_id: employeeId,
                 day: day,
@@ -31,6 +32,22 @@ export default class Popup extends React.Component {
                 duration: duration,
                 note: notes
             }
+
+            let filterShift = shifts.filter((shift) => {
+                if (shift.employee_id == employeeId && shift.day == day) return shift
+            })
+            filterShift.forEach((shift) => {
+                if (shift.employee_id == employeeId) {
+                    shiftExist = true;
+                } else {
+                    shiftExist = false;
+                }
+            })
+            console.log(shiftExist)
+                
+            
+            // `match employee id, match currentdate`
+            // `read through start_time - end_time to check if the time exist`
 
             if (duration > 0) {
             fetch('/api/shifts', {

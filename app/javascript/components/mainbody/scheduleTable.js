@@ -2,6 +2,7 @@ import React from 'react'
 import dateFns from 'date-fns'
 import EditShift from './scheduleEditShift'
 
+
 export default class ScheduleTable extends React.Component {
     constructor(props){
         super(props)
