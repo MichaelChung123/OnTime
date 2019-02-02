@@ -1,9 +1,15 @@
 import React from 'react'
 import dateFns from 'date-fns'
+import EditShift from './scheduleEditShift'
 
 export default class ScheduleTable extends React.Component {
-    state = {
-        employeeShifts: []
+    constructor(props){
+        super(props)
+        this.state = {
+            employeeShifts: [],
+            showEdit: false,
+            shiftEditId: ''   
+        }
     }
     
     componentDidMount() {
@@ -36,26 +42,57 @@ export default class ScheduleTable extends React.Component {
         });
     };
 
-    editShift() {
+    showEdit = () => {
+        this.setState({
+            showEdit: !this.state.showEdit
+        })
+    }
+
+    shiftData = () => {
         const target = event.target.parentElement;
         const shiftId = target.getAttribute('shift-key');
-        const employeeId = target.getAttribute('empid-key');
+        // const employeeId = target.getAttribute('empid-key');
+        this.setState({
+            shiftEditId: shiftId
+        })
+    }
+
+    editShift = (startTime, endTime, note, shiftData) => {
+        const editStart = startTime;
+        const editEnd = endTime;
+        const editNote = note;
+        const duration = editEnd - editStart;
+        const shiftId = shiftData;
+
         fetch('/api/shifts', {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                emp: employeeId,
-                shift: shiftId
+                shift: shiftId,
+                start: editStart,
+                end: editEnd,
+                note: editNote,
+                duration: duration     
             })
         });
 
     };
 
+    cancel = () => {
+        this.setState({
+            showEdit: !this.state.showEdit
+        })
+    }
+
+
     render() {
-        const editShift = this.editShift;
-        const deleteShift = this.deleteShift
+        const shiftData = this.shiftData;
+        const showEdit = this.showEdit;
+        const editShift = this.editShift
+        const deleteShift = this.deleteShift;
+        const cancel = this.cancel;
         const data = this.state.employeeShifts;
         const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
         const employeeId = [];
@@ -79,7 +116,7 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
-        // console.log(employeeId)
+        
         function checkLengthExist() {
             return shiftInfo[0] ? shiftInfo[0].length : 0;      
         }
@@ -93,7 +130,7 @@ export default class ScheduleTable extends React.Component {
             return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete</button>) : null;
         }
         function addEditButton() {
-            return shiftInfo[0] ? (<button onClick={() => editShift()} className="edit-shift">edit</button>) : null;
+            return shiftInfo[0] ? (<button onClick={() => {showEdit(); shiftData()}} className="edit-shift">edit</button>) : null;
         }
 
         const firstEmployee = employeeNames[0];
@@ -135,9 +172,7 @@ export default class ScheduleTable extends React.Component {
                         <th>8:00PM</th>
                         <th>9:00PM</th>
                     </tr>
-
                         <tr>
-                             
                             <td colSpan="13">
                             {(shiftId.length !== 0) ?
                                 <span 
@@ -157,7 +192,7 @@ export default class ScheduleTable extends React.Component {
                         </tr> 
                         {listOfEmployees}
                 </table>
-                
+                {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId}/> : null}
             </div>
         )
     }
