@@ -41,6 +41,7 @@ export default class SideBar extends React.Component {
         fetch('/api/availability')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ availabilities: data }) });
+            
     }
 
     refreshComponent(data){
@@ -62,6 +63,7 @@ export default class SideBar extends React.Component {
 
     componentDidMount() {
         this.getEmpShift();
+        console.log(`i'm at mount`)
     }
 
     selectEmployee(employee) {

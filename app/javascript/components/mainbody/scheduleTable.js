@@ -97,7 +97,9 @@ export default class ScheduleTable extends React.Component {
         const deleteShift = this.deleteShift;
         const cancel = this.cancel;
         const data = this.state.employeeShifts;
-        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
+        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do');
+        const currentDateNum = dateFns.format(this.props.currentDay, 'D');
+        const currentDateDay = dateFns.format(this.props.currentDay, 'dddd');
         const employeeId = [];
         const shiftId = [];
         const shiftInfo = [];
@@ -135,7 +137,13 @@ export default class ScheduleTable extends React.Component {
         function addEditButton() {
             return shiftInfo[0] ? (<button onClick={() => {showEdit(); shiftData()}} className="edit-shift">edit</button>) : null;
         }
+        function findDayforMon(currentDateDay) {
+            let position = 0;
+            const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            week.forEach((day,i) => {if (currentDateDay == day) position = i});
+            return position;
 
+        }
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
@@ -175,27 +183,42 @@ export default class ScheduleTable extends React.Component {
                         <th>8:00PM</th>
                         <th>9:00PM</th>
                     </tr>
-                        <tr>
-                            <td colSpan="13">
-                            {(shiftId.length !== 0) ?
-                                <span 
-                                key={1}
-                                shift-key={shiftId[0]}
-                                empid-key={employeeId[0]}
-                                style={{
-                                display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),}}
-                                >
-                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
-                                {checkNoteExist()}
-                                </span>
-                            : <h1>This day is does not have any Shifts!</h1>
-                            }
-                            </td>
-                        </tr> 
-                        {listOfEmployees}
+                    <tr>
+                        <td colSpan="13">
+                        {(shiftId.length !== 0) ?
+                            <span 
+                            key={1}
+                            shift-key={shiftId[0]}
+                            empid-key={employeeId[0]}
+                            style={{
+                            display: 'block',
+                            width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                            >
+                            {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                            {checkNoteExist()}
+                            </span>
+                        : <h1>This day is does not have any Shifts!</h1>
+                        }
+                        </td>
+                    </tr> 
+                    {listOfEmployees}
                 </table>
+                
                 {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
+                
+                <table className="weekly-view">
+                    <tr>
+                        <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
+                        <th>Tuesday {currentDateNum - findDayforMon(currentDateDay) + 1}</th>
+                        <th>Wednesday {currentDateNum - findDayforMon(currentDateDay) + 2}</th>
+                        <th>Thursday {currentDateNum - findDayforMon(currentDateDay) + 3}</th>
+                        <th>Friday {currentDateNum - findDayforMon(currentDateDay) + 4}</th>
+                        <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
+                        <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
+                    </tr>
+
+
+                </table>
             </div>
         )
     }
