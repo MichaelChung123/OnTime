@@ -8,7 +8,7 @@ export default class ScheduleTable extends React.Component {
     
     componentDidMount() {
         this.fetchData();
-        this.interval = setInterval(() => this.refresh(), 300);
+        // this.interval = setInterval(() => this.refresh(), 300);
     }
     fetchData() {
         fetch('/api/employeeshifts')
@@ -16,17 +16,15 @@ export default class ScheduleTable extends React.Component {
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
-    refresh() {
-        this.fetchData();
-    }
+    // refresh() {
+    //     this.fetchData();
+    // }
     
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
 
     deleteShift() {
-        
-        
         const target = event.target.parentElement;
         const shiftId = target.getAttribute('shift-key');        
         fetch(`/api/shifts`, {
@@ -34,12 +32,29 @@ export default class ScheduleTable extends React.Component {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.parse(shiftId)
+            body: JSON.stringify(shiftId)
         });
     };
 
+    editShift() {
+        const target = event.target.parentElement;
+        const shiftId = target.getAttribute('shift-key');
+        const employeeId = target.getAttribute('empid-key');
+        fetch('/api/shifts', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emp: employeeId,
+                shift: shiftId
+            })
+        });
+
+    };
+
     render() {
-        
+        const editShift = this.editShift;
         const deleteShift = this.deleteShift
         const data = this.state.employeeShifts;
         const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
@@ -47,11 +62,6 @@ export default class ScheduleTable extends React.Component {
         const shiftId = [];
         const shiftInfo = [];
         const employeeNames = [];
-        // const randomColor = () => {
-        //     var max = 0xffffff;
-        //     return '#' + Math.round( Math.random() * max ).toString( 16 )
-        //     return 'blanchedalmond'
-        // };
 
         data.forEach(function(employee){
             employee.shifts.forEach(function(shift){
@@ -69,6 +79,7 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
+        // console.log(employeeId)
         function checkLengthExist() {
             return shiftInfo[0] ? shiftInfo[0].length : 0;      
         }
@@ -78,8 +89,11 @@ export default class ScheduleTable extends React.Component {
         function checkNoteExist() {
             return shiftInfo[0] ? shiftInfo[0].note : null;
         }
-        function checkShiftExist() {
-            return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete shift</button>) : null;
+        function addDeleteButton() {
+            return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete</button>) : null;
+        }
+        function addEditButton() {
+            return shiftInfo[0] ? (<button onClick={() => editShift()} className="edit-shift">edit</button>) : null;
         }
 
         const firstEmployee = employeeNames[0];
@@ -90,12 +104,13 @@ export default class ScheduleTable extends React.Component {
                         <span
                         key={i + 2}
                         shift-key={shiftId[i + 1]}
+                        empid-key={employeeId[i + 1]}
                         style={{
                         display: 'block',
                         width: shiftInfo[i + 1].length, 
                         marginLeft: shiftInfo[i + 1].start}} 
                         >
-                        {name} {checkShiftExist()}<br/><hr/>
+                        {name} {addDeleteButton()} {addEditButton()}<br/><hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
@@ -128,11 +143,12 @@ export default class ScheduleTable extends React.Component {
                                 <span 
                                 key={1}
                                 shift-key={shiftId[0]}
+                                empid-key={employeeId[0]}
                                 style={{
                                 display: 'block',
                                 width: checkLengthExist(), marginLeft: checkStartExist(),}}
                                 >
-                                {firstEmployee} {checkShiftExist()}<br/><hr/>
+                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
                                 {checkNoteExist()}
                                 </span>
                             : <h1>This day is does not have any Shifts!</h1>

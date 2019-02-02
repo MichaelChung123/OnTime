@@ -69,6 +69,10 @@ class ApiController < ApplicationController
         puts params[:_json]
         Shift.destroy(params[:_json])
     end
+
+    def shift_edit
+        puts params
+    end
         
 
 end
