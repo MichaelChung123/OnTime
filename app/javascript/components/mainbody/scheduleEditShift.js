@@ -3,11 +3,11 @@ import React from 'react'
 
 export default class EditShift extends React.Component {
     render() {
-        function editHandler(edit, cb, shiftData) {
+        function editHandler(edit, cb, shiftData, empData) {
             const start = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
-            const end = document.getElementById("end_time").options[document.getElementById("start_time").selectedIndex].value;
+            const end = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const note = document.getElementById("notes").value;
-            edit(start, end, note, shiftData);
+            edit(start, end, note, shiftData, empData);
             cb();
         }
 
@@ -54,7 +54,7 @@ export default class EditShift extends React.Component {
                     
                     <textarea id="notes"></textarea>
 
-                    <button onClick={() => editHandler(this.props.editShift ,this.props.cancel, this.props.shiftData)}>Edit!</button>
+                    <button onClick={() => editHandler(this.props.editShift ,this.props.cancel, this.props.shiftData, this.props.empData)}>Edit!</button>
                     <button onClick={this.props.cancel}>Cancel</button>
                 </div>
             </div>

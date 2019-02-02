@@ -72,6 +72,14 @@ class ApiController < ApplicationController
 
     def shift_edit
         puts params
+        current_shift = Shift.find(params[:shiftId])
+        current_shift.update!(
+            employee_id: params[:employeeId],
+            duration: params[:duration],
+            start_time: params[:start],
+            end_time: params[:end],
+            note: params[:note]
+        )
     end
         
 

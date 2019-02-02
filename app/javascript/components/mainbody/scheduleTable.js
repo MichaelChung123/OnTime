@@ -8,13 +8,14 @@ export default class ScheduleTable extends React.Component {
         this.state = {
             employeeShifts: [],
             showEdit: false,
-            shiftEditId: ''   
+            shiftEditId: '',
+            empEditId: ''   
         }
     }
     
     componentDidMount() {
         this.fetchData();
-        // this.interval = setInterval(() => this.refresh(), 300);
+        this.interval = setInterval(() => this.refresh(), 300);
     }
     fetchData() {
         fetch('/api/employeeshifts')
@@ -22,13 +23,13 @@ export default class ScheduleTable extends React.Component {
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
-    // refresh() {
-    //     this.fetchData();
-    // }
+    refresh() {
+        this.fetchData();
+    }
     
-    // componentWillUnmount() {
-    //     clearInterval(this.interval);
-    // }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
     deleteShift() {
         const target = event.target.parentElement;
@@ -51,18 +52,18 @@ export default class ScheduleTable extends React.Component {
     shiftData = () => {
         const target = event.target.parentElement;
         const shiftId = target.getAttribute('shift-key');
-        // const employeeId = target.getAttribute('empid-key');
+        const employeeId = target.getAttribute('empid-key');
         this.setState({
-            shiftEditId: shiftId
+            shiftEditId: shiftId,
+            empEditId: employeeId
         })
     }
 
-    editShift = (startTime, endTime, note, shiftData) => {
-        const editStart = startTime;
-        const editEnd = endTime;
-        const editNote = note;
-        const duration = editEnd - editStart;
-        const shiftId = shiftData;
+    editShift = (startTime, endTime, note, shiftData, empData) => {
+        // const editStart = startTime;
+        // const editEnd = endTime;
+        // const editNote = note;
+        const duration = endTime - startTime;
 
         fetch('/api/shifts', {
             method: 'PUT',
@@ -70,10 +71,11 @@ export default class ScheduleTable extends React.Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                shift: shiftId,
-                start: editStart,
-                end: editEnd,
-                note: editNote,
+                employeeId: empData,
+                shiftId: shiftData,
+                start: startTime,
+                end: endTime,
+                note: note,
                 duration: duration     
             })
         });
@@ -192,7 +194,7 @@ export default class ScheduleTable extends React.Component {
                         </tr> 
                         {listOfEmployees}
                 </table>
-                {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId}/> : null}
+                {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
             </div>
         )
     }
