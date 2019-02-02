@@ -11,5 +11,6 @@ Rails.application.routes.draw do
    put 'api/employees', to: 'api#employee_edit'
    get 'api/employeeshifts', to: 'api#employee_shifts'
    delete 'api/employees/:id', to: 'api#employee_delete'
+   delete 'api/shifts/', to: 'api#shift_delete'
 
 end

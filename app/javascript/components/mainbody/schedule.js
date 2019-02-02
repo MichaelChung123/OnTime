@@ -30,4 +30,9 @@ export default class Schedule extends React.Component {
 }
 
 
+function add(num) {
+    return num * num;
+}
+
+console.log(add(2));
 

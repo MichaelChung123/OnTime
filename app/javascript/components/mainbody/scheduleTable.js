@@ -5,10 +5,10 @@ export default class ScheduleTable extends React.Component {
     state = {
         employeeShifts: []
     }
-
+    
     componentDidMount() {
         this.fetchData();
-        // this.interval = setInterval(() => this.refresh(), 500);
+        this.interval = setInterval(() => this.refresh(), 300);
     }
     fetchData() {
         fetch('/api/employeeshifts')
@@ -16,31 +16,49 @@ export default class ScheduleTable extends React.Component {
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
-    // refresh() {
-    //     this.fetchData();
-    // }
+    refresh() {
+        this.fetchData();
+    }
     
-    // componentWillUnmount() {
-    //     clearInterval(this.interval);
-    // }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    deleteShift() {
+        
+        
+        const target = event.target.parentElement;
+        const shiftId = target.getAttribute('shift-key');        
+        fetch(`/api/shifts`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.parse(shiftId)
+        });
+    };
 
     render() {
+        
+        const deleteShift = this.deleteShift
         const data = this.state.employeeShifts;
         const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
         const employeeId = [];
-        const employeeNames = [];
+        const shiftId = [];
         const shiftInfo = [];
-        const randomColor = () => {
-            // var max = 0xffffff;
-            // return '#' + Math.round( Math.random() * max ).toString( 16 )
-            return 'blanchedalmond'
-        };
+        const employeeNames = [];
+        // const randomColor = () => {
+        //     var max = 0xffffff;
+        //     return '#' + Math.round( Math.random() * max ).toString( 16 )
+        //     return 'blanchedalmond'
+        // };
 
         data.forEach(function(employee){
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80, note: shift.note})
+                    shiftId.push(shift.id);
+                    shiftInfo.push({start: (shift.start_time - 9) * 85, length: shift.duration * 85, note: shift.note})
                 }
             });
         });
@@ -52,8 +70,7 @@ export default class ScheduleTable extends React.Component {
             })
         })
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : 0;
-            
+            return shiftInfo[0] ? shiftInfo[0].length : 0;      
         }
         function checkStartExist() {
             return shiftInfo[0] ? shiftInfo[0].start : 0;
@@ -61,30 +78,30 @@ export default class ScheduleTable extends React.Component {
         function checkNoteExist() {
             return shiftInfo[0] ? shiftInfo[0].note : null;
         }
+        function checkShiftExist() {
+            return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete shift</button>) : null;
+        }
 
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
-                <tr key={i + 1}>
-                    <td key={i + 1} colSpan="13">
+                <tr key={i + 2}>
+                    <td key={i + 2} colSpan="13">
                         <span
-                        key={i + 1} 
+                        key={i + 2}
+                        shift-key={shiftId[i + 1]}
                         style={{
                         display: 'block',
                         width: shiftInfo[i + 1].length, 
-                        marginLeft: shiftInfo[i + 1].start, 
-                        backgroundColor: randomColor()}}>
-                        {name}<br/><hr/>
+                        marginLeft: shiftInfo[i + 1].start}} 
+                        >
+                        {name} {checkShiftExist()}<br/><hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
                 </tr>
             )
         })
-        // console.log(employeeNames)
-        // console.log(shiftInfo)
-        // console.log(this.state.employeeShifts)
-
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
@@ -104,15 +121,16 @@ export default class ScheduleTable extends React.Component {
                         <th>9:00PM</th>
                     </tr>
 
-                        <tr className="test" >
+                        <tr>
                             <td colSpan="13">
                                 <span 
-                                key={0}
+                                key={1}
+                                shift-key={shiftId[0]}
                                 style={{
                                 display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),
-                                backgroundColor: randomColor()}}>
-                                {firstEmployee}<br/><hr/>
+                                width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                                >
+                                {firstEmployee} {checkShiftExist()}<br/><hr/>
                                 {checkNoteExist()}
                                 </span>
                             </td>

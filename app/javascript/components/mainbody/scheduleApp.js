@@ -21,7 +21,6 @@ export default class ScheduleApp extends React.Component {
         return(
             <div>
                 <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate}/>
-
             </div>
         )
     }
