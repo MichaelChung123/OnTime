@@ -40,6 +40,7 @@ export default class SideBar extends React.Component {
         fetch('/api/availability')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ availabilities: data }) });
+            
     }
 
     refreshComponent(data){
@@ -61,6 +62,7 @@ export default class SideBar extends React.Component {
 
     componentDidMount() {
         this.getEmpShift();
+        console.log(`i'm at mount`)
     }
 
     selectEmployee(employee) {
@@ -145,7 +147,7 @@ export default class SideBar extends React.Component {
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                         >
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate}/> : null}
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate} shifts={this.state.shifts} refresh={this.getEmpShift}/> : null}
                         </ReactCSSTransitionGroup> 
 
                         <NavItem eventKey="add-employee">

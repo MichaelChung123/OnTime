@@ -28,13 +28,14 @@ export default class App extends React.Component {
             clickedDate: date
         })
     }
-    
+
 
     render(){
-        
+
         return(
             <div>
                 <NavBar />
+
 
                 <br></br>
                 <br></br>

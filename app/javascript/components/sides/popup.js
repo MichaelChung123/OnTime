@@ -4,29 +4,35 @@ import dateFns from 'date-fns'
 
 export default class Popup extends React.Component {
     state = {
-        getDate: this.props.getDate
+        clickedDate: this.props.getDate,
+    }
+
+    componentDidMount() {
+        this.Interval = setInterval(() => this.props.refresh(), 300)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.Interval)
     }
 
     render() {
-        console.log(this.state.getDate)
-        const getDate = this.state.getDate;
-        const clickedDay = dateFns.format(this.state.getDate, 'dddd MMMM Do').replace(/ .*/,'');
-        // const clickedMonth = dateFns.format(this.state.getDate, 'MMM');
-        // const positionMon = this.state.getDate.getDate();
+        const shifts = this.props.shifts;
+        const getDate = this.props.getDate;
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
 
 
-        function values(event, cb) {
+        function values(event, cb, refresh) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
             const employeeId = document.getElementById("employee").options[document.getElementById("employee").selectedIndex].getAttribute('data-key');
             const startTime = document.getElementById("start_time").options[document.getElementById("start_time").selectedIndex].value;
             const endTime = document.getElementById("end_time").options[document.getElementById("end_time").selectedIndex].value;
             const duration = endTime - startTime;
-            const notes = document.getElementById("notes").value
-            
+            const notes = document.getElementById("notes").value;
+            let shiftExist = false;
+
             let data = {
                 employee_id: employeeId,
                 day: day,
@@ -36,7 +42,19 @@ export default class Popup extends React.Component {
                 note: notes
             }
 
-            if (duration > 0) {
+            let filterShift = shifts.filter((shift) => {
+                if (shift.employee_id == employeeId && shift.day == day) return shift
+            })
+            filterShift.forEach((shift) => {
+                if (shift.employee_id == employeeId) {
+                    shiftExist = true;
+                } else {
+                    shiftExist = false;
+                }
+            })
+            refresh();
+            console.log(shiftExist)
+            if (duration > 0 && !shiftExist) {
             fetch('/api/shifts', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
@@ -44,18 +62,12 @@ export default class Popup extends React.Component {
             });
             cb();
             } else {
-                alert(`Please double check scheduling time`)
+                confirm(`Please double check scheduling time and shift already exists!`)
             }
+
         }
         
-        function setValueMon(clickedDay) {
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-            let clickedPosition = 0; 
-            days.forEach((day, position) => { if (clickedDay == day) clickedPosition = position });
-            return clickedPosition
-        }
-        
-        getDate.setDate(getDate.getDate() - setValueMon(clickedDay));
+        getDate.setDate(getDate.getDate());
         const monday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
         const tuesday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
@@ -69,9 +81,7 @@ export default class Popup extends React.Component {
         const saturday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
         const sunday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
-
-
-        
+        getDate.setDate(getDate.getDate() - 6);
 
         return (
             <div className="popup">
@@ -133,7 +143,7 @@ export default class Popup extends React.Component {
                     
                     <textarea id="notes"></textarea>
                     <br></br>
-                    <button className="form_button_schedule" onClick={(event) => {values(event, this.props.closePopup)}}>Schedule</button>
+                    <button className="form_button_schedule" onClick={(event) => {values(event, this.props.closePopup, this.props.refresh)}}>Schedule</button>
                     <br></br>
                     <button className="form_button_close" onClick={() => this.props.closePopup()}>Close</button>
 

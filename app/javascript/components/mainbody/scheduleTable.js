@@ -1,14 +1,22 @@
 import React from 'react'
 import dateFns from 'date-fns'
+import EditShift from './scheduleEditShift'
+
 
 export default class ScheduleTable extends React.Component {
-    state = {
-        employeeShifts: []
+    constructor(props){
+        super(props)
+        this.state = {
+            employeeShifts: [],
+            showEdit: false,
+            shiftEditId: '',
+            empEditId: ''   
+        }
     }
-
+    
     componentDidMount() {
         this.fetchData();
-        // this.interval = setInterval(() => this.refresh(), 500);
+        this.interval = setInterval(() => this.refresh(), 300);
     }
     fetchData() {
         fetch('/api/employeeshifts')
@@ -16,31 +24,93 @@ export default class ScheduleTable extends React.Component {
             .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
-    // refresh() {
-    //     this.fetchData();
-    // }
+    refresh() {
+        this.fetchData();
+    }
     
-    // componentWillUnmount() {
-    //     clearInterval(this.interval);
-    // }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    deleteShift() {
+        const target = event.target.parentElement;
+        const shiftId = target.getAttribute('shift-key');        
+        fetch(`/api/shifts`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(shiftId)
+        });
+    };
+
+    showEdit = () => {
+        this.setState({
+            showEdit: !this.state.showEdit
+        })
+    }
+
+    shiftData = () => {
+        const target = event.target.parentElement;
+        const shiftId = target.getAttribute('shift-key');
+        const employeeId = target.getAttribute('empid-key');
+        this.setState({
+            shiftEditId: shiftId,
+            empEditId: employeeId
+        })
+    }
+
+    editShift = (startTime, endTime, note, shiftData, empData) => {
+        // const editStart = startTime;
+        // const editEnd = endTime;
+        // const editNote = note;
+        const duration = endTime - startTime;
+
+        fetch('/api/shifts', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                employeeId: empData,
+                shiftId: shiftData,
+                start: startTime,
+                end: endTime,
+                note: note,
+                duration: duration     
+            })
+        });
+
+    };
+
+    cancel = () => {
+        this.setState({
+            showEdit: !this.state.showEdit
+        })
+    }
+
 
     render() {
+        const shiftData = this.shiftData;
+        const showEdit = this.showEdit;
+        const editShift = this.editShift
+        const deleteShift = this.deleteShift;
+        const cancel = this.cancel;
         const data = this.state.employeeShifts;
-        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do')
+        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do');
+        const currentDateNum = dateFns.format(this.props.currentDay, 'D');
+        const currentDateDay = dateFns.format(this.props.currentDay, 'dddd');
         const employeeId = [];
-        const employeeNames = [];
+        const shiftId = [];
         const shiftInfo = [];
-        const randomColor = () => {
-            // var max = 0xffffff;
-            // return '#' + Math.round( Math.random() * max ).toString( 16 )
-            return 'blanchedalmond'
-        };
+        const employeeNames = [];
 
         data.forEach(function(employee){
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 80, length: shift.duration * 80, note: shift.note})
+                    shiftId.push(shift.id);
+                    shiftInfo.push({start: (shift.start_time - 9) * 85, length: shift.duration * 85, note: shift.note})
                 }
             });
         });
@@ -51,9 +121,9 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
+        
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : 0;
-            
+            return shiftInfo[0] ? shiftInfo[0].length : 0;      
         }
         function checkStartExist() {
             return shiftInfo[0] ? shiftInfo[0].start : 0;
@@ -61,30 +131,40 @@ export default class ScheduleTable extends React.Component {
         function checkNoteExist() {
             return shiftInfo[0] ? shiftInfo[0].note : null;
         }
+        function addDeleteButton() {
+            return shiftInfo[0] ? (<button onClick={() => {deleteShift()}} className="delete-shift">delete</button>) : null;
+        }
+        function addEditButton() {
+            return shiftInfo[0] ? (<button onClick={() => {showEdit(); shiftData()}} className="edit-shift">edit</button>) : null;
+        }
+        function findDayforMon(currentDateDay) {
+            let position = 0;
+            const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            week.forEach((day,i) => {if (currentDateDay == day) position = i});
+            return position;
 
+        }
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
-                <tr key={i + 1}>
-                    <td key={i + 1} colSpan="13">
+                <tr key={i + 2}>
+                    <td key={i + 2} colSpan="13">
                         <span
-                        key={i + 1} 
+                        key={i + 2}
+                        shift-key={shiftId[i + 1]}
+                        empid-key={employeeId[i + 1]}
                         style={{
                         display: 'block',
                         width: shiftInfo[i + 1].length, 
-                        marginLeft: shiftInfo[i + 1].start, 
-                        backgroundColor: randomColor()}}>
-                        {name}<br/><hr/>
+                        marginLeft: shiftInfo[i + 1].start}} 
+                        >
+                        {name} {addDeleteButton()} {addEditButton()}<br/><hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
                 </tr>
             )
         })
-        // console.log(employeeNames)
-        // console.log(shiftInfo)
-        // console.log(this.state.employeeShifts)
-
         return(
             <div className="schedule-container">
                 <table className="schedule-weekly-table">
@@ -103,23 +183,42 @@ export default class ScheduleTable extends React.Component {
                         <th>8:00PM</th>
                         <th>9:00PM</th>
                     </tr>
-
-                        <tr className="test" >
-                            <td colSpan="13">
-                                <span 
-                                key={0}
-                                style={{
-                                display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),
-                                backgroundColor: randomColor()}}>
-                                {firstEmployee}<br/><hr/>
-                                {checkNoteExist()}
-                                </span>
-                            </td>
-                        </tr> 
-                        {listOfEmployees}
+                    <tr>
+                        <td colSpan="13">
+                        {(shiftId.length !== 0) ?
+                            <span 
+                            key={1}
+                            shift-key={shiftId[0]}
+                            empid-key={employeeId[0]}
+                            style={{
+                            display: 'block',
+                            width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                            >
+                            {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                            {checkNoteExist()}
+                            </span>
+                        : <h1>This day is does not have any Shifts!</h1>
+                        }
+                        </td>
+                    </tr> 
+                    {listOfEmployees}
                 </table>
                 
+                {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
+                
+                <table className="weekly-view">
+                    <tr>
+                        <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
+                        <th>Tuesday {currentDateNum - findDayforMon(currentDateDay) + 1}</th>
+                        <th>Wednesday {currentDateNum - findDayforMon(currentDateDay) + 2}</th>
+                        <th>Thursday {currentDateNum - findDayforMon(currentDateDay) + 3}</th>
+                        <th>Friday {currentDateNum - findDayforMon(currentDateDay) + 4}</th>
+                        <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
+                        <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
+                    </tr>
+
+
+                </table>
             </div>
         )
     }

@@ -20,8 +20,7 @@ export default class ScheduleApp extends React.Component {
     render() {
         return(
             <div>
-                <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate}/>
-
+                <Calendar employees={this.state.employees} shifts={this.state.shifts} getDate={this.props.getDate} />
             </div>
         )
     }

@@ -16,12 +16,6 @@
 
 }
 
-%basic-setting {
-    display: block;
-
-    font-display: none;
-    text-indent: -9999px
-}
 
 .schedule-container {
     overflow: auto;
@@ -40,7 +34,7 @@
 .schedule-weekly-table th {
     border: solid 1px;
     padding: 0.5em;
-    min-width: 80px;
+    min-width: 85px;
 
 }
 
@@ -54,7 +48,8 @@
 
 .schedule-weekly-table span {
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
+    background-color: blanchedalmond;
 }
  
 .last-row {
@@ -89,7 +84,10 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-
+.weekly-view {
+    width: 100%;
+    text-align: center;
+}
 
 
 
