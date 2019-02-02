@@ -130,7 +130,7 @@ export default class ScheduleTable extends React.Component {
             return shiftInfo[0] ? shiftInfo[0].note : null;
         }
         function addDeleteButton() {
-            return shiftInfo[0] ? (<button onClick={() => deleteShift()} className="delete-shift">delete</button>) : null;
+            return shiftInfo[0] ? (<button onClick={() => {deleteShift()}} className="delete-shift">delete</button>) : null;
         }
         function addEditButton() {
             return shiftInfo[0] ? (<button onClick={() => {showEdit(); shiftData()}} className="edit-shift">edit</button>) : null;

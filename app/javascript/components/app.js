@@ -28,7 +28,7 @@ export default class App extends React.Component {
             clickedDate: date
         })
     }
-    
+
 
     render(){
 
