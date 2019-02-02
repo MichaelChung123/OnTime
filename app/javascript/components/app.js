@@ -36,18 +36,14 @@ export default class App extends React.Component {
             <div>
                 <NavBar />
 
-                <SideBar />
-
                 <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
-
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
                 
-                <SideBar getDate={this.state.clickedDate}/>
                 <MentorCalculator />
                 
 

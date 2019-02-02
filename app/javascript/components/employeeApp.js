@@ -1,29 +1,34 @@
 import React from 'react'
 import NavBar from './nav/navbar'
-import SideBar from './sides/sidebar'
-import Footer from './footer/footer'
-import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
-import MentorCalculator from './logistics/mentorcalculator'
 import EmployeeSidebar from './sides/employeeSidebar'
+import RequestButtons from './mainbody/employee/requestButtons'
+import Request from './mainbody/employee/employeeRequest'
+import Availability from './mainbody/employee/employeeAvailability'
+
 
 export default class EmployeeApp extends React.Component {
+
     constructor(props) {
         super(props);
+
         this.state = {
+            renderChild: false,
             clickedDate: new Date(),
             employees: [],
             shifts: [],
-            availabilities: []
+            availabilities: [],
         }
 
         this.getDate = this.getDate.bind(this);
+        this.handleRequestOff = this.handleRequestOff.bind(this);
+        this.handleAvailability = this.handleAvailability.bind(this);
     }
 
     componentDidMount() {
         fetch('/api/employeeshifts')
-        .then((response) => { return response.json() })
-        .then((data) => { this.setState({ employeeShifts: data }) });
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ employeeShifts: data }) });
     }
 
     getDate = (date) => {
@@ -32,8 +37,59 @@ export default class EmployeeApp extends React.Component {
         })
     }
 
+    handleRequestOff() {
+        this.setState({
+            renderChild: "request"
+        });
+    }
+
+    handleAvailability() {
+        this.setState({
+            renderChild: "availability"
+        });
+    }
+
+    backClick = () => {
+        this.setState({
+            renderChild: false
+        })
+    }
+
     render() {
 
+        let render = this.state.renderChild;
+
+        if (render === "request") {
+            return (
+                <div>
+                    <NavBar />
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <h2>Khurram Virani</h2>
+
+                    <Request backClick={this.backClick} />
+                </div>);
+        }
+
+        if (render === "availability") {
+            return (
+                <div>
+                    <NavBar />
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <h2>Khurram Virani</h2>
+
+                    <Availability backClick={this.backClick} />
+
+                </div>
+            );
+        }
 
         return (
             <div>
@@ -43,11 +99,14 @@ export default class EmployeeApp extends React.Component {
                 <br></br>
                 <br></br>
 
+                <h2>Khurram Virani</h2>
+
                 <ScheduleApp getDate={this.getDate} employees={this.state.employees} shifts={this.state.shifts} availabilities={this.state.availabilities} />
                 <EmployeeSidebar />
 
+                <RequestButtons handleRequestOff={this.handleRequestOff} handleAvailability={this.handleAvailability} />
             </div>
-        )
+        );
     }
 }
 
