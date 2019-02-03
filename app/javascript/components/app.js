@@ -46,13 +46,14 @@ export default class App extends React.Component {
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
 
-                <MentorCalculator />
+                
                 
 
             </div>
         )
     }
 }
+{/* <MentorCalculator /> */}
 {/* <Footer /> */}
 
 

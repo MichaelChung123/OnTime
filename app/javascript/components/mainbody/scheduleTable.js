@@ -182,7 +182,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -197,7 +197,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -211,7 +211,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -225,7 +225,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -239,7 +239,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -253,7 +253,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -267,7 +267,7 @@ export default class ScheduleTable extends React.Component {
             data.forEach(function(employee) {
                 employee.shifts.forEach(function(shift) {
                     if (shift.day == monDate) {
-                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                        result.push(employee.first_name+' ' + employee.last_name + '    ' + shift.start_time + ' - ' + shift.end_time);
                     }
                 });
             });
@@ -316,27 +316,29 @@ export default class ScheduleTable extends React.Component {
                     </table>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
-                <table className="weekly-view">
-                    <tr>
-                        <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
-                        <th>Tuesday {currentDateNum - findDayforMon(currentDateDay) + 1}</th>
-                        <th>Wednesday {currentDateNum - findDayforMon(currentDateDay) + 2}</th>
-                        <th>Thursday {currentDateNum - findDayforMon(currentDateDay) + 3}</th>
-                        <th>Friday {currentDateNum - findDayforMon(currentDateDay) + 4}</th>
-                        <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
-                        <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
-                    </tr>
-                    <tr>
-                        {findWeeklyMon(monForWeeklyView)}
-                        <td>{findWeeklyTues(tuesForWeeklyView)}</td>
-                        <td>{findWeeklyWed(wedForWeeklyView)}</td>
-                        <td>{findWeeklyThurs(thursForWeeklyView)}</td>
-                        <td>{findWeeklyFri(friForWeeklyView)}</td>
-                        <td>{findWeeklySat(satForWeeklyView)}</td>
-                        <td>{findWeeklySun(sunForWeeklyView)}</td>
-
-                    </tr>
-                </table>
+                <div className="weekly-view-container">
+                    <h1>Weekly View!</h1>
+                    <table className="weekly-view">
+                        <tr>
+                            <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
+                            <th>Tuesday {currentDateNum - findDayforMon(currentDateDay) + 1}</th>
+                            <th>Wednesday {currentDateNum - findDayforMon(currentDateDay) + 2}</th>
+                            <th>Thursday {currentDateNum - findDayforMon(currentDateDay) + 3}</th>
+                            <th>Friday {currentDateNum - findDayforMon(currentDateDay) + 4}</th>
+                            <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
+                            <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
+                        </tr>
+                        <tr>
+                            <td>{findWeeklyMon(monForWeeklyView)}</td>
+                            <td>{findWeeklyTues(tuesForWeeklyView)}</td>
+                            <td>{findWeeklyWed(wedForWeeklyView)}</td>
+                            <td>{findWeeklyThurs(thursForWeeklyView)}</td>
+                            <td>{findWeeklyFri(friForWeeklyView)}</td>
+                            <td>{findWeeklySat(satForWeeklyView)}</td>
+                            <td>{findWeeklySun(sunForWeeklyView)}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         )
     }
