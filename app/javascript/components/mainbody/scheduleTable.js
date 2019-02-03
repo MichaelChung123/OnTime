@@ -18,6 +18,7 @@ export default class ScheduleTable extends React.Component {
         this.fetchData();
         this.interval = setInterval(() => this.refresh(), 300);
     }
+    
     fetchData() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
@@ -91,15 +92,16 @@ export default class ScheduleTable extends React.Component {
 
 
     render() {
+        const currentDay = this.props.currentDay;
         const shiftData = this.shiftData;
         const showEdit = this.showEdit;
         const editShift = this.editShift
         const deleteShift = this.deleteShift;
         const cancel = this.cancel;
         const data = this.state.employeeShifts;
-        const currentDate = dateFns.format(this.props.currentDay, 'dddd MMMM Do');
-        const currentDateNum = dateFns.format(this.props.currentDay, 'D');
-        const currentDateDay = dateFns.format(this.props.currentDay, 'dddd');
+        const currentDate = dateFns.format(currentDay, 'dddd MMMM Do');
+        const currentDateNum = dateFns.format(currentDay, 'D');
+        const currentDateDay = dateFns.format(currentDay, 'dddd');
         const employeeId = [];
         const shiftId = [];
         const shiftInfo = [];
@@ -142,8 +144,8 @@ export default class ScheduleTable extends React.Component {
             const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
             week.forEach((day,i) => {if (currentDateDay == day) position = i});
             return position;
-
         }
+        
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
@@ -164,48 +166,156 @@ export default class ScheduleTable extends React.Component {
                     </td>
                 </tr>
             )
-        })
+        });
+        const dateFormatForWeek = dateFns.format(currentDay, 'YYYY, M, D');
+        const monForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay));
+        const tuesForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 1);
+        const wedForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 2);
+        const thursForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 3);
+        const friForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 4);
+        const satForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 5);
+        const sunForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 6)
+
+        function findWeeklyMon(monForWeeklyView) {
+            const monDate = dateFns.format(monForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+
+        function findWeeklyTues(tuesForWeeklyView) {
+            const monDate = dateFns.format(tuesForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+        function findWeeklyWed(wedForWeeklyView) {
+            const monDate = dateFns.format(wedForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+        function findWeeklyThurs(ThursForWeeklyView) {
+            const monDate = dateFns.format(ThursForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+        function findWeeklyFri(FriForWeeklyView) {
+            const monDate = dateFns.format(FriForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+        function findWeeklySat(SatForWeeklyView) {
+            const monDate = dateFns.format(SatForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
+        function findWeeklySun(SunForWeeklyView) {
+            const monDate = dateFns.format(SunForWeeklyView, 'dddd MMMM Do');
+            let result = [];
+            data.forEach(function(employee) {
+                employee.shifts.forEach(function(shift) {
+                    if (shift.day == monDate) {
+                        result.push(employee.first_name+' ' + employee.last_name + ' ' + shift.start_time + ' - ' + shift.end_time);
+                    }
+                });
+            });
+            return result.map(function(info) {
+                return (<p>{info}</p>)
+            })
+        };
         return(
-            <div className="schedule-container">
-                <table className="schedule-weekly-table">
-                    <tr className="weekly-time">
-                        <th>9:00AM</th>
-                        <th>10:00AM</th>
-                        <th>11:00AM</th>
-                        <th>12:00PM</th>
-                        <th>1:00PM</th>
-                        <th>2:00PM</th>
-                        <th>3:00PM</th>
-                        <th>4:00PM</th>
-                        <th>5:00PM</th>
-                        <th>6:00PM</th>
-                        <th>7:00PM</th>
-                        <th>8:00PM</th>
-                        <th>9:00PM</th>
-                    </tr>
-                    <tr>
-                        <td colSpan="13">
-                        {(shiftId.length !== 0) ?
-                            <span 
-                            key={1}
-                            shift-key={shiftId[0]}
-                            empid-key={employeeId[0]}
-                            style={{
-                            display: 'block',
-                            width: checkLengthExist(), marginLeft: checkStartExist(),}}
-                            >
-                            {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
-                            {checkNoteExist()}
-                            </span>
-                        : <h1>This day is does not have any Shifts!</h1>
-                        }
-                        </td>
-                    </tr> 
-                    {listOfEmployees}
-                </table>
-                
-                {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
-                
+            <div>
+                <div className="schedule-container">
+                    <table className="schedule-weekly-table">
+                        <tr className="weekly-time">
+                            <th>9:00AM</th>
+                            <th>10:00AM</th>
+                            <th>11:00AM</th>
+                            <th>12:00PM</th>
+                            <th>1:00PM</th>
+                            <th>2:00PM</th>
+                            <th>3:00PM</th>
+                            <th>4:00PM</th>
+                            <th>5:00PM</th>
+                            <th>6:00PM</th>
+                            <th>7:00PM</th>
+                            <th>8:00PM</th>
+                            <th>9:00PM</th>
+                        </tr>
+                        <tr>
+                            <td colSpan="13">
+                            {(shiftId.length !== 0) ?
+                                <span 
+                                key={1}
+                                shift-key={shiftId[0]}
+                                empid-key={employeeId[0]}
+                                style={{
+                                display: 'block',
+                                width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                                >
+                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                                {checkNoteExist()}
+                                </span>
+                            : <h1>This day is does not have any Shifts!</h1>
+                            }
+                            </td>
+                        </tr> 
+                        {listOfEmployees}
+                    </table>
+                    {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
+                </div>
                 <table className="weekly-view">
                     <tr>
                         <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
@@ -216,8 +326,16 @@ export default class ScheduleTable extends React.Component {
                         <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
                         <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
                     </tr>
+                    <tr>
+                        {findWeeklyMon(monForWeeklyView)}
+                        <td>{findWeeklyTues(tuesForWeeklyView)}</td>
+                        <td>{findWeeklyWed(wedForWeeklyView)}</td>
+                        <td>{findWeeklyThurs(thursForWeeklyView)}</td>
+                        <td>{findWeeklyFri(friForWeeklyView)}</td>
+                        <td>{findWeeklySat(satForWeeklyView)}</td>
+                        <td>{findWeeklySun(sunForWeeklyView)}</td>
 
-
+                    </tr>
                 </table>
             </div>
         )
