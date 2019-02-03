@@ -27,12 +27,9 @@
   padding-right: 5px;
   background-color: #AFB0CD;
   color:white;
-
   margin-right: 5px;
   font-family: inherit;
 }
-
-
 
 .schedule-weekly-table span {
     border-radius: 5px;
@@ -41,5 +38,12 @@
     display: flex;
     padding: 5px 5px;
     margin: 5px;
+}
 
+//no scheduled
+.nothing-scheduled {
+  font-family: inherit;
+  font-style: italic;
+  padding-left: 10px;
+  color: grey;
 }
