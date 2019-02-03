@@ -140,19 +140,6 @@ body {
   align-items: center;
 }
 
-.list-of-shifts {
-  margin-top: 10px;
-  width: 80%;
-  background: #AFC5E9;
-  height: 30px;
-  // display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  font-size: 13px;
-
-}
-
 #shift-list {
   margin: 10px 0;
   display: contents;
@@ -161,9 +148,21 @@ body {
 
 .try-div {
   display: relative !important;
-  background-color: green;
+
 }
 
+.list-of-shifts {
+  padding: 5px 10px;
+  font-size: 12px;
 
+}
+
+.list-of-shifts li {
+  margin-bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background-color: #AEC5EA;
+
+}
 
 
