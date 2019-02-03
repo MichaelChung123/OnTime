@@ -100,7 +100,7 @@ export default class ScheduleTable extends React.Component {
         const cancel = this.cancel;
         const data = this.state.employeeShifts;
         const currentDate = dateFns.format(currentDay, 'dddd MMMM Do');
-        const currentDateNum = dateFns.format(currentDay, 'D');
+        const currentDateNum = dateFns.format(currentDay);
         const currentDateDay = dateFns.format(currentDay, 'dddd');
         const employeeId = [];
         const shiftId = [];
@@ -320,13 +320,13 @@ export default class ScheduleTable extends React.Component {
                     <h1>Weekly View!</h1>
                     <table className="weekly-view">
                         <tr>
-                            <th>Monday {currentDateNum - findDayforMon(currentDateDay)}</th>
-                            <th>Tuesday {currentDateNum - findDayforMon(currentDateDay) + 1}</th>
-                            <th>Wednesday {currentDateNum - findDayforMon(currentDateDay) + 2}</th>
-                            <th>Thursday {currentDateNum - findDayforMon(currentDateDay) + 3}</th>
-                            <th>Friday {currentDateNum - findDayforMon(currentDateDay) + 4}</th>
-                            <th>Saturday {currentDateNum - findDayforMon(currentDateDay)+ 5}</th>
-                            <th>Sunday {currentDateNum - findDayforMon(currentDateDay) + 6}</th>
+                            <th>Monday {dateFns.format(monForWeeklyView, 'Do')}</th>
+                            <th>Tuesday {dateFns.format(tuesForWeeklyView, 'Do')}</th>
+                            <th>Wednesday {dateFns.format(wedForWeeklyView, 'Do')}</th>
+                            <th>Thursday  {dateFns.format(thursForWeeklyView, 'Do')}</th>
+                            <th>Friday {dateFns.format(friForWeeklyView, 'Do')}</th>
+                            <th>Saturday {dateFns.format(satForWeeklyView, 'Do')}</th>
+                            <th>Sunday {dateFns.format(satForWeeklyView, 'Do')}</th>
                         </tr>
                         <tr>
                             <td>{findWeeklyMon(monForWeeklyView)}</td>
