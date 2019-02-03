@@ -9,14 +9,15 @@ export default class EmployeeSidebar extends React.Component {
             expanded: false,
             employees: [],
             shifts: [],
-            availabilities: []
+            availabilities: [],
+            loadedEmployees: false
         };
     }
 
     getEmpShift() {
         fetch('/api/employees')
             .then((response) => { return response.json() })
-            .then((data) => { this.setState({ employees: data }) });
+            .then((data) => { this.setState({ employees: data, loadedEmployees: true }) });
 
         fetch('/api/shifts')
             .then((response) => { return response.json() })
@@ -43,11 +44,8 @@ export default class EmployeeSidebar extends React.Component {
     }
 
     render() {
-        // this component has an issue with fetching the data multiple times but returns undefined the first time
-        // which makes accessing their keys impossible. Created a conditional to make sure that there is data in
-        // data fetch before mapping through it and using another conditional to successfully access it's key. 
-        // assigning it to var instead of let to allow access to it in the jsx render call below
-        if (this.state.shifts.length > 0) {
+        if (!this.state.loadedEmployees) return <div>Loading</div>
+        if (this.state.loadedEmployees) {
             var shifts = this.state.shifts.map((e, index) => {
                 if (this.state.employees[0].id === e.id) {
                     return (

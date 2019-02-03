@@ -29,6 +29,10 @@ export default class EmployeeApp extends React.Component {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
+
+        fetch('/api/availability')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ availabilities: data }) });
     }
 
     getDate = (date) => {
@@ -70,7 +74,7 @@ export default class EmployeeApp extends React.Component {
 
                     <h2>Khurram Virani</h2>
 
-                    <Request backClick={this.backClick} />
+                    <Request backClick={this.backClick}/>
                 </div>);
         }
 
@@ -85,7 +89,7 @@ export default class EmployeeApp extends React.Component {
 
                     <h2>Khurram Virani</h2>
 
-                    <Availability backClick={this.backClick} />
+                    <Availability backClick={this.backClick} availabilities={this.state.availabilities}/>
 
                 </div>
             );
