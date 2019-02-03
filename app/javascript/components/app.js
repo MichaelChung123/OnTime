@@ -28,7 +28,7 @@ export default class App extends React.Component {
             clickedDate: date
         })
     }
-    
+
 
     render(){
 
@@ -42,10 +42,9 @@ export default class App extends React.Component {
                 <br></br>
                 <br></br>
 
-
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
-
+                
                 <MentorCalculator />
                 
 

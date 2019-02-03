@@ -4,11 +4,12 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Welcome from '../components/welcome'
+import EmployeeApp from '../components/employeeApp'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Welcome />,
+    <EmployeeApp />,
     document.body.appendChild(document.createElement('div'))
   )
 })
