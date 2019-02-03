@@ -34,10 +34,14 @@ export default class EmployeePage extends React.Component {
         })
     }
 
+    fetchRequestTimeOff = (reason, monthStart, dayStart, monthEnd, dayEnd) => {
+        console.log(reason, monthStart, dayStart, monthEnd, dayEnd)
+    }
+
     render() {
         return(
             <div>
-                <EmployeeApp shifts={this.state.shifts} fetchDate={this.fetchDate} currentDate={this.state.currentDay} />
+                <EmployeeApp shifts={this.state.shifts} fetchDate={this.fetchDate} currentDate={this.state.currentDay} fetchRequestTimeOff={this.fetchRequestTimeOff} />
             </div>
         )
     }
