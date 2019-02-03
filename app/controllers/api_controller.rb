@@ -16,6 +16,10 @@ class ApiController < ApplicationController
         render json: Availability.all
     end
     
+    def user
+        render json: User.all
+    end
+
     def shift_create
         puts params;
         

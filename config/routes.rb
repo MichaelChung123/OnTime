@@ -5,6 +5,7 @@ Rails.application.routes.draw do
    get 'app/index', to: 'app#index'
    get 'api/employees', to: 'api#employee'
    get 'api/shifts', to: 'api#shift'
+   get 'api/users', to: 'api#user'
    get 'api/availability', to: 'api#availability'
    post 'api/shifts', to: 'api#shift_create'
    post 'api/employees', to: 'api#employee_create'
