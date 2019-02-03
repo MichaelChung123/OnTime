@@ -7,6 +7,7 @@ Rails.application.routes.draw do
    get 'api/shifts', to: 'api#shift'
    get 'api/users', to: 'api#user'
    get 'api/availability', to: 'api#availability'
+   put 'api/availability', to: 'api#availability_edit'
    post 'api/shifts', to: 'api#shift_create'
    post 'api/employees', to: 'api#employee_create'
    put 'api/employees', to: 'api#employee_edit'

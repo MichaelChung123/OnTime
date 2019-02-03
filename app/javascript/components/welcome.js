@@ -12,7 +12,7 @@ export default class Welcome extends React.Component {
 
         return(
             <div>
-                <NavBar />
+
 
                 <Landing />
             </div>

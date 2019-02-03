@@ -23,7 +23,7 @@ export default class SideBar extends React.Component {
         this.selectEmployee = this.selectEmployee.bind(this);
         this.back = this.back.bind(this);
         this.addShiftHandleClick = this.addShiftHandleClick.bind(this);
-        
+
         this.getEmpShift = this.getEmpShift.bind(this);
         this.refreshComponent = this.refreshComponent.bind(this);
     }
@@ -40,11 +40,11 @@ export default class SideBar extends React.Component {
         fetch('/api/availability')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ availabilities: data }) });
-            
+
     }
 
     refreshComponent(data){
-        
+
         var employee = {
             id: data.id,
             first_name: data.first_name,
@@ -53,7 +53,7 @@ export default class SideBar extends React.Component {
             occupation: data.occupation,
             phone_number: data.phone_number
         };
-        
+
         this.setState({
             renderChild: "employee",
             employee: employee
@@ -135,7 +135,7 @@ export default class SideBar extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+
                             </NavIcon>
                             <NavText>
                                 + Add Shift
@@ -147,8 +147,10 @@ export default class SideBar extends React.Component {
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                         >
+
                             {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate} shifts={this.state.shifts} refresh={this.getEmpShift}/> : null}
-                        </ReactCSSTransitionGroup> 
+                        </ReactCSSTransitionGroup>
+
 
                         <NavItem eventKey="add-employee">
                             <NavIcon>
