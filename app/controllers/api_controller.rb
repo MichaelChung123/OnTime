@@ -15,6 +15,20 @@ class ApiController < ApplicationController
     def availability
         render json: Availability.all
     end
+
+    def availability_edit
+        puts params
+
+        current_availability = Availability.find(params[:employee_id])
+
+        current_availability.update!(
+            id: 1,
+            employee_id: params[:employee_id],
+            day: "Monday",
+            start_time: params[:monStart],
+            end_time: params[:monEnd]
+        )
+    end
     
     def user
         render json: User.all

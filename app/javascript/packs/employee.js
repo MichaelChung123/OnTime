@@ -4,12 +4,12 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import EmployeeApp from '../components/employeeApp'
+import Index from '../components/EmployeeApp/index'
 
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <EmployeeApp />,
+    <Index/>,
     document.body.appendChild(document.createElement('div'))
   )
 })

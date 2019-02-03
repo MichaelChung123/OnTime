@@ -64,14 +64,28 @@ export default class App extends React.Component {
                 <br></br>
 
                 <ScheduleApp getDate={this.getDate} />
+<<<<<<< HEAD
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
                 
                 <MentorCalculator />
+=======
+                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
+
+                
+                
+
+                
+>>>>>>> 9988e00aea3ab520bc9f933316d58e95c352694b
 
             </div>
         )
     }
 }
+<<<<<<< HEAD
 {/* <Footer /> */ }
+=======
+{/* <MentorCalculator /> */}
+{/* <Footer /> */}
+>>>>>>> 9988e00aea3ab520bc9f933316d58e95c352694b
 
 

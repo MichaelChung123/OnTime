@@ -7,8 +7,14 @@ export default class EmployeeRequests extends React.Component {
         }
     }
 
-    handleSubmit = () => {
+    handleChange = () => {
+        
+    }
 
+    handleSubmit = () => {
+        this.setState({
+            x: "1"
+        });
     }
 
     render() {
