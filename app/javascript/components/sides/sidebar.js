@@ -135,7 +135,7 @@ export default class SideBar extends React.Component {
                     <SideNav.Nav>
                         <NavItem eventKey="add-shift" onClick={() => this.addShiftHandleClick()}>
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+
                             </NavIcon>
                             <NavText>
                                 + Add Shift
