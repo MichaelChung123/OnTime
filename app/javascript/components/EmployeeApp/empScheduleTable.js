@@ -1,6 +1,6 @@
 import React from 'react'
 import dateFns from 'date-fns'
-import EditShift from './scheduleEditShift'
+import EditShift from './empScheduleEditShift'
 
 
 export default class ScheduleTable extends React.Component {
@@ -100,6 +100,7 @@ export default class ScheduleTable extends React.Component {
         const cancel = this.cancel;
         const data = this.state.employeeShifts;
         const currentDate = dateFns.format(currentDay, 'dddd MMMM Do');
+        const currentDateNum = dateFns.format(currentDay);
         const currentDateDay = dateFns.format(currentDay, 'dddd');
         const employeeId = [];
         const shiftId = [];
@@ -159,7 +160,7 @@ export default class ScheduleTable extends React.Component {
                         width: shiftInfo[i + 1].length, 
                         marginLeft: shiftInfo[i + 1].start}} 
                         >
-                        {name} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                        {name} <br/><hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
@@ -332,7 +333,7 @@ export default class ScheduleTable extends React.Component {
                                 display: 'block',
                                 width: checkLengthExist(), marginLeft: checkStartExist(),}}
                                 >
-                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                                {firstEmployee} <br/><hr/>
                                 {checkNoteExist()}
                                 </span>
                             : <h1>This day is does not have any Shifts!</h1>
