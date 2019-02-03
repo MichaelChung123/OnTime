@@ -4,6 +4,7 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Popup from './popup'
 import AddEmployee from './addEmployee'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 
 export default class SideBar extends React.Component {
@@ -142,6 +143,8 @@ export default class SideBar extends React.Component {
                         </NavText>
                         </NavItem>
 
+                        <button onClick={this.props.createNotification('success')}>test</button>
+
                         <ReactCSSTransitionGroup
                             transitionName="popup_css"
                             transitionEnterTimeout={500}
@@ -173,6 +176,8 @@ export default class SideBar extends React.Component {
                         {employees}
                     </SideNav.Nav>
                 </SideNav>
+                <NotificationContainer/>
+
             </div>
         );
     }

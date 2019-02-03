@@ -9,6 +9,8 @@ export default class EmployeeAvailability extends React.Component {
 
     handleSubmit = () => {
         event.preventDefault();
+
+        
     }
 
     render() {

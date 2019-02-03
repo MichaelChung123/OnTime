@@ -5,7 +5,7 @@ import Footer from './footer/footer'
 import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
 import MentorCalculator from './logistics/mentorcalculator'
-// import AvailableEmployees from './logistics/availableEmployees'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -19,23 +19,44 @@ export default class App extends React.Component {
     }
     componentDidMount() {
         fetch('/api/employeeshifts')
-        .then((response) => { return response.json() })
-        .then((data) => { this.setState({ employeeShifts: data }) });
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ employeeShifts: data }) });
     }
-    
+
     getDate = (date) => {
         this.setState({
             clickedDate: date
         })
     }
 
+    createNotification = (type) => {
+        console.log("inside notifications");
+        return () => {
+            switch (type) {
+                case 'info':
+                    NotificationManager.info('Info message');
+                    break;
+                case 'success':
+                    NotificationManager.success('Success message', 'Title here');
+                    break;
+                case 'warning':
+                    NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+                    break;
+                case 'error':
+                    NotificationManager.error('Error message', 'Click me!', 5000, () => {
+                        alert('callback');
+                    });
+                    break;
+            }
+        };
+    };
 
-    render(){
 
-        return(
+    render() {
+
+        return (
             <div>
                 <NavBar />
-
 
                 <br></br>
                 <br></br>
@@ -43,15 +64,14 @@ export default class App extends React.Component {
                 <br></br>
 
                 <ScheduleApp getDate={this.getDate} />
-                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
+                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
                 
                 <MentorCalculator />
-                
 
             </div>
         )
     }
 }
-{/* <Footer /> */}
+{/* <Footer /> */ }
 
 
