@@ -1,7 +1,7 @@
 .day_schedule {
     background: white;
-    width: 100%;
-    padding-left: 5%;
+    width: 130%;
+    padding-left: 2%;
     height: 450px;
 }
 
@@ -27,12 +27,13 @@
 .schedule-weekly-table {
     border-collapse: collapse;
     font-size: small;
-    border: 0.5px solid #AFAFAF;
+    border: 0.5px solid #D4D4D4;
 
 }
 
 .schedule-weekly-table th {
-    border: solid 1px;
+
+    border: solid 1px #D4D4D4;
     padding: 0.5em;
     min-width: 85px;
 
@@ -54,7 +55,9 @@
 
 
 .daily_back_button {
+  position: fixed;
 
+  margin-left: 75%;
   background-color: #86A4D5; /* main-theme purple/blue */
   border: none;
   color: white;

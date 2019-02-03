@@ -307,33 +307,33 @@ export default class ScheduleTable extends React.Component {
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
                         <tr className="weekly-time">
-                            <th>9AM</th>
-                            <th>10AM</th>
-                            <th>11AM</th>
-                            <th>12PM</th>
-                            <th>1PM</th>
-                            <th>2PM</th>
-                            <th>3PM</th>
-                            <th>4PM</th>
-                            <th>5PM</th>
-                            <th>6PM</th>
-                            <th>7PM</th>
-                            <th>8PM</th>
-                            <th>9PM</th>
+                            <th>9am</th>
+                            <th>10am</th>
+                            <th>11am</th>
+                            <th>12pm</th>
+                            <th>1pm</th>
+                            <th>2pm</th>
+                            <th>3pm</th>
+                            <th>4pm</th>
+                            <th>5pm</th>
+                            <th>6pm</th>
+                            <th>7pm</th>
+                            <th>8pm</th>
+                            <th>9pm</th>
                         </tr>
                         <tr>
                             <td colSpan="13">
                             {(shiftId.length !== 0) ?
                                 <span
-                                    key={1}
-                                    shift-key={shiftId[0]}
-                                    empid-key={employeeId[0]}
-                                    style={{
-                                    width: checkLengthExist(), marginLeft: checkStartExist(),}}
-                                    >
-                                    {firstEmployee} {addDeleteButton()} {addEditButton()}
-
-                                    {checkNoteExist()}
+                                key={1}
+                                shift-key={shiftId[0]}
+                                empid-key={employeeId[0]}
+                                style={{
+                                display: 'block',
+                                width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                                >
+                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                                {checkNoteExist()}
                                 </span>
                             : <h1>This day is does not have any Shifts!</h1>
                             }
