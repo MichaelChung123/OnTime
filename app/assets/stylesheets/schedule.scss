@@ -1,7 +1,8 @@
 .day_schedule {
     background: white;
-    width: 130%;
+    width: 90%;
     padding-left: 2%;
+    margin-left: 2%;
     height: 450px;
 }
 
@@ -86,16 +87,7 @@
 
 }
 
-.weekly-view {
-    width: 90%;
-    text-align: center;
-    font-size: small;
-    table-layout: fixed;
-}
 
-.weekly-view td{
-    max-width: 130px
-}
 
 
 

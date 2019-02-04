@@ -344,7 +344,7 @@ export default class ScheduleTable extends React.Component {
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
                 <div className="weekly-view-container">
-                    <h1>Weekly View!</h1>
+                    <h2>Weekly View</h2>
                     <table className="weekly-view">
                         <tr>
                             <th>Monday {dateFns.format(monForWeeklyView, 'Do')}</th>
