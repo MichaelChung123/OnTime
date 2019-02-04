@@ -10,24 +10,28 @@ export default class ScheduleTable extends React.Component {
             employeeShifts: [],
             showEdit: false,
             shiftEditId: '',
-            empEditId: ''
+            empEditId: '',
+            requests: []
         }
     }
 
     componentDidMount() {
         this.fetchData();
-        this.interval = setInterval(() => this.refresh(), 300);
+        // this.interval = setInterval(() => this.refresh(), 300);
     }
 
     fetchData() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
+        fetch('/api/timeoffrequest')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
     }
 
-    refresh() {
-        this.fetchData();
-    }
+    // refresh() {
+    //     this.fetchData();
+    // }
 
     componentWillUnmount() {
         clearInterval(this.interval);
@@ -105,8 +109,9 @@ export default class ScheduleTable extends React.Component {
         const shiftId = [];
         const shiftInfo = [];
         const employeeNames = [];
+        const acceptedRequests = [];
 
-        data.forEach(function(employee){
+        data.forEach(function(employee) {
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
@@ -121,6 +126,10 @@ export default class ScheduleTable extends React.Component {
                     employeeNames.push(employee.first_name + ` `+ employee.last_name)
                 }
             })
+        })
+        //this works fine i have employee id , stardate int enddate int//
+        this.state.requests.forEach(function(request){
+            if (request.accepted === true) acceptedRequests.push(request)
         })
 
         function checkLengthExist() {
@@ -157,7 +166,8 @@ export default class ScheduleTable extends React.Component {
                         style={{
                         display: 'block',
                         width: shiftInfo[i + 1].length,
-                        marginLeft: shiftInfo[i + 1].start}}
+                        marginLeft: shiftInfo[i + 1].start,
+                        wordWrap: "break-word"}}
                         >
                         {name} {addDeleteButton()} {addEditButton()}<br/><hr/>
                         {shiftInfo[i + 1].note}
@@ -330,7 +340,8 @@ export default class ScheduleTable extends React.Component {
                                 empid-key={employeeId[0]}
                                 style={{
                                 display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),}}
+                                width: checkLengthExist(), marginLeft: checkStartExist(),
+                                wordWrap: "break-word"}}
                                 >
                                 {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
                                 {checkNoteExist()}
