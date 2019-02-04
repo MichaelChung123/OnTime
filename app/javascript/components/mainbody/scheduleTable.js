@@ -335,7 +335,7 @@ export default class ScheduleTable extends React.Component {
                                 {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
                                 {checkNoteExist()}
                                 </span>
-                            : <h1>This day is does not have any Shifts!</h1>
+                            : <h4 className="nothing-scheduled">Nothing scheduled</h4>
                             }
                             </td>
                         </tr>
