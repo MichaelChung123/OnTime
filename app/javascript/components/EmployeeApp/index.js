@@ -41,7 +41,7 @@ export default class EmployeePage extends React.Component {
     render() {
         return(
             <div>
-                <EmployeeApp shifts={this.state.shifts} fetchDate={this.fetchDate} currentDate={this.state.currentDay} fetchRequestTimeOff={this.fetchRequestTimeOff} />
+                <EmployeeApp shifts={this.state.shifts} fetchDate={this.fetchDate} currentDate={this.state.currentDay} fetchRequestTimeOff={this.fetchRequestTimeOff} availabilities={this.state.availabilities}/>
             </div>
         )
     }

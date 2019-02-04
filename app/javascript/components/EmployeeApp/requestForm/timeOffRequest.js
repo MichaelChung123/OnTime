@@ -22,7 +22,7 @@ export default class TimeOffRequest extends React.Component {
         return (
 
             <div className="popup">
-                <div className="form_container">
+                <div className="popup-form">
                     <div>
                         Reason :
                         <select id="reason">
