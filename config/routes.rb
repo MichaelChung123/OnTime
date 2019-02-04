@@ -8,6 +8,8 @@ Rails.application.routes.draw do
    get 'api/users', to: 'api#user'
    get 'api/availability', to: 'api#availability'
    put 'api/availability', to: 'api#availability_edit'
+   get 'api/availrequests', to: 'api#availability_request'
+   post 'api/availrequests', to: 'api#availability_request_create'
    post 'api/shifts', to: 'api#shift_create'
    post 'api/employees', to: 'api#employee_create'
    put 'api/employees', to: 'api#employee_edit'

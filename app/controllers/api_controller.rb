@@ -21,7 +21,6 @@ class ApiController < ApplicationController
     end
 
     def availability_edit
-        ## Todo: employee_id should be dynamic
         monday = Availability.where(employee_id: 1, day: "Monday")
         tuesday = Availability.where(employee_id: 1, day: "Tuesday")
         wednesday =Availability.where(employee_id: 1, day: "Wednesday")
@@ -39,7 +38,7 @@ class ApiController < ApplicationController
         tuesday.update!(
             employee_id: params[:employee_id],
             day: "Tuesday",
-            start_time: params[:tuesStart],
+            start_time: params[:tueStart],
             end_time: params[:tuesEnd]
         )
         wednesday.update!(
@@ -51,7 +50,7 @@ class ApiController < ApplicationController
         thursday.update!(
             employee_id: params[:employee_id],
             day: "Thursday",
-            start_time: params[:thursStart],
+            start_time: params[:thuStart],
             end_time: params[:thursEnd]
         )
         friday.update!(
@@ -72,7 +71,69 @@ class ApiController < ApplicationController
             start_time: params[:sunStart],
             end_time: params[:sunEnd]
         )
+    end
 
+    def availability_request
+        render json: Availrequest.all
+    end
+
+    def availability_request_create
+        ## Todo: employee_id should be dynamic
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Monday",
+            start_time: params[:monStart],
+            end_time: params[:monEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Tuesday",
+            start_time: params[:tueStart],
+            end_time: params[:tueEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Wednesday",
+            start_time: params[:wedStart],
+            end_time: params[:wedEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Thursday",
+            start_time: params[:thuStart],
+            end_time: params[:thuEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Friday",
+            start_time: params[:friStart],
+            end_time: params[:friEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Saturday",
+            start_time: params[:satStart],
+            end_time: params[:satEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Sunday",
+            start_time: params[:sunStart],
+            end_time: params[:sunEnd]
+        )
     end
     
     def user

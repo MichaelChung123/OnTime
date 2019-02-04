@@ -75,8 +75,10 @@ export default class EmployeeAvailability extends React.Component {
             sunEnd: sunEnd
         }
 
-        fetch('/api/availability', {
-            method: "PUT",
+        console.log(data);
+
+        fetch('/api/availrequests', {
+            method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
