@@ -6,6 +6,7 @@ export default class TimeOffRequest extends React.Component {
     render() {
         const currentYear = dateFns.format(new Date(), 'YYYY');
         const fetchRequestTimeOff = this.props.fetchRequestTimeOff;
+        
         function submitHandler(cb) {
             event.preventDefault();
             const reason = document.getElementById('reason').options[document.getElementById("reason").selectedIndex].value;
