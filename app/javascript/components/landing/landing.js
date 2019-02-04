@@ -53,19 +53,19 @@ render() {
   return (
 
     <div className="landing-container">
-      <div className="landing-jumbotron">
         <div className="landing-content-container">
-            <form onSubmit={this.setRedirect}>
+            <div className="landing-title-container">
 
-              <label>Password</label><br />
-              <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
-            </form>
-            <div className="landing-button-container">
-              <button className="landing-button" onClick={this.setRedirect}>Admin</button>
-              <button className="landing-button" onClick={this.setRedirect}>Employee</button>
+              <div className="landing-title">OnTime</div>
+              Let's start scheduling
             </div>
-         </div>
-      </div>
+
+            <div className="landing-button-container">
+              <button className="landing-button" onClick={this.setRedirect}>ADMIN</button>
+              <button className="landing-button" onClick={this.setRedirect}>EMPLOYEE</button>
+            </div>
+        </div>
+
     </div>
 
   )

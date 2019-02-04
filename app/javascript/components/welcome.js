@@ -11,11 +11,9 @@ export default class Welcome extends React.Component {
     render(){
 
         return(
-            <div>
-
 
                 <Landing />
-            </div>
+
         );
     }
 }
