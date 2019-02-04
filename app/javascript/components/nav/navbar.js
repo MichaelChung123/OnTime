@@ -11,7 +11,9 @@ const NavBar = props => (
           <li><a href="/"></a></li>
           <li><a href="/"></a></li>
         </ul>
+        
       </div>
+      <button>Notifications</button>
     </nav>
   </header>
 )

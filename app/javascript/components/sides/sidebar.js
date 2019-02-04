@@ -176,8 +176,6 @@ export default class SideBar extends React.Component {
                         {employees}
                     </SideNav.Nav>
                 </SideNav>
-                <NotificationContainer/>
-
             </div>
         );
     }

@@ -12,7 +12,9 @@ export default class App extends React.Component {
         super(props);
         this.state = {
             clickedDate: new Date(),
-            employeeShifts: []
+            employeeShifts: [],
+            pending: false,
+            approved: false
         }
 
         this.getDate = this.getDate.bind(this);
@@ -29,8 +31,13 @@ export default class App extends React.Component {
         })
     }
 
+    getNotifications() {
+        setInterval(5000);
+
+        
+    }
+
     createNotification = (type) => {
-        console.log("inside notifications");
         return () => {
             switch (type) {
                 case 'info':
@@ -64,28 +71,14 @@ export default class App extends React.Component {
                 <br></br>
 
                 <ScheduleApp getDate={this.getDate} />
-<<<<<<< HEAD
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
                 
                 <MentorCalculator />
-=======
-                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} />
-
-                
-                
-
-                
->>>>>>> 9988e00aea3ab520bc9f933316d58e95c352694b
-
+                <NotificationContainer/>
             </div>
         )
     }
 }
-<<<<<<< HEAD
 {/* <Footer /> */ }
-=======
-{/* <MentorCalculator /> */}
-{/* <Footer /> */}
->>>>>>> 9988e00aea3ab520bc9f933316d58e95c352694b
 
 
