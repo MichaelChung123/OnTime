@@ -18,22 +18,7 @@ export default class EmployeeAvailability extends React.Component {
             satEnd: "sat9:00 PM",
             sunStart: "sun9:00 AM",
             sunEnd: "sun9:00 PM"
-            // monStartLoaded: false,
-            // monEndLoaded: false,
-            // tueStartLoaded: false,
-            // tueEndLoaded: false,
-            // wedStartLoaded: false,
-            // wedEndLoaded: false,
-            // thuStartLoaded: false,
-            // thuEndLoaded: false,
-            // friStartLoaded: false,
-            // friEndLoaded: false,
-            // satStartLoaded: false,
-            // satEndLoaded: false,
-            // sunStartLoaded: false,
-            // sunEndLoaded: false
         }
-
     }
 
     handleChange = (event) => {
@@ -210,7 +195,7 @@ export default class EmployeeAvailability extends React.Component {
                         Monday:
 
                         Start
-                    <select name="monStart" value={this.state.monStart} onChange={(event) => this.setState({ monStart: event.target.value, monStartLoaded: true })}>
+                    <select name="monStart" value={this.state.monStart} onChange={(event) => this.setState({ monStart: event.target.value})}>
                             <option value="mon1:00 AM">1:00 AM</option>
                             <option value="mon2:00 AM"> 2:00 AM</option>
                             <option value="mon3:00 AM"> 3:00 AM</option>
@@ -238,7 +223,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="monEnd" value={this.state.monEnd} onChange={(event) => this.setState({ monEnd: event.target.value, monEndLoaded: true })}>
+                    <select name="monEnd" value={this.state.monEnd} onChange={(event) => this.setState({ monEnd: event.target.value})}>
                             <option value="mon1:00 AM">1:00 AM</option>
                             <option value="mon2:00 AM"> 2:00 AM</option>
                             <option value="mon3:00 AM"> 3:00 AM</option>
@@ -271,7 +256,7 @@ export default class EmployeeAvailability extends React.Component {
                         Tuesday:
 
                         Start
-                    <select name="tueStart" value={this.state.tueStart} onChange={(event) => this.setState({ tueStart: event.target.value, tueStartLoaded: true })}>
+                    <select name="tueStart" value={this.state.tueStart} onChange={(event) => this.setState({ tueStart: event.target.value})}>
                             <option value="tue1:00 AM">1:00 AM</option>
                             <option value="tue2:00 AM"> 2:00 AM</option>
                             <option value="tue3:00 AM"> 3:00 AM</option>
@@ -299,7 +284,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="tueEnd" value={this.state.tueEnd} onChange={(event) => this.setState({ tueEnd: event.target.value, tueEndLoaded: true })}>
+                    <select name="tueEnd" value={this.state.tueEnd} onChange={(event) => this.setState({ tueEnd: event.target.value })}>
                             <option value="tue1:00 AM">1:00 AM</option>
                             <option value="tue2:00 AM"> 2:00 AM</option>
                             <option value="tue3:00 AM"> 3:00 AM</option>
@@ -334,7 +319,7 @@ export default class EmployeeAvailability extends React.Component {
                         Wednesday:
 
                         Start
-                    <select name="wedStart" value={this.state.wedStart} onChange={(event) => this.setState({ wedStart: event.target.value, wedStartLoaded: true })}>
+                    <select name="wedStart" value={this.state.wedStart} onChange={(event) => this.setState({ wedStart: event.target.value})}>
                             <option value="wed1:00 AM">1:00 AM</option>
                             <option value="wed2:00 AM"> 2:00 AM</option>
                             <option value="wed3:00 AM"> 3:00 AM</option>
@@ -362,7 +347,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="wedEnd" value={this.state.wedEnd} onChange={(event) => this.setState({ wedEnd: event.target.value, wedEndLoaded: true })}>
+                    <select name="wedEnd" value={this.state.wedEnd} onChange={(event) => this.setState({ wedEnd: event.target.value})}>
                             <option value="wed1:00 AM">1:00 AM</option>
                             <option value="wed2:00 AM"> 2:00 AM</option>
                             <option value="wed3:00 AM"> 3:00 AM</option>
@@ -395,7 +380,7 @@ export default class EmployeeAvailability extends React.Component {
                         Thursday:
 
                         Start
-                    <select name="thuStart" value={this.state.thuStart} onChange={(event) => this.setState({ thuStart: event.target.value, thuStartLoaded: true })}>
+                    <select name="thuStart" value={this.state.thuStart} onChange={(event) => this.setState({ thuStart: event.target.value })}>
                             <option value="thu1:00 AM">1:00 AM</option>
                             <option value="thu2:00 AM"> 2:00 AM</option>
                             <option value="thu3:00 AM"> 3:00 AM</option>
@@ -423,7 +408,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="thuEnd" value={this.state.thuEnd} onChange={(event) => this.setState({ thuEnd: event.target.value, thuEndLoaded: true })}>
+                    <select name="thuEnd" value={this.state.thuEnd} onChange={(event) => this.setState({ thuEnd: event.target.value})}>
                             <option value="thu1:00 AM">1:00 AM</option>
                             <option value="thu2:00 AM"> 2:00 AM</option>
                             <option value="thu3:00 AM"> 3:00 AM</option>
@@ -456,7 +441,7 @@ export default class EmployeeAvailability extends React.Component {
                         Friday:
 
                         Start
-                    <select name="friStart" value={this.state.friStart} onChange={(event) => this.setState({ friStart: event.target.value, friStartLoaded: true })}>
+                    <select name="friStart" value={this.state.friStart} onChange={(event) => this.setState({ friStart: event.target.value})}>
                             <option value="fri1:00 AM">1:00 AM</option>
                             <option value="fri2:00 AM"> 2:00 AM</option>
                             <option value="fri3:00 AM"> 3:00 AM</option>
@@ -484,7 +469,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="friEnd" value={this.state.friEnd} onChange={(event) => this.setState({ friEnd: event.target.value, friEndLoaded: true })}>
+                    <select name="friEnd" value={this.state.friEnd} onChange={(event) => this.setState({ friEnd: event.target.value })}>
                             <option value="fri1:00 AM">1:00 AM</option>
                             <option value="fri2:00 AM"> 2:00 AM</option>
                             <option value="fri3:00 AM"> 3:00 AM</option>
@@ -517,7 +502,7 @@ export default class EmployeeAvailability extends React.Component {
                         Saturday:
 
                         Start
-                    <select name="satStart" value={this.state.satStart} onChange={(event) => this.setState({ satStart: event.target.value, satStartLoaded: true })}>
+                    <select name="satStart" value={this.state.satStart} onChange={(event) => this.setState({ satStart: event.target.value })}>
                             <option value="sat1:00 AM">1:00 AM</option>
                             <option value="sat2:00 AM"> 2:00 AM</option>
                             <option value="sat3:00 AM"> 3:00 AM</option>
@@ -545,7 +530,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="satEnd" value={this.state.satEnd} onChange={(event) => this.setState({ satEnd: event.target.value, satEndLoaded: true })}>
+                    <select name="satEnd" value={this.state.satEnd} onChange={(event) => this.setState({ satEnd: event.target.value})}>
                             <option value="sat1:00 AM">1:00 AM</option>
                             <option value="sat2:00 AM"> 2:00 AM</option>
                             <option value="sat3:00 AM"> 3:00 AM</option>
@@ -579,7 +564,7 @@ export default class EmployeeAvailability extends React.Component {
                         Sunday:
 
                         Start
-                    <select name="sunStart" value={this.state.sunStart} onChange={(event) => this.setState({ sunStart: event.target.value, sunStartLoaded: true })}>
+                    <select name="sunStart" value={this.state.sunStart} onChange={(event) => this.setState({ sunStart: event.target.value })}>
                             <option value="sun1:00 AM">1:00 AM</option>
                             <option value="sun2:00 AM"> 2:00 AM</option>
                             <option value="sun3:00 AM"> 3:00 AM</option>
@@ -607,7 +592,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="sunEnd" value={this.state.sunEnd} onChange={(event) => this.setState({ sunEnd: event.target.value, sunEndLoaded: true })}>
+                    <select name="sunEnd" value={this.state.sunEnd} onChange={(event) => this.setState({ sunEnd: event.target.value })}>
                             <option value="sun1:00 AM">1:00 AM</option>
                             <option value="sun2:00 AM"> 2:00 AM</option>
                             <option value="sun3:00 AM"> 3:00 AM</option>
