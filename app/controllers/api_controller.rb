@@ -21,6 +21,7 @@ class ApiController < ApplicationController
     end
 
     def availability_edit
+        ## Todo: employee_id should be dynamic
         monday = Availability.where(employee_id: 1, day: "Monday")
         tuesday = Availability.where(employee_id: 1, day: "Tuesday")
         wednesday =Availability.where(employee_id: 1, day: "Wednesday")
@@ -145,6 +146,7 @@ class ApiController < ApplicationController
     end
     
     def timeoff_request_create
+        ## Todo: employee_id should be dynamic
         Timeoffrequest.create!(
             employee_id: params[:employeeId],
             accepted: false,
