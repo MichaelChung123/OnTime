@@ -56,7 +56,6 @@
 
 .daily_back_button {
   position: fixed;
-
   margin-left: 75%;
   background-color: #86A4D5; /* main-theme purple/blue */
   border: none;
@@ -65,12 +64,10 @@
   text-align: justify;
   text-decoration: none;
   display: inline-block;
-
   font-size: 13px;
   border-radius: 25px;
   height: 45px;
   width: 120px;
-
   i {
     margin-right: 5px;
     font-size: 13px;
@@ -78,9 +75,15 @@
   }
 }
 
+.fas .fa-arrow-alt-circle-left {
+  color: white;
+  font-size: 13px;
+  padding-right: 5px;
+}
+
 .daily_back_button:hover {
   background-color: #4368A5;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 
 .weekly-view {
