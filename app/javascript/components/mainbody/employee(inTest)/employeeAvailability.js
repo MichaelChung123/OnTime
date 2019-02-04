@@ -45,6 +45,9 @@ export default class EmployeeAvailability extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
+        let monStart = this.state.monStart.split(":")
+        console.log(monStart);
+
         let data = {
             employee_id: 1,
             monStart: this.state.monStart,
