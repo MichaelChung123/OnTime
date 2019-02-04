@@ -26,12 +26,14 @@ ActiveRecord::Schema.define(version: 2019_02_04_072208) do
   end
 
   create_table "availrequests", force: :cascade do |t|
+    t.bigint "employee_id"
     t.boolean "accepted"
     t.string "day"
     t.integer "start_time"
     t.integer "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_availrequests_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_072208) do
   end
 
   create_table "timeoffrequests", force: :cascade do |t|
+    t.bigint "employee_id"
     t.boolean "accepted"
     t.integer "start_month"
     t.integer "start_day"
@@ -67,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_072208) do
     t.string "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_timeoffrequests_on_employee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +82,8 @@ ActiveRecord::Schema.define(version: 2019_02_04_072208) do
   end
 
   add_foreign_key "availabilities", "employees"
+  add_foreign_key "availrequests", "employees"
   add_foreign_key "employees", "users"
   add_foreign_key "shifts", "employees"
+  add_foreign_key "timeoffrequests", "employees"
 end

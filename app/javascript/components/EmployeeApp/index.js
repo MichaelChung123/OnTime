@@ -42,6 +42,7 @@ export default class EmployeePage extends React.Component {
         };
         console.log(reason, monthStart, dayStart, monthEnd, dayEnd)
         const data = {
+            employeeId: 1,
             reason: reason,
             monthStart: monthStart,
             dayStart: dayStart,

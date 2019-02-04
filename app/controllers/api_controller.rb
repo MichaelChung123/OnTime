@@ -145,8 +145,8 @@ class ApiController < ApplicationController
     end
     
     def timeoff_request_create
-        puts params
         Timeoffrequest.create!(
+            employee_id: params[:employeeId],
             accepted: false,
             start_month: params[:monthStart],
             start_day: params[:dayStart],

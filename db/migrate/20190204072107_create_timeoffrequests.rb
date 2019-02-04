@@ -1,6 +1,7 @@
 class CreateTimeoffrequests < ActiveRecord::Migration[5.2]
   def change
     create_table :timeoffrequests do |t|
+      t.references :employee, foreign_key: true
       t.boolean :accepted
       t.integer :start_month
       t.integer :start_day
