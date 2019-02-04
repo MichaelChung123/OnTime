@@ -40,12 +40,12 @@
     margin: 5px;
 }
 
-//no scheduled
+//nothing scheduled
 .nothing-scheduled {
-  font-family: inherit;
-  font-style: italic;
+  font-family: inherit !important;
+  font-style: italic !important;
   padding-left: 10px;
-  color: grey;
+  color: grey !important;
   font-weight: normal;
   font-size: 14px
 }
