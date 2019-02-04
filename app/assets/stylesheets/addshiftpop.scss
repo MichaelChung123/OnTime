@@ -1,9 +1,4 @@
 //for the dropdown menus
-select {
-    border: none;
-    background-color: #E9EEF5;
-}
-
 
 .popup {
     position: fixed;
@@ -15,23 +10,10 @@ select {
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
-  }
-
-
-
-.form_container {
-    position: sticky;
-    right: 25%;
-    top: 10%;
-
-
-    width: 30%;
-    height: 500px;
-    margin: auto;
-    padding: 40px 0;
-    text-align: center;
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
   }
 
 .popup_css-enter {
@@ -53,84 +35,93 @@ select {
   }
 
 
-.popup_form {
-  width: 80%;
-  height: 25px;
-  font-size: inherit;
-  font: inherit;
-  background-color: white;
-  margin: 0.8em;
-  text-align: left;
-  border-radius: 25px;
-}
-
 .form_button {
-    display: inline-block;
-    border: 0.1em solid #3369ff;
-    border-radius: 0.3em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color: #FFFFFF;
-    background-color: #3369ff;
+    color: black;
+    background-color: white;
     text-align: center;
     transition: all 0.2s;
-    font-size: 1.2em;
-    margin: 0 3em 0 3em;
-    padding: 0.5em;
+    height: 35px;
+    width: 100%;
+    border-radius: 4px;
+    font-family: inherit;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 14px;
+
 }
 
-.form_button:hover {
-    border-color: #FFFFFF
+
+///////
+
+.popup-form {
+  max-width: 450px;
+  width: 50%;
+  background: #86A4D5;
+  padding: 25px 30px;
+  border-radius: 15px;
 }
 
-///chagn3es -Need to ask how to target the labels in the popup!
+
+
+.styled-select select {
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px 5px; /* If you add too much padding here, the options won't show in IE */
+   background-color: #C3D4F0;
+    color: #707B7C;
+    font-style: italic;
+        width: -webkit-fill-available
+}
+
+
 label {
-    position: absolute;
-    display: inline-block;
-    text-align: left;
-    left: 10%;
-    font-size: inherit;
-    position: absolute;
-    margin-top: 10px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: white;
 }
 
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+.form_button.close {
+  background-color: #D7DBDD;
+    margin-top: -7px;
+  margin-bottom: 10px
+}
+
+.form_button.close:hover {
+  background-color: #9CA3A6;
+}
+
+.form_button.schedule:hover {
+  background-color: #274370;
+}
+
+#notes {
   border: none;
-  background: #f1f1f1;
+  height: 50px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-style: italic;
+   background-color: #C3D4F0;
+   padding: 5px 5px;
+       width: -webkit-fill-available
+
+
 }
 
-
-.form_button_schedule {
-    width: 80%;
-    height: 35px;
-    background-color: #86A4D5;
-    color: white;
-    border-radius: 25px;
-    font: inherit;
-    font-size: inherit;
+h2 {
+  font-family: inherit;
+  padding-left: 10px;
 }
 
-.form_button_close {
-    width: 80%;
-    height: 35px;
-    margin-top: 15px;
-    background-color: #EC7063;
-    color: white;
-    border-radius: 25px;
-    font: inherit;
-    font-size: inherit;
+.popup-form-title {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  color: white;
 }
 
-.form_button_close:hover {
-  background-color: #C0392B
-}
-
-.form_button_schedule:hover {
-  background-color: #4368A5
+.fas.fa-plus-circle {
+  font-size: 20px;
 }
 

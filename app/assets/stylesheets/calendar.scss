@@ -124,9 +124,8 @@ header #logo .icon {
 }
 
 .calendar .header {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 115%;
+
+  font-size: 130%;
   padding: 1.5em 0;
   border-bottom: 1px solid var(--border-color);
 }
@@ -175,8 +174,8 @@ header #logo .icon {
 }
 
 .calendar .body .selected {
-  border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #EC7063 0%,#F5B7B1 40%);
+  border: 4px solid transparent;
+  border-image: linear-gradient(45deg, #86A4D5 0%, #BDCEE9   20%);
   border-image-slice: 1;
 }
 
@@ -207,9 +206,9 @@ header #logo .icon {
 }
 
 .calendar .body .cell .bg {
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
-  color: var(--main-color);
+  color: #86A4D5;
   opacity: 0;
   font-size: 8em;
   position: absolute;
@@ -220,7 +219,7 @@ header #logo .icon {
 }
 
 .calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
-  opacity: 0.05;
+  opacity: 0.1;
   transition: .5s ease-in;
 }
 
@@ -229,3 +228,19 @@ header #logo .icon {
   flex-basis: calc(100%/7);
   width: calc(100%/7);
 }
+
+//calendar container
+.schedule-app-container {
+  position: fixed;
+  width: 100%;
+  font-family: inherit;
+}
+
+
+
+
+
+
+
+
+

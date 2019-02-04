@@ -15,5 +15,6 @@ Rails.application.routes.draw do
    delete 'api/employees/:id', to: 'api#employee_delete'
    delete 'api/shifts/', to: 'api#shift_delete'
    put 'api/shifts', to: 'api#shift_edit'
+   
 
 end
