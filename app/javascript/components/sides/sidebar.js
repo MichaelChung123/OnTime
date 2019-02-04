@@ -62,7 +62,6 @@ export default class SideBar extends React.Component {
 
     componentDidMount() {
         this.getEmpShift();
-        console.log(`i'm at mount`)
     }
 
     selectEmployee(employee) {

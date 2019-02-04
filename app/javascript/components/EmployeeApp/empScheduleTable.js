@@ -33,23 +33,25 @@ export default class ScheduleTable extends React.Component {
         clearInterval(this.interval);
     }
 
-    deleteShift() {
-        const target = event.target.parentElement;
-        const shiftId = target.getAttribute('shift-key');
-        fetch(`/api/shifts`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(shiftId)
-        });
-    };
 
-    showEdit = () => {
-        this.setState({
-            showEdit: !this.state.showEdit
-        })
-    }
+    // deleteShift() {
+    //     const target = event.target.parentElement;
+    //     const shiftId = target.getAttribute('shift-key');
+    //     fetch(`/api/shifts`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(shiftId)
+    //     });
+    // };
+
+
+    // showEdit = () => {
+    //     this.setState({
+    //         showEdit: !this.state.showEdit
+    //     })
+    // }
 
     shiftData = () => {
         const target = event.target.parentElement;
@@ -61,28 +63,29 @@ export default class ScheduleTable extends React.Component {
         })
     }
 
-    editShift = (startTime, endTime, note, shiftData, empData) => {
-        // const editStart = startTime;
-        // const editEnd = endTime;
-        // const editNote = note;
-        const duration = endTime - startTime;
+    // editShift = (startTime, endTime, note, shiftData, empData) => {
+    //     // const editStart = startTime;
+    //     // const editEnd = endTime;
+    //     // const editNote = note;
+    //     const duration = endTime - startTime;
 
-        fetch('/api/shifts', {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                employeeId: empData,
-                shiftId: shiftData,
-                start: startTime,
-                end: endTime,
-                note: note,
-                duration: duration
-            })
-        });
 
-    };
+    //     fetch('/api/shifts', {
+    //         method: 'PUT',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             employeeId: empData,
+    //             shiftId: shiftData,
+    //             start: startTime,
+    //             end: endTime,
+    //             note: note,
+    //             duration: duration
+    //         })
+    //     });
+
+    // };
 
     cancel = () => {
         this.setState({

@@ -93,14 +93,14 @@ export default class Popup extends React.Component {
                     <label for="employee">Employee</label>
                         <div className="styled-select">
 
-                            <select>
+                            <select id="employee">
                                 {employees}
                             </select><br/>
                         </div>
                     <label for="day">Day</label>
                         <div className="styled-select">
 
-                            <select>
+                            <select id="day">
                                 <option value={monday}>{monday}</option>
                                 <option value={tuesday}>{tuesday}</option>
                                 <option value={wednesday}>{wednesday}</option>
@@ -113,7 +113,7 @@ export default class Popup extends React.Component {
 
                     <label for="start_time">Start Time</label>
                         <div className="styled-select">
-                            <select>
+                            <select id="start_time">
                                 <option value="9">9:00 AM</option>
                                 <option value="10">10:00 AM</option>
                                 <option value="11">11:00 AM</option>
@@ -133,7 +133,7 @@ export default class Popup extends React.Component {
 
                     <label for="end_time">End Time</label>
                         <div className="styled-select">
-                            <select>
+                            <select id="end_time">
                                 <option value="10">10:00 AM</option>
                                 <option value="11">11:00 AM</option>
                                 <option value="12">12:00 PM</option>

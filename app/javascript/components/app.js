@@ -5,7 +5,6 @@ import Footer from './footer/footer'
 import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
 import MentorCalculator from './logistics/mentorcalculator'
-// import AvailableEmployees from './logistics/availableEmployees'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -17,6 +16,7 @@ export default class App extends React.Component {
 
         this.getDate = this.getDate.bind(this);
     }
+
     componentDidMount() {
         fetch('/api/employeeshifts')
         .then((response) => { return response.json() })
@@ -28,7 +28,6 @@ export default class App extends React.Component {
             clickedDate: date
         })
     }
-
 
     render(){
 

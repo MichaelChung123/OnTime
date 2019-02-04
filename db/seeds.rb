@@ -170,7 +170,7 @@ Employee.first.availabilities.create!({
 })
 
 Employee.first.availabilities.create!({
-    day: "Monday",
+    day: "Wednesday",
     start_time: 12,
     end_time: 17
 })
