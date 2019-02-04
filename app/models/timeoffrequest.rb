@@ -1,0 +1,2 @@
+class Timeoffrequest < ApplicationRecord
+end

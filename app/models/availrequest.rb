@@ -1,0 +1,2 @@
+class Availrequest < ApplicationRecord
+end

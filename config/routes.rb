@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    delete 'api/employees/:id', to: 'api#employee_delete'
    delete 'api/shifts/', to: 'api#shift_delete'
    put 'api/shifts', to: 'api#shift_edit'
-   
-
+   get 'api/timeoffrequest', to: 'api#timeoff_request'
+   post 'api/timeoffrequest', to: 'api#timeoff_request_create'
+ 
 end

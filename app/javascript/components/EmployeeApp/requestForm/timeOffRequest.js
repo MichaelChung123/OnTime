@@ -13,10 +13,17 @@ export default class TimeOffRequest extends React.Component {
             const monthEnd = document.getElementById('month-end').options[document.getElementById("month-end").selectedIndex].value;
             const dayStart = document.getElementById('day-start').options[document.getElementById("day-start").selectedIndex].value;
             const dayEnd = document.getElementById('day-end').options[document.getElementById("day-end").selectedIndex].value;
+            //Todo//
+            //Need to check date if it's after 2 weeks//
 
-                
-            fetchRequestTimeOff(reason, monthStart, dayStart, monthEnd, dayEnd);
-            cb();
+            if (parseInt(monthStart) + parseInt(dayStart) <= parseInt(monthEnd) + parseInt(dayEnd) && (reason !== "timeOff")) {
+                fetchRequestTimeOff(reason, monthStart, dayStart, monthEnd, dayEnd);
+                confirm(`Request time off for ${monthStart}/${dayStart} - ${monthEnd}/${dayEnd} has been sent!`)
+                cb();
+            } else {
+                confirm(`Please check your request time and reason`)
+            }
+            
         }
         
         return (
@@ -32,7 +39,7 @@ export default class TimeOffRequest extends React.Component {
                             <option value="family">Family Emergency</option>
                             <option value="other">Other..</option>
                         </select><br/><br/>
-
+                        
                         From:
                         <select id="month-start">
                             <option value="">Select Month</option>
@@ -83,6 +90,7 @@ export default class TimeOffRequest extends React.Component {
                             <option value="30">30</option>
                             <option value="31">31</option>
                         </select>{currentYear}<br/><br/>
+                        You do not need to fill out if you are requesting one day!<br/>
                         To:
                         <select id="month-end">
                             <option value="">Select Month</option>

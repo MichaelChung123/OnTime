@@ -16,6 +16,10 @@ class ApiController < ApplicationController
         render json: Availability.all
     end
 
+    def timeoff_request
+        render json: Timeoffrequest.all
+    end
+
     def availability_edit
         monday = Availability.where(employee_id: 1, day: "Monday")
         tuesday = Availability.where(employee_id: 1, day: "Tuesday")
@@ -139,6 +143,17 @@ class ApiController < ApplicationController
             note: params[:note]
         )
     end
-        
+    
+    def timeoff_request_create
+        puts params
+        Timeoffrequest.create!(
+            accepted: false,
+            start_month: params[:monthStart],
+            start_day: params[:dayStart],
+            end_month: params[:monthEnd],        
+            end_day: params[:dayEnd],
+            reason: params[:reason]
+        )
+    end
 
 end
