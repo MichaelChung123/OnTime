@@ -114,7 +114,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "availability") {
             return (
-                <Availability refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} />
+                <Availability refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
             );
         }
 
@@ -168,8 +168,8 @@ export default class SideEmployee extends React.Component {
 
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
-                                            <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.changeAvailability}>Availability</button>
+                                            <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
                                         </div>
 

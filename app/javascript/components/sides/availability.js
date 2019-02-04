@@ -6,8 +6,182 @@ export default class Availability extends React.Component {
         super(props)
 
         this.state = {
-            expanded: true
+            expanded: true,
+            monStart: "mon9:00 AM",
+            monEnd: "mon9:00 PM",
+            tueStart: "tue9:00 AM",
+            tueEnd: "tue9:00 PM",
+            wedStart: "wed9:00 AM",
+            wedEnd: "wed9:00 PM",
+            thuStart: "thu9:00 AM",
+            thuEnd: "thu9:00 PM",
+            friStart: "fri9:00 AM",
+            friEnd: "fri9:00 PM",
+            satStart: "sat9:00 AM",
+            satEnd: "sat9:00 PM",
+            sunStart: "sun9:00 AM",
+            sunEnd: "sun9:00 PM"
         }
+    }
+
+    formatTime = (timeStr) => {
+        if (timeStr[timeStr.length - 2] === "A") {
+            return parseInt(timeStr.split(":")[0].slice(3));
+        } 
+        else if (timeStr[timeStr.length - 2] === "P") {
+            if(parseInt(timeStr.split(":")[0].slice(3)) === 12) {
+                return 12;
+            }
+            return parseInt(timeStr.split(":")[0].slice(3)) + 12;
+        }
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        let monStart = this.formatTime(this.state.monStart);
+        let tueStart = this.formatTime(this.state.tueStart);
+        let wedStart = this.formatTime(this.state.wedStart);
+        let thuStart = this.formatTime(this.state.thuStart);
+        let friStart = this.formatTime(this.state.friStart);
+        let satStart = this.formatTime(this.state.satStart);
+        let sunStart = this.formatTime(this.state.sunStart);
+
+        let monEnd = this.formatTime(this.state.monEnd);
+        let tueEnd = this.formatTime(this.state.tueEnd);
+        let wedEnd = this.formatTime(this.state.wedEnd);
+        let thuEnd = this.formatTime(this.state.thuEnd);
+        let friEnd = this.formatTime(this.state.friEnd);
+        let satEnd = this.formatTime(this.state.satEnd);
+        let sunEnd = this.formatTime(this.state.sunEnd);
+
+        let data = {
+            employee_id: this.props.employee.id,
+            monStart: monStart,
+            monEnd: monEnd,
+            tueStart: tueStart,
+            tueEnd: tueEnd,
+            wedStart: wedStart,
+            wedEnd: wedEnd,
+            thuStart: thuStart,
+            thuEnd: thuEnd,
+            friStart: friStart,
+            friEnd: friEnd,
+            satStart: satStart,
+            satEnd: satEnd,
+            sunStart: sunStart,
+            sunEnd: sunEnd
+        }
+
+        console.log(data);
+
+        fetch('/api/availability', {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    }
+
+    setAvail = () => {
+        for (let avail of this.props.availabilities) {
+            if (avail.id === this.props.employee.id) {
+                if (avail.day === "Monday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ monStart: `mon${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ monStart: `mon${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ monEnd: `mon${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ monEnd: `mon${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "tueday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ tueStart: `tue${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ tueStart: `tue${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ tueEnd: `tue${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ tueEnd: `tue${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "Wednesday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ wedStart: `wed${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ wedStart: `wed${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ wedEnd: `wed${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ wedEnd: `wed${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "thuday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ thuStart: `thu${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ thuStart: `thu${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ thuEnd: `thu${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ thuEnd: `thu${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "Friday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ friStart: `fri${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ friStart: `fri${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ friEnd: `fri${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ friEnd: `fri${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "Saturday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ satStart: `sat${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ satStart: `sat${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ satEnd: `sat${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ satEnd: `sat${avail.end_time - 12}:00 PM` });
+                    }
+                }
+                else if (avail.day === "Sunday") {
+                    if (avail.start_time <= 12) {
+                        this.setState({ sunStart: `sun${avail.start_time}:00 AM` });
+                    } else {
+                        this.setState({ sunStart: `sun${avail.start_time - 12}:00 PM` });
+                    }
+
+                    if (avail.end_time <= 12) {
+                        this.setState({ sunEnd: `sun${avail.end_time}:00 AM` });
+                    } else {
+                        this.setState({ sunEnd: `sun${avail.end_time - 12}:00 PM` });
+                    }
+                }
+            }
+        }
+    }
+
+    componentDidMount() {
+        this.setAvail();
     }
 
     render() {
