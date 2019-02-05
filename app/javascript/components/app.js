@@ -1,12 +1,12 @@
 import React from 'react'
 import NavBar from './nav/navbar'
 import SideBar from './sides/sidebar'
-import Footer from './footer/footer'
-import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
 import MentorCalculator from './logistics/mentorcalculator'
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import dateFns from 'date-fns'
+import NotificationBadge from 'react-notification-badge';
+import { Effect } from 'react-notification-badge';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -117,7 +117,7 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <NavBar notifications={this.state.notificationStr}/>
+                <NavBar notifications={this.state.notificationStr} count={this.state.notificationStr.length}/>
 
                 <br></br>
                 <br></br>
@@ -128,9 +128,6 @@ export default class App extends React.Component {
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
                 <MentorCalculator />
                 <NotificationContainer />
-                <ul>
-                    {notifications}
-                </ul>
             </div>
         )
     }

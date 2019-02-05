@@ -146,9 +146,7 @@ export default class SideBar extends React.Component {
                                 + Add Shift
                         </NavText>
                         </NavItem>
-
-                        <button onClick={this.props.createNotification('success')}>test</button>
-
+                        
                         <ReactCSSTransitionGroup
                             transitionName="popup_css"
                             transitionEnterTimeout={500}
