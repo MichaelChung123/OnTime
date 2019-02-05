@@ -17,21 +17,21 @@ export default class ScheduleTable extends React.Component {
 
     componentDidMount() {
         this.fetchData();
-        // this.interval = setInterval(() => this.refresh(), 300);
+        this.interval = setInterval(() => this.refresh(), 300);
     }
 
     fetchData() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
-        fetch('/api/timeoffrequest')
-            .then((response) => { return response.json() })
-            .then((data) => { this.setState({ requests: data }) });
+        // fetch('/api/timeoffrequest')
+        //     .then((response) => { return response.json() })
+        //     .then((data) => { this.setState({ requests: data }) });
     }
 
-    // refresh() {
-    //     this.fetchData();
-    // }
+    refresh() {
+        this.fetchData();
+    }
 
     componentWillUnmount() {
         clearInterval(this.interval);
@@ -109,7 +109,9 @@ export default class ScheduleTable extends React.Component {
         const shiftId = [];
         const shiftInfo = [];
         const employeeNames = [];
-        const acceptedRequests = [];
+        // const acceptedRequests = [];
+        // const timeOffdata = [];
+
 
         data.forEach(function(employee) {
             employee.shifts.forEach(function(shift){
@@ -127,10 +129,16 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
-        //this works fine i have employee id , stardate int enddate int//
-        this.state.requests.forEach(function(request){
-            if (request.accepted === true) acceptedRequests.push(request)
-        })
+
+        // this.state.requests.forEach(function(request){
+        //     if (request.accepted === true) acceptedRequests.push(request)
+        // });
+        // acceptedRequests.forEach(function(requestedTime) {
+        //     timeOffStart.push(`${requestedTime.year}-${requestedTime.start_month}-${requestedTime.start_day}`)
+        //     timeOffEnd.push(`${requestedTime.year}-${requestedTime.end_month}-${requestedTime.end_day}`)
+        //     timeOffdata.push({year: requestedTime.year, start: })
+        // })
+
 
         function checkLengthExist() {
             return shiftInfo[0] ? shiftInfo[0].length : 0;

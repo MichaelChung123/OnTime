@@ -149,12 +149,13 @@ class ApiController < ApplicationController
         ## Todo: employee_id should be dynamic
         Timeoffrequest.create!(
             employee_id: params[:employeeId],
-            accepted: true,
+            accepted: false,
             start_month: params[:monthStart],
             start_day: params[:dayStart],
             end_month: params[:monthEnd],        
             end_day: params[:dayEnd],
-            reason: params[:reason]
+            reason: params[:reason],
+            year: params[:year]
         )
     end
 

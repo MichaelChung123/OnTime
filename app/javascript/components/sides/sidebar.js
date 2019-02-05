@@ -17,7 +17,8 @@ export default class SideBar extends React.Component {
             clicked: false,
             expanded: false,
             refresh: false,
-            selectedEmployee: null
+            selectedEmployee: null,
+            requests: []
         };
 
         this.selectEmployee = this.selectEmployee.bind(this);
@@ -40,6 +41,10 @@ export default class SideBar extends React.Component {
         fetch('/api/availability')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ availabilities: data }) });
+        
+        fetch('/api/timeoffrequest')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
 
     }
 
@@ -147,7 +152,7 @@ export default class SideBar extends React.Component {
                             transitionLeaveTimeout={300}
                         >
 
-                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate} shifts={this.state.shifts} refresh={this.getEmpShift}/> : null}
+                            {this.state.clicked ? <Popup closePopup={this.addShiftHandleClick} listOfEmployees={this.state.employees} getDate={this.props.getDate} shifts={this.state.shifts} refresh={this.getEmpShift} timeOffRequests={this.state.requests} /> : null}
                         </ReactCSSTransitionGroup>
 
 

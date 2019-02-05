@@ -17,7 +17,7 @@ export default class TimeOffRequest extends React.Component {
             //Need to check date if it's after 2 weeks//
 
             if (parseInt(monthStart) + parseInt(dayStart) <= parseInt(monthEnd) + parseInt(dayEnd) && (reason !== "timeOff")) {
-                fetchRequestTimeOff(reason, monthStart, dayStart, monthEnd, dayEnd);
+                fetchRequestTimeOff(reason, monthStart, dayStart, monthEnd, dayEnd, currentYear);
                 confirm(`Request time off for ${monthStart}/${dayStart} - ${monthEnd}/${dayEnd} has been sent!`)
                 cb();
             } else {
@@ -90,7 +90,7 @@ export default class TimeOffRequest extends React.Component {
                             <option value="30">30</option>
                             <option value="31">31</option>
                         </select>{currentYear}<br/><br/>
-                        You do not need to fill out if you are requesting one day!<br/>
+                        Please select same day if you are requesting for that day only<br/>
                         To:
                         <select id="month-end">
                             <option value="">Select Month</option>
