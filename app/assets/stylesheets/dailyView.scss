@@ -12,22 +12,22 @@
 .delete-shift {
   background-color: #EB8D78;
   border: none;
-  float: right;
+  // float: right;
   border-radius: 4px;
-  margin-right: 5px;
+  // margin-right: 5px;
   font-family: inherit;
   color: white;
 
 }
 
 .edit-shift {
-  float: right;
+  // float: right;
   border-radius: 4px;
   border: none;
   padding-right: 5px;
   background-color: #AFB0CD;
   color:white;
-  margin-right: 5px;
+  // margin-right: 5px;
   font-family: inherit;
 }
 
@@ -36,14 +36,15 @@
     padding: 10px;
     background-color: #F2F3F4;
     display: flex;
-    padding: 5px 5px;
     margin: 5px;
 }
 
-//no scheduled
+//nothing scheduled
 .nothing-scheduled {
-  font-family: inherit;
-  font-style: italic;
+  font-family: inherit !important;
+  font-style: italic !important;
   padding-left: 10px;
-  color: grey;
+  color: grey !important;
+  font-weight: normal;
+  font-size: 14px
 }

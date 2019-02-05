@@ -1,0 +1,118 @@
+.weekly-view-container {
+    background-color: white;
+    width: 100%;
+    // padding-left: 2%;
+    // height: 450px;
+    // padding-left: 2%;
+    // margin-left: -2%;
+    padding-top: 2%;
+}
+
+.weekly-view {
+    width: 100%;
+    text-align: center;
+    font-size: small;
+    table-layout: fixed;
+    padding: 20px
+}
+
+.weekly-view td {
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+th {
+  font-family: inherit;
+  font-weight: normal;
+}
+
+.weekly-view monday {
+    background-color: #F7B733;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view tuesday {
+    background-color: #6534ff;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view wednesday {
+    background-color: #bd8c7d;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view thursday {
+    background-color: #00c07f;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view friday {
+    background-color: #7A9D96;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view saturday {
+    background-color: #f2a1a1;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.weekly-view sunday {
+    background-color: #86A4D5;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+
+.weekly-view th {
+    padding: 20px
+}

@@ -125,7 +125,7 @@ export default class ScheduleTable extends React.Component {
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 85, length: shift.duration * 85, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.65, length: shift.duration * 7.65, note: shift.note})
                 }
             });
         });
@@ -164,10 +164,10 @@ export default class ScheduleTable extends React.Component {
 
 
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : 0;
+            return shiftInfo[0] ? `${shiftInfo[0].length}%` : 0;
         }
         function checkStartExist() {
-            return shiftInfo[0] ? shiftInfo[0].start : 0;
+            return shiftInfo[0] ? `${shiftInfo[0].start}%` : 0;
         }
         function checkNoteExist() {
             return shiftInfo[0] ? shiftInfo[0].note : null;
@@ -196,11 +196,11 @@ export default class ScheduleTable extends React.Component {
                         empid-key={employeeId[i + 1]}
                         style={{
                         display: 'block',
-                        width: shiftInfo[i + 1].length,
-                        marginLeft: shiftInfo[i + 1].start,
+                        width: `${shiftInfo[i + 1].length}%`,
+                        marginLeft: `${shiftInfo[i + 1].start}%`,
                         wordWrap: "break-word"}}
                         >
-                        {name} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                        {name} {addDeleteButton()} {addEditButton()}<hr/>
                         {shiftInfo[i + 1].note}
                         </span>
                     </td>
@@ -240,7 +240,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<monday>{info}</monday>)
             })
         };
 
@@ -259,7 +259,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<tuesday>{info}</tuesday>)
             })
         };
         function findWeeklyWed(wedForWeeklyView) {
@@ -277,7 +277,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<wednesday>{info}</wednesday>)
             })
         };
         function findWeeklyThurs(ThursForWeeklyView) {
@@ -295,7 +295,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<thursday>{info}</thursday>)
             })
         };
         function findWeeklyFri(FriForWeeklyView) {
@@ -313,7 +313,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<friday>{info}</friday>)
             })
         };
         function findWeeklySat(SatForWeeklyView) {
@@ -331,7 +331,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<saturday>{info}</saturday>)
             })
         };
         function findWeeklySun(SunForWeeklyView) {
@@ -349,7 +349,7 @@ export default class ScheduleTable extends React.Component {
                 });
             });
             return result.map(function(info) {
-                return (<p>{info}</p>)
+                return (<sunday>{info}</sunday>)
             })
         };
 
@@ -385,7 +385,7 @@ export default class ScheduleTable extends React.Component {
                                 width: checkLengthExist(), marginLeft: checkStartExist(),
                                 wordWrap: "break-word"}}
                                 >
-                                {firstEmployee} {addDeleteButton()} {addEditButton()}<br/><hr/>
+                                {firstEmployee} {addDeleteButton()} {addEditButton()}<hr/>
                                 {checkNoteExist()}
                                 </span>
                             : <h4 className="nothing-scheduled">Nothing scheduled</h4>
@@ -395,20 +395,24 @@ export default class ScheduleTable extends React.Component {
                         {listOfEmployees}
                     </table><br/>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
-                    <h1>Who is available this day?</h1>
+                </div>
+                
+                <div className="available-container">
+                    <h2>Who is available this day?</h2>
                     {whoIsAvailable}
                 </div>
-                <div className="weekly-view-container">
-                    <h1>Weekly View!</h1>
+
+                <div className="weekly-view-container"><br/><br/><br/>
+                    <h2>Weekly View</h2>
                     <table className="weekly-view">
                         <tr>
-                            <th>Monday {dateFns.format(monForWeeklyView, 'Do')}</th>
-                            <th>Tuesday {dateFns.format(tuesForWeeklyView, 'Do')}</th>
-                            <th>Wednesday {dateFns.format(wedForWeeklyView, 'Do')}</th>
-                            <th>Thursday  {dateFns.format(thursForWeeklyView, 'Do')}</th>
-                            <th>Friday {dateFns.format(friForWeeklyView, 'Do')}</th>
-                            <th>Saturday {dateFns.format(satForWeeklyView, 'Do')}</th>
-                            <th>Sunday {dateFns.format(sunForWeeklyView, 'Do')}</th>
+                            <th>Monday {dateFns.format(monForWeeklyView, 'Do')}<hr/></th>
+                            <th>Tuesday {dateFns.format(tuesForWeeklyView, 'Do')}<hr/></th>
+                            <th>Wednesday {dateFns.format(wedForWeeklyView, 'Do')}<hr/></th>
+                            <th>Thursday  {dateFns.format(thursForWeeklyView, 'Do')}<hr/></th>
+                            <th>Friday {dateFns.format(friForWeeklyView, 'Do')}<hr/></th>
+                            <th>Saturday {dateFns.format(satForWeeklyView, 'Do')}<hr/></th>
+                            <th>Sunday {dateFns.format(sunForWeeklyView, 'Do')}<hr/></th>
                         </tr>
                         <tr>
                             <td>{findWeeklyMon(monForWeeklyView)}</td>
