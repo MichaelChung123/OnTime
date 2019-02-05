@@ -64,7 +64,9 @@ export default class NavBar extends React.Component {
             <NotificationBadge count={this.props.count} className={'abc'} effect={Effect.ROTATE_X} />
           </div>
 
-          <button className="navbar-notifcation-button" onClick={this.showNotifications}>Notifications</button>
+          <button className="navbar-notifcation-button" onClick={this.showNotifications}>
+            <i className="fas fa-bell"></i>
+          </button>
 
         </nav>
       </header>

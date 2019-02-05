@@ -53,5 +53,17 @@
 
 //notifications
 .navbar-notifcation-button {
+  background-color: transparent;
+  height: 60px;
+  border: none;
+}
 
+.navbar-notifcation-button i {
+  color: white;
+  margin-right: 60px;
+  font-size: 25px;
+}
+
+.navbar-notifcation-button i:hover {
+  color:  #727272;
 }
