@@ -15,6 +15,8 @@ export default class ScheduleApp extends React.Component {
         fetch('/api/shifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
+        
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     render() {

@@ -15,9 +15,18 @@
 //   height: 400px;
   padding-right: 8%;
 
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+   -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+       transition: opacity 1s ease-in;
+
 }
 
-
+.date-header-container.enter {
+    opacity: 1
+}
 .schedule-container {
     overflow: auto;
     height: 400px;
@@ -118,6 +127,28 @@
     background-color: lightblue;
     border: solid 0.5px;
     margin-top: 2em;
+    opacity: 0;
+    -webkit-transition: opacity 2.5s ease-in;
+    -moz-transition: opacity 2.5s ease-in;
+     -ms-transition: opacity 2.5s ease-in;
+      -o-transition: opacity 2.5s ease-in;
+         transition: opacity 2.5s ease-in;
 }
 
+.available-container.enter {
+    opacity: 1
+}
+
+.schedule-platform {
+    opacity: 0;
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+     -ms-transition: opacity 2s ease-in;
+      -o-transition: opacity 2s ease-in;
+         transition: opacity 2s ease-in;
+  }
+  
+  .schedule-platform.enter {
+    opacity: 1
+  }
 

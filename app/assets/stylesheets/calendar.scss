@@ -234,9 +234,17 @@ header #logo .icon {
   position: fixed;
   width: 100%;
   font-family: inherit;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+   -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+       transition: opacity 1s ease-in;
 }
 
-
+.schedule-app-container.enter {
+  opacity: 1
+}
 
 
 

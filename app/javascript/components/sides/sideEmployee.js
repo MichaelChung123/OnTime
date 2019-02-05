@@ -84,7 +84,7 @@ export default class SideEmployee extends React.Component {
             }
         });
 
-        let availabilities = this.props.availabilities.map((e, index) => {
+        let availabilities = this.props.availabilities.sort((a,b) => a.id - b.id).map((e, index) => {
             if (e.employee_id === this.props.employee.id) {
                 return (
                     <NavItem key={index}>

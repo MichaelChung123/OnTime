@@ -5,11 +5,21 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Transition } from 'react-transition-group';
 //chevron-right has little bug
 export default class Calendar extends React.Component {
-    state = {
-        currentMonth: new Date(),
-        selectedDate: new Date(),
-        showSchedule: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentMonth: new Date(),
+            selectedDate: new Date(),
+            showSchedule: false,
+            mounted: false
+        };
+    }
+   
+    
+    componentDidMount() {
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };
+
 
     renderHeader() {
         const dateFormat = "MMMM YYYY";
@@ -34,6 +44,7 @@ export default class Calendar extends React.Component {
     }
     
     renderDays() {
+        
         const dateFormat = "dddd";
         const days = [];
         let startDate = dateFns.startOfWeek(this.state.currentMonth);
@@ -94,7 +105,7 @@ export default class Calendar extends React.Component {
             selectedDate: day,
             showSchedule: !this.state.showSchedule
         })
-        this.props.getDate(day)
+        this.props.getDate(day);
     }
     nextMonth = () => {
         this.setState({
@@ -119,8 +130,8 @@ export default class Calendar extends React.Component {
             {this.state.showSchedule ?
                 <Schedule backClick={this.backClick} currentDay={this.state.selectedDate} />
             :
-            <div className="schedule-app-container">
-                <div className="calendar">
+            <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
+                <div className="calendar">           
                     <div>{this.renderHeader()}</div>
                     <div>{this.renderDays()}</div>
                     <div>{this.renderCells()}</div>

@@ -13,13 +13,15 @@ export default class ScheduleTable extends React.Component {
             empEditId: '',
             requests: [],
             allEmployees: [],
-            availabilities: []
+            availabilities: [],
+            mounted: false
         }
     }
 
     componentDidMount() {
         this.fetchData();
         this.interval = setInterval(() => this.refresh(), 300);
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     fetchData() {
@@ -125,7 +127,7 @@ export default class ScheduleTable extends React.Component {
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.69231, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.692, note: shift.note})
                 }
             });
         });
@@ -186,6 +188,7 @@ export default class ScheduleTable extends React.Component {
         }
 
         const firstEmployee = employeeNames[0];
+
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
                 <tr key={i + 2}>
@@ -356,6 +359,7 @@ export default class ScheduleTable extends React.Component {
 
         return(
             <div>
+                <div className={`schedule-platform${this.state.mounted ? " enter" : ""}`}>
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
                         <tr className="weekly-time">
@@ -398,13 +402,13 @@ export default class ScheduleTable extends React.Component {
                     </table><br/>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
-                
-                <div className="available-container">
+                </div>
+                <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
                     <h2>Who is available this day?</h2>
                     {whoIsAvailable}
                 </div>
 
-                <div className="weekly-view-container"><br/><br/><br/>
+                <div className={`weekly-view-container${this.state.mounted ? " enter" : ""}`}><br/><br/><br/>
                     <h2>Weekly View</h2>
                     <table className="weekly-view">
                         <tr>

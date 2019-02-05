@@ -6,6 +6,16 @@
     // padding-left: 2%;
     // margin-left: -2%;
     padding-top: 2%;
+    opacity: 0;
+    -webkit-transition: opacity 3s ease-in;
+    -moz-transition: opacity 3s ease-in;
+     -ms-transition: opacity 3s ease-in;
+      -o-transition: opacity 3s ease-in;
+         transition: opacity 3s ease-in;
+}
+
+.weekly-view-container.enter {
+    opacity: 1
 }
 
 .weekly-view {
