@@ -66,7 +66,7 @@ export default class Popup extends React.Component {
             }
 
         }
-        
+
         getDate.setDate(getDate.getDate());
         const monday = dateFns.format(getDate.toISOString(), 'dddd MMMM Do');
         getDate.setDate(getDate.getDate() + 1);
@@ -85,67 +85,76 @@ export default class Popup extends React.Component {
 
         return (
             <div className="popup">
-                <div className="form_container">
+                <div className="popup-form">
+                <div className="popup-form-title">
+                    <i className="fas fa-plus-circle"></i>
+                    <h2>Add a shift</h2>
+                </div>
                     <label for="employee">Employee</label>
+                        <div className="styled-select">
 
-                        <br></br>
-                        <select id="employee" className="popup_form">
-                            {employees}
-                        </select><br/>
+                            <select id="employee">
+                                {employees}
+                            </select><br/>
+                        </div>
                     <label for="day">Day</label>
-                        <br></br>
-                        <select id="day" className="popup_form">
-                            <option value={monday}>{monday}</option>
-                            <option value={tuesday}>{tuesday}</option>
-                            <option value={wednesday}>{wednesday}</option>
-                            <option value={thursday}>{thursday}</option>
-                            <option value={friday}>{friday}</option>
-                            <option value={saturday}>{saturday}</option>
-                            <option value={sunday}>{sunday}</option>
-                        </select><br/>
+                        <div className="styled-select">
+
+                            <select id="day">
+                                <option value={monday}>{monday}</option>
+                                <option value={tuesday}>{tuesday}</option>
+                                <option value={wednesday}>{wednesday}</option>
+                                <option value={thursday}>{thursday}</option>
+                                <option value={friday}>{friday}</option>
+                                <option value={saturday}>{saturday}</option>
+                                <option value={sunday}>{sunday}</option>
+                            </select><br/>
+                        </div>
 
                     <label for="start_time">Start Time</label>
-                        <br></br>
-                        <select id="start_time" className="popup_form">
-                            <option value="9">9:00 AM</option>
-                            <option value="10">10:00 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="12">12:00 PM</option>
-                            <option value="13">1:00 PM</option>
-                            <option value="14">2:00 PM</option>
-                            <option value="15">3:00 PM</option>
-                            <option value="16">4:00 PM</option>
-                            <option value="17">5:00 PM</option>
-                            <option value="18">6:00 PM</option>
-                            <option value="19">7:00 PM</option>
-                            <option value="20">8:00 PM</option>
-                            <option value="21">9:00 PM</option>
-                            <option value="22">10:00 PM</option>
-                        </select><br/>
+                        <div className="styled-select">
+                            <select id="start_time">
+                                <option value="9">9:00 AM</option>
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                                <option value="22">10:00 PM</option>
+                            </select><br/>
+                        </div>
 
                     <label for="end_time">End Time</label>
-                        <br></br>
-                        <select id="end_time" className="popup_form">
-                            <option value="10">10:00 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="12">12:00 PM</option>
-                            <option value="13">1:00 PM</option>
-                            <option value="14">2:00 PM</option>
-                            <option value="15">3:00 PM</option>
-                            <option value="16">4:00 PM</option>
-                            <option value="17">5:00 PM</option>
-                            <option value="18">6:00 PM</option>
-                            <option value="19">7:00 PM</option>
-                            <option value="20">8:00 PM</option>
-                            <option value="21">9:00 PM</option>
-                            <option value="22">10:00 PM</option>
-                        </select><br/>
-                    
-                    <textarea id="notes"></textarea>
+                        <div className="styled-select">
+                            <select id="end_time">
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                                <option value="22">10:00 PM</option>
+                            </select><br/>
+                        </div>
+
+                    <textarea id="notes" placeholder="Notes"></textarea>
                     <br></br>
-                    <button className="form_button_schedule" onClick={(event) => {values(event, this.props.closePopup, this.props.refresh)}}>Schedule</button>
+                    <button className="form_button schedule" onClick={(event) => {values(event, this.props.closePopup, this.props.refresh)}}>Schedule</button>
                     <br></br>
-                    <button className="form_button_close" onClick={() => this.props.closePopup()}>Close</button>
+                    <button className="form_button close" onClick={() => this.props.closePopup()}>Close</button>
 
                 </div>
             </div>

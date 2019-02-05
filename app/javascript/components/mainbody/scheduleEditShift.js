@@ -13,49 +13,61 @@ export default class EditShift extends React.Component {
 
         return(
             <div className="popup">
-                <div className="form_container">
+                <div className="popup-form">
+
+                <div className="popup-form-title">
+                    <i className="fas fa-plus-circle"></i>
+                    <h2>Edit shift</h2>
+                </div>
 
                     <label for="start_time">Start Time</label>
+                        <div className="styled-select">
+                            <select>
+                                <option value="9">9:00 AM</option>
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                                <option value="22">10:00 PM</option>
+                            </select><br/>
+                        </div>
                         <br></br>
-                        <select id="start_time" className="popup_form">
-                            <option value="9">9:00 AM</option>
-                            <option value="10">10:00 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="12">12:00 PM</option>
-                            <option value="13">1:00 PM</option>
-                            <option value="14">2:00 PM</option>
-                            <option value="15">3:00 PM</option>
-                            <option value="16">4:00 PM</option>
-                            <option value="17">5:00 PM</option>
-                            <option value="18">6:00 PM</option>
-                            <option value="19">7:00 PM</option>
-                            <option value="20">8:00 PM</option>
-                            <option value="21">9:00 PM</option>
-                            <option value="22">10:00 PM</option>
-                        </select><br/>
 
                     <label for="end_time">End Time</label><br></br>
-                        
-                        <select id="end_time" className="popup_form">
-                            <option value="10">10:00 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="12">12:00 PM</option>
-                            <option value="13">1:00 PM</option>
-                            <option value="14">2:00 PM</option>
-                            <option value="15">3:00 PM</option>
-                            <option value="16">4:00 PM</option>
-                            <option value="17">5:00 PM</option>
-                            <option value="18">6:00 PM</option>
-                            <option value="19">7:00 PM</option>
-                            <option value="20">8:00 PM</option>
-                            <option value="21">9:00 PM</option>
-                            <option value="22">10:00 PM</option>
-                        </select><br/>
-                    
-                    <textarea id="notes"></textarea>
+                        <div className="styled-select">
 
-                    <button onClick={() => editHandler(this.props.editShift ,this.props.cancel, this.props.shiftData, this.props.empData)}>Edit!</button>
-                    <button onClick={this.props.cancel}>Cancel</button>
+                            <select>
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                                <option value="22">10:00 PM</option>
+                            </select><br/>
+                        </div>
+                        <br></br>
+
+                    <textarea id="notes" placeholder="Notes"></textarea>
+                    <br></br>
+
+                    <button className="form_button edit" onClick={() => editHandler(this.props.editShift ,this.props.cancel, this.props.shiftData, this.props.empData)}>Edit</button>
+                    <br></br>
+                    <button className="form_button close" onClick={this.props.cancel}>Cancel</button>
                 </div>
             </div>
         )

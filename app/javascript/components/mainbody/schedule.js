@@ -17,7 +17,7 @@ export default class Schedule extends React.Component {
 
                         <h2>{formatDate}</h2>
                         <div className="daily_back_button" onClick={() => this.props.backClick()}>
-                            <i class="fas fa-arrow-alt-circle-left"></i>
+                            <i className="fas fa-arrow-alt-circle-left"></i>
                             Back
                         </div>
 
@@ -27,6 +27,11 @@ export default class Schedule extends React.Component {
             </div>
         )
     }
+}
+
+
+function add(num) {
+    return num * num;
 }
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_26_001804) do
+ActiveRecord::Schema.define(version: 2019_02_04_072208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2019_01_26_001804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_availabilities_on_employee_id"
+  end
+
+  create_table "availrequests", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.boolean "accepted"
+    t.string "day"
+    t.integer "start_time"
+    t.integer "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_availrequests_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -49,6 +60,19 @@ ActiveRecord::Schema.define(version: 2019_01_26_001804) do
     t.index ["employee_id"], name: "index_shifts_on_employee_id"
   end
 
+  create_table "timeoffrequests", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.boolean "accepted"
+    t.integer "start_month"
+    t.integer "start_day"
+    t.integer "end_month"
+    t.integer "end_day"
+    t.string "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_timeoffrequests_on_employee_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -58,6 +82,8 @@ ActiveRecord::Schema.define(version: 2019_01_26_001804) do
   end
 
   add_foreign_key "availabilities", "employees"
+  add_foreign_key "availrequests", "employees"
   add_foreign_key "employees", "users"
   add_foreign_key "shifts", "employees"
+  add_foreign_key "timeoffrequests", "employees"
 end

@@ -6,165 +6,176 @@ export default class EmployeeAvailability extends React.Component {
         this.state = {
             monStart: "mon9:00 AM",
             monEnd: "mon9:00 PM",
-            tuesStart: "tues9:00 AM",
-            tuesEnd: "tues9:00 PM",
+            tueStart: "tue9:00 AM",
+            tueEnd: "tue9:00 PM",
             wedStart: "wed9:00 AM",
             wedEnd: "wed9:00 PM",
-            thursStart: "thurs9:00 AM",
-            thursEnd: "thurs9:00 PM",
+            thuStart: "thu9:00 AM",
+            thuEnd: "thu9:00 PM",
             friStart: "fri9:00 AM",
             friEnd: "fri9:00 PM",
             satStart: "sat9:00 AM",
             satEnd: "sat9:00 PM",
             sunStart: "sun9:00 AM",
             sunEnd: "sun9:00 PM"
-            // monStartLoaded: false,
-            // monEndLoaded: false,
-            // tuesStartLoaded: false,
-            // tuesEndLoaded: false,
-            // wedStartLoaded: false,
-            // wedEndLoaded: false,
-            // thursStartLoaded: false,
-            // thursEndLoaded: false,
-            // friStartLoaded: false,
-            // friEndLoaded: false,
-            // satStartLoaded: false,
-            // satEndLoaded: false,
-            // sunStartLoaded: false,
-            // sunEndLoaded: false
         }
-
     }
 
     handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
+    }
 
+    formatTime = (timeStr) => {
+        if (timeStr[timeStr.length - 2] === "A") {
+            return parseInt(timeStr.split(":")[0].slice(3));
+        } 
+        else if (timeStr[timeStr.length - 2] === "P") {
+            if(parseInt(timeStr.split(":")[0].slice(3)) === 12) {
+                return 12;
+            }
+            return parseInt(timeStr.split(":")[0].slice(3)) + 12;
+        }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
 
-        let monStart = this.state.monStart.split(":")
-        console.log(monStart);
+        let monStart = this.formatTime(this.state.monStart);
+        let tueStart = this.formatTime(this.state.tueStart);
+        let wedStart = this.formatTime(this.state.wedStart);
+        let thuStart = this.formatTime(this.state.thuStart);
+        let friStart = this.formatTime(this.state.friStart);
+        let satStart = this.formatTime(this.state.satStart);
+        let sunStart = this.formatTime(this.state.sunStart);
+
+        let monEnd = this.formatTime(this.state.monEnd);
+        let tueEnd = this.formatTime(this.state.tueEnd);
+        let wedEnd = this.formatTime(this.state.wedEnd);
+        let thuEnd = this.formatTime(this.state.thuEnd);
+        let friEnd = this.formatTime(this.state.friEnd);
+        let satEnd = this.formatTime(this.state.satEnd);
+        let sunEnd = this.formatTime(this.state.sunEnd);
 
         let data = {
             employee_id: 1,
-            monStart: this.state.monStart,
-            monEnd: this.state.monEnd,            
-            tuesStart: this.state.tuesStart,
-            tuesEnd: this.state.tuesEnd,
-            wedStart: this.state.wedStart,
-            wedEnd: this.state.wedEnd,
-            thursStart: this.state.thursStart,
-            thursEnd: this.state.thursEnd,
-            friStart: this.state.friStart,
-            friEnd: this.state.friEnd,
-            satStart: this.state.satStart,
-            satEnd: this.state.satEnd,
-            sunStart: this.state.sunStart,
-            sunEnd: this.state.sunEnd
+            monStart: monStart,
+            monEnd: monEnd,
+            tueStart: tueStart,
+            tueEnd: tueEnd,
+            wedStart: wedStart,
+            wedEnd: wedEnd,
+            thuStart: thuStart,
+            thuEnd: thuEnd,
+            friStart: friStart,
+            friEnd: friEnd,
+            satStart: satStart,
+            satEnd: satEnd,
+            sunStart: sunStart,
+            sunEnd: sunEnd
         }
 
-        fetch('/api/availabilities', {
-            method: "PUT",
+        console.log(data);
+
+        fetch('/api/availrequests', {
+            method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
     }
 
     setAvail = () => {
-        for(let avail of this.props.availabilities) {
-            if(avail.id === 1) {
-                if(avail.day === "Monday") {
+        for (let avail of this.props.availabilities) {
+            if (avail.id === 1) {
+                if (avail.day === "Monday") {
                     if (avail.start_time <= 12) {
-                        this.setState({monStart: `mon${avail.start_time}:00 AM`});
+                        this.setState({ monStart: `mon${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({monStart: `mon${avail.start_time - 12}:00 PM`});
+                        this.setState({ monStart: `mon${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({monEnd: `mon${avail.end_time}:00 AM`});
+                        this.setState({ monEnd: `mon${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({monEnd: `mon${avail.end_time - 12}:00 PM`});
+                        this.setState({ monEnd: `mon${avail.end_time - 12}:00 PM` });
                     }
-                } 
-                else if (avail.day === "Tuesday") {
+                }
+                else if (avail.day === "tueday") {
                     if (avail.start_time <= 12) {
-                        this.setState({tuesStart: `tues${avail.start_time}:00 AM`});
+                        this.setState({ tueStart: `tue${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({tuesStart: `tues${avail.start_time - 12}:00 PM`});
+                        this.setState({ tueStart: `tue${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({tuesEnd: `tues${avail.end_time}:00 AM`});
+                        this.setState({ tueEnd: `tue${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({tuesEnd: `tues${avail.end_time - 12}:00 PM`});
+                        this.setState({ tueEnd: `tue${avail.end_time - 12}:00 PM` });
                     }
                 }
                 else if (avail.day === "Wednesday") {
                     if (avail.start_time <= 12) {
-                        this.setState({wedStart: `wed${avail.start_time}:00 AM`});
+                        this.setState({ wedStart: `wed${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({wedStart: `wed${avail.start_time - 12}:00 PM`});
+                        this.setState({ wedStart: `wed${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({wedEnd: `wed${avail.end_time}:00 AM`});
+                        this.setState({ wedEnd: `wed${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({wedEnd: `wed${avail.end_time - 12}:00 PM`});
+                        this.setState({ wedEnd: `wed${avail.end_time - 12}:00 PM` });
                     }
                 }
-                else if (avail.day === "Thursday") {
+                else if (avail.day === "thuday") {
                     if (avail.start_time <= 12) {
-                        this.setState({thursStart: `thurs${avail.start_time}:00 AM`});
+                        this.setState({ thuStart: `thu${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({thursStart: `thurs${avail.start_time - 12}:00 PM`});
+                        this.setState({ thuStart: `thu${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({thursEnd: `thurs${avail.end_time}:00 AM`});
+                        this.setState({ thuEnd: `thu${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({thursEnd: `thurs${avail.end_time - 12}:00 PM`});
+                        this.setState({ thuEnd: `thu${avail.end_time - 12}:00 PM` });
                     }
                 }
                 else if (avail.day === "Friday") {
                     if (avail.start_time <= 12) {
-                        this.setState({friStart: `fri${avail.start_time}:00 AM`});
+                        this.setState({ friStart: `fri${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({friStart: `fri${avail.start_time - 12}:00 PM`});
+                        this.setState({ friStart: `fri${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({friEnd: `fri${avail.end_time}:00 AM`});
+                        this.setState({ friEnd: `fri${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({friEnd: `fri${avail.end_time - 12}:00 PM`});
+                        this.setState({ friEnd: `fri${avail.end_time - 12}:00 PM` });
                     }
                 }
                 else if (avail.day === "Saturday") {
                     if (avail.start_time <= 12) {
-                        this.setState({satStart: `sat${avail.start_time}:00 AM`});
+                        this.setState({ satStart: `sat${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({satStart: `sat${avail.start_time - 12}:00 PM`});
+                        this.setState({ satStart: `sat${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({satEnd: `sat${avail.end_time}:00 AM`});
+                        this.setState({ satEnd: `sat${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({satEnd: `sat${avail.end_time - 12}:00 PM`});
+                        this.setState({ satEnd: `sat${avail.end_time - 12}:00 PM` });
                     }
                 }
                 else if (avail.day === "Sunday") {
                     if (avail.start_time <= 12) {
-                        this.setState({sunStart: `sun${avail.start_time}:00 AM`});
+                        this.setState({ sunStart: `sun${avail.start_time}:00 AM` });
                     } else {
-                        this.setState({sunStart: `sun${avail.start_time - 12}:00 PM`});
+                        this.setState({ sunStart: `sun${avail.start_time - 12}:00 PM` });
                     }
 
                     if (avail.end_time <= 12) {
-                        this.setState({sunEnd: `sun${avail.end_time}:00 AM`});
+                        this.setState({ sunEnd: `sun${avail.end_time}:00 AM` });
                     } else {
-                        this.setState({sunEnd: `sun${avail.end_time - 12}:00 PM`});
+                        this.setState({ sunEnd: `sun${avail.end_time - 12}:00 PM` });
                     }
                 }
             }
@@ -176,18 +187,17 @@ export default class EmployeeAvailability extends React.Component {
     }
 
     render() {
-            return (
-                <div>
-                    <div className="daily_back_button" onClick={() => this.props.backClick()}>
-                        <i className="fas fa-arrow-alt-circle-left"></i>
-                        Back
-                </div>
+        return (
+            <div className="popup">
+                <div className="popup-form">
+
+
                     <h1>Availability</h1>
                     <form onSubmit={this.handleSubmit}>
                         Monday:
-    
+
                         Start
-                    <select name="monStart" value={this.state.monStart} onChange={(event) => this.setState({ monStart: event.target.value, monStartLoaded: true })}>
+                    <select name="monStart" value={this.state.monStart} onChange={(event) => this.setState({ monStart: event.target.value})}>
                             <option value="mon1:00 AM">1:00 AM</option>
                             <option value="mon2:00 AM"> 2:00 AM</option>
                             <option value="mon3:00 AM"> 3:00 AM</option>
@@ -215,7 +225,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="monEnd" value={this.state.monEnd} onChange={(event) => this.setState({ monEnd: event.target.value, monEndLoaded: true })}>
+                    <select name="monEnd" value={this.state.monEnd} onChange={(event) => this.setState({ monEnd: event.target.value})}>
                             <option value="mon1:00 AM">1:00 AM</option>
                             <option value="mon2:00 AM"> 2:00 AM</option>
                             <option value="mon3:00 AM"> 3:00 AM</option>
@@ -246,61 +256,61 @@ export default class EmployeeAvailability extends React.Component {
                         <br />
 
                         Tuesday:
-    
+
                         Start
-                    <select name="tuesStart" value={this.state.tuesStart} onChange={(event) => this.setState({ tuesStart: event.target.value, tuesStartLoaded: true })}>
-                            <option value="tues1:00 AM">1:00 AM</option>
-                            <option value="tues2:00 AM"> 2:00 AM</option>
-                            <option value="tues3:00 AM"> 3:00 AM</option>
-                            <option value="tues4:00 AM"> 4:00 AM</option>
-                            <option value="tues5:00 AM"> 5:00 AM</option>
-                            <option value="tues6:00 AM"> 6:00 AM</option>
-                            <option value="tues7:00 AM"> 7:00 AM</option>
-                            <option value="tues8:00 AM"> 8:00 AM</option>
-                            <option value="tues9:00 AM"> 9:00 AM</option>
-                            <option value="tues10:00 AM"> 10:00 AM</option>
-                            <option value="tues11:00 AM"> 11:00 AM</option>
-                            <option value="tues12:00 PM"> 12:00 PM</option>
-                            <option value="tues1:00 PM"> 1:00 PM</option>
-                            <option value="tues2:00 PM"> 2:00 PM</option>
-                            <option value="tues3:00 PM"> 3:00 PM</option>
-                            <option value="tues4:00 PM"> 4:00 PM</option>
-                            <option value="tues5:00 PM"> 5:00 PM</option>
-                            <option value="tues6:00 PM"> 6:00 PM</option>
-                            <option value="tues7:00 PM"> 7:00 PM</option>
-                            <option value="tues8:00 PM"> 8:00 PM</option>
-                            <option value="tues9:00 PM"> 9:00 PM</option>
-                            <option value="tues10:00 PM"> 10:00 PM</option>
-                            <option value="tues11:00 PM"> 11:00 PM</option>
-                            <option value="tues12:00 AM"> 12:00 AM</option>
+                    <select name="tueStart" value={this.state.tueStart} onChange={(event) => this.setState({ tueStart: event.target.value})}>
+                            <option value="tue1:00 AM">1:00 AM</option>
+                            <option value="tue2:00 AM"> 2:00 AM</option>
+                            <option value="tue3:00 AM"> 3:00 AM</option>
+                            <option value="tue4:00 AM"> 4:00 AM</option>
+                            <option value="tue5:00 AM"> 5:00 AM</option>
+                            <option value="tue6:00 AM"> 6:00 AM</option>
+                            <option value="tue7:00 AM"> 7:00 AM</option>
+                            <option value="tue8:00 AM"> 8:00 AM</option>
+                            <option value="tue9:00 AM"> 9:00 AM</option>
+                            <option value="tue10:00 AM"> 10:00 AM</option>
+                            <option value="tue11:00 AM"> 11:00 AM</option>
+                            <option value="tue12:00 PM"> 12:00 PM</option>
+                            <option value="tue1:00 PM"> 1:00 PM</option>
+                            <option value="tue2:00 PM"> 2:00 PM</option>
+                            <option value="tue3:00 PM"> 3:00 PM</option>
+                            <option value="tue4:00 PM"> 4:00 PM</option>
+                            <option value="tue5:00 PM"> 5:00 PM</option>
+                            <option value="tue6:00 PM"> 6:00 PM</option>
+                            <option value="tue7:00 PM"> 7:00 PM</option>
+                            <option value="tue8:00 PM"> 8:00 PM</option>
+                            <option value="tue9:00 PM"> 9:00 PM</option>
+                            <option value="tue10:00 PM"> 10:00 PM</option>
+                            <option value="tue11:00 PM"> 11:00 PM</option>
+                            <option value="tue12:00 AM"> 12:00 AM</option>
                         </select>
 
                         End
-                    <select name="tuesEnd" value={this.state.tuesEnd} onChange={(event) => this.setState({ tuesEnd: event.target.value, tuesEndLoaded: true })}>
-                            <option value="tues1:00 AM">1:00 AM</option>
-                            <option value="tues2:00 AM"> 2:00 AM</option>
-                            <option value="tues3:00 AM"> 3:00 AM</option>
-                            <option value="tues4:00 AM"> 4:00 AM</option>
-                            <option value="tues5:00 AM"> 5:00 AM</option>
-                            <option value="tues6:00 AM"> 6:00 AM</option>
-                            <option value="tues7:00 AM"> 7:00 AM</option>
-                            <option value="tues8:00 AM"> 8:00 AM</option>
-                            <option value="tues9:00 AM"> 9:00 AM</option>
-                            <option value="tues10:00 AM"> 10:00 AM</option>
-                            <option value="tues11:00 AM"> 11:00 AM</option>
-                            <option value="tues12:00 PM"> 12:00 PM</option>
-                            <option value="tues1:00 PM"> 1:00 PM</option>
-                            <option value="tues2:00 PM"> 2:00 PM</option>
-                            <option value="tues3:00 PM"> 3:00 PM</option>
-                            <option value="tues4:00 PM"> 4:00 PM</option>
-                            <option value="tues5:00 PM"> 5:00 PM</option>
-                            <option value="tues6:00 PM"> 6:00 PM</option>
-                            <option value="tues7:00 PM"> 7:00 PM</option>
-                            <option value="tues8:00 PM"> 8:00 PM</option>
-                            <option value="tues9:00 PM"> 9:00 PM</option>
-                            <option value="tues10:00 PM"> 10:00 PM</option>
-                            <option value="tues11:00 PM"> 11:00 PM</option>
-                            <option value="tues12:00 AM"> 12:00 AM</option>
+                    <select name="tueEnd" value={this.state.tueEnd} onChange={(event) => this.setState({ tueEnd: event.target.value })}>
+                            <option value="tue1:00 AM">1:00 AM</option>
+                            <option value="tue2:00 AM"> 2:00 AM</option>
+                            <option value="tue3:00 AM"> 3:00 AM</option>
+                            <option value="tue4:00 AM"> 4:00 AM</option>
+                            <option value="tue5:00 AM"> 5:00 AM</option>
+                            <option value="tue6:00 AM"> 6:00 AM</option>
+                            <option value="tue7:00 AM"> 7:00 AM</option>
+                            <option value="tue8:00 AM"> 8:00 AM</option>
+                            <option value="tue9:00 AM"> 9:00 AM</option>
+                            <option value="tue10:00 AM"> 10:00 AM</option>
+                            <option value="tue11:00 AM"> 11:00 AM</option>
+                            <option value="tue12:00 PM"> 12:00 PM</option>
+                            <option value="tue1:00 PM"> 1:00 PM</option>
+                            <option value="tue2:00 PM"> 2:00 PM</option>
+                            <option value="tue3:00 PM"> 3:00 PM</option>
+                            <option value="tue4:00 PM"> 4:00 PM</option>
+                            <option value="tue5:00 PM"> 5:00 PM</option>
+                            <option value="tue6:00 PM"> 6:00 PM</option>
+                            <option value="tue7:00 PM"> 7:00 PM</option>
+                            <option value="tue8:00 PM"> 8:00 PM</option>
+                            <option value="tue9:00 PM"> 9:00 PM</option>
+                            <option value="tue10:00 PM"> 10:00 PM</option>
+                            <option value="tue11:00 PM"> 11:00 PM</option>
+                            <option value="tue12:00 AM"> 12:00 AM</option>
                         </select>
 
 
@@ -309,9 +319,9 @@ export default class EmployeeAvailability extends React.Component {
 
 
                         Wednesday:
-    
+
                         Start
-                    <select name="wedStart" value={this.state.wedStart} onChange={(event) => this.setState({ wedStart: event.target.value, wedStartLoaded: true })}>
+                    <select name="wedStart" value={this.state.wedStart} onChange={(event) => this.setState({ wedStart: event.target.value})}>
                             <option value="wed1:00 AM">1:00 AM</option>
                             <option value="wed2:00 AM"> 2:00 AM</option>
                             <option value="wed3:00 AM"> 3:00 AM</option>
@@ -339,7 +349,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="wedEnd" value={this.state.wedEnd} onChange={(event) => this.setState({ wedEnd: event.target.value, wedEndLoaded: true })}>
+                    <select name="wedEnd" value={this.state.wedEnd} onChange={(event) => this.setState({ wedEnd: event.target.value})}>
                             <option value="wed1:00 AM">1:00 AM</option>
                             <option value="wed2:00 AM"> 2:00 AM</option>
                             <option value="wed3:00 AM"> 3:00 AM</option>
@@ -370,70 +380,70 @@ export default class EmployeeAvailability extends React.Component {
                         <br />
 
                         Thursday:
-    
+
                         Start
-                    <select name="thursStart" value={this.state.thursStart} onChange={(event) => this.setState({ thursStart: event.target.value, thursStartLoaded: true })}>
-                            <option value="thurs1:00 AM">1:00 AM</option>
-                            <option value="thurs2:00 AM"> 2:00 AM</option>
-                            <option value="thurs3:00 AM"> 3:00 AM</option>
-                            <option value="thurs4:00 AM"> 4:00 AM</option>
-                            <option value="thurs5:00 AM"> 5:00 AM</option>
-                            <option value="thurs6:00 AM"> 6:00 AM</option>
-                            <option value="thurs7:00 AM"> 7:00 AM</option>
-                            <option value="thurs8:00 AM"> 8:00 AM</option>
-                            <option value="thurs9:00 AM"> 9:00 AM</option>
-                            <option value="thurs10:00 AM"> 10:00 AM</option>
-                            <option value="thurs11:00 AM"> 11:00 AM</option>
-                            <option value="thurs12:00 PM"> 12:00 PM</option>
-                            <option value="thurs1:00 PM"> 1:00 PM</option>
-                            <option value="thurs2:00 PM"> 2:00 PM</option>
-                            <option value="thurs3:00 PM"> 3:00 PM</option>
-                            <option value="thurs4:00 PM"> 4:00 PM</option>
-                            <option value="thurs5:00 PM"> 5:00 PM</option>
-                            <option value="thurs6:00 PM"> 6:00 PM</option>
-                            <option value="thurs7:00 PM"> 7:00 PM</option>
-                            <option value="thurs8:00 PM"> 8:00 PM</option>
-                            <option value="thurs9:00 PM"> 9:00 PM</option>
-                            <option value="thurs10:00 PM"> 10:00 PM</option>
-                            <option value="thurs11:00 PM"> 11:00 PM</option>
-                            <option value="thurs12:00 AM"> 12:00 AM</option>
+                    <select name="thuStart" value={this.state.thuStart} onChange={(event) => this.setState({ thuStart: event.target.value })}>
+                            <option value="thu1:00 AM">1:00 AM</option>
+                            <option value="thu2:00 AM"> 2:00 AM</option>
+                            <option value="thu3:00 AM"> 3:00 AM</option>
+                            <option value="thu4:00 AM"> 4:00 AM</option>
+                            <option value="thu5:00 AM"> 5:00 AM</option>
+                            <option value="thu6:00 AM"> 6:00 AM</option>
+                            <option value="thu7:00 AM"> 7:00 AM</option>
+                            <option value="thu8:00 AM"> 8:00 AM</option>
+                            <option value="thu9:00 AM"> 9:00 AM</option>
+                            <option value="thu10:00 AM"> 10:00 AM</option>
+                            <option value="thu11:00 AM"> 11:00 AM</option>
+                            <option value="thu12:00 PM"> 12:00 PM</option>
+                            <option value="thu1:00 PM"> 1:00 PM</option>
+                            <option value="thu2:00 PM"> 2:00 PM</option>
+                            <option value="thu3:00 PM"> 3:00 PM</option>
+                            <option value="thu4:00 PM"> 4:00 PM</option>
+                            <option value="thu5:00 PM"> 5:00 PM</option>
+                            <option value="thu6:00 PM"> 6:00 PM</option>
+                            <option value="thu7:00 PM"> 7:00 PM</option>
+                            <option value="thu8:00 PM"> 8:00 PM</option>
+                            <option value="thu9:00 PM"> 9:00 PM</option>
+                            <option value="thu10:00 PM"> 10:00 PM</option>
+                            <option value="thu11:00 PM"> 11:00 PM</option>
+                            <option value="thu12:00 AM"> 12:00 AM</option>
                         </select>
 
                         End
-                    <select name="thursEnd" value={this.state.thursEnd} onChange={(event) => this.setState({ thursEnd: event.target.value, thursEndLoaded: true })}>
-                            <option value="thurs1:00 AM">1:00 AM</option>
-                            <option value="thurs2:00 AM"> 2:00 AM</option>
-                            <option value="thurs3:00 AM"> 3:00 AM</option>
-                            <option value="thurs4:00 AM"> 4:00 AM</option>
-                            <option value="thurs5:00 AM"> 5:00 AM</option>
-                            <option value="thurs6:00 AM"> 6:00 AM</option>
-                            <option value="thurs7:00 AM"> 7:00 AM</option>
-                            <option value="thurs8:00 AM"> 8:00 AM</option>
-                            <option value="thurs9:00 AM"> 9:00 AM</option>
-                            <option value="thurs10:00 AM"> 10:00 AM</option>
-                            <option value="thurs11:00 AM"> 11:00 AM</option>
-                            <option value="thurs12:00 PM"> 12:00 PM</option>
-                            <option value="thurs1:00 PM"> 1:00 PM</option>
-                            <option value="thurs2:00 PM"> 2:00 PM</option>
-                            <option value="thurs3:00 PM"> 3:00 PM</option>
-                            <option value="thurs4:00 PM"> 4:00 PM</option>
-                            <option value="thurs5:00 PM"> 5:00 PM</option>
-                            <option value="thurs6:00 PM"> 6:00 PM</option>
-                            <option value="thurs7:00 PM"> 7:00 PM</option>
-                            <option value="thurs8:00 PM"> 8:00 PM</option>
-                            <option value="thurs9:00 PM"> 9:00 PM</option>
-                            <option value="thurs10:00 PM"> 10:00 PM</option>
-                            <option value="thurs11:00 PM"> 11:00 PM</option>
-                            <option value="thurs12:00 AM"> 12:00 AM</option>
+                    <select name="thuEnd" value={this.state.thuEnd} onChange={(event) => this.setState({ thuEnd: event.target.value})}>
+                            <option value="thu1:00 AM">1:00 AM</option>
+                            <option value="thu2:00 AM"> 2:00 AM</option>
+                            <option value="thu3:00 AM"> 3:00 AM</option>
+                            <option value="thu4:00 AM"> 4:00 AM</option>
+                            <option value="thu5:00 AM"> 5:00 AM</option>
+                            <option value="thu6:00 AM"> 6:00 AM</option>
+                            <option value="thu7:00 AM"> 7:00 AM</option>
+                            <option value="thu8:00 AM"> 8:00 AM</option>
+                            <option value="thu9:00 AM"> 9:00 AM</option>
+                            <option value="thu10:00 AM"> 10:00 AM</option>
+                            <option value="thu11:00 AM"> 11:00 AM</option>
+                            <option value="thu12:00 PM"> 12:00 PM</option>
+                            <option value="thu1:00 PM"> 1:00 PM</option>
+                            <option value="thu2:00 PM"> 2:00 PM</option>
+                            <option value="thu3:00 PM"> 3:00 PM</option>
+                            <option value="thu4:00 PM"> 4:00 PM</option>
+                            <option value="thu5:00 PM"> 5:00 PM</option>
+                            <option value="thu6:00 PM"> 6:00 PM</option>
+                            <option value="thu7:00 PM"> 7:00 PM</option>
+                            <option value="thu8:00 PM"> 8:00 PM</option>
+                            <option value="thu9:00 PM"> 9:00 PM</option>
+                            <option value="thu10:00 PM"> 10:00 PM</option>
+                            <option value="thu11:00 PM"> 11:00 PM</option>
+                            <option value="thu12:00 AM"> 12:00 AM</option>
                         </select>
 
                         <br />
                         <br />
 
                         Friday:
-    
+
                         Start
-                    <select name="friStart" value={this.state.friStart} onChange={(event) => this.setState({ friStart: event.target.value, friStartLoaded: true })}>
+                    <select name="friStart" value={this.state.friStart} onChange={(event) => this.setState({ friStart: event.target.value})}>
                             <option value="fri1:00 AM">1:00 AM</option>
                             <option value="fri2:00 AM"> 2:00 AM</option>
                             <option value="fri3:00 AM"> 3:00 AM</option>
@@ -461,7 +471,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="friEnd" value={this.state.friEnd} onChange={(event) => this.setState({ friEnd: event.target.value, friEndLoaded: true })}>
+                    <select name="friEnd" value={this.state.friEnd} onChange={(event) => this.setState({ friEnd: event.target.value })}>
                             <option value="fri1:00 AM">1:00 AM</option>
                             <option value="fri2:00 AM"> 2:00 AM</option>
                             <option value="fri3:00 AM"> 3:00 AM</option>
@@ -492,9 +502,9 @@ export default class EmployeeAvailability extends React.Component {
                         <br />
 
                         Saturday:
-    
+
                         Start
-                    <select name="satStart" value={this.state.satStart} onChange={(event) => this.setState({ satStart: event.target.value, satStartLoaded: true })}>
+                    <select name="satStart" value={this.state.satStart} onChange={(event) => this.setState({ satStart: event.target.value })}>
                             <option value="sat1:00 AM">1:00 AM</option>
                             <option value="sat2:00 AM"> 2:00 AM</option>
                             <option value="sat3:00 AM"> 3:00 AM</option>
@@ -522,7 +532,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="satEnd" value={this.state.satEnd} onChange={(event) => this.setState({ satEnd: event.target.value, satEndLoaded: true })}>
+                    <select name="satEnd" value={this.state.satEnd} onChange={(event) => this.setState({ satEnd: event.target.value})}>
                             <option value="sat1:00 AM">1:00 AM</option>
                             <option value="sat2:00 AM"> 2:00 AM</option>
                             <option value="sat3:00 AM"> 3:00 AM</option>
@@ -554,9 +564,9 @@ export default class EmployeeAvailability extends React.Component {
                         <br />
 
                         Sunday:
-    
+
                         Start
-                    <select name="sunStart" value={this.state.sunStart} onChange={(event) => this.setState({ sunStart: event.target.value, sunStartLoaded: true })}>
+                    <select name="sunStart" value={this.state.sunStart} onChange={(event) => this.setState({ sunStart: event.target.value })}>
                             <option value="sun1:00 AM">1:00 AM</option>
                             <option value="sun2:00 AM"> 2:00 AM</option>
                             <option value="sun3:00 AM"> 3:00 AM</option>
@@ -584,7 +594,7 @@ export default class EmployeeAvailability extends React.Component {
                         </select>
 
                         End
-                    <select name="sunEnd" value={this.state.sunEnd} onChange={(event) => this.setState({ sunEnd: event.target.value, sunEndLoaded: true })}>
+                    <select name="sunEnd" value={this.state.sunEnd} onChange={(event) => this.setState({ sunEnd: event.target.value })}>
                             <option value="sun1:00 AM">1:00 AM</option>
                             <option value="sun2:00 AM"> 2:00 AM</option>
                             <option value="sun3:00 AM"> 3:00 AM</option>
@@ -613,8 +623,10 @@ export default class EmployeeAvailability extends React.Component {
 
                         <input className="edit_employee_submit_button" type="submit" value="Submit" />
                     </form>
+                    <button onClick={this.props.closeHandler} className="avail-form-close">Close</button>
                 </div>
-            );
-        
+            </div>
+        );
+
     }
 }

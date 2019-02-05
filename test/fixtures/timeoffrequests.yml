@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accepted: false
+  start_day: MyString
+  end_day: MyString
+
+two:
+  accepted: false
+  start_day: MyString
+  end_day: MyString

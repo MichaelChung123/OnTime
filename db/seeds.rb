@@ -157,35 +157,91 @@ Employee.find(5).shifts.create!({
     note: "mentor"
 })
 
-Employee.first.availabilities.create!({
+Employee.find(1).availabilities.create!({
     day: "Monday",
     start_time: 9,
     end_time: 17
 })
 
-Employee.first.availabilities.create!({
+Employee.find(1).availabilities.create!({
     day: "Tuesday",
     start_time: 14,
     end_time: 21
 })
 
-Employee.first.availabilities.create!({
-    day: "Monday",
+Employee.find(1).availabilities.create!({
+    day: "Wednesday",
     start_time: 12,
     end_time: 17
 })
 
-Employee.first.availabilities.create!({
+Employee.find(1).availabilities.create!({
+    day: "Thursday",
+    start_time: 9,
+    end_time: 17
+})
+
+Employee.find(1).availabilities.create!({
     day: "Friday",
     start_time: 13,
     end_time: 21
 })
 
-Employee.first.availabilities.create!({
+Employee.find(1).availabilities.create!({
+    day: "Saturday",
+    start_time: 13,
+    end_time: 21
+})
+
+Employee.find(1).availabilities.create!({
+    day: "Sunday",
+    start_time: 13,
+    end_time: 21
+})
+
+# 
+Employee.find(2).availabilities.create!({
+    day: "Monday",
+    start_time: 9,
+    end_time: 17
+})
+
+Employee.find(2).availabilities.create!({
+    day: "Tuesday",
+    start_time: 14,
+    end_time: 21
+})
+
+Employee.find(2).availabilities.create!({
+    day: "Wednesday",
+    start_time: 12,
+    end_time: 17
+})
+
+Employee.find(2).availabilities.create!({
     day: "Thursday",
     start_time: 9,
     end_time: 17
 })
+
+Employee.find(2).availabilities.create!({
+    day: "Friday",
+    start_time: 13,
+    end_time: 21
+})
+
+Employee.find(2).availabilities.create!({
+    day: "Saturday",
+    start_time: 13,
+    end_time: 21
+})
+
+Employee.find(2).availabilities.create!({
+    day: "Sunday",
+    start_time: 13,
+    end_time: 21
+})
+
 
 puts "Done!"
 

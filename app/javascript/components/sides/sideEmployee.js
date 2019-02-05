@@ -3,6 +3,7 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import EditEmployee from './editEmployee'
 import Contact from './contact'
 import DeletePopup from './deletePopup'
+import Availability from './availability'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { throws } from 'assert';
 
@@ -40,11 +41,17 @@ export default class SideEmployee extends React.Component {
         });
     }
 
+    changeAvailability = () => {
+        this.setState({
+            renderChild: "availability"
+        });
+    }
+
     back() {
         this.setState({
             renderChild: false
         });
-        
+
     }
 
     timeFormat(time) {
@@ -54,7 +61,7 @@ export default class SideEmployee extends React.Component {
         } else {
             time = time + ":00 AM";
         }
-        
+
         return time;
     }
 
@@ -66,9 +73,9 @@ export default class SideEmployee extends React.Component {
                         <NavIcon>
 
                         </NavIcon>
-                        <NavText>
+                        <div id="shift-list">
                             <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
-                        </NavText>
+                        </div>
                     </NavItem>
                 );
             }
@@ -82,7 +89,9 @@ export default class SideEmployee extends React.Component {
 
                         </NavIcon>
                         <NavText>
-                            <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
+                            <div className="try-list">
+                                <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
+                            </div>
                         </NavText>
                     </NavItem>
                 );
@@ -100,6 +109,12 @@ export default class SideEmployee extends React.Component {
         if (render === "contact") {
             return (
                 <Contact back={this.back} employee={this.props.employee} />
+            );
+        }
+
+        if (render === "availability") {
+            return (
+                <Availability refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
             );
         }
 
@@ -153,25 +168,29 @@ export default class SideEmployee extends React.Component {
 
                                         <div className="profile-userbuttons">
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.editEmployee}>Edit</button>
+                                            <button type="button" className="btn btn-danger btn-sm" onClick={this.changeAvailability}>Availability</button>
                                             <button type="button" className="btn btn-success btn-sm" onClick={this.showContact}>Contact</button>
                                             <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteEmployee}>Delete</button>
                                         </div>
 
-                                        <div className="profile-shifts">
-                                            <div className="profile-shift-title">
-                                                Availabilities
-                                            </div>
-                                            <div className="list-of-shifts">
-                                                {availabilities}
-                                            </div>
-                                        </div>
+                                        <div className="try-div">
 
-                                        <div className="profile-shifts">
-                                            <div className="profile-shift-title">
-                                                Scheduled Shifts
+                                            <div className="profile-shifts">
+                                                <div className="profile-shift-title">
+                                                    Availabilities
+                                                </div>
+                                                <div className="list-of-shifts">
+                                                    {availabilities}
+                                                </div>
                                             </div>
-                                            <div className="list-of-shifts">
-                                                {shifts}
+
+                                            <div className="profile-shifts">
+                                                <div className="profile-shift-title">
+                                                    Scheduled Shifts
+                                                </div>
+                                                <div className="list-of-shifts">
+                                                    {shifts}
+                                                </div>
                                             </div>
                                         </div>
 

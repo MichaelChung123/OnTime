@@ -16,17 +16,123 @@ class ApiController < ApplicationController
         render json: Availability.all
     end
 
+    def timeoff_request
+        render json: Timeoffrequest.all
+    end
+
     def availability_edit
-        puts params
+        monday = Availability.where(employee_id: params[:employee_id], day: "Monday")
+        tuesday = Availability.where(employee_id: params[:employee_id], day: "Tuesday")
+        wednesday =Availability.where(employee_id: params[:employee_id], day: "Wednesday")
+        thursday = Availability.where(employee_id: params[:employee_id], day: "Thursday")
+        friday = Availability.where(employee_id: params[:employee_id], day: "Friday")
+        saturday = Availability.where(employee_id: params[:employee_id], day: "Saturday")
+        sunday = Availability.where(employee_id: params[:employee_id], day: "Sunday")
 
-        current_availability = Availability.find(params[:employee_id])
-
-        current_availability.update!(
-            id: 1,
+        monday.update(
             employee_id: params[:employee_id],
             day: "Monday",
             start_time: params[:monStart],
             end_time: params[:monEnd]
+        )
+        tuesday.update(
+            employee_id: params[:employee_id],
+            day: "Tuesday",
+            start_time: params[:tueStart],
+            end_time: params[:tueEnd]
+        )
+        wednesday.update(
+            employee_id: params[:employee_id],
+            day: "Wednesday",
+            start_time: params[:wedStart],
+            end_time: params[:wedEnd]
+        )
+        thursday.update(
+            employee_id: params[:employee_id],
+            day: "Thursday",
+            start_time: params[:thuStart],
+            end_time: params[:thuEnd]
+        )
+        friday.update(
+            employee_id: params[:employee_id],
+            day: "Friday",
+            start_time: params[:friStart],
+            end_time: params[:friEnd]
+        )
+        saturday.update(
+            employee_id: params[:employee_id],
+            day: "Saturday",
+            start_time: params[:satStart],
+            end_time: params[:satEnd]
+        )
+        sunday.update(
+            employee_id: params[:employee_id],
+            day: "Sunday",
+            start_time: params[:sunStart],
+            end_time: params[:sunEnd]
+        )
+    end
+
+    def availability_request
+        render json: Availrequest.all
+    end
+
+    def availability_request_create
+        ## Todo: employee_id should be dynamic
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Monday",
+            start_time: params[:monStart],
+            end_time: params[:monEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Tuesday",
+            start_time: params[:tueStart],
+            end_time: params[:tueEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Wednesday",
+            start_time: params[:wedStart],
+            end_time: params[:wedEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Thursday",
+            start_time: params[:thuStart],
+            end_time: params[:thuEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Friday",
+            start_time: params[:friStart],
+            end_time: params[:friEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Saturday",
+            start_time: params[:satStart],
+            end_time: params[:satEnd]
+        )
+
+        Availrequest.create!(
+            employee_id: 1,
+            accepted: false,
+            day: "Sunday",
+            start_time: params[:sunStart],
+            end_time: params[:sunEnd]
         )
     end
     
@@ -99,6 +205,18 @@ class ApiController < ApplicationController
             note: params[:note]
         )
     end
-        
+    
+    def timeoff_request_create
+        ## Todo: employee_id should be dynamic
+        Timeoffrequest.create!(
+            employee_id: params[:employeeId],
+            accepted: false,
+            start_month: params[:monthStart],
+            start_day: params[:dayStart],
+            end_month: params[:monthEnd],        
+            end_day: params[:dayEnd],
+            reason: params[:reason]
+        )
+    end
 
 end

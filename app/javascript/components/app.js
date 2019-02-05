@@ -6,6 +6,9 @@ import SideEmployee from './sides/sideEmployee'
 import ScheduleApp from './mainbody/scheduleApp';
 import MentorCalculator from './logistics/mentorcalculator'
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import dateFns from 'date-fns'
+
+dateFns.format(yourdate, 'dddd MMMM Do')
 
 export default class App extends React.Component {
     constructor(props) {
@@ -13,16 +16,51 @@ export default class App extends React.Component {
         this.state = {
             clickedDate: new Date(),
             employeeShifts: [],
+            requests: [],
             pending: false,
             approved: false
         }
 
         this.getDate = this.getDate.bind(this);
     }
+
     componentDidMount() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
+
+        fetch('/api/timeoffrequest')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
+
+        this.interval = setInterval(() => this.refresh(), 3000);
+    }
+
+    refresh() {
+        fetch('/api/timeoffrequest')
+        .then((response) => { return response.json() })
+        .then((data) => { this.setState({ requests: data }) });    
+
+        for (let req of this.state.requests) {
+            for(let emp of this.state.employeeShifts) {
+                if(req.employee_id === emp.id) {
+                    // console.log("req", req.employee_id);
+                    // console.log("emp", emp.id);
+                    console.log(req.start_month);
+                    console.log(req.start_day);
+                    console.log(req.end_month);
+                    console.log(req.end_day);
+
+                    // return (
+                    //     <li></li>
+                    // );
+                }
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     getDate = (date) => {
@@ -31,11 +69,6 @@ export default class App extends React.Component {
         })
     }
 
-    getNotifications() {
-        setInterval(5000);
-
-        
-    }
 
     createNotification = (type) => {
         return () => {
@@ -72,9 +105,9 @@ export default class App extends React.Component {
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
-                
+
                 <MentorCalculator />
-                <NotificationContainer/>
+                <NotificationContainer />
             </div>
         )
     }
