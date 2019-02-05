@@ -151,6 +151,7 @@ class ApiController < ApplicationController
             duration: params[:duration],
             note: params[:note]
         )
+
     end
 
     def employee_create
@@ -164,6 +165,12 @@ class ApiController < ApplicationController
             occupation: params[:occupation],
             phone_number: params[:phone_number]
         )
+        # Availability.create!(
+        #     employee_id: 
+        #     day: "Monday",
+        #     start_time: 9,
+        #     end_time: 21
+        # )
     end
 
     def employee_edit
