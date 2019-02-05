@@ -1,14 +1,16 @@
 html {
   height: 100%;
   width: 100%;
-  background-image: url('https://images.wallpaperscraft.com/image/alarm_clock_dial_watch_123806_2560x1440.jpg');
-  background-size: 100% 100%;
+
 }
 
 body {
-  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://images.wallpaperscraft.com/image/alarm_clock_dial_watch_123806_2560x1440.jpg');
+  background-size: 100% 100%;
   font-family: 'Montserrat', sans-serif;
-  background-color: inherit;
+
 }
 
 .landing-container {
