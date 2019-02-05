@@ -157,20 +157,59 @@ class ApiController < ApplicationController
     def employee_create
         puts params;
 
-        Employee.create!(
-            user_id: params[:user_id],
-            first_name: params[:first_name],
-            last_name: params[:last_name],
-            email: params[:email],
-            occupation: params[:occupation],
-            phone_number: params[:phone_number]
-        )
-        # Availability.create!(
-        #     employee_id: 
-        #     day: "Monday",
-        #     start_time: 9,
-        #     end_time: 21
-        # )
+        @new_employee = Employee.create!(
+                            user_id: params[:user_id],
+                            first_name: params[:first_name],
+                            last_name: params[:last_name],
+                            email: params[:email],
+                            occupation: params[:occupation],
+                            phone_number: params[:phone_number]
+                        )
+                    
+        if @new_employee.save
+            @new_employee.availabilities.create!(
+
+                day: "Monday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Tuesday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Wednesday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Thursday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Friday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Saturday",
+                start_time: 9,
+                end_time: 21
+            )
+            @new_employee.availabilities.create!(
+
+                day: "Sunday",
+                start_time: 9,
+                end_time: 21
+            )
+        end
     end
 
     def employee_edit

@@ -82,7 +82,7 @@ export default class SideEmployee extends React.Component {
         });
 
         let availabilities = this.props.availabilities.map((e, index) => {
-            if (e.id === this.props.employee.id) {
+            if (e.employee_id === this.props.employee.id) {
                 return (
                     <NavItem key={index}>
                         <NavIcon>
@@ -129,7 +129,7 @@ export default class SideEmployee extends React.Component {
                 </ReactCSSTransitionGroup>
             );
         }
-
+        console.log(this.props.availabilities)
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
