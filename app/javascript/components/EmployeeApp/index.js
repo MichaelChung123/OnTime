@@ -34,20 +34,21 @@ export default class EmployeePage extends React.Component {
         })
     }
 
-    fetchRequestTimeOff = (reason, monthStart, dayStart, monthEnd, dayEnd) => {
-        console.log(reason, monthStart, dayStart, monthEnd, dayEnd);
+    fetchRequestTimeOff = (reason, monthStart, dayStart, monthEnd, dayEnd, currentYear) => {
+
         if ((monthStart + dayStart) === (monthEnd + dayEnd)) {
             monthEnd = null;
             dayEnd = null;
         };
-        console.log(reason, monthStart, dayStart, monthEnd, dayEnd)
+
         const data = {
             employeeId: 1,
             reason: reason,
             monthStart: monthStart,
             dayStart: dayStart,
             monthEnd: monthEnd,
-            dayEnd: dayEnd
+            dayEnd: dayEnd,
+            year: currentYear
         }
         
         fetch('/api/timeoffrequest', {
