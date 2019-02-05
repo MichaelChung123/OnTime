@@ -4,3 +4,35 @@
   margin-top: 0px;
   font-size: 20px;
 }
+
+//employee main page buttons
+.request-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 19%;
+  margin-top: -50px;
+}
+
+.request-time-off {
+  background-color: #727272;
+  font-family: inherit;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+  padding: 5px 15px;
+  margin: 5px 5px;
+  border: none;
+
+}
+
+.request-availability {
+  background-color: #727272;
+  font-family: inherit;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+  padding: 5px 15px;
+  margin: 5px 5px;
+  border: none;
+}

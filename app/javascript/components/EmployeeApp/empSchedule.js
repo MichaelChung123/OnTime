@@ -12,14 +12,16 @@ export default class Schedule extends React.Component {
         const formatDate = dateFns.format(date, 'dddd, MMMM Do, YYYY');
 
         return(
+
             <div className="day_schedule"><br/><br/>
+                        <button className="daily_back_button" onClick={() => this.props.backClick()}>
+                            <i className="fas fa-arrow-alt-circle-left"></i>
+                            Back
+                        </button>
                 <div className="date-header-container">
 
                         <h2>{formatDate}</h2>
-                        <div className="daily_back_button" onClick={() => this.props.backClick()}>
-                            <i className="fas fa-arrow-alt-circle-left"></i>
-                            Back
-                        </div>
+
 
                         <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} currentDay={this.props.currentDay} />
 

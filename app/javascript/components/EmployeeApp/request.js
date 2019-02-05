@@ -10,8 +10,8 @@ export default class Request extends React.Component {
             availForm: false
         }
     }
-    
-    
+
+
     requestTimeOff = () => {
         this.setState({
             timeOffForm: !this.state.timeOffForm
@@ -34,18 +34,18 @@ export default class Request extends React.Component {
             availForm: !this.state.availForm
         })
     }
-    
+
     render() {
         return (
             <div>
-                <div className="request-buttons-container" style={{marginTop: '40em'}}>
-                    <button onClick={() => this.requestTimeOff()}>Request Time Off</button>
-                    <button onClick={() => this.requestAvailability()}>Request Availability</button>
+                <div className="request-buttons-container">
+                    <button className="request-time-off" onClick={() => this.requestTimeOff()}>Request Time Off</button>
+                    <button className="request-availability" onClick={() => this.requestAvailability()}>Request Availability</button>
                 </div>
                 {this.state.timeOffForm ? <TimeOffRequestForm closeHandler={this.closeHandler} fetchRequestTimeOff={this.props.fetchRequestTimeOff} /> : null}
                 {this.state.availForm ? <AvailForm  availabilities={this.props.availabilities} closeHandler={this.availCloseHandler} /> : null}
             </div>
         )
     }
-        
+
 }

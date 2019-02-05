@@ -20,7 +20,7 @@ export default class NavBar extends React.Component {
       count: this.props.count,
       renderChild: "notifications"
     }, () => {
-      
+
     });
 
   }
@@ -49,7 +49,7 @@ export default class NavBar extends React.Component {
     return (
       <header className="navbar">
         <nav className="navbar_navigation">
-          <div className="navbar_logo"><a href="/">Starboard</a></div>
+          <div className="navbar_logo"><a href="/">OnTime</a></div>
 
           <div className="spacer" />
           <div className="navbar_navigation-items">
@@ -64,7 +64,9 @@ export default class NavBar extends React.Component {
             <NotificationBadge count={this.props.count} className={'abc'} effect={Effect.ROTATE_X} />
           </div>
 
-          <button onClick={this.showNotifications}>Notifications</button>
+          <button className="navbar-notifcation-button" onClick={this.showNotifications}>
+            <i className="fas fa-bell"></i>
+          </button>
 
         </nav>
       </header>
