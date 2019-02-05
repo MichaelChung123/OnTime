@@ -22,7 +22,7 @@ export default class EditShift extends React.Component {
 
                     <label for="start_time">Start Time</label>
                         <div className="styled-select">
-                            <select>
+                            <select id="start_time">
                                 <option value="9">9:00 AM</option>
                                 <option value="10">10:00 AM</option>
                                 <option value="11">11:00 AM</option>
@@ -44,7 +44,7 @@ export default class EditShift extends React.Component {
                     <label for="end_time">End Time</label><br></br>
                         <div className="styled-select">
 
-                            <select>
+                            <select id="end_time">
                                 <option value="10">10:00 AM</option>
                                 <option value="11">11:00 AM</option>
                                 <option value="12">12:00 PM</option>

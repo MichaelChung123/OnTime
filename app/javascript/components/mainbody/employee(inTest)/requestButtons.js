@@ -9,11 +9,11 @@ export default class RequestButtons extends React.Component {
     }
 
     render() {
-        
+
         return (
             <div>
-                <button onClick={this.props.handleRequestOff}>Request Time Off</button>
-                <button onClick={this.props.handleAvailability}>Change Availability</button>
+                <button className="employee-request-time-off" onClick={this.props.handleRequestOff}>Request Time Off</button>
+                <button className="employee-change-availability" onClick={this.props.handleAvailability}>Change Availability</button>
             </div>
         );
     }
