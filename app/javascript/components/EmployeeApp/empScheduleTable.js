@@ -13,12 +13,12 @@ export default class ScheduleTable extends React.Component {
             empEditId: ''
         }
     }
-    
+
     componentDidMount() {
         this.fetchData();
         this.interval = setInterval(() => this.refresh(), 300);
     }
-    
+
     fetchData() {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
@@ -28,14 +28,15 @@ export default class ScheduleTable extends React.Component {
     refresh() {
         this.fetchData();
     }
-    
+
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
+
     // deleteShift() {
     //     const target = event.target.parentElement;
-    //     const shiftId = target.getAttribute('shift-key');        
+    //     const shiftId = target.getAttribute('shift-key');
     //     fetch(`/api/shifts`, {
     //         method: 'DELETE',
     //         headers: {
@@ -44,6 +45,7 @@ export default class ScheduleTable extends React.Component {
     //         body: JSON.stringify(shiftId)
     //     });
     // };
+
 
     // showEdit = () => {
     //     this.setState({
@@ -67,6 +69,7 @@ export default class ScheduleTable extends React.Component {
     //     // const editNote = note;
     //     const duration = endTime - startTime;
 
+
     //     fetch('/api/shifts', {
     //         method: 'PUT',
     //         headers: {
@@ -78,7 +81,7 @@ export default class ScheduleTable extends React.Component {
     //             start: startTime,
     //             end: endTime,
     //             note: note,
-    //             duration: duration     
+    //             duration: duration
     //         })
     //     });
 
@@ -123,9 +126,9 @@ export default class ScheduleTable extends React.Component {
                 }
             })
         })
-        
+
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : 0;      
+            return shiftInfo[0] ? shiftInfo[0].length : 0;
         }
         function checkStartExist() {
             return shiftInfo[0] ? shiftInfo[0].start : 0;
@@ -145,7 +148,7 @@ export default class ScheduleTable extends React.Component {
             week.forEach((day,i) => {if (currentDateDay == day) position = i});
             return position;
         }
-        
+
         const firstEmployee = employeeNames[0];
         const listOfEmployees = employeeNames.slice(1).map(function(name, i) {
             return (
@@ -157,8 +160,8 @@ export default class ScheduleTable extends React.Component {
                         empid-key={employeeId[i + 1]}
                         style={{
                         display: 'block',
-                        width: shiftInfo[i + 1].length, 
-                        marginLeft: shiftInfo[i + 1].start}} 
+                        width: shiftInfo[i + 1].length,
+                        marginLeft: shiftInfo[i + 1].start}}
                         >
                         {name} <br/><hr/>
                         {shiftInfo[i + 1].note}
@@ -308,24 +311,24 @@ export default class ScheduleTable extends React.Component {
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
                         <tr className="weekly-time">
-                            <th>9:00AM</th>
-                            <th>10:00AM</th>
-                            <th>11:00AM</th>
-                            <th>12:00PM</th>
-                            <th>1:00PM</th>
-                            <th>2:00PM</th>
-                            <th>3:00PM</th>
-                            <th>4:00PM</th>
-                            <th>5:00PM</th>
-                            <th>6:00PM</th>
-                            <th>7:00PM</th>
-                            <th>8:00PM</th>
-                            <th>9:00PM</th>
+                            <th>9AM</th>
+                            <th>10AM</th>
+                            <th>11AM</th>
+                            <th>12PM</th>
+                            <th>1PM</th>
+                            <th>2PM</th>
+                            <th>3PM</th>
+                            <th>4PM</th>
+                            <th>5PM</th>
+                            <th>6PM</th>
+                            <th>7PM</th>
+                            <th>8PM</th>
+                            <th>9PM</th>
                         </tr>
                         <tr>
                             <td colSpan="13">
                             {(shiftId.length !== 0) ?
-                                <span 
+                                <span
                                 key={1}
                                 shift-key={shiftId[0]}
                                 empid-key={employeeId[0]}
@@ -336,16 +339,16 @@ export default class ScheduleTable extends React.Component {
                                 {firstEmployee} <br/><hr/>
                                 {checkNoteExist()}
                                 </span>
-                            : <h1>This day is does not have any Shifts!</h1>
+                            : <h4 className="nothing-scheduled">Nothing scheduled</h4>
                             }
                             </td>
-                        </tr> 
+                        </tr>
                         {listOfEmployees}
                     </table>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
                 <div className="weekly-view-container">
-                    <h1>Weekly View!</h1>
+
                     <table className="weekly-view">
                         <tr>
                             <th>Monday {dateFns.format(monForWeeklyView, 'Do')}</th>

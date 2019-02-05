@@ -52,19 +52,20 @@ render() {
 
   return (
 
-    <div>
-      <br /><br /><br /><br /><br /><br />
-      <div className="Login">
-        <form onSubmit={this.setRedirect}>
-          <label>Email</label><br />
-          <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
+    <div className="landing-container">
+        <div className="landing-content-container">
+            <div className="landing-title-container">
 
-          <label>Password</label><br />
-          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input><br />
-        </form>
-        <button type="submit" onClick={this.setRedirect}>Login</button>
+              <div className="landing-title">OnTime</div>
+              Let's start scheduling
+            </div>
 
-      </div>
+            <div className="landing-button-container">
+              <button className="landing-button" onClick={this.setRedirect}>ADMIN</button>
+              <button className="landing-button" onClick={this.setRedirect}>EMPLOYEE</button>
+            </div>
+        </div>
+
     </div>
 
   )
