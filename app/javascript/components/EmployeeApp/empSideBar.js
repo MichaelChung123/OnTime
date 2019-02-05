@@ -49,8 +49,8 @@ export default class SideBar extends React.Component {
         const shiftDetails = shifts.map(function(shift) {
             let convertStartTime;
             let convertEndTime;
-            if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-            if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+            if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
             return (
             <NavItem>
                 <NavIcon></NavIcon>

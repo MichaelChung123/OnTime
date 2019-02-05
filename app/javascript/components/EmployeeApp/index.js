@@ -1,6 +1,6 @@
 import React from 'react'
-
 import EmployeeApp from './employeeApp'
+import Request from './request'
 
 export default class EmployeePage extends React.Component {
     constructor(props) {
@@ -61,7 +61,9 @@ export default class EmployeePage extends React.Component {
     render() {
         return(
             <div>
+                {/* <Request fetchRequestTimeOff={this.fetchRequestTimeOff} availabilities={this.state.availabilities}/> */}
                 <EmployeeApp shifts={this.state.shifts} fetchDate={this.fetchDate} currentDate={this.state.currentDay} fetchRequestTimeOff={this.fetchRequestTimeOff} availabilities={this.state.availabilities}/>
+                
             </div>
         )
     }

@@ -37,11 +37,10 @@ export default class Request extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="request-buttons-container">
-                    <button className="request-time-off" onClick={() => this.requestTimeOff()}>Request Time Off</button>
-                    <button className="request-availability" onClick={() => this.requestAvailability()}>Request Availability</button>
-                </div>
+            <div className="request-buttons-container">
+                <button className="request-time-off" onClick={() => this.requestTimeOff()}>Request Time Off</button>
+                <button className="request-availability" onClick={() => this.requestAvailability()}>Request Availability</button>
+                
                 {this.state.timeOffForm ? <TimeOffRequestForm closeHandler={this.closeHandler} fetchRequestTimeOff={this.props.fetchRequestTimeOff} /> : null}
                 {this.state.availForm ? <AvailForm  availabilities={this.props.availabilities} closeHandler={this.availCloseHandler} /> : null}
             </div>

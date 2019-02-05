@@ -14,17 +14,14 @@ export default class Schedule extends React.Component {
         return(
 
             <div className="day_schedule"><br/><br/>
-                        <button className="daily_back_button" onClick={() => this.props.backClick()}>
-                            <i className="fas fa-arrow-alt-circle-left"></i>
-                            Back
-                        </button>
                 <div className="date-header-container">
-
-                        <h2>{formatDate}</h2>
-
-
-                        <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} currentDay={this.props.currentDay} />
-
+                    <h2>{formatDate}</h2>
+                
+                <button className="daily_back_button" onClick={() => this.props.backClick()}>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
+                        Back
+                </button>
+                <ScheduleTable employees={this.props.employees} shifts={this.props.shifts} currentDay={this.props.currentDay} />
                 </div>
             </div>
         )

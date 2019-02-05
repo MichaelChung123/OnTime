@@ -115,7 +115,7 @@ export default class ScheduleTable extends React.Component {
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 85, length: shift.duration * 85, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.69231, note: shift.note})
                 }
             });
         });
@@ -128,10 +128,10 @@ export default class ScheduleTable extends React.Component {
         })
 
         function checkLengthExist() {
-            return shiftInfo[0] ? shiftInfo[0].length : 0;
+            return shiftInfo[0] ? `${shiftInfo[0].length}%` : 0;
         }
         function checkStartExist() {
-            return shiftInfo[0] ? shiftInfo[0].start : 0;
+            return shiftInfo[0] ? `${shiftInfo[0].start}%` : 0;
         }
         function checkNoteExist() {
             return shiftInfo[0] ? shiftInfo[0].note : null;
@@ -160,8 +160,9 @@ export default class ScheduleTable extends React.Component {
                         empid-key={employeeId[i + 1]}
                         style={{
                         display: 'block',
-                        width: shiftInfo[i + 1].length,
-                        marginLeft: shiftInfo[i + 1].start}}
+                        width:`${shiftInfo[i + 1].length}%`,
+                        marginLeft: `${shiftInfo[i + 1].length}%`,
+                        wordWrap: "break-word"}}
                         >
                         {name} <br/><hr/>
                         {shiftInfo[i + 1].note}
@@ -187,8 +188,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -206,8 +207,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -224,8 +225,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -242,8 +243,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -260,8 +261,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -278,8 +279,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
@@ -296,8 +297,8 @@ export default class ScheduleTable extends React.Component {
                     if (shift.day == monDate) {
                         let convertStartTime;
                         let convertEndTime;
-                        if (shift.start_time > 12) {convertStartTime = (shift.start_time - 12)} else {convertStartTime = shift.start_time}
-                        if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12)} else {convertEndTime = shift.end_time}
+                        if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+            if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
                         result.push(`${employee.first_name} ${employee.last_name} ${convertStartTime} - ${convertEndTime}`);
                     }
                 });
