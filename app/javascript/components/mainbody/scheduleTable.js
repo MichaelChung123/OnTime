@@ -11,7 +11,9 @@ export default class ScheduleTable extends React.Component {
             showEdit: false,
             shiftEditId: '',
             empEditId: '',
-            requests: []
+            requests: [],
+            allEmployees: [],
+            availabilities: []
         }
     }
 
@@ -27,6 +29,13 @@ export default class ScheduleTable extends React.Component {
         // fetch('/api/timeoffrequest')
         //     .then((response) => { return response.json() })
         //     .then((data) => { this.setState({ requests: data }) });
+        fetch('/api/employees')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ allEmployees: data }) });
+
+        fetch('/api/availability')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ availabilities: data }) });
     }
 
     refresh() {
@@ -109,9 +118,7 @@ export default class ScheduleTable extends React.Component {
         const shiftId = [];
         const shiftInfo = [];
         const employeeNames = [];
-        // const acceptedRequests = [];
-        // const timeOffdata = [];
-
+        const availableEmployee = [];
 
         data.forEach(function(employee) {
             employee.shifts.forEach(function(shift){
@@ -122,22 +129,37 @@ export default class ScheduleTable extends React.Component {
                 }
             });
         });
+        
         employeeId.forEach(function(employeeId){
             data.forEach(function(employee){
                 if (employee.id === employeeId) {
                     employeeNames.push(employee.first_name + ` `+ employee.last_name)
                 }
-            })
-        })
+            });
+        });
 
-        // this.state.requests.forEach(function(request){
-        //     if (request.accepted === true) acceptedRequests.push(request)
-        // });
-        // acceptedRequests.forEach(function(requestedTime) {
-        //     timeOffStart.push(`${requestedTime.year}-${requestedTime.start_month}-${requestedTime.start_day}`)
-        //     timeOffEnd.push(`${requestedTime.year}-${requestedTime.end_month}-${requestedTime.end_day}`)
-        //     timeOffdata.push({year: requestedTime.year, start: })
-        // })
+        this.state.availabilities.forEach((availability) => {
+            const day = dateFns.format(currentDay, 'dddd');
+            if (availability.day == day) {
+                const data = {
+                    employeeId: availability.employee_id,
+                    start: availability.start_time,
+                    end: availability.end_time
+                };
+                availableEmployee.push(data);
+            }
+            
+        });
+
+        this.state.allEmployees.forEach((employee) => {
+            availableEmployee.forEach((availEmp, i) => {
+                if (employee.id == availEmp.employeeId) {
+                    availableEmployee[i].firstName = employee.first_name;
+                    availableEmployee[i].lastName = employee.last_name;
+                }
+            });
+        });
+        
 
 
         function checkLengthExist() {
@@ -184,6 +206,15 @@ export default class ScheduleTable extends React.Component {
                 </tr>
             )
         });
+
+        const whoIsAvailable = availableEmployee.map((employee) => {
+            let convertStartTime;
+            let convertEndTime;
+            if (employee.start > 12) {convertStartTime = (employee.start - 12)} else {convertStartTime = employee.start}
+            if (employee.end > 12) {convertEndTime = (employee.end - 12)} else {convertEndTime = employee.end}
+            return (<li>{employee.firstName}  {employee.lastName} {convertStartTime} - {convertEndTime}</li>)
+        });
+
         const dateFormatForWeek = dateFns.format(currentDay, 'YYYY, M, D');
         const monForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay));
         const tuesForWeeklyView = dateFns.subDays(dateFormatForWeek, findDayforMon(currentDateDay) - 1);
@@ -320,6 +351,8 @@ export default class ScheduleTable extends React.Component {
                 return (<p>{info}</p>)
             })
         };
+
+
         return(
             <div>
                 <div className="schedule-container">
@@ -359,8 +392,10 @@ export default class ScheduleTable extends React.Component {
                             </td>
                         </tr>
                         {listOfEmployees}
-                    </table>
+                    </table><br/>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
+                    <h1>Who is available this day?</h1>
+                    {whoIsAvailable}
                 </div>
                 <div className="weekly-view-container">
                     <h1>Weekly View!</h1>

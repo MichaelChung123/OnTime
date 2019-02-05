@@ -129,7 +129,7 @@ export default class SideEmployee extends React.Component {
                 </ReactCSSTransitionGroup>
             );
         }
-        console.log(this.props.availabilities)
+
         return (
             <div>
                 <SideNav expanded={this.state.expanded}
