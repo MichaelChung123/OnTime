@@ -16,6 +16,8 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-burger-menu": "^2.6.1",
     "react-dom": "^16.7.0",
+    "react-notification-badge": "^1.4.0",
+    "react-notifications": "^1.4.3",
     "react-perfect-scrollbar": "^1.4.4",
     "react-router-dom": "^4.4.0-beta.6",
     "react-transition-group": "^2.5.3"

@@ -4,6 +4,7 @@ import SideEmployee from './sideEmployee'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Popup from './popup'
 import AddEmployee from './addEmployee'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 
 export default class SideBar extends React.Component {
@@ -145,7 +146,7 @@ export default class SideBar extends React.Component {
                                 + Add Shift
                         </NavText>
                         </NavItem>
-
+                        
                         <ReactCSSTransitionGroup
                             transitionName="popup_css"
                             transitionEnterTimeout={500}
