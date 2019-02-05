@@ -8,8 +8,6 @@ import MentorCalculator from './logistics/mentorcalculator'
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import dateFns from 'date-fns'
 
-dateFns.format(yourdate, 'dddd MMMM Do')
-
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -17,6 +15,7 @@ export default class App extends React.Component {
             clickedDate: new Date(),
             employeeShifts: [],
             requests: [],
+            notificationStr: [],
             pending: false,
             approved: false
         }
@@ -37,23 +36,39 @@ export default class App extends React.Component {
     }
 
     refresh() {
+        this.setState({
+            notificationStr: []
+        });
+
+        const { notificationStr } = this.state;
+
         fetch('/api/timeoffrequest')
-        .then((response) => { return response.json() })
-        .then((data) => { this.setState({ requests: data }) });    
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
 
         for (let req of this.state.requests) {
-            for(let emp of this.state.employeeShifts) {
-                if(req.employee_id === emp.id) {
-                    // console.log("req", req.employee_id);
-                    // console.log("emp", emp.id);
-                    console.log(req.start_month);
-                    console.log(req.start_day);
-                    console.log(req.end_month);
-                    console.log(req.end_day);
+            for (let emp of this.state.employeeShifts) {
+                if (req.employee_id === emp.id) {
+                    if (req.end_month === null || req.end_day === null) {
+                        const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
+                        const dateStr = `Time off request on ${dateFns.format(startDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
+                        notificationStr.push(dateStr);
 
-                    // return (
-                    //     <li></li>
-                    // );
+                        this.setState({
+                            notificationStr
+                        });                        
+                    }
+                    else {
+                        const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
+                        const endDate = new Date(`${req.year}-${req.end_month}-${req.end_day}`);
+                        const dateStr = `Time off request for ${dateFns.format(startDate, 'dddd MMMM Do')} to ${dateFns.format(endDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
+                        notificationStr.push(dateStr);
+
+                        this.setState({
+                            notificationStr
+                        });
+                    }
+                    
                 }
             }
         }
@@ -92,11 +107,17 @@ export default class App extends React.Component {
     };
 
 
-    render() {
+    render() {  
+
+        let notifications = this.state.notificationStr.map((e, index) => {
+            return (
+                <li key={index}>{e}</li>
+            );
+        });
 
         return (
             <div>
-                <NavBar />
+                <NavBar notifications={this.state.notificationStr}/>
 
                 <br></br>
                 <br></br>
@@ -105,9 +126,11 @@ export default class App extends React.Component {
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
-
                 <MentorCalculator />
                 <NotificationContainer />
+                <ul>
+                    {notifications}
+                </ul>
             </div>
         )
     }
