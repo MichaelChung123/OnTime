@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_072208) do
     t.integer "end_month"
     t.integer "end_day"
     t.string "reason"
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_timeoffrequests_on_employee_id"

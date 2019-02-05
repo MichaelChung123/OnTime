@@ -8,6 +8,7 @@ class CreateTimeoffrequests < ActiveRecord::Migration[5.2]
       t.integer :end_month
       t.integer :end_day
       t.string :reason
+      t.integer :year
 
       t.timestamps
     end

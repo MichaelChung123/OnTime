@@ -18,11 +18,33 @@ export default class Popup extends React.Component {
     render() {
         const shifts = this.props.shifts;
         const getDate = this.props.getDate;
+        const requestData = [];
+        const timeOffRequests = this.props.timeOffRequests.filter((request) => {
+            if (request.accepted === true) return request
+        })
         const employees = this.props.listOfEmployees.map((e) => {
             return <option key={e.id} data-key={e.id}>{e.first_name} {e.last_name} ({e.occupation})</option>
         });
-
-
+        
+        const timeOffDate = timeOffRequests.filter((request) => {
+            return request;
+        });
+        
+        timeOffDate.forEach((request) => {
+            const data = {
+                employee_id: request.employee_id,
+                dates: []
+            };
+            const start = new Date(`${request.year}-${request.start_month}-${request.start_day}`);
+            const end = new Date(`${request.year}-${request.end_month}-${request.end_day}`);
+            
+            for (var day = start; day <= end; day.setDate(day.getDate() + 1)) {
+                data.dates.push(dateFns.format(day, 'dddd MMMM Do'));
+            };
+            requestData.push(data);
+        });
+        
+        
         function values(event, cb, refresh) {
             event.preventDefault();
             const day = document.getElementById("day").options[document.getElementById("day").selectedIndex].value;
@@ -32,6 +54,7 @@ export default class Popup extends React.Component {
             const duration = endTime - startTime;
             const notes = document.getElementById("notes").value;
             let shiftExist = false;
+            let available = true;
 
             let data = {
                 employee_id: employeeId,
@@ -51,19 +74,44 @@ export default class Popup extends React.Component {
                 } else {
                     shiftExist = false;
                 }
-            })
-            refresh();
-            console.log(shiftExist)
-            if (duration > 0 && !shiftExist) {
-            fetch('/api/shifts', {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
             });
-            cb();
+            requestData.forEach((request) => {
+                console.log(request.employee_id, employeeId)
+                if (request.employee_id == employeeId) {
+                    request.dates.forEach((date) => {
+                        if (date === day) {
+                            available = false;
+                        };
+                    });
+                };
+            });
+
+            refresh();
+            
+            if (duration < 0) {
+                confirm(`please double check your shift time`)
+            } else if (shiftExist) {
+                confirm(`This employee is already scheduled this day`)
+            } else if (!available) {
+                confirm(`This employee is not available this day`)
             } else {
-                confirm(`Please double check scheduling time and shift already exists!`)
+                fetch('/api/shifts', {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                cb();
             }
+        //     if (duration > 0 && !shiftExist) {
+        //     fetch('/api/shifts', {
+        //         method: "POST",
+        //         headers: {'Content-Type': 'application/json'},
+        //         body: JSON.stringify(data)
+        //     });
+        //     cb();
+        //     } else {
+        //         confirm(`Please double check scheduling time and shift already exists!`)
+        //     }
 
         }
 
