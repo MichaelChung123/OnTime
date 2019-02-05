@@ -57,7 +57,7 @@ render() {
             <div className="landing-title-container">
 
               <div className="landing-title">OnTime</div>
-              Let's start scheduling
+              <div className="landing-description">Let's start scheduling</div>
             </div>
 
             <div className="landing-button-container">

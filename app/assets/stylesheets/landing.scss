@@ -10,8 +10,11 @@ html {
   background-image: url("https://images.wallpaperscraft.com/image/alarm_clock_dial_watch_123806_2560x1440.jpg");
   background-size: 100% 100%;
   display: flex;
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 
 }
 
@@ -22,7 +25,7 @@ html {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 200px;
+  justify-content: center;
 }
 
 .landing-content-container {
@@ -45,6 +48,14 @@ html {
   font-size: 100px;
 }
 
+//description
+.landing-description {
+  font-size: 20px;
+
+  font-weight: 100;
+
+}
+
 //buttons
 
 .landing-button-container {
@@ -57,10 +68,13 @@ html {
 .landing-button {
   height: 30px;
   width: 150px;
-  background-color: #D3D3D3;
+  background-color: #727272;
   color: white;
   border-radius: 4px;
   border: none;
 
 }
 
+.landing-button:hover {
+  background-color: #4F4F4F;
+}
