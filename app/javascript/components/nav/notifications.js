@@ -39,7 +39,7 @@ export default class Notifications extends React.Component {
                 </div>
             );
         });
-        console.log(this.props.notifications)
+
         return (
             <div className="popup">
                 <div className="popup-form">

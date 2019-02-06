@@ -12,7 +12,6 @@ export default class SideBar extends React.Component {
     render() {
         const currentDate = this.props.currentDate;
         const day = dateFns.format(currentDate, 'dddd');
-        const formatDay = dateFns.format(currentDate, 'dddd MMMM Do');
         const monday = dateFns.subDays(currentDate, findDayforMon(day));
         const tuesday = dateFns.subDays(currentDate, findDayforMon(day) - 1);
         const wednesday = dateFns.subDays(currentDate, findDayforMon(day) -2);
@@ -27,7 +26,7 @@ export default class SideBar extends React.Component {
         thisWeek.forEach(function(day) {
             thisWeekFormatted.push(dateFns.format(day, 'dddd MMMM Do'))
         })
-        // console.log(thisWeekFormatted)
+
         this.props.shifts.forEach(function(shift) {
             if (shift.employee_id === 1) {
                 thisWeekFormatted.forEach(function(day) {
@@ -61,10 +60,6 @@ export default class SideBar extends React.Component {
             )
         });
 
-
-        function displayShifts() {
-            `this is where checks emp id and display that certain employee's shifts`
-        }
 
         return (
             <div>

@@ -8,10 +8,15 @@ export default class Landing extends React.Component {
     };
   }
 
-  onClick = () => {
+  onClickAdmin = () => {
     this.setState({
       redirect: true
     });
+    location.href='http://localhost:3000/app/index'
+  }
+
+  onClickEmp = () => {
+    location.href='http://localhost:3000/employee'
   }
 
 
@@ -29,8 +34,8 @@ render() {
             </div>
 
             <div className="landing-button-container">
-              <button className="landing-button" onClick={this.setRedirect}>ADMIN</button>
-              <button className="landing-button" onClick={this.setRedirect}>EMPLOYEE</button>
+              <button className="landing-button" onClick={() => this.onClickAdmin()}>ADMIN</button>
+              <button className="landing-button" onClick={() => this.onClickEmp()}>EMPLOYEE</button>
             </div>
         </div>
 
