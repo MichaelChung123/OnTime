@@ -30,6 +30,7 @@
 .available-employee-title {
   color: white;
   font-weight: normal;
+  margin-bottom: 5px;
 
 }
 
@@ -37,16 +38,16 @@
 .employee-available {
     padding: 10px;
     border: none;
-    margin: 1em;
+    margin: 0.5em;
     border-radius: 5px;
     color: white;
     background-color: var(--complimentary-color);
-    font-size: small;
+    font-size: 12px;
 }
 
 .available-container {
     width: 100%;
-    height: 200px;
+    height: 250px;
     overflow: auto;
     background-color: var(--second-main-color);
     border: none;
@@ -84,3 +85,9 @@
     border-radius: 5px;
     margin-left: 2em;
 }
+
+.available-employee-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
