@@ -14,27 +14,11 @@ To use this scheduling platform:
 
 App will run at `localhost:http://localhost:3000/`
 
-![](image.png)
+![landing](./app/assets/images/landing-page.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![calendar](./app/assets/images/admin-calendar.png)
 
-Things you may want to cover:
+![shift](./app/assets/images/add-shift.png)
 
-* Ruby version
+![employee](./app/assets/images/employee-daily-view.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
