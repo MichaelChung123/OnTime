@@ -1,5 +1,21 @@
 # README
 
+#OnTime
+
+To use this scheduling platform:
+
+* Clone this repository
+
+* bundle install
+
+* yarn install
+
+* rails s
+
+App will run at `localhost:http://localhost:3000/`
+
+![](image.png)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
