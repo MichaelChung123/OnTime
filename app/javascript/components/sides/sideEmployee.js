@@ -86,18 +86,22 @@ export default class SideEmployee extends React.Component {
 
         let availabilities = this.props.availabilities.sort((a,b) => a.id - b.id).map((e, index) => {
             if (e.employee_id === this.props.employee.id) {
-                return (
-                    <NavItem key={index}>
-                        <NavIcon>
+                if (e.start_time == 0 || e.end_time == 0) { 
+                    return <li>Not Available</li> 
+                } else { 
+                    return (
+                        <NavItem key={index}>
+                            <NavIcon>
 
-                        </NavIcon>
-                        <NavText>
-                            <div className="try-list">
-                                <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
-                            </div>
-                        </NavText>
-                    </NavItem>
-                );
+                            </NavIcon>
+                            <NavText>
+                                <div className="try-list">
+                                    <li>{e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)}</li>
+                                </div>
+                            </NavText>
+                        </NavItem>
+                    );
+                }
             }
         });
 
