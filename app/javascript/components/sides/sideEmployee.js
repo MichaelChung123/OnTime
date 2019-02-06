@@ -53,6 +53,7 @@ export default class SideEmployee extends React.Component {
         });
 
         this.props.getEmpShift();
+
     }
 
     timeFormat(time) {

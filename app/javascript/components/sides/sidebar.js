@@ -49,33 +49,6 @@ export default class SideBar extends React.Component {
 
     }
 
-    // refreshAvail = (data) => {
-    //     var availability = {
-    //         employee_id: data.employee_id,
-    //         monStart: data.monStart,
-    //         monEnd: data.monEnd,
-    //         tueStart: data.tueStart,
-    //         tueEnd: data.tueEnd,
-    //         wedStart: data.wedStart,
-    //         wedEnd: data.wedEnd,
-    //         thuStart: data.thuStart,
-    //         thuEnd: data.thuEnd,
-    //         friStart: data.friStart,
-    //         friEnd: data.friEnd,
-    //         satStart: data.satStart,
-    //         satEnd: data.satEnd,
-    //         sunStart: data.sunStart,
-    //         sunEnd: data.sunEnd
-    //     }
-
-    //     this.setState({
-    //         availability: availability
-    //     });
-
-    //     console.log(this.state.availability);
-    //     console.log(availability);
-    // }
-    
     refreshComponent(data){
 
         var employee = {
@@ -87,31 +60,10 @@ export default class SideBar extends React.Component {
             phone_number: data.phone_number
         };
 
-        var availability = {
-            employee_id: data.employee_id,
-            monStart: data.monStart,
-            monEnd: data.monEnd,
-            tueStart: data.tueStart,
-            tueEnd: data.tueEnd,
-            wedStart: data.wedStart,
-            wedEnd: data.wedEnd,
-            thuStart: data.thuStart,
-            thuEnd: data.thuEnd,
-            friStart: data.friStart,
-            friEnd: data.friEnd,
-            satStart: data.satStart,
-            satEnd: data.satEnd,
-            sunStart: data.sunStart,
-            sunEnd: data.sunEnd
-        };
-
         this.setState({
             renderChild: "employee",
-            employee: employee,
-            availability: availability
+            employee: employee
         });
-
-        console.log(this.state.availability);
     }
 
     componentDidMount() {
@@ -119,11 +71,9 @@ export default class SideBar extends React.Component {
     }
 
     selectEmployee(employee) {
-        console.log("availability:", this.state.availability);
-
         this.setState({
             renderChild: "employee",
-            employee: employee
+            employee: employee,
         });
     }
 
@@ -169,7 +119,7 @@ export default class SideBar extends React.Component {
 
         if (render === "employee") {
             return (
-                <SideEmployee refreshAvail={this.refreshAvail} refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} />
+                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} />
             );
         }
 
