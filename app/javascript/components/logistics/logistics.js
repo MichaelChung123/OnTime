@@ -29,9 +29,10 @@ export default class Logistics extends React.Component {
           <div className="student-input">
             Number of students today:
               <input className="mentor-calculator-input" type="number" value={this.state.value} onChange={this.handleChange}></input>
-
+                  
                   <label className="mentor-number"> {Math.round(this.state.value / 7)}</label>
                   <label className="mentors-needed">Mentors are needed</label>
+                  <label>Total Hours scheduled for this day : {totalHours} </label>
           </div>
 
 
