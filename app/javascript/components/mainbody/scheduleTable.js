@@ -1,7 +1,7 @@
 import React from 'react'
 import dateFns from 'date-fns'
 import EditShift from './scheduleEditShift'
-import MentorCalculator from '../logistics/mentorcalculator'
+import Logistics from '../logistics/logistics'
 
 export default class ScheduleTable extends React.Component {
     constructor(props){
@@ -14,6 +14,7 @@ export default class ScheduleTable extends React.Component {
             requests: [],
             allEmployees: [],
             availabilities: [],
+            shifts: [],
             mounted: false
         }
     }
@@ -34,10 +35,12 @@ export default class ScheduleTable extends React.Component {
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ allEmployees: data }) });
-
         fetch('/api/availability')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ availabilities: data }) });
+        fetch('/api/shifts')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ shifts: data }) });
     }
 
     refresh() {
@@ -437,7 +440,7 @@ export default class ScheduleTable extends React.Component {
                 </div>
                 </div>
                 <div className="mentor-calculator-container">
-                    <MentorCalculator />
+                    <Logistics shifts={this.state.shifts} currentDate={currentDate} />
                 </div>
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
 

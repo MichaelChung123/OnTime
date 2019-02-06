@@ -6,6 +6,7 @@ import DeletePopup from './deletePopup'
 import Availability from './availability'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { throws } from 'assert';
+import dateFns from 'date-fns'
 
 export default class SideEmployee extends React.Component {
 
@@ -76,23 +77,62 @@ export default class SideEmployee extends React.Component {
     }
 
     render() {
-        let shifts = this.props.shifts.map((e, index) => {
-            if (e.employee_id === this.props.employee.id) {
-                return (
-                    <NavItem key={index}>
-                        <NavIcon>
+        const employeeId = this.props.employee.id;
+        const currentDate = this.props.getDate;
+        const day = dateFns.format(currentDate, 'dddd');
+        const monday = dateFns.subDays(currentDate, findDayforMon(day));
+        const tuesday = dateFns.subDays(currentDate, findDayforMon(day) - 1);
+        const wednesday = dateFns.subDays(currentDate, findDayforMon(day) -2);
+        const thursday = dateFns.subDays(currentDate, findDayforMon(day) -3);
+        const friday = dateFns.subDays(currentDate, findDayforMon(day) -4);
+        const saturday = dateFns.subDays(currentDate, findDayforMon(day) -5);
+        const sunday = dateFns.subDays(currentDate, findDayforMon(day) -6);
+        const shifts = [];
+        const thisWeek = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+        const thisWeekFormatted = [];
 
-                        </NavIcon>
-                        <div id="shift-list">
-                            <li> {e.day} at {this.timeFormat(e.start_time)} - {this.timeFormat(e.end_time)} </li>
-                        </div>
-                    </NavItem>
-                );
+        thisWeek.forEach(function(day) {
+            thisWeekFormatted.push(dateFns.format(day, 'dddd MMMM Do'))
+        })
+
+        this.props.shifts.forEach(function(shift) {
+            if (shift.employee_id === employeeId) {
+                thisWeekFormatted.forEach(function(day) {
+                    if (day == shift.day) {
+                        shifts.push(shift)
+                    }
+                })
+
             }
         });
 
+        function findDayforMon(today) {
+            let position = 0;
+            const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            week.forEach((day, i) => {if (today == day) position = i});
+            return position;
+        };
+        
+        
+        
+        
+        const shiftDetails = shifts.map(function(shift) {
+            let convertStartTime;
+            let convertEndTime;
+                if (shift.start_time == 12) {convertStartTime = shift.start_time + 'PM'} else if (shift.start_time > 12) {convertStartTime = shift.start_time - 12 + 'PM'} else {convertStartTime = shift.start_time + 'AM'}
+                if (shift.end_time == 12) {convertEndTime = shift.end_time + 'PM'} else if (shift.end_time > 12) {convertEndTime = (shift.end_time - 12 + 'PM')} else {convertEndTime = shift.end_time + 'AM'}
+            return (
+            <NavItem>
+                <NavIcon></NavIcon>
+                <NavText>
+                    <li>{shift.day} {convertStartTime} - {convertEndTime}</li>
+                </NavText>
+            </NavItem>
+            )
+        });
+
         let availabilities = this.props.availabilities.sort((a,b) => a.id - b.id).map((e, index) => {
-            if (e.employee_id === this.props.employee.id) {
+            if (e.employee_id === employeeId) {
                 if (e.start_time == 0 || e.end_time == 0) { 
                     return <li>Not Available</li> 
                 } else { 
@@ -203,7 +243,7 @@ export default class SideEmployee extends React.Component {
                                                     Scheduled Shifts
                                                 </div>
                                                 <div className="list-of-shifts">
-                                                    {shifts}
+                                                    {shiftDetails}
                                                 </div>
                                             </div>
                                         </div>

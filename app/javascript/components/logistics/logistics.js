@@ -19,6 +19,10 @@ export default class MentorCalculator extends React.Component {
   }
 
   render() {
+    let totalHours = 0;
+    const currentDayShifts = this.props.shifts.filter((shift) => { if (shift.day == this.props.currentDate) return shift} );
+    currentDayShifts.forEach((shift) => { totalHours += shift.duration});
+
     return (
       <div className="mentor-calculator-form">
         <form onSubmit={this.handleSubmit}>

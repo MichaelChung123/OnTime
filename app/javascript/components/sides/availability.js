@@ -86,6 +86,7 @@ export default class Availability extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
+        alert(`Availability has been updated!`)
     }
 
     setAvail = () => {

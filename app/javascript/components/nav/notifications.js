@@ -34,7 +34,7 @@ export default class Notifications extends React.Component {
                 <li key={i}>{e.date}<br/><button onClick={() => {this.acceptRequest(e.id)}}>Accept</button><button onClick={() => this.declineRequest(e.id)}>Decline</button><br/></li>
             );
         });
-        console.log(this.props.notifications)
+
         return (
             <div className="popup">
                 <div className="popup-form">
