@@ -81,6 +81,8 @@ export default class Availability extends React.Component {
             body: JSON.stringify(data)
         });
         alert(`updated`)
+
+        this.props.refreshComponent(data);
     }
 
     setAvail = () => {
