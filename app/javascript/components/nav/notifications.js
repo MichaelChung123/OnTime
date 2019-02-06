@@ -9,22 +9,32 @@ export default class Notifications extends React.Component {
         }
     }
 
-    acceptRequest = () => {
-        console.log(`accp`)
+    acceptRequest = (id) => {
+        console.log(id)
+        fetch('/api/timeoffrequest', {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(id)
+        });
     }
 
-    declineRequest = () => {
-        console.log(`dec`)
+    declineRequest = (id) => {
+        console.log(id)
+        fetch('/api/timeoffrequest', {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(id)
+        });
     }
 
     render() {
-
-        let notifications = this.props.notifications.map((e, index) => {
+        
+        let notifications = this.props.notifications.map((e, i) => {
             return (
-                <li key={index} data-key={index + 1}>{e}<br/><button onClick={() => {this.acceptRequest()}}>Accept</button><button onClick={() => this.declineRequest()}>Decline</button><br/></li>
+                <li key={i}>{e.date}<br/><button onClick={() => {this.acceptRequest(e.id)}}>Accept</button><button onClick={() => this.declineRequest(e.id)}>Decline</button><br/></li>
             );
         });
-        
+        console.log(this.props.notifications)
         return (
             <div className="popup">
                 <div className="popup-form">

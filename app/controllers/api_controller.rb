@@ -255,8 +255,8 @@ class ApiController < ApplicationController
     def timeoff_request_create
         ## Todo: employee_id should be dynamic
         Timeoffrequest.create!(
-            employee_id: 19,
-            accepted: true,
+            employee_id: 1,
+            accepted: false,
             start_month: params[:monthStart],
             start_day: params[:dayStart],
             end_month: params[:monthEnd],        
@@ -266,4 +266,15 @@ class ApiController < ApplicationController
         )
     end
 
+    def timeoff_request_accept
+        current_request_id = Timeoffrequest.find(params[:_json])
+        current_request_id.update!(
+            accepted: true
+        )
+    end
+
+    def timeoff_request_decline
+        current_request_id = Timeoffrequest.find(params[:_json])
+        current_request_id.destroy
+    end
 end
