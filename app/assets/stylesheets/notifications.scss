@@ -113,3 +113,17 @@
 .notification-error:before {
   content: "";
 }
+
+
+
+//stuff ally added ^^ i cant see what all that stuff does
+.popup-request-title {
+  color: white;
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+.popup-request-title i {
+  padding-right: 10px;
+}
