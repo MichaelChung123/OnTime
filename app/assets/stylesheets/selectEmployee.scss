@@ -11,7 +11,7 @@
   /* Profile sidebar */
   .profile-sidebar {
     padding: 20px 0 10px 0;
-    background: #86A4D5;
+    background: var(--main-theme-color);
   }
 
   .profile-userpic img {
@@ -159,7 +159,7 @@
   margin-bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
-  background-color: #AEC5EA;
+  background-color: var(--complimentary-color);
 
 }
 

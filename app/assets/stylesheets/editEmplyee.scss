@@ -19,7 +19,7 @@
 
 
 .edit_back_button {
-  background-color: #86A4D5; /* main-theme purple/blue */
+  background-color: var(--complimentary-color); /* main-theme purple/blue */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -48,7 +48,7 @@
   border-radius: 4px;
   font-family: 'Montserrat', sans-serif;
   color: white;
-  background: #727272;
+  background: var(--complimentary-color);
   display: flex;
   justify-content: center;
   align-items: center;

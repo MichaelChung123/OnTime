@@ -131,7 +131,7 @@ export default class ScheduleTable extends React.Component {
                 }
             });
         });
-        
+
         employeeId.forEach(function(employeeId){
             data.forEach(function(employee){
                 if (employee.id === employeeId) {
@@ -150,7 +150,7 @@ export default class ScheduleTable extends React.Component {
                 };
                 availableEmployee.push(data);
             }
-            
+
         });
 
         this.state.allEmployees.forEach((employee) => {
@@ -162,7 +162,7 @@ export default class ScheduleTable extends React.Component {
                 }
             });
         });
-        
+
 
 
         function checkLengthExist() {
@@ -362,63 +362,68 @@ export default class ScheduleTable extends React.Component {
                 <div className={`schedule-platform${this.state.mounted ? " enter" : ""}`}>
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
-                        <tr className="weekly-time">
+                        <thead>
+                            <tr className="weekly-time">
 
-                            <th>9am</th>
-                            <th>10am</th>
-                            <th>11am</th>
-                            <th>12pm</th>
-                            <th>1pm</th>
-                            <th>2pm</th>
-                            <th>3pm</th>
-                            <th>4pm</th>
-                            <th>5pm</th>
-                            <th>6pm</th>
-                            <th>7pm</th>
-                            <th>8pm</th>
-                            <th>9pm</th>
+                                <th>9am</th>
+                                <th>10am</th>
+                                <th>11am</th>
+                                <th>12pm</th>
+                                <th>1pm</th>
+                                <th>2pm</th>
+                                <th>3pm</th>
+                                <th>4pm</th>
+                                <th>5pm</th>
+                                <th>6pm</th>
+                                <th>7pm</th>
+                                <th>8pm</th>
+                                <th>9pm</th>
 
-                        </tr>
-                        <tr>
-                            <td colSpan="13">
-                            {(shiftId.length !== 0) ?
-                                <span
-                                key={1}
-                                shift-key={shiftId[0]}
-                                empid-key={employeeId[0]}
-                                style={{
-                                display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),
-                                wordWrap: "break-word"}}
-                                >
-                                {firstEmployee} {addDeleteButton()} {addEditButton()}<hr/>
-                                {checkNoteExist()}
-                                </span>
-                            : <h4 className="nothing-scheduled">Nothing scheduled</h4>
-                            }
-                            </td>
-                        </tr>
-                        {listOfEmployees}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colSpan="13">
+                                {(shiftId.length !== 0) ?
+                                    <span
+                                    key={1}
+                                    shift-key={shiftId[0]}
+                                    empid-key={employeeId[0]}
+                                    style={{
+                                    display: 'block',
+                                    width: checkLengthExist(), marginLeft: checkStartExist(),
+                                    wordWrap: "break-word"}}
+                                    >
+                                    {firstEmployee} {addDeleteButton()} {addEditButton()}<hr/>
+                                    {checkNoteExist()}
+                                    </span>
+                                : <h4 className="nothing-scheduled">Nothing scheduled</h4>
+                                }
+                                </td>
+                            </tr>
+
+                            {listOfEmployees}
+                        </tbody>
                     </table><br/>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
                 </div>
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
-                    <h2>Who is available this day?</h2>
+                    <h2 className="available-employee-title">Available Employees</h2>
                     {whoIsAvailable}
                 </div>
 
                 <div className={`weekly-view-container${this.state.mounted ? " enter" : ""}`}><br/><br/><br/>
-                    <h2>Weekly View</h2>
+                    <h2>Weekly Overview</h2>
                     <table className="weekly-view">
                         <tr>
-                            <th>Monday {dateFns.format(monForWeeklyView, 'Do')}<hr/></th>
-                            <th>Tuesday {dateFns.format(tuesForWeeklyView, 'Do')}<hr/></th>
-                            <th>Wednesday {dateFns.format(wedForWeeklyView, 'Do')}<hr/></th>
-                            <th>Thursday  {dateFns.format(thursForWeeklyView, 'Do')}<hr/></th>
-                            <th>Friday {dateFns.format(friForWeeklyView, 'Do')}<hr/></th>
-                            <th>Saturday {dateFns.format(satForWeeklyView, 'Do')}<hr/></th>
-                            <th>Sunday {dateFns.format(sunForWeeklyView, 'Do')}<hr/></th>
+                            <th>Monday <br></br> {dateFns.format(monForWeeklyView, 'Do')}</th>
+                            <th>Tuesday <br></br> {dateFns.format(tuesForWeeklyView, 'Do')}</th>
+                            <th>Wednesday <br></br> {dateFns.format(wedForWeeklyView, 'Do')}</th>
+                            <th>Thursday  <br></br> {dateFns.format(thursForWeeklyView, 'Do')}</th>
+                            <th>Friday <br></br> {dateFns.format(friForWeeklyView, 'Do')}</th>
+                            <th>Saturday <br></br> {dateFns.format(satForWeeklyView, 'Do')}</th>
+                            <th>Sunday <br></br> {dateFns.format(sunForWeeklyView, 'Do')}</th>
                         </tr>
                         <tr>
                             <td>{findWeeklyMon(monForWeeklyView)}</td>

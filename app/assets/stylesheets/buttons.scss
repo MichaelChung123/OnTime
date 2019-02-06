@@ -1,0 +1,54 @@
+.daily_back_button {
+  margin-top: 0.7%;
+  border: none;
+  margin-top: -80px;
+  float: right;
+  height: 30px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-color);
+  font-family: inherit;
+  font-size: 12px;
+  i {
+    margin-right: 5px;
+    font-size: 10px;
+
+  }
+}
+
+.fas .fa-arrow-alt-circle-left {
+  color: white;
+  font-size: 13px;
+  padding-right: 5px;
+}
+
+.daily_back_button:hover {
+  background-color: var(--button-hover-color);
+
+}
+
+.form_button.request {
+  margin-bottom: 20px
+}
+
+//notifications
+.navbar-notifcation-button {
+  background-color: transparent;
+  height: 60px;
+  border: none;
+}
+
+.navbar-notifcation-button i {
+  color: white;
+  margin-right: 60px;
+  font-size: 25px;
+}
+
+.navbar-notifcation-button i:hover {
+  color:  #727272;
+}
