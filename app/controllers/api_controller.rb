@@ -165,7 +165,8 @@ class ApiController < ApplicationController
                             occupation: params[:occupation],
                             phone_number: params[:phone_number]
                         )
-                    
+
+
         if @new_employee.save
             @new_employee.availabilities.create!(
 

@@ -445,7 +445,9 @@ export default class ScheduleTable extends React.Component {
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
 
                     <h2 className="available-employee-title">Available Employees</h2>
-                    {whoIsAvailable}
+                    <div className="available-employee-container">
+                         {whoIsAvailable}
+                    </div>
                 </div>
 
                 <div className={`weekly-view-container${this.state.mounted ? " enter" : ""}`}><br/><br/><br/>
