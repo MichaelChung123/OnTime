@@ -41,7 +41,7 @@ export default class NavBar extends React.Component {
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >
-            <Notifications notifications={this.props.notifications} back={this.back} />
+            <Notifications notificationEmpId={this.props.notificationEmpId} requests={this.props.requests} notifications={this.props.notifications} back={this.back} />
           </ReactCSSTransitionGroup>
       );
     }

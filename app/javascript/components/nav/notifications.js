@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import RequestHandle from './requestHandle'
 
 export default class Notifications extends React.Component {
     constructor(props) {
@@ -10,13 +11,17 @@ export default class Notifications extends React.Component {
     }
 
     render() {
-
+        console.log(this.props.notificationEmpId);
+        
         let notifications = this.props.notifications.map((e, index) => {
-            return (
-                [<label key={index + 1}>{e}</label>, <br key={-index - 1} />]
-            );
+            this.props.requests.map((r) => {
+                
+                return (
+                    [<label key={index + 1}>{e}<RequestHandle /></label>, <br key={-index - 1} />]
+                );
+            });
         });
-
+        
         return (
             <div className="popup">
                 <div className="popup-form">

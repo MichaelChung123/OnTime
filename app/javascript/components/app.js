@@ -16,6 +16,7 @@ export default class App extends React.Component {
             employeeShifts: [],
             requests: [],
             notificationStr: [],
+            notificationEmpId:[],
             pending: false,
             approved: false
         }
@@ -37,10 +38,11 @@ export default class App extends React.Component {
 
     refresh() {
         this.setState({
-            notificationStr: []
+            notificationStr: [],
+            notificationEmpId: []
         });
 
-        const { notificationStr } = this.state;
+        const { notificationStr, notificationEmpId } = this.state;
 
         fetch('/api/timeoffrequest')
             .then((response) => { return response.json() })
@@ -53,9 +55,11 @@ export default class App extends React.Component {
                         const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
                         const dateStr = `Time off request on ${dateFns.format(startDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
                         notificationStr.push(dateStr);
+                        notificationEmpId.push(req.employee_id);
 
                         this.setState({
-                            notificationStr
+                            notificationStr,
+                            notificationEmpId 
                         });                        
                     }
                     else {
@@ -63,9 +67,11 @@ export default class App extends React.Component {
                         const endDate = new Date(`${req.year}-${req.end_month}-${req.end_day}`);
                         const dateStr = `Time off request for ${dateFns.format(startDate, 'dddd MMMM Do')} to ${dateFns.format(endDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
                         notificationStr.push(dateStr);
+                        notificationEmpId.push(req.employee_id);
 
                         this.setState({
-                            notificationStr
+                            notificationStr,
+                            notificationEmpId 
                         });
                     }
                     
@@ -117,7 +123,7 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <NavBar notifications={this.state.notificationStr} count={this.state.notificationStr.length}/>
+                <NavBar notificationEmpId={this.state.notificationEmpId} notifications={this.state.notificationStr} count={this.state.notificationStr.length} requests={this.state.requests}/>
 
                 <br></br>
                 <br></br>
