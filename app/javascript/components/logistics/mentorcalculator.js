@@ -14,7 +14,7 @@ export default class MentorCalculator extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('You need ' + this.state.value/7 + ' mentors!');
+    alert(`${this.state.value / 7}  mentors need to be scheduled`);
     event.preventDefault();
   }
 
@@ -22,10 +22,10 @@ export default class MentorCalculator extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label className="student-input">
-          Number of Students:
+          Number of Students on this day
             <input type="number" value={this.state.value} onChange={this.handleChange}></input>
-        </label>
-        <label className="mentor-number">You need {Math.round(this.state.value/7)} mentors</label>
+        </label><br/>
+        <label className="mentor-number">{Math.round(this.state.value / 7)} Mentors are needed</label>
       </form>
       )
   }

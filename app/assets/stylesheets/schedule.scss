@@ -1,5 +1,5 @@
 .day_schedule {
-    background: blanchedalmond;
+    background: #F2F3F4;
     width: 90%;
     padding-left: 2%;
     margin-left: 2%;
@@ -21,102 +21,26 @@
    -ms-transition: opacity 1s ease-in;
     -o-transition: opacity 1s ease-in;
        transition: opacity 1s ease-in;
-
 }
 
 .date-header-container.enter {
     opacity: 1
 }
-.schedule-container {
-    overflow: auto;
-    height: 400px;
-    table-layout: fixed;
 
-}
-
-.schedule-weekly-table {
-    border-collapse: collapse;
-    font-size: medium;
-    border: 0.5px solid #D4D4D4;
-    width: 100%;
-    font-size: smaller;
-    table-layout: fixed;
-}
-
-.schedule-weekly-table th {
-
-    border: solid 1px #D4D4D4;
-    padding: 0.5em;
-    min-width: 100px;
-
-}
-
-.schedule-weekly-table td {
-    // border-right: solid 1px;
-}
-
-.schedule-weekly-table td :hover {
-    opacity: 0.5;
-}
-
-
-
-.last-row {
-    border-bottom: solid 1px
-}
-
-
-.daily_back_button {
-//   position: fixed;
-//   margin-left: 50%;
-  margin-top: 0.7%;
-  background-color: #86A4D5; /* main-theme purple/blue */
-  border: none;
-  margin-top: -80px;
-  float: right;
-  height: 30px;
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.available-employee-title {
   color: white;
-  border: none;
-  border-radius: 4px;
-  background-color: #727272;
-  font-family: inherit;
-  font-size: 12px;
-  i {
-    margin-right: 5px;
-    font-size: 10px;
-
-  }
-}
-
-.fas .fa-arrow-alt-circle-left {
-  color: white;
-  font-size: 13px;
-  padding-right: 5px;
-}
-
-.daily_back_button:hover {
-  background-color: #4368A5;
+  font-weight: normal;
 
 }
 
-.weekly-view td {
-    max-width: 130px
-}
-
-.schedule-weekly-table tr {
-  min-height: 400px;
-}
 
 .employee-available {
     padding: 5px;
-    border: solid 1px;
+    border: none;
     margin: 1em;
     border-radius: 5px;
-    background-color: blanchedalmond;
+    color: white;
+    background-color: var(--complimentary-color);
     font-size: small;
 }
 
@@ -124,8 +48,9 @@
     width: 100%;
     height: 200px;
     overflow: auto;
-    background-color: lightblue;
-    border: solid 0.5px;
+    background-color: var(--second-main-color);
+    border: none;
+    border-radius: 4px;
     margin-top: 2em;
     opacity: 0;
     -webkit-transition: opacity 2.5s ease-in;
@@ -147,8 +72,15 @@
       -o-transition: opacity 2s ease-in;
          transition: opacity 2s ease-in;
   }
-  
-  .schedule-platform.enter {
-    opacity: 1
-  }
 
+.schedule-platform.enter {
+    opacity: 1
+}
+
+.student-input label {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    border-radius: 5px;
+    margin-left: 2em;
+}

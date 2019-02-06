@@ -20,11 +20,15 @@ export default class Availability extends React.Component {
             satStart: "sat9:00 AM",
             satEnd: "sat9:00 PM",
             sunStart: "sun9:00 AM",
-            sunEnd: "sun9:00 PM"
+            sunEnd: "sun9:00 PM",
+            mounted: false
         }
     }
 
     formatTime = (timeStr) => {
+        if (timeStr === "Not Available") {
+            return "Not Available"
+        }
         if (timeStr[timeStr.length - 2] === "A") {
             return parseInt(timeStr.split(":")[0].slice(3));
         }
@@ -35,6 +39,8 @@ export default class Availability extends React.Component {
             return parseInt(timeStr.split(":")[0].slice(3)) + 12;
         }
     }
+
+
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -92,6 +98,8 @@ export default class Availability extends React.Component {
         for (let avail of this.props.availabilities) {
             if (avail.id === this.props.employee.id) {
                 if (avail.day === "Monday") {
+                    
+                    
                     if (avail.start_time <= 12) {
                         this.setState({ monStart: `mon${avail.start_time}:00 AM` });
                     } else {
@@ -188,6 +196,7 @@ export default class Availability extends React.Component {
 
     componentDidMount() {
         this.setAvail();
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     render() {
@@ -208,16 +217,12 @@ export default class Availability extends React.Component {
                                 Back
                         </NavText>
                         </NavItem>
-
-                        <div className="edit-sidebar">
-
-
+                    
+                        <div className={`edit-sidebar${this.state.mounted ? " enter" : ""}`}>
                             <div className="availability-title">Availability</div>
-
-                            <div className="addEmployeeForm">
-
-                                <form onSubmit={this.handleSubmit}>
-                                    <div className="availability-week-days">Monday</div>
+                                <div className="addEmployeeForm">
+                                    <form onSubmit={this.handleSubmit}>
+                                        <div className="availability-week-days">Monday</div>
 
 
                                     Start
@@ -247,6 +252,7 @@ export default class Availability extends React.Component {
                                             <option value="mon10:00 PM"> 10:00 PM</option>
                                             <option value="mon11:00 PM"> 11:00 PM</option>
                                             <option value="mon12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -277,6 +283,7 @@ export default class Availability extends React.Component {
                                             <option value="mon10:00 PM"> 10:00 PM</option>
                                             <option value="mon11:00 PM"> 11:00 PM</option>
                                             <option value="mon12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -311,6 +318,7 @@ export default class Availability extends React.Component {
                                             <option value="tue10:00 PM"> 10:00 PM</option>
                                             <option value="tue11:00 PM"> 11:00 PM</option>
                                             <option value="tue12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -341,6 +349,7 @@ export default class Availability extends React.Component {
                                             <option value="tue10:00 PM"> 10:00 PM</option>
                                             <option value="tue11:00 PM"> 11:00 PM</option>
                                             <option value="tue12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -375,6 +384,7 @@ export default class Availability extends React.Component {
                                             <option value="wed10:00 PM"> 10:00 PM</option>
                                             <option value="wed11:00 PM"> 11:00 PM</option>
                                             <option value="wed12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -405,6 +415,7 @@ export default class Availability extends React.Component {
                                             <option value="wed10:00 PM"> 10:00 PM</option>
                                             <option value="wed11:00 PM"> 11:00 PM</option>
                                             <option value="wed12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -438,6 +449,7 @@ export default class Availability extends React.Component {
                                             <option value="thu10:00 PM"> 10:00 PM</option>
                                             <option value="thu11:00 PM"> 11:00 PM</option>
                                             <option value="thu12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -468,6 +480,7 @@ export default class Availability extends React.Component {
                                             <option value="thu10:00 PM"> 10:00 PM</option>
                                             <option value="thu11:00 PM"> 11:00 PM</option>
                                             <option value="thu12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -501,6 +514,7 @@ export default class Availability extends React.Component {
                                             <option value="fri10:00 PM"> 10:00 PM</option>
                                             <option value="fri11:00 PM"> 11:00 PM</option>
                                             <option value="fri12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -531,6 +545,7 @@ export default class Availability extends React.Component {
                                             <option value="fri10:00 PM"> 10:00 PM</option>
                                             <option value="fri11:00 PM"> 11:00 PM</option>
                                             <option value="fri12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -564,6 +579,7 @@ export default class Availability extends React.Component {
                                             <option value="sat10:00 PM"> 10:00 PM</option>
                                             <option value="sat11:00 PM"> 11:00 PM</option>
                                             <option value="sat12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -594,6 +610,7 @@ export default class Availability extends React.Component {
                                             <option value="sat10:00 PM"> 10:00 PM</option>
                                             <option value="sat11:00 PM"> 11:00 PM</option>
                                             <option value="sat12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -631,6 +648,7 @@ export default class Availability extends React.Component {
                                             <option value="sun10:00 PM"> 10:00 PM</option>
                                             <option value="sun11:00 PM"> 11:00 PM</option>
                                             <option value="sun12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 
@@ -661,6 +679,7 @@ export default class Availability extends React.Component {
                                             <option value="sun10:00 PM"> 10:00 PM</option>
                                             <option value="sun11:00 PM"> 11:00 PM</option>
                                             <option value="sun12:00 AM"> 12:00 AM</option>
+                                            <option value="Not Available">Not Available</option>
                                         </select>
                                     </div>
 

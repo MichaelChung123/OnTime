@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from './nav/navbar'
 import SideBar from './sides/sidebar'
 import ScheduleApp from './mainbody/scheduleApp';
-import MentorCalculator from './logistics/mentorcalculator'
+
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import dateFns from 'date-fns'
 import NotificationBadge from 'react-notification-badge';
@@ -126,7 +126,6 @@ export default class App extends React.Component {
 
                 <ScheduleApp getDate={this.getDate} />
                 <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
-                <MentorCalculator />
                 <NotificationContainer />
             </div>
         )

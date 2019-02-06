@@ -6,13 +6,14 @@ export default class Schedule extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            mounted: false
+            mounted: false,
         }
     }
     
     componentDidMount() {
         window.requestAnimationFrame(() => this.setState({ mounted: true }));
-    }
+    };
+
     render() {
         const clickedDay = this.props.currentDay;
         const numDay = clickedDay.getDate();

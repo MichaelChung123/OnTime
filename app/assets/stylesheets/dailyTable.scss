@@ -1,0 +1,103 @@
+.day_schedule {
+
+
+}
+
+
+.schedule-weekly-table .day {
+    padding: 0.5em;
+    height: 120px;
+}
+
+//buttons on shifts
+.delete-shift {
+  background-color: #EB8D78;
+  border: none;
+  // float: right;
+  border-radius: 4px;
+  // margin-right: 5px;
+  font-family: inherit;
+  color: white;
+
+}
+
+.edit-shift {
+  // float: right;
+  border-radius: 4px;
+  border: none;
+  padding-right: 5px;
+  background-color: var(--button-color);
+  color:white;
+  // margin-right: 5px;
+  font-family: inherit;
+}
+
+.schedule-weekly-table span {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--shift-span-color);
+    display: flex;
+    margin: 5px;
+}
+
+.schedule-container {
+    overflow: auto;
+    height: 400px;
+    table-layout: fixed;
+
+}
+
+//fix headers in place while scrolling
+thead {
+  background-color: var(--second-main-color);
+  color: white;
+
+}
+
+
+
+.schedule-weekly-table {
+    border-collapse: collapse;
+    border: 0.5px solid #D4D4D4;
+    width: 100%;
+    font-size: smaller;
+    table-layout: fixed;
+}
+
+.schedule-weekly-table th {
+    padding: 0.5em;
+    min-width: 100px;
+
+}
+
+.schedule-weekly-table td {
+    // border-right: solid 1px;
+}
+
+.schedule-weekly-table td :hover {
+    opacity: 0.5;
+}
+
+
+
+.last-row {
+    border-bottom: solid 1px
+}
+
+.weekly-view td {
+    max-width: 130px
+}
+
+.schedule-weekly-table tr {
+  min-height: 400px;
+}
+
+//nothing scheduled
+.nothing-scheduled {
+  font-family: inherit !important;
+  font-style: italic !important;
+  padding-left: 10px;
+  color: grey !important;
+  font-weight: normal;
+  font-size: 14px
+}

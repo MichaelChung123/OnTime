@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #86A4D5;
+  background: var(--main-theme-color);
   height: 60px;
   font-family: 'Pacifico', cursive;
   z-index: 1;
@@ -51,19 +51,21 @@
   color: #fafcfd;
 }
 
-//notifications
-.navbar-notifcation-button {
-  background-color: transparent;
-  height: 60px;
-  border: none;
+
+.slide {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in;
+};
+
+.slide.enter {
+  transform: translateX(0);
 }
 
-.navbar-notifcation-button i {
-  color: white;
-  margin-right: 60px;
-  font-size: 25px;
+.edit-slide {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in;
 }
 
-.navbar-notifcation-button i:hover {
-  color:  #727272;
+.edit-slide.enter {
+  transform: translateX(0);
 }

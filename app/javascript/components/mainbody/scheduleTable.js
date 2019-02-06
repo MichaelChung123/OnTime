@@ -1,7 +1,7 @@
 import React from 'react'
 import dateFns from 'date-fns'
 import EditShift from './scheduleEditShift'
-
+import MentorCalculator from '../logistics/mentorcalculator'
 
 export default class ScheduleTable extends React.Component {
     constructor(props){
@@ -28,9 +28,9 @@ export default class ScheduleTable extends React.Component {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
-        // fetch('/api/timeoffrequest')
-        //     .then((response) => { return response.json() })
-        //     .then((data) => { this.setState({ requests: data }) });
+        fetch('/api/timeoffrequest')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ allEmployees: data }) });
@@ -77,9 +77,6 @@ export default class ScheduleTable extends React.Component {
     }
 
     editShift = (startTime, endTime, note, shiftData, empData) => {
-        // const editStart = startTime;
-        // const editEnd = endTime;
-        // const editNote = note;
         const duration = endTime - startTime;
 
         fetch('/api/shifts', {
@@ -121,17 +118,22 @@ export default class ScheduleTable extends React.Component {
         const shiftInfo = [];
         const employeeNames = [];
         const availableEmployee = [];
+        const requestData = [];
+        const notAvailableEmpId = [];
+        const timeOffRequests = this.state.requests.filter((request) => {
+            if (request.accepted === true) return request
+        })
 
         data.forEach(function(employee) {
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.692, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.69, note: shift.note})
                 }
             });
         });
-        
+
         employeeId.forEach(function(employeeId){
             data.forEach(function(employee){
                 if (employee.id === employeeId) {
@@ -140,9 +142,36 @@ export default class ScheduleTable extends React.Component {
             });
         });
 
+        timeOffRequests.forEach((request) => {
+            const data = {
+                employee_id: request.employee_id,
+                dates: []
+            };
+            let end;
+            const start = new Date(`${request.year}-${request.start_month}-${request.start_day}`);
+            if (request.end_month === null || request.end_day === null) {
+                end = new Date(`${request.year}-${request.start_month}-${request.start_day}`);
+            } else {
+                end = new Date(`${request.year}-${request.end_month}-${request.end_day}`);
+            }
+            
+            for (var day = start; day <= end; day.setDate(day.getDate() + 1)) {
+                data.dates.push(dateFns.format(day, 'dddd MMMM Do'));
+            };
+            requestData.push(data);
+        });
+
+        requestData.forEach((request) => {
+            request.dates.forEach((day) => {
+                if (day == currentDate) {
+                    notAvailableEmpId.push(request.employee_id)
+                }
+            });
+        });
+
         this.state.availabilities.forEach((availability) => {
             const day = dateFns.format(currentDay, 'dddd');
-            if (availability.day == day) {
+            if (availability.day == day && availability.start_time !== 0 && availability.end_time !== 0 && !notAvailableEmpId.includes(availability.employee_id)) {
                 const data = {
                     employeeId: availability.employee_id,
                     start: availability.start_time,
@@ -150,7 +179,7 @@ export default class ScheduleTable extends React.Component {
                 };
                 availableEmployee.push(data);
             }
-            
+
         });
 
         this.state.allEmployees.forEach((employee) => {
@@ -162,7 +191,6 @@ export default class ScheduleTable extends React.Component {
                 }
             });
         });
-        
 
 
         function checkLengthExist() {
@@ -362,63 +390,69 @@ export default class ScheduleTable extends React.Component {
                 <div className={`schedule-platform${this.state.mounted ? " enter" : ""}`}>
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
-                        <tr className="weekly-time">
+                        <thead>
+                            <tr className="weekly-time">
 
-                            <th>9am</th>
-                            <th>10am</th>
-                            <th>11am</th>
-                            <th>12pm</th>
-                            <th>1pm</th>
-                            <th>2pm</th>
-                            <th>3pm</th>
-                            <th>4pm</th>
-                            <th>5pm</th>
-                            <th>6pm</th>
-                            <th>7pm</th>
-                            <th>8pm</th>
-                            <th>9pm</th>
+                                <th>9am</th>
+                                <th>10am</th>
+                                <th>11am</th>
+                                <th>12pm</th>
+                                <th>1pm</th>
+                                <th>2pm</th>
+                                <th>3pm</th>
+                                <th>4pm</th>
+                                <th>5pm</th>
+                                <th>6pm</th>
+                                <th>7pm</th>
+                                <th>8pm</th>
+                                <th>9pm</th>
 
-                        </tr>
-                        <tr>
-                            <td colSpan="13">
-                            {(shiftId.length !== 0) ?
-                                <span
-                                key={1}
-                                shift-key={shiftId[0]}
-                                empid-key={employeeId[0]}
-                                style={{
-                                display: 'block',
-                                width: checkLengthExist(), marginLeft: checkStartExist(),
-                                wordWrap: "break-word"}}
-                                >
-                                {firstEmployee} {addDeleteButton()} {addEditButton()}<hr/>
-                                {checkNoteExist()}
-                                </span>
-                            : <h4 className="nothing-scheduled">Nothing scheduled</h4>
-                            }
-                            </td>
-                        </tr>
-                        {listOfEmployees}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colSpan="13">
+                                {(shiftId.length !== 0) ?
+                                    <span
+                                    key={1}
+                                    shift-key={shiftId[0]}
+                                    empid-key={employeeId[0]}
+                                    style={{
+                                    display: 'block',
+                                    width: checkLengthExist(), marginLeft: checkStartExist(),
+                                    wordWrap: "break-word"}}
+                                    >
+                                    {firstEmployee} {addDeleteButton()} {addEditButton()}<hr/>
+                                    {checkNoteExist()}
+                                    </span>
+                                : <h4 className="nothing-scheduled">Nothing scheduled</h4>
+                                }
+                                </td>
+                            </tr>
+
+                            {listOfEmployees}
+                        </tbody>
                     </table><br/>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
                 </div>
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
-                    <h2>Who is available this day?</h2>
+                     <MentorCalculator />
+                    <h2 className="available-employee-title">Available Employees</h2>
                     {whoIsAvailable}
                 </div>
 
                 <div className={`weekly-view-container${this.state.mounted ? " enter" : ""}`}><br/><br/><br/>
-                    <h2>Weekly View</h2>
+                    <h2>Weekly Overview</h2>
                     <table className="weekly-view">
                         <tr>
-                            <th>Monday {dateFns.format(monForWeeklyView, 'Do')}<hr/></th>
-                            <th>Tuesday {dateFns.format(tuesForWeeklyView, 'Do')}<hr/></th>
-                            <th>Wednesday {dateFns.format(wedForWeeklyView, 'Do')}<hr/></th>
-                            <th>Thursday  {dateFns.format(thursForWeeklyView, 'Do')}<hr/></th>
-                            <th>Friday {dateFns.format(friForWeeklyView, 'Do')}<hr/></th>
-                            <th>Saturday {dateFns.format(satForWeeklyView, 'Do')}<hr/></th>
-                            <th>Sunday {dateFns.format(sunForWeeklyView, 'Do')}<hr/></th>
+                            <th>Monday <br></br> {dateFns.format(monForWeeklyView, 'Do')}</th>
+                            <th>Tuesday <br></br> {dateFns.format(tuesForWeeklyView, 'Do')}</th>
+                            <th>Wednesday <br></br> {dateFns.format(wedForWeeklyView, 'Do')}</th>
+                            <th>Thursday  <br></br> {dateFns.format(thursForWeeklyView, 'Do')}</th>
+                            <th>Friday <br></br> {dateFns.format(friForWeeklyView, 'Do')}</th>
+                            <th>Saturday <br></br> {dateFns.format(satForWeeklyView, 'Do')}</th>
+                            <th>Sunday <br></br> {dateFns.format(sunForWeeklyView, 'Do')}</th>
                         </tr>
                         <tr>
                             <td>{findWeeklyMon(monForWeeklyView)}</td>
