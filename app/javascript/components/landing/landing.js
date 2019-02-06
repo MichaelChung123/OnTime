@@ -29,7 +29,7 @@ render() {
         <div className="landing-content-container">
             <div className="landing-title-container">
 
-              <div className="landing-title">OnTïme</div>
+              <div className="landing-title"><i className="far fa-clock"></i>nTime</div>
               <div className="landing-description">Let's start scheduling</div>
             </div>
 
