@@ -24,11 +24,11 @@ export default class NavBar extends React.Component {
 
 //   }
 
-//   back = () => {
-//     this.setState({
-//       renderChild: false
-//     });
-//   }
+  back = () => {
+    this.setState({
+      renderChild: false
+    });
+  }
 
   render() {
 

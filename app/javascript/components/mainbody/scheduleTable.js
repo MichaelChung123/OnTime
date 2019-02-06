@@ -129,7 +129,7 @@ export default class ScheduleTable extends React.Component {
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.692, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.69, note: shift.note})
                 }
             });
         });
