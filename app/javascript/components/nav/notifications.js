@@ -28,10 +28,15 @@ export default class Notifications extends React.Component {
     }
 
     render() {
-        
+
         let notifications = this.props.notifications.map((e, i) => {
             return (
-                <li key={i}>{e.date}<br/><button onClick={() => {this.acceptRequest(e.id)}}>Accept</button><button onClick={() => this.declineRequest(e.id)}>Decline</button><br/></li>
+                <div className="notifcation-list-container">
+                    <li key={i}>{e.date}
+                        <button className="request-button accept" onClick={() => {this.acceptRequest(e.id)}}><i className="fas fa-check-circle"></i></button>
+                        <button className="request-button decline" onClick={() => this.declineRequest(e.id)}><i className="fas fa-times-circle"></i></button>
+                    <br/></li>
+                </div>
             );
         });
 
@@ -42,6 +47,7 @@ export default class Notifications extends React.Component {
                         <i className="fas fa-bell"></i>
                         Requests
                     </div>
+
                     <div className="styled-select">
                         {notifications}
                     <br/>
