@@ -8,7 +8,7 @@ export default class SideBar extends React.Component {
             expanded: false,
         }
     }
-    
+
     render() {
         const currentDate = this.props.currentDate;
         const day = dateFns.format(currentDate, 'dddd');
@@ -35,7 +35,7 @@ export default class SideBar extends React.Component {
                         shifts.push(shift)
                     }
                 })
-                
+
             }
         });
 
@@ -83,11 +83,16 @@ export default class SideBar extends React.Component {
                                     <i className="fas fa-users"></i>
                                     <div className="employee-text">Upcoming Shifts</div>
                                 </div><br/>
-                                
+
                             </NavText>
                         </NavItem>
-                        {shiftDetails}
-                        
+
+                        <div className="employee-shifts-list">
+
+                             {shiftDetails}
+
+                        </div>
+
                     </SideNav.Nav>
                 </SideNav>
             </div>

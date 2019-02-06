@@ -60,7 +60,7 @@ export default class SideEmployee extends React.Component {
             time = time + ":00 PM";
         } else if (time === 12) {
             time = 12 + ":00 PM";
-        } 
+        }
         else {
             time = time + ":00 AM";
         }
