@@ -19,5 +19,6 @@ Rails.application.routes.draw do
    put 'api/shifts', to: 'api#shift_edit'
    get 'api/timeoffrequest', to: 'api#timeoff_request'
    post 'api/timeoffrequest', to: 'api#timeoff_request_create'
- 
+   put 'api/timeoffrequest', to: 'api#timeoff_request_accept'
+   delete 'api/timeoffrequest', to: 'api#timeoff_request_decline'
 end

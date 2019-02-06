@@ -48,11 +48,11 @@ export default class App extends React.Component {
 
         for (let req of this.state.requests) {
             for (let emp of this.state.employeeShifts) {
-                if (req.employee_id === emp.id) {
+                if (req.employee_id === emp.id && req.accepted === false) {
                     if (req.end_month === null || req.end_day === null) {
                         const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
                         const dateStr = `${dateFns.format(startDate, 'MMM Do ddd')} by ${emp.first_name} ${emp.last_name} (${req.reason})`;
-                        notificationStr.push(dateStr);
+                        notificationStr.push({date: dateStr, id: req.id});
 
                         this.setState({
                             notificationStr
@@ -62,7 +62,7 @@ export default class App extends React.Component {
                         const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
                         const endDate = new Date(`${req.year}-${req.end_month}-${req.end_day}`);
                         const dateStr = `${dateFns.format(startDate, 'MMM Do ddd')} to ${dateFns.format(endDate, 'MMM Do ddd')} by ${emp.first_name} ${emp.last_name} (${req.reason})`;
-                        notificationStr.push(dateStr);
+                        notificationStr.push({date: dateStr, id: req.id});
 
                         this.setState({
                             notificationStr
