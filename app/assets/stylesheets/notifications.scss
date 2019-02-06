@@ -20,6 +20,22 @@
   overflow-y: auto;
 }
 
+.notifcation-list-container {
+  background-color: #E0E9EC;
+  color: black;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  list-style-type: none;
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 14px;
+}
+
 .notification {
   box-sizing: border-box;
   padding: 15px 15px 15px 58px;
@@ -119,9 +135,10 @@
 //stuff ally added ^^ i cant see what all that stuff does
 .popup-request-title {
   color: white;
-  font-size: 24px;
+  font-size: 28px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 30px;
 }
 
 .popup-request-title i {
