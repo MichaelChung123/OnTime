@@ -68,3 +68,34 @@
   font-size: 14px;
   border-radius: 4px;
 }
+
+//add shift button - form button
+
+.form_button {
+    color: white;
+    background-color: var(--complimentary-color);
+    text-align: center;
+    transition: all 0.2s;
+    height: 35px;
+    width: 100%;
+    border-radius: 4px;
+    font-family: inherit;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 14px;
+}
+
+.form_button.close {
+  background-color: var(--button-color);
+    margin-top: -7px;
+  margin-bottom: 10px
+}
+
+.form_button.close:hover {
+  background-color: var(--button-hover-color);
+}
+
+.form_button.schedule:hover {
+  background-color: var(--complimentary-color-dark);
+}

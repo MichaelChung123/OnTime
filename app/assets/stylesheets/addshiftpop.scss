@@ -35,21 +35,6 @@
   }
 
 
-.form_button {
-    color: black;
-    background-color: var(--complimentary-color);
-    text-align: center;
-    transition: all 0.2s;
-    height: 35px;
-    width: 100%;
-    border-radius: 4px;
-    font-family: inherit;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-size: 14px;
-
-}
 
 
 ///////
@@ -85,19 +70,7 @@ label {
   color: white;
 }
 
-.form_button.close {
-  background-color: var(--button-color);
-    margin-top: -7px;
-  margin-bottom: 10px
-}
 
-.form_button.close:hover {
-  background-color: #9CA3A6;
-}
-
-.form_button.schedule:hover {
-  background-color: #274370;
-}
 
 #notes {
   border: none;
