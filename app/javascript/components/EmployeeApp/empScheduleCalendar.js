@@ -8,7 +8,12 @@ export default class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
         selectedDate: new Date(),
-        showSchedule: false
+        showSchedule: false,
+        mounted: false
+    };
+
+    componentDidMount() {
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };
 
     renderHeader() {
@@ -119,12 +124,14 @@ export default class Calendar extends React.Component {
             {this.state.showSchedule ?
                 <Schedule backClick={this.backClick} currentDay={this.state.selectedDate} />
             :
-            <div className="schedule-app-container">
-                <div className="calendar">
-                    <div>{this.renderHeader()}</div>
-                    <div>{this.renderDays()}</div>
-                    <div>{this.renderCells()}</div>
-                </div>
+            <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
+
+                    <div className="calendar">
+                        <div>{this.renderHeader()}</div>
+                        <div>{this.renderDays()}</div>
+                        <div>{this.renderCells()}</div>
+                    </div>
+
             </div>
             }
             </div>

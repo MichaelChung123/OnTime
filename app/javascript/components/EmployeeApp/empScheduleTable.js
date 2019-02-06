@@ -10,13 +10,15 @@ export default class ScheduleTable extends React.Component {
             employeeShifts: [],
             showEdit: false,
             shiftEditId: '',
-            empEditId: ''
+            empEditId: '',
+            mounted: false
         }
     }
 
     componentDidMount() {
         this.fetchData();
         this.interval = setInterval(() => this.refresh(), 300);
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     fetchData() {
@@ -309,6 +311,7 @@ export default class ScheduleTable extends React.Component {
         };
         return(
             <div>
+                <div className={`schedule-platform${this.state.mounted ? " enter" : ""}`}>
                 <div className="schedule-container">
                     <table className="schedule-weekly-table">
                         <tr className="weekly-time">
@@ -348,7 +351,8 @@ export default class ScheduleTable extends React.Component {
                     </table>
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
-                <div className="weekly-view-container">
+                </div>
+                <div className={`weekly-view-container${this.state.mounted ? " enter" : ""}`}>
 
                     <table className="weekly-view">
                         <tr>
