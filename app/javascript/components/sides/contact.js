@@ -6,9 +6,14 @@ export default class Contact extends React.Component {
         super(props)
 
         this.state = {
-            expanded: true
+            expanded: true,
+            mounted: false
         }
     }
+
+    componentDidMount() {
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
+    };
 
     render() {
         return (
@@ -29,7 +34,7 @@ export default class Contact extends React.Component {
                         </NavText>
                         </NavItem>
 
-                        <div className="container">
+                        <div className={`slide${this.state.mounted ? " enter" : ""}`}>
                             <div className="col-md-3">
                                 <div className="contact-sidebar">
 

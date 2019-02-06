@@ -73,7 +73,14 @@
          transition: opacity 2s ease-in;
   }
 
-  .schedule-platform.enter {
+.schedule-platform.enter {
     opacity: 1
-  }
+}
 
+.student-input label {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    border-radius: 5px;
+    margin-left: 2em;
+}

@@ -13,12 +13,17 @@ export default class AddEmployee extends React.Component {
             lname: "",
             email: "",
             occupation: "",
-            phone: ""
+            phone: "",
+            mounted: false
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
+    componentDidMount() {
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
+    };
 
     handleChange(event) {
         const value = event.target.value;
@@ -86,7 +91,7 @@ export default class AddEmployee extends React.Component {
 
                         <div className="container">
                             <div className="col-md-3">
-                                <div className="edit-sidebar">
+                                <div className={`edit-sidebar${this.state.mounted ? " enter" : ""}`}>
 
                                     <div className="addEmployeeForm">
                                     <form onSubmit={this.handleSubmit}>

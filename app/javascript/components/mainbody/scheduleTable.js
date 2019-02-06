@@ -1,7 +1,7 @@
 import React from 'react'
 import dateFns from 'date-fns'
 import EditShift from './scheduleEditShift'
-
+import MentorCalculator from '../logistics/mentorcalculator'
 
 export default class ScheduleTable extends React.Component {
     constructor(props){
@@ -28,9 +28,9 @@ export default class ScheduleTable extends React.Component {
         fetch('/api/employeeshifts')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ employeeShifts: data }) });
-        // fetch('/api/timeoffrequest')
-        //     .then((response) => { return response.json() })
-        //     .then((data) => { this.setState({ requests: data }) });
+        fetch('/api/timeoffrequest')
+            .then((response) => { return response.json() })
+            .then((data) => { this.setState({ requests: data }) });
         fetch('/api/employees')
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ allEmployees: data }) });
@@ -77,9 +77,6 @@ export default class ScheduleTable extends React.Component {
     }
 
     editShift = (startTime, endTime, note, shiftData, empData) => {
-        // const editStart = startTime;
-        // const editEnd = endTime;
-        // const editNote = note;
         const duration = endTime - startTime;
 
         fetch('/api/shifts', {
@@ -121,13 +118,18 @@ export default class ScheduleTable extends React.Component {
         const shiftInfo = [];
         const employeeNames = [];
         const availableEmployee = [];
+        const requestData = [];
+        const notAvailableEmpId = [];
+        const timeOffRequests = this.state.requests.filter((request) => {
+            if (request.accepted === true) return request
+        })
 
         data.forEach(function(employee) {
             employee.shifts.forEach(function(shift){
                 if(shift.day === currentDate) {
                     employeeId.push(shift.employee_id);
                     shiftId.push(shift.id);
-                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.692, note: shift.note})
+                    shiftInfo.push({start: (shift.start_time - 9) * 7.66, length: shift.duration * 7.69, note: shift.note})
                 }
             });
         });
@@ -140,9 +142,36 @@ export default class ScheduleTable extends React.Component {
             });
         });
 
+        timeOffRequests.forEach((request) => {
+            const data = {
+                employee_id: request.employee_id,
+                dates: []
+            };
+            let end;
+            const start = new Date(`${request.year}-${request.start_month}-${request.start_day}`);
+            if (request.end_month === null || request.end_day === null) {
+                end = new Date(`${request.year}-${request.start_month}-${request.start_day}`);
+            } else {
+                end = new Date(`${request.year}-${request.end_month}-${request.end_day}`);
+            }
+            
+            for (var day = start; day <= end; day.setDate(day.getDate() + 1)) {
+                data.dates.push(dateFns.format(day, 'dddd MMMM Do'));
+            };
+            requestData.push(data);
+        });
+
+        requestData.forEach((request) => {
+            request.dates.forEach((day) => {
+                if (day == currentDate) {
+                    notAvailableEmpId.push(request.employee_id)
+                }
+            });
+        });
+
         this.state.availabilities.forEach((availability) => {
             const day = dateFns.format(currentDay, 'dddd');
-            if (availability.day == day) {
+            if (availability.day == day && availability.start_time !== 0 && availability.end_time !== 0 && !notAvailableEmpId.includes(availability.employee_id)) {
                 const data = {
                     employeeId: availability.employee_id,
                     start: availability.start_time,
@@ -162,7 +191,6 @@ export default class ScheduleTable extends React.Component {
                 }
             });
         });
-
 
 
         function checkLengthExist() {
@@ -409,6 +437,7 @@ export default class ScheduleTable extends React.Component {
                 </div>
                 </div>
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
+                     <MentorCalculator />
                     <h2 className="available-employee-title">Available Employees</h2>
                     {whoIsAvailable}
                 </div>

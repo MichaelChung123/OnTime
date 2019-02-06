@@ -29,7 +29,7 @@ export default class SideBar extends React.Component {
         })
         // console.log(thisWeekFormatted)
         this.props.shifts.forEach(function(shift) {
-            if (shift.employee_id === 2) {
+            if (shift.employee_id === 1) {
                 thisWeekFormatted.forEach(function(day) {
                     if (day == shift.day) {
                         shifts.push(shift)
@@ -68,10 +68,7 @@ export default class SideBar extends React.Component {
 
         return (
             <div>
-                <SideNav expanded={this.state.expanded}
-                    onToggle={(expanded) => {
-                        this.setState({ expanded: !this.state.expanded });
-                    }}
+                <SideNav expanded={true}
                 >
                     <SideNav.Toggle />
                     <SideNav.Nav>
