@@ -13,17 +13,22 @@
 
 .delete-form-container {
     border-radius: 4px;
+    background-color: var(--second-main-color);
+    color: var(--text-color);
     position: sticky;
     right: 25%;
     top: 15%;
-    width: 30%;
+    width: 50%;
     height: 40%;
     margin: auto;
     padding: 40px 0;
     text-align: center;
-    background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+.delete-form-container i {
+  color: var(--background-color);
+}
 
 .delete-popup-button-container {
     display: flex;
@@ -40,7 +45,7 @@
   border-radius: 4px;
   border: none;
   color: white;
-  background: #A9CCE3;
+  background: var(--complimentary-color);
   font-size: 14px
 
 }
@@ -50,7 +55,7 @@
    width: 45%;
   margin-bottom: 10px;
   border-radius: 4px;
-  background: #EC7063;
+  background: var(--button-color);
   color: white;
   border: none;
   font-size: 14px

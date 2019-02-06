@@ -37,7 +37,7 @@
 
 .form_button {
     color: black;
-    background-color: white;
+    background-color: var(--complimentary-color);
     text-align: center;
     transition: all 0.2s;
     height: 35px;
@@ -58,7 +58,7 @@
   max-width: 450px;
   color: white;
   width: 50%;
-  background: #86A4D5;
+  background: var(--second-main-color);
   padding: 25px 30px;
   border-radius: 15px;
 
@@ -72,7 +72,7 @@
    font-size: 14px;
    height: 29px;
    padding: 5px 5px; /* If you add too much padding here, the options won't show in IE */
-   background-color: #C3D4F0;
+   background-color: var(--light-light-grey);
     color: #707B7C;
     font-style: italic;
         width: -webkit-fill-available
@@ -86,7 +86,7 @@ label {
 }
 
 .form_button.close {
-  background-color: #D7DBDD;
+  background-color: var(--button-color);
     margin-top: -7px;
   margin-bottom: 10px
 }
@@ -105,7 +105,7 @@ label {
   border-radius: 4px;
   font-family: inherit;
   font-style: italic;
-   background-color: #C3D4F0;
+   background-color: var(--light-light-grey);
    padding: 5px 5px;
        width: -webkit-fill-available
 
