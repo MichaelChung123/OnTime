@@ -9,14 +9,22 @@ export default class Notifications extends React.Component {
         }
     }
 
+    acceptRequest = () => {
+        console.log(`accp`)
+    }
+
+    declineRequest = () => {
+        console.log(`dec`)
+    }
+
     render() {
 
         let notifications = this.props.notifications.map((e, index) => {
             return (
-                [<label key={index + 1}>{e}</label>, <br key={-index - 1} />]
+                <li key={index} data-key={index + 1}>{e}<br/><button onClick={() => {this.acceptRequest()}}>Accept</button><button onClick={() => this.declineRequest()}>Decline</button><br/></li>
             );
         });
-
+        
         return (
             <div className="popup">
                 <div className="popup-form">
@@ -26,9 +34,8 @@ export default class Notifications extends React.Component {
                     </div>
                     <div className="styled-select">
                         {notifications}
-                        <br />
-                        <br />
-                        <br />
+                    <br/>
+                    <br/>
                     </div>
                     <button className="notifcation-button-close" onClick={() => this.props.back()}>Close</button>
                 </div>

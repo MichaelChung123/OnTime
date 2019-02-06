@@ -86,10 +86,12 @@ export default class Availability extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        alert(`updated`)
     }
 
     setAvail = () => {
+
+        this.props.getEmpShift();
+
         for (let avail of this.props.availabilities) {
             if (avail.id === this.props.employee.id) {
                 if (avail.day === "Monday") {
@@ -107,7 +109,7 @@ export default class Availability extends React.Component {
                         this.setState({ monEnd: `mon${avail.end_time - 12}:00 PM` });
                     }
                 }
-                else if (avail.day === "tueday") {
+                else if (avail.day === "Tuesday") {
                     if (avail.start_time <= 12) {
                         this.setState({ tueStart: `tue${avail.start_time}:00 AM` });
                     } else {
@@ -133,7 +135,7 @@ export default class Availability extends React.Component {
                         this.setState({ wedEnd: `wed${avail.end_time - 12}:00 PM` });
                     }
                 }
-                else if (avail.day === "thuday") {
+                else if (avail.day === "Thursday") {
                     if (avail.start_time <= 12) {
                         this.setState({ thuStart: `thu${avail.start_time}:00 AM` });
                     } else {

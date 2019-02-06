@@ -51,7 +51,7 @@ export default class App extends React.Component {
                 if (req.employee_id === emp.id) {
                     if (req.end_month === null || req.end_day === null) {
                         const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
-                        const dateStr = `Time off request on ${dateFns.format(startDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
+                        const dateStr = `${dateFns.format(startDate, 'MMM Do ddd')} by ${emp.first_name} ${emp.last_name} (${req.reason})`;
                         notificationStr.push(dateStr);
 
                         this.setState({
@@ -61,7 +61,7 @@ export default class App extends React.Component {
                     else {
                         const startDate = new Date(`${req.year}-${req.start_month}-${req.start_day}`);
                         const endDate = new Date(`${req.year}-${req.end_month}-${req.end_day}`);
-                        const dateStr = `Time off request for ${dateFns.format(startDate, 'dddd MMMM Do')} to ${dateFns.format(endDate, 'dddd MMMM Do')} by ${emp.first_name} ${emp.last_name}`;
+                        const dateStr = `${dateFns.format(startDate, 'MMM Do ddd')} to ${dateFns.format(endDate, 'MMM Do ddd')} by ${emp.first_name} ${emp.last_name} (${req.reason})`;
                         notificationStr.push(dateStr);
 
                         this.setState({
