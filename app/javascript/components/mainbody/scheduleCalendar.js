@@ -15,7 +15,6 @@ export default class Calendar extends React.Component {
         };
     }
    
-    
     componentDidMount() {
         window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };

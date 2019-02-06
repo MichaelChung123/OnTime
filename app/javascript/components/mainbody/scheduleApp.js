@@ -4,7 +4,7 @@ import Calendar from './scheduleCalendar'
 export default class ScheduleApp extends React.Component {
     state = {
         employees: [],
-        shifts: []
+        shifts: [],
     }
 
     componentDidMount() {
@@ -16,7 +16,6 @@ export default class ScheduleApp extends React.Component {
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ shifts: data }) });
         
-        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     render() {
