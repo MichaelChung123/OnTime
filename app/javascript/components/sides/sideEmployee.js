@@ -13,7 +13,8 @@ export default class SideEmployee extends React.Component {
         super(props);
         this.state = {
             renderChild: false,
-            expanded: true
+            expanded: true,
+            mounted: false
         }
 
         this.editEmployee = this.editEmployee.bind(this);
@@ -22,6 +23,10 @@ export default class SideEmployee extends React.Component {
 
         this.back = this.back.bind(this);
     }
+
+    componentDidMount() {
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
+    };
 
     editEmployee() {
         this.setState({
@@ -154,8 +159,8 @@ export default class SideEmployee extends React.Component {
                                 Back
                         </NavText>
                         </NavItem>
-
-                        <div className="container">
+                    
+                        <div className={`slide${this.state.mounted ? " enter" : ""}`}>
                             <div className="row profile">
                                 <div className="col-md-3">
                                     <div className="profile-sidebar">

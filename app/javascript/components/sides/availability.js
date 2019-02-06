@@ -20,7 +20,8 @@ export default class Availability extends React.Component {
             satStart: "sat9:00 AM",
             satEnd: "sat9:00 PM",
             sunStart: "sun9:00 AM",
-            sunEnd: "sun9:00 PM"
+            sunEnd: "sun9:00 PM",
+            mounted: false
         }
     }
 
@@ -38,6 +39,8 @@ export default class Availability extends React.Component {
             return parseInt(timeStr.split(":")[0].slice(3)) + 12;
         }
     }
+
+
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -188,6 +191,7 @@ export default class Availability extends React.Component {
 
     componentDidMount() {
         this.setAvail();
+        window.requestAnimationFrame(() => this.setState({ mounted: true }));
     }
 
     render() {
@@ -208,16 +212,12 @@ export default class Availability extends React.Component {
                                 Back
                         </NavText>
                         </NavItem>
-
-                        <div className="edit-sidebar">
-
-
+                    
+                        <div className={`edit-sidebar${this.state.mounted ? " enter" : ""}`}>
                             <div className="availability-title">Availability</div>
-
-                            <div className="addEmployeeForm">
-
-                                <form onSubmit={this.handleSubmit}>
-                                    <div className="availability-week-days">Monday</div>
+                                <div className="addEmployeeForm">
+                                    <form onSubmit={this.handleSubmit}>
+                                        <div className="availability-week-days">Monday</div>
 
 
                                     Start
