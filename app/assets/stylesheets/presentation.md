@@ -1,6 +1,7 @@
 PRESENTATION
 
 - introduce ourselves
+  - graduated with a bachelor of science,
 
 - user story
   - Davey uses an excel spreadsheet to schedule mentors and lecturers
