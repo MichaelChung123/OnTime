@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class MentorCalculator extends React.Component {
+export default class Logistics extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
