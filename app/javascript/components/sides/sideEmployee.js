@@ -57,6 +57,8 @@ export default class SideEmployee extends React.Component {
             renderChild: false
         });
 
+        this.props.getEmpShift();
+
     }
 
     timeFormat(time) {
@@ -126,7 +128,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "availability") {
             return (
-                <Availability refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
+                <Availability refreshAvail={this.props.refreshAvail} refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
             );
         }
 
