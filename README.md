@@ -14,7 +14,7 @@ To use this scheduling platform:
 
 App will run at `localhost:http://localhost:3000/`
 
-![](image.png)
+![landing](./app/assets/images/landing-page.png)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

@@ -35,7 +35,7 @@ export default class NavBar extends React.Component {
     return (
       <header className="navbar">
         <nav className="navbar_navigation">
-          <div className="navbar_logo"><a href="/">OnTime</a></div>
+          <div className="navbar_logo"><a href="/"><i className="far fa-clock"></i>nTime</a></div>
 
           <div className="spacer" />
           <div className="navbar_navigation-items">

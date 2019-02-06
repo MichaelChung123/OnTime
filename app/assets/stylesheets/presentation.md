@@ -19,14 +19,14 @@ Daniel
 
 DEMO APP
 
-Michael
+<!-- Michael
 - Stretch goals
   - automatically generate shifts needed based on cohort/ student number
   - employees can request to swap shift with another employee, or drop shift
   (they can only request time off right now)
   - link to salary thing
   - app version- use react native
-  - published schedule
+  - published schedule -->
 
 
 
@@ -52,6 +52,16 @@ Ally: switch tabs to employee page, brief explanation of what they see
 
 
 
+
+Things to fix - automatic changes after you submit something
+  - notifications work
+  - showing an employee with actual upcoming shifts
+  - fill forms faster
+  - when submitting availabilities, automatically go back to employee view
+  -
+
+Ally things for you to do
+  - get employee calendar view farther to the left
 
 
 
