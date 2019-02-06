@@ -154,7 +154,7 @@ export default class ScheduleTable extends React.Component {
             } else {
                 end = new Date(`${request.year}-${request.end_month}-${request.end_day}`);
             }
-            
+
             for (var day = start; day <= end; day.setDate(day.getDate() + 1)) {
                 data.dates.push(dateFns.format(day, 'dddd MMMM Do'));
             };
@@ -436,8 +436,11 @@ export default class ScheduleTable extends React.Component {
                     {this.state.showEdit ? <EditShift cancel={cancel} editShift={editShift} shiftData={this.state.shiftEditId} empData={this.state.empEditId}/> : null}
                 </div>
                 </div>
+                <div className="mentor-calculator-container">
+                    <MentorCalculator />
+                </div>
                 <div className={`available-container${this.state.mounted ? " enter" : ""}`}>
-                     <MentorCalculator />
+
                     <h2 className="available-employee-title">Available Employees</h2>
                     {whoIsAvailable}
                 </div>

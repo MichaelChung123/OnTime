@@ -41,6 +41,7 @@
   background-color: transparent;
   height: 60px;
   border: none;
+  z-index: 2;
 }
 
 .navbar-notifcation-button i {
@@ -51,4 +52,50 @@
 
 .navbar-notifcation-button i:hover {
   color:  #727272;
+}
+
+//notifcation close button
+.notifcation-button-close {
+  background-color: var(--complimentary-color);
+  margin-top: -7px;
+  margin-bottom: 10px;
+  color: white;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+//add shift button - form button
+
+.form_button {
+    color: white;
+    background-color: var(--complimentary-color);
+    text-align: center;
+    transition: all 0.2s;
+    height: 35px;
+    width: 100%;
+    border-radius: 4px;
+    font-family: inherit;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 14px;
+}
+
+.form_button.close {
+  background-color: var(--button-color);
+    margin-top: -7px;
+  margin-bottom: 10px
+}
+
+.form_button.close:hover {
+  background-color: var(--button-hover-color);
+}
+
+.form_button.schedule:hover {
+  background-color: var(--complimentary-color-dark);
 }

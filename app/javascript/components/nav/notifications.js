@@ -38,13 +38,16 @@ export default class Notifications extends React.Component {
         return (
             <div className="popup">
                 <div className="popup-form">
-                    <label htmlFor="employee">Requests</label>
+                    <div className="popup-request-title">
+                        <i className="fas fa-bell"></i>
+                        Requests
+                    </div>
                     <div className="styled-select">
                         {notifications}
                     <br/>
                     <br/>
                     </div>
-                    <button className="form_button close" onClick={() => this.props.back()}>Close</button>
+                    <button className="notifcation-button-close" onClick={() => this.props.back()}>Close</button>
                 </div>
             </div>
         );
