@@ -9,7 +9,7 @@ export default class DeletePopup extends React.Component {
 
     handleDelete() {
         event.preventDefault();
-
+        
         let data = {
             id: this.props.employee.id
         }
@@ -20,7 +20,7 @@ export default class DeletePopup extends React.Component {
 
         this.props.refreshComponent(data);
 
-        this.props.back();
+        this.props.deleteBack();
     }
 
     render() {

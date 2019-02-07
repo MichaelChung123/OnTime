@@ -26,6 +26,7 @@ export default class SideEmployee extends React.Component {
     }
 
     componentDidMount() {
+        this.props.getEmpShift();
         window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };
 
@@ -59,7 +60,6 @@ export default class SideEmployee extends React.Component {
         });
 
         this.props.getEmpShift();
-
     }
 
     timeFormat(time) {
@@ -112,9 +112,6 @@ export default class SideEmployee extends React.Component {
             week.forEach((day, i) => {if (today == day) position = i});
             return position;
         };
-        
-        
-        
         
         const shiftDetails = shifts.map(function(shift) {
             let convertStartTime;
@@ -179,7 +176,7 @@ export default class SideEmployee extends React.Component {
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                 >
-                    <DeletePopup refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} back={this.props.back} employee={this.props.employee}/>
+                    <DeletePopup deleteBack={this.props.deleteBack} refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} back={this.props.back} employee={this.props.employee}/>
                 </ReactCSSTransitionGroup>
             );
         }

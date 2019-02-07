@@ -46,7 +46,7 @@ export default class AddEmployee extends React.Component {
         event.preventDefault();
 
         let data = {
-            //user_id is hard coded to 1 since demo is only meant for one admin user
+            // user_id is hard coded to 1 since demo is only meant for one admin user
             user_id: this.state.user_id,
             first_name: this.state.fname,
             last_name: this.state.lname,
@@ -64,7 +64,6 @@ export default class AddEmployee extends React.Component {
         });
 
         this.props.refreshComponent(data);
-
     }
 
     render() {
@@ -109,6 +108,7 @@ export default class AddEmployee extends React.Component {
 
                                         Phone Number
                                         <input className="add_employee_input" type="text" name="phone" onChange={this.handleChange} />
+                                        
                                         <input className="edit_employee_submit_button" type="submit" value="Submit" onSubmit={this.handleSubmit} />
                                     </form>
                                     </div>

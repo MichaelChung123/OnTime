@@ -81,8 +81,23 @@ export default class SideBar extends React.Component {
         this.setState({
             renderChild: false
         });
+
+        this.getEmpShift();
+    }
+
+    deleteBack = () => {
+        this.setState({
+            renderChild: false
+        });
+
         this.getEmpShift();
 
+        this.setState({
+            renderChild: "employee"
+        });
+        this.setState({
+            renderChild: false
+        });
     }
 
     addShiftHandleClick() {
@@ -119,7 +134,7 @@ export default class SideBar extends React.Component {
 
         if (render === "employee") {
             return (
-                <SideEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} getDate={this.props.getDate} />
+                <SideEmployee deleteBack={this.deleteBack} refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} availabilities={availabilities} shifts={shifts} employee={this.state.employee} back={this.back} getDate={this.props.getDate} />
             );
         }
 
