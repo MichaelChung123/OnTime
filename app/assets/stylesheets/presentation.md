@@ -7,6 +7,7 @@ PRESENTATION
 Ally
 - user story
   - Davey uses an excel spreadsheet to schedule mentors and lecturers
+  - Making app transferable (thinking about how others would use it)
   - Talk about interviewing him and some mentors about what they would like to see in a scheduling app
 
 
@@ -19,14 +20,14 @@ Daniel
 
 DEMO APP
 
-<!-- Michael
+Michael
 - Stretch goals
   - automatically generate shifts needed based on cohort/ student number
   - employees can request to swap shift with another employee, or drop shift
   (they can only request time off right now)
   - link to salary thing
   - app version- use react native
-  - published schedule -->
+  - published schedule
 
 
 
@@ -47,6 +48,8 @@ Michael: demo functionality of sidebar - add employee, change
 Ally: switch tabs to employee page, brief explanation of what they see
         request time off
         go back to admin page - see notifcation (accept or deny request)
+        maybe say stretch goal of having an app that deploys the schedule
+        if you try to add shift on that day, it wont let you because you have accepted their timeoff request
 
 
 
@@ -58,13 +61,12 @@ Things to fix - automatic changes after you submit something
   - showing an employee with actual upcoming shifts
   - fill forms faster
   - when submitting availabilities, automatically go back to employee view
-  -
+  - when adding a new employee, make sure it renders automatically if you delete them
 
 Ally things for you to do
   - get employee calendar view farther to the left
-
-
-
+  - see back button at all times (sidebar is fucking it up)
+  - try to get symbol on tab to not be react symbol
 
 
 
