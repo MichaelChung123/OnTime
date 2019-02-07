@@ -20,14 +20,14 @@ Daniel
 
 DEMO APP
 
-<!-- Michael
+Michael
 - Stretch goals
   - automatically generate shifts needed based on cohort/ student number
   - employees can request to swap shift with another employee, or drop shift
   (they can only request time off right now)
   - link to salary thing
   - app version- use react native
-  - published schedule -->
+  - published schedule
 
 
 
