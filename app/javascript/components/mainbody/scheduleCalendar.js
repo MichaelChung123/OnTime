@@ -14,7 +14,7 @@ export default class Calendar extends React.Component {
             mounted: false
         };
     }
-   
+
     componentDidMount() {
         window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };
@@ -24,7 +24,7 @@ export default class Calendar extends React.Component {
         const dateFormat = "MMMM YYYY";
             return (
                 <div className="header row flex-middle">
-                    
+
                     <div className="col col-start">
                         <div className="icon" onClick={this.prevMonth}>
                         chevron_left
@@ -41,9 +41,9 @@ export default class Calendar extends React.Component {
                 </div>
             );
     }
-    
+
     renderDays() {
-        
+
         const dateFormat = "dddd";
         const days = [];
         let startDate = dateFns.startOfWeek(this.state.currentMonth);
@@ -116,24 +116,26 @@ export default class Calendar extends React.Component {
             currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
         });
     }
-    
+
     backClick = () => {
         this.setState({
             showSchedule: false
         })
     }
-    
+
     render() {
-        return(    
+        return(
             <div>
             {this.state.showSchedule ?
                 <Schedule backClick={this.backClick} currentDay={this.state.selectedDate} />
             :
-            <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
-                <div className="calendar">           
-                    <div>{this.renderHeader()}</div>
-                    <div>{this.renderDays()}</div>
-                    <div>{this.renderCells()}</div>
+            <div className="employee-schedule-container">
+                <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
+                    <div className="calendar">
+                        <div>{this.renderHeader()}</div>
+                        <div>{this.renderDays()}</div>
+                        <div>{this.renderCells()}</div>
+                    </div>
                 </div>
             </div>
             }

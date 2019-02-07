@@ -124,15 +124,16 @@ export default class Calendar extends React.Component {
             {this.state.showSchedule ?
                 <Schedule backClick={this.backClick} currentDay={this.state.selectedDate} />
             :
+                <div className="employee-schedule-container">
+                    <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
 
-                <div className={`schedule-app-container${this.state.mounted ? " enter" : ""}`}>
+                            <div className="calendar">
+                                <div>{this.renderHeader()}</div>
+                                <div>{this.renderDays()}</div>
+                                <div>{this.renderCells()}</div>
+                            </div>
 
-                        <div className="calendar">
-                            <div>{this.renderHeader()}</div>
-                            <div>{this.renderDays()}</div>
-                            <div>{this.renderCells()}</div>
-                        </div>
-
+                    </div>
                 </div>
 
             }
