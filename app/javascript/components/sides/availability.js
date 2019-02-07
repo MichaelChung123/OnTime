@@ -87,12 +87,13 @@ export default class Availability extends React.Component {
             body: JSON.stringify(data)
         });
         alert(`Availability has been updated!`)
+        this.props.back()
     }
 
     setAvail = () => {
 
         this.props.getEmpShift();
-
+        // TODO set validations ex within 8 hrs and ex. 12pm - 9am
         for (let avail of this.props.availabilities) {
             if (avail.id === this.props.employee.id) {
                 if (avail.day === "Monday") {

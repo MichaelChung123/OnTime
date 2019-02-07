@@ -50,9 +50,10 @@ export default class SideBar extends React.Component {
     }
 
     refreshComponent(data){
-
+        const empId = this.state.employees.map((employee) => {return employee.id})
+        const newId = Math.max(...empId)
         var employee = {
-            id: data.id,
+            id: newId,
             first_name: data.first_name,
             last_name: data.last_name,
             email: data.email,
@@ -69,6 +70,7 @@ export default class SideBar extends React.Component {
     componentDidMount() {
         this.getEmpShift();
     }
+
 
     selectEmployee(employee) {
         this.setState({
@@ -125,7 +127,7 @@ export default class SideBar extends React.Component {
 
         if (render === "addEmployee") {
             return (
-                <AddEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} back={this.back} />
+                <AddEmployee refreshComponent={this.refreshComponent} getEmpShift={this.getEmpShift} back={this.back} refresh={this.props.refresh}/>
             );
         }
 

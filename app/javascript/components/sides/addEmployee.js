@@ -61,10 +61,10 @@ export default class AddEmployee extends React.Component {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
-        });
-
+        })
+        
         this.props.refreshComponent(data);
-
+        this.props.getEmpShift();
     }
 
     render() {

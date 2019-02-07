@@ -125,7 +125,7 @@ export default class App extends React.Component {
                 <br></br>
 
                 <ScheduleApp getDate={this.getDate} />
-                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} />
+                <SideBar getDate={this.state.clickedDate} addShift={this.addShift} createNotification={this.createNotification} refresh={this.refresh}/>
                 <NotificationContainer />
             </div>
         )

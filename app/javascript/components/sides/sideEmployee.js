@@ -15,7 +15,7 @@ export default class SideEmployee extends React.Component {
         this.state = {
             renderChild: false,
             expanded: true,
-            mounted: false
+            mounted: false,
         }
 
         this.editEmployee = this.editEmployee.bind(this);
@@ -28,6 +28,12 @@ export default class SideEmployee extends React.Component {
     componentDidMount() {
         window.requestAnimationFrame(() => this.setState({ mounted: true }));
     };
+
+    componentDidUpdate(prevProps) {
+        if (this.props.availabilities !== prevProps.availabilities) {
+            console.log(`update`)
+        }
+    }
 
     editEmployee() {
         this.setState({
@@ -131,7 +137,7 @@ export default class SideEmployee extends React.Component {
             )
         });
 
-        let availabilities = this.props.availabilities.sort((a,b) => a.id - b.id).map((e, index) => {
+        const availabilities = this.props.availabilities.sort((a,b) => a.id - b.id).map((e, index) => {
             if (e.employee_id === employeeId) {
                 if (e.start_time == 0 || e.end_time == 0) { 
                     return <li>Not Available</li> 
@@ -151,6 +157,7 @@ export default class SideEmployee extends React.Component {
                 }
             }
         });
+        
 
         const render = this.state.renderChild;
 
@@ -168,7 +175,7 @@ export default class SideEmployee extends React.Component {
 
         if (render === "availability") {
             return (
-                <Availability refreshAvail={this.props.refreshAvail} refreshComponent={this.props.refreshComponent} getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
+                <Availability getEmpShift={this.props.getEmpShift} setEmployee={this.setEmployee} back={this.back} employee={this.props.employee} availabilities={this.props.availabilities} />
             );
         }
 
