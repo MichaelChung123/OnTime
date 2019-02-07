@@ -28,7 +28,7 @@ export default class SideBar extends React.Component {
         })
 
         this.props.shifts.forEach(function(shift) {
-            if (shift.employee_id === 34) {
+            if (shift.employee_id === 23) {
                 thisWeekFormatted.forEach(function(day) {
                     if (day == shift.day) {
                         shifts.push(shift)
