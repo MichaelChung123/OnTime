@@ -32,7 +32,7 @@ export default class App extends React.Component {
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ requests: data }) });
 
-        this.interval = setInterval(() => this.refresh(), 1000);
+        this.interval = setInterval(() => this.refresh(), 500);
     }
 
     refresh() {

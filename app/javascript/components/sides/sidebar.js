@@ -16,7 +16,7 @@ export default class SideBar extends React.Component {
             availabilities: [],
             renderChild: false,
             clicked: false,
-            expanded: false,
+            expanded: true,
             refresh: false,
             selectedEmployee: null,
             requests: []
